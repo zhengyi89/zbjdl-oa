@@ -81,7 +81,7 @@ public class AppInterceptor extends HandlerInterceptorAdapter {
 				return false;
 			} else {
 				// 访问登陆页面，session或cookie有效，跳到列表页
-				if ("/ransomfloor-wx/app/login".equals(requestURI)) {
+				if ("/oa-wx/app/login".equals(requestURI)) {
 					response.sendRedirect(flowListPage);
 				}
 			}

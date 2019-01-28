@@ -1,15 +1,11 @@
 package com.zbjdl.oa.wx.service;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import com.zbjdl.common.wx.util.dto.WxBindUserDto;
 import com.zbjdl.oa.wx.exception.WxIllegalAccessException;

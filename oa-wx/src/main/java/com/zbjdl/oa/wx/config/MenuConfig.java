@@ -21,7 +21,7 @@ public interface MenuConfig {
 	/**
 	 * 赎楼列表
 	 */
-	String FLOW_LIST = "type=ransomfloor_list";
+	String FLOW_LIST = "type=oa_list";
 
 	/**
 	 * 业务需求买房

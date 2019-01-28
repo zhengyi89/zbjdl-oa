@@ -21,12 +21,12 @@ import org.springframework.stereotype.Controller;
 
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @EnableRedisHttpSession
-public class RansomfloorWxAppApplication  {
+public class OaWxAppApplication  {
 	private static final Logger logger = LoggerFactory
-			.getLogger(RansomfloorWxAppApplication.class);
+			.getLogger(OaWxAppApplication.class);
     
 	public static void main(String[] args) {
-		SpringApplication springApplication = new SpringApplication(RansomfloorWxAppApplication.class);
+		SpringApplication springApplication = new SpringApplication(OaWxAppApplication.class);
         springApplication.run(args);
         logger.info("Spring boot loaded");
 	}

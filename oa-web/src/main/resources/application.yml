@@ -9,9 +9,9 @@ spring:
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://192.168.120.206/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         username: root
-        password: mysql
+        password: wK=QwJmR<592
         # 配置监控统计拦截的filters，去掉后监控界面sql无法统计
         filters: stat,slf4j
         # 初始化大小，最小，最大
@@ -42,7 +42,7 @@ spring:
             enabled: false
 # REDIS (RedisProperties)
     redis:
-        host: redis.yunpal.in
+        host: redis.zbjdl.in
         port: 6379 
         pool:
             max-idle: 300 # pool settings ...
@@ -57,31 +57,31 @@ mybatis:
 
 
 server:
-    contextPath: /ransomfloor-web
+    contextPath: /oa-web
     port: 8088
 
 weixin:
     appId: wx974f644e7111ade9
     appSecret: 2a447001267716495c0fcfbccda28a56
     templateId: srv8wHUU-1cQ2pzadXlUM2cU3msX1-27lSr52loSm6Y
-    url: http://www.yunpal.cn
+    url: http://www.zbjdl.cn
     
 sms:
     url: http://192.168.120.232:8081/dynamicpassword-web/sms    
 
 dubbo:
-    registry-address: registry.yunpal.in:2181
+    registry-address: registry.zbjdl.in:2181
     provider-port: ${server.port}
-    service-group: hengbao-service-group
+    service-group: zbjdl-service-group
     service-version: 1.0.0
     service-timeout: 30000
 
 
-hengbao:
+zbjdl:
     dubbo:
-        app: ransomfloor-web
-        registry_address: registry.yunpal.in:2181
-#        service-group: hengbao-service-group
+        app: oa-web
+        registry_address: registry.zbjdl.in:2181
+#        service-group: zbjdl-service-group
 #        service-version: 1.0.0
 #        service-retries: 2
 #        service-timeout: 3000
@@ -107,14 +107,14 @@ spring:
     profiles: production
 
     activemq:
-        broker-url: tcp://activemq.yunpal.in:61616
+        broker-url: tcp://activemq.zbjdl.in:61616
         user: admin
         password: admin
 
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://mysqldb.yunpal.in/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         username: root
         password: m&tpI4boxy7H
 

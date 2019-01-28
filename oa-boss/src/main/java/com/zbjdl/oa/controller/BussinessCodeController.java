@@ -25,7 +25,6 @@ import com.zbjdl.common.utils.config.ConfigurationUtils;
 /**
  * 字典项翻译查询
  * 
- * @author MengXiangChao
  * @date 2016年7月19日 上午9:13:08
  */
 @Controller

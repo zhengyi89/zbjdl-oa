@@ -14,7 +14,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(RansomfloorWebApplication.class);
+		return application.sources(OaWebApplication.class);
 	}
 
 }

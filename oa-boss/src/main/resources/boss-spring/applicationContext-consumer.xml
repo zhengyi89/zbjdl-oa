@@ -12,22 +12,8 @@
     http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
 	default-autowire="byName" default-lazy-init="true">
 
-	<dubbo:reference id="smsInfoService"
-		interface="com.zbjdl.oa.service.SmsInfoService"
-		group="${service-group}" version="${service-version}" check="false" />
-		
-	<dubbo:reference id="noticeService"
-		interface="com.zbjdl.oa.service.NoticeService"
-		group="${service-group}" version="${service-version}" check="false" />
-		
-	<dubbo:reference id="wfTaskInfoService" interface="com.zbjdl.oa.service.WfTaskInfoService" check="false"/>
-
-	<dubbo:reference id="bussDemandService" interface="com.zbjdl.oa.service.BussDemandService" group="${service-group}" version="${service-version}" check="false" />
+	<dubbo:reference id="userFacade" interface="com.zbjdl.boss.admin.facade.UserFacade" group="hengbao-service-group"  version="${service-version}" check="false" />
 	
-	<dubbo:reference id="securityConfigFacade" interface="com.zbjdl.boss.admin.facade.SecurityConfigFacade" group="hengbao-service-group-ransomfloor"  version="${service-version}" check="false" />
-	
-	<dubbo:reference id="wfTaskProcessService" interface="com.zbjdl.oa.service.WfTaskProcessService" check="false" />
-	
-	<dubbo:reference id="userFacade" interface="com.zbjdl.boss.admin.facade.UserFacade" group="hengbao-service-group-ransomfloor"  version="${service-version}" check="false" />
+	<dubbo:reference id="securityConfigFacade" interface="com.zbjdl.boss.admin.facade.SecurityConfigFacade" group="hengbao-service-group"  version="${service-version}" check="false" />
 	
 </beans>

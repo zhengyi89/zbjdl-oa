@@ -6,8 +6,6 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
-import com.zbjdl.common.RedisIdGenerator;
-
 /**
  * Bean 配置类
  * 
@@ -21,11 +19,6 @@ public class BeansConfiguration {
 	public RedisTemplate redisTemplate(RedisConnectionFactory factory) {
 		final RedisTemplate template = new StringRedisTemplate(factory);
 		return template;
-	}
-
-	@Bean
-	public RedisIdGenerator redisIdGenerator() {
-		return new RedisIdGenerator();
 	}
 
 	// @Bean

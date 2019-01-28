@@ -13,7 +13,7 @@
 
 	<!-- 整合mybatis -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="ransomfloorDataSource" />
+		<property name="dataSource" ref="oaDataSource" />
 		<property name="configLocation" value="classpath*:spring/mybatisConfig.xml" />
 	</bean>
 

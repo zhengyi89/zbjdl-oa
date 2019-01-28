@@ -51,7 +51,7 @@ public class WxUtil {
 	public static final String WX_API_SYSTEM_HOST = "https://api.weixin.qq.com";
 	public static final String WX_ACCESS_TOKEN = "jvNlpxePHPjU0Bs7Pzu5xLjloGWl65-LPiPVxi7yVkX0jV"
 			+ "ayMfNapGbU08JjFAXMXCj9WeaIxb0XGU0AceJDSCDaF3R_oUvPypWASI_ncsKhjeqSZQVHXHRlVbksX4B_GDOaABAMJU";
-	public static final String RANSOMFLOOR_WX_HOST = "http://ztfang1.yunpal.cn";
+	public static final String OA_WX_HOST = "http://ztfang1.zbjdl.net";
 
 	/**
 	 * 命名空间

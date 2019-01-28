@@ -16,8 +16,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.zbjdl.common.exception.BaseException;
-import com.zbjdl.common.wx.util.ConfigEnum;
-import com.zbjdl.common.wx.util.ConfigUtils;
 import com.zbjdl.oa.wx.config.MenuConfig;
 import com.zbjdl.oa.wx.config.WxScopeConfig;
 import com.zbjdl.oa.wx.service.SessionService;
@@ -53,7 +51,7 @@ public class WxExceptionHandler extends ResponseEntityExceptionHandler {
 			} else {
 				// TODO 重新定义
 				
-				String host = WxUtil.RANSOMFLOOR_WX_HOST + request.getContextPath();
+				String host = WxUtil.OA_WX_HOST + request.getContextPath();
 				//重新网页授权openId，重启认证
 				return new ModelAndView(new RedirectView(WxUtil.getCode(host + "/menu?"+MenuConfig.FLOW_LIST, WxScopeConfig.BASE)));
 			}

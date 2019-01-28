@@ -19,7 +19,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 @SpringBootApplication
 @ImportResource({ "classpath:boss-spring/applicationContext-consumer.xml",
-		"classpath:boss-spring/applicationContext-ransomfloorboss-query.xml" })
+		"classpath:boss-spring/applicationContext-oaboss-query.xml" })
 public class OaBossApplication {
 	private static final Logger logger = LoggerFactory.getLogger(OaBossApplication.class);
 	@Bean
@@ -33,7 +33,7 @@ public class OaBossApplication {
 	public static void main(String[] args) {
 		SpringApplication springApplication = new SpringApplication(OaBossApplication.class);
 		springApplication.run(args);
-		logger.info("Spring boot loaded------------------ransomfloor-boss");
+		logger.info("Spring boot loaded------------------oa-boss");
 	}
 
 }

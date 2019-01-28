@@ -138,11 +138,6 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 		</dependency>
-
-		<dependency>
-		  <groupId>com.zbjdl.common</groupId>
-		<artifactId>zbjdl-common</artifactId>
-		</dependency>
 	</dependencies>
 
 

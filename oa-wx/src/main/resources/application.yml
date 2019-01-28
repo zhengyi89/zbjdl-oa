@@ -7,16 +7,15 @@ spring:
             suffix: .jsp
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://192.168.120.206/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
-        validation-query: select 1 from dual
-        test-on-borrow: true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         username: root
-        password: mysql
+        password: wK=QwJmR<592
+        validationQuery: SELECT 1 FROM DUAL
 
 # REDIS (RedisProperties)
     redis:
-        host: redis.yunpal.in
-        port: 6379 
+        host: redis.zbjdl.in
+        port: 6378
         pool:
             max-idle: 300 # pool settings ...
             max-active: 600
@@ -30,28 +29,28 @@ endpoints:
         enabled: false 
 
 server:
-    contextPath: /ransomfloor-wx
+    contextPath: /oa-wx
     port: 9025
     sms:
         url: http://172.16.10.169:9019/dynamicpassword-web/sms
     admin-boss:
-        url: http://ztfang.yunpal.cn/admin-boss
+        url: http://ztfang.zbjdl.cn/admin-boss
 
 logging:
     level:
         com:
-            hengbao:
+            zbjdl:
                 utils:
                     query: DEBUG
 
 registry-address: 192.168.120.219:2181
-service-group: hengbao-service-group
+service-group: zbjdl-service-group
 service-version: 1.0.0
 
-hengbao:
+zbjdl:
     dubbo:
-        app: ransomfloor-wx
-        registry_address: registry.yunpal.in:2181
+        app: oa-wx
+        registry_address: registry.zbjdl.in:2181
 
 ---
 
@@ -74,14 +73,14 @@ spring:
 
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://mysqldb.yunpal.in/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         validation-query: select 1 from dual
         test-on-borrow: true
         username: root
         password: m&tpI4boxy7H
 
 server:
-    contextPath: /ransomfloor-wx
+    contextPath: /oa-wx
     port: 9025
     sms:
         url: http://172.16.10.169:9019/dynamicpassword-web/sms

@@ -12,23 +12,8 @@
 	    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
 	default-autowire="byName" default-lazy-init="true">
 
-
-	<dubbo:service interface="com.zbjdl.oa.service.SmsInfoService"
-		ref="smsInfoService" group="${dubbo.service-group}" version="${dubbo.service-version}"
-		timeout="${dubbo.service-timeout}" retries="0" />
-		
-	<dubbo:service interface="com.zbjdl.oa.service.NoticeService"
-		ref="noticeService" group="${dubbo.service-group}" version="${dubbo.service-version}"
-		timeout="${dubbo.service-timeout}" retries="0" />
-
-	<dubbo:service interface="com.zbjdl.oa.service.WfTaskInfoService" ref="wfTaskInfoService" />
-
 	<dubbo:service interface="com.zbjdl.oa.service.UserinfoService"
 		ref="userinfoService" group="${dubbo.service-group}" version="${dubbo.service-version}"
 		timeout="${dubbo.service-timeout}" retries="0" />
-	
-	<dubbo:service interface="com.zbjdl.oa.service.BussDemandService" ref="bussDemandService" group="${dubbo.service-group}" />
-	
-	<dubbo:service interface="com.zbjdl.oa.service.WfTaskProcessService" ref="wfTaskProcessService" />
 
 </beans>

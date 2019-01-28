@@ -26,7 +26,7 @@ BusinessCode.getSysConfigCode = function(configKey, domId, selectValue,defaultVa
 	var html = '<option value=""></option>';
 	$.ajax({
 		async : false,
-		url : "/ransomfloor-boss/bussinessCode/codeIndex",
+		url : "/oa-boss/bussinessCode/codeIndex",
 		type : "POST",
 		data : {
 			"configKey" : configKey
@@ -69,7 +69,7 @@ BusinessCode.getAmountState = function(configKey, domId, selectValue,defaultValu
 	var html = '<option value=""></option>';
 	$.ajax({
 		async : false,
-		url : "/ransomfloor-boss/bussinessCode/codeIndex",
+		url : "/oa-boss/bussinessCode/codeIndex",
 		type : "POST",
 		data : {
 			"configKey" : configKey
@@ -113,7 +113,7 @@ BusinessCode.transGirdData = function(configKey, codeKey, eleId) {
 	} else {
 		$.ajax({
 			async : false,
-			url : "/ransomfloor-boss/bussinessCode/codeIndex",
+			url : "/oa-boss/bussinessCode/codeIndex",
 			type : "POST",
 			data : {
 				"configKey" : configKey
@@ -143,7 +143,7 @@ BusinessCode.getRoleSelect = function(departmentId, domId, selectValue,defaultVa
 	}
 	$.ajax({
 		async : false,
-		url : "/ransomfloor-boss/bussinessCode/roleInfoIndex",
+		url : "/oa-boss/bussinessCode/roleInfoIndex",
 		type : "POST",
 		data : {
 			"departmentId" : departmentId
@@ -170,7 +170,7 @@ BusinessCode.getUserSelect = function(roleId, domId, selectValue,defaultValue){
 	var html = '<option value=""></option>';
 	$.ajax({
 		async : false,
-		url : "/ransomfloor-boss/bussinessCode/userInfoIndex",
+		url : "/oa-boss/bussinessCode/userInfoIndex",
 		type : "POST",
 		data : {
 			"roleId" : roleId
@@ -196,7 +196,7 @@ BusinessCode.getUserSelect26 = function(roleId, domId, selectValue,defaultValue)
 	var html = '<option value=""></option>';
 	$.ajax({
 		async : false,
-		url : "/ransomfloor-boss/bussinessCode/userInfoIndex",
+		url : "/oa-boss/bussinessCode/userInfoIndex",
 		type : "POST",
 		data : {
 			"roleId" : roleId
@@ -242,7 +242,7 @@ BusinessCode.getUserSelect17 = function(roleId, domId, selectValue,defaultValue)
 	var html = '<option value=""></option>';
 	$.ajax({
 		async : false,
-		url : "/ransomfloor-boss/bussinessCode/userInfoIndex",
+		url : "/oa-boss/bussinessCode/userInfoIndex",
 		type : "POST",
 		data : {
 			"roleId" : roleId

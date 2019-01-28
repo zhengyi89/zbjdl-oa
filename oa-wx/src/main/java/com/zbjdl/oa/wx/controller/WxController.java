@@ -135,7 +135,7 @@ public class WxController extends BaseController {
 				//获取文本消息的内容
 				String content = requestMap.get("Content");
 				if("XXXX".equals(content.trim())){
-					String contextPath = WxUtil.RANSOMFLOOR_WX_HOST + request.getContextPath();
+					String contextPath = WxUtil.OA_WX_HOST + request.getContextPath();
 					String message = "您好，欢迎使用YYY，请点击<a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=%appId%&redirect_uri=%redirectURL%/userApply/toApplyIndex.do&response_type=code&scope=snsapi_base&state=123#wechat_redirect'>申请ZZZ</a>进行开通。";
 					out.print(new TextNews(fromUserName , toUserName , message.replaceAll("%appId%", WxUtil.WX_APPID).replaceAll("%redirectURL%", contextPath)));
 					out.flush();
@@ -155,7 +155,7 @@ public class WxController extends BaseController {
 			if(MessageUtil.REQ_MESSAGE_TYPE_EVENT.equals(msgType)){
 				//订阅事件 ,关注后发送
 				if(MessageUtil.EVENT_TYPE_SUBSCRIBE.equals(event)){
-					String contextPath = WxUtil.RANSOMFLOOR_WX_HOST + request.getContextPath();
+					String contextPath = WxUtil.OA_WX_HOST + request.getContextPath();
 					String message = "您好,欢迎您来到中天担保";
 					out.print(new TextNews(fromUserName , toUserName , message.replace("%appId%", WxUtil.WX_APPID).replace("%redirectURL%", contextPath)));
 					out.flush();

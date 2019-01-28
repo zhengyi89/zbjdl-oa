@@ -8,7 +8,7 @@ spring:
 
 # REDIS (RedisProperties)
     redis:
-        host: redis.yunpal.in
+        host: redis.zbjdl.in
         port: 6379 
         pool:
             max-idle: 300 # pool settings ...
@@ -20,24 +20,24 @@ endpoints:
         enabled: false 
 
 server:
-    contextPath: /ransomfloor-boss
+    contextPath: /oa-boss
     port: 8087
 
 logging:
     level:
         com:
-            hengbao:
+            zbjdl:
                 utils:
                     query: DEBUG
 
-registry-address: registry.yunpal.in:2181
-service-group: hengbao-service-group
+registry-address: registry.zbjdl.in:2181
+service-group: zbjdl-service-group
 service-version: 1.0.0
 
-hengbao:
+zbjdl:
     dubbo:
-        app: ransomfloor-boss
-        registry_address: registry.yunpal.in:2181
+        app: oa-boss
+        registry_address: registry.zbjdl.in:2181
 
 ---
 
@@ -47,7 +47,7 @@ spring:
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://mysqldb.yunpal.in/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         username: root
         password: mysql
         test-on-borrow: true
@@ -87,7 +87,7 @@ spring:
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://mysqldb.yunpal.in/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         username: root
         password: m&tpI4boxy7H
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="queryService" class="com.zbjdl.utils.query.impl.QueryServiceImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="querys">
+			<map>
+				<entry key="querySmsInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT  sms.ID id,
+										sms.SERIAL_NO serialno,
+										sms.SEND_TIME sendtime,
+										sms.RECEIVE_NAME receivename,
+										sms.RECEIVE_MOBILE receivemobile,
+										sms.BIZ_NO bizno,
+										sms.SMS_STATE smsstate,
+										sms.ORI_SERIAL_NO oriserialno,
+										sms.SMS_DETAIL smsdetail
+								 FROM SMS_INFO sms
+								WHERE 1=1 
+								      /~bizNo: and sms.BIZ_NO = {bizNo,string} ~/
+								      /~receiveName: and  instr(sms.RECEIVE_NAME,{receiveName,string})> 0 ~/
+								      /~receiveMobile: and sms.RECEIVE_MOBILE = {receiveMobile,string} ~/
+								      /~sendTime1: and sms.SEND_TIME >= {sendTime1,mintimestamp} ~/
+  									  /~sendTime2: and sms.SEND_TIME <= {sendTime2,nexttimestamp}~/
+  									  order by sms.SEND_TIME desc
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				
+			</map>
+		</property>
+	</bean>
+
+</beans>
