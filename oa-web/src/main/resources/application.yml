@@ -1,0 +1,130 @@
+spring:
+    profiles:
+        active: production
+    activemq:
+        broker-url: tcp://192.168.120.223:61616
+        user: admin
+        password: admin
+
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://192.168.120.206/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        username: root
+        password: mysql
+        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计
+        filters: stat,slf4j
+        # 初始化大小，最小，最大
+        initialSize: 20
+        minIdle: 5
+        maxActive: 50
+        # 配置获取连接等待超时的时间
+        maxWait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒 
+        minEvictableIdleTimeMillis: 30000
+        validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        # 通过connectProperties属性来打开mergeSql功能慢SQL记录
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        # 合并多个DruidDataSource的监控数据
+        useGlobalDataSourceStat: true
+        #对于长时间不使用的连接强制关闭
+        removeAbandoned: true
+        #超过60分钟开始关闭空闲连接
+        removeAbandonedTimeout: 60
+        #将当前关闭动作记录到日志
+        logAbandoned: true
+    batch:
+        job:
+            enabled: false
+# REDIS (RedisProperties)
+    redis:
+        host: redis.yunpal.in
+        port: 6379 
+        pool:
+            max-idle: 300 # pool settings ...
+            max-active: 600
+            max-wait: 1000
+           
+    
+
+    
+mybatis:
+    config: classpath:mybatisConfig.xml
+
+
+server:
+    contextPath: /ransomfloor-web
+    port: 8088
+
+weixin:
+    appId: wx974f644e7111ade9
+    appSecret: 2a447001267716495c0fcfbccda28a56
+    templateId: srv8wHUU-1cQ2pzadXlUM2cU3msX1-27lSr52loSm6Y
+    url: http://www.yunpal.cn
+    
+sms:
+    url: http://192.168.120.232:8081/dynamicpassword-web/sms    
+
+dubbo:
+    registry-address: registry.yunpal.in:2181
+    provider-port: ${server.port}
+    service-group: hengbao-service-group
+    service-version: 1.0.0
+    service-timeout: 30000
+
+
+hengbao:
+    dubbo:
+        app: ransomfloor-web
+        registry_address: registry.yunpal.in:2181
+#        service-group: hengbao-service-group
+#        service-version: 1.0.0
+#        service-retries: 2
+#        service-timeout: 3000
+#        registry_protocol: zookeeper
+#        protocol: hessian
+#        server: servlet
+#        port: ${server.port}
+
+endpoints:
+    jmx:
+        enabled: false 
+---
+
+spring:
+    profiles: development
+
+server:
+    port: 8081
+
+---
+
+spring:
+    profiles: production
+
+    activemq:
+        broker-url: tcp://activemq.yunpal.in:61616
+        user: admin
+        password: admin
+
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://mysqldb.yunpal.in/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        username: root
+        password: m&tpI4boxy7H
+
+weixin:
+    appId: wx12d00be7f56b9c01
+    appSecret: fa41cb85f5a432a46d831c094592a664
+    templateId: 9REVoHg5sBT9VskWuIpu5ychMGLUgO7sX3xjwaQIQVs
+    url: 
+    
+sms:
+    url: http://172.16.10.169:9019/dynamicpassword-web/sms    
+        
+        

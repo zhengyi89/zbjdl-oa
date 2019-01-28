@@ -1,0 +1,15 @@
+body,html{height:100%;-webkit-tap-highlight-color:transparent}
+body{overflow-x:hidden;background-color:#fbf9fe}
+.pb_36{padding-bottom:36px;}
+.mine_icon_area{width:100%;}
+.mine_icon_area img{width:80%;max-width:420px;margin-bottom:20px;}
+.mine_mask_icon{width:50px;height:90px;background:url(../images/arr.png) no-repeat;position:fixed;top:0px;right:0px;z-index:10001;}
+.mine_mask_text{width:80%;max-width:400px;text-align:center;color:#fff;position:fixed;top:50%;left:50%;z-index:10002;-webkit-transform:tranlate(-50%,-50%);transform:translate(-50%,-50%);}
+.index_title{width:100%;height:230px;text-align:center;background:#2da6f9;overflow:hidden;position:relative;}
+.index_title img{position:absolute;width:80%;max-width:400px;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);}
+@media (min-width:400px){
+  .index_title{height:280px;}
+}
+.mine_cell_warn{padding:10px;position:absolute;left:120px;top:42px;z-index:10001;border-radius:5px;border:1px solid #E64340;font-size:14px;color:#E64340;background:#fff;}
+.mine_cell_warn .outer{display:block;width:0px;height:0px;position:absolute;top:-19px;left:10px;font-size:0px;border-width:10px;border-style:solid;border-color:transparent transparent #E64340 transparent;}
+.mine_cell_warn .inner{display:block;width:0px;height:0px;position:absolute;top:-17px;left:11px;font-size:0px;border-width:9px;border-style:solid;border-color:transparent transparent #fff transparent;}

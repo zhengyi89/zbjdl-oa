@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbjdl.oa.repository.SmsInfoRepository">
+	<resultMap id="BaseResultMap" type="SmsInfo">
+		<id column="ID" jdbcType="DECIMAL" property="id" />
+		<result column="SERIAL_NO" jdbcType="VARCHAR" property="serialNo" />
+		<result column="SEND_TIME" jdbcType="TIMESTAMP" property="sendTime" />
+		<result column="RECEIVE_NAME" jdbcType="VARCHAR" property="receiveName" />
+		<result column="RECEIVE_MOBILE" jdbcType="VARCHAR" property="receiveMobile" />
+		<result column="BIZ_NO" jdbcType="VARCHAR" property="bizNo" />
+		<result column="SMS_STATE" jdbcType="VARCHAR" property="smsState" />
+		<result column="ORI_SERIAL_NO" jdbcType="VARCHAR" property="oriSerialNo" />
+		<result column="SMS_DETAIL" jdbcType="VARCHAR" property="smsDetail" />
+		<result column="DEMO_1" jdbcType="VARCHAR" property="demo1" />
+		<result column="DEMO_2" jdbcType="VARCHAR" property="demo2" />
+		<result column="DEMO_3" jdbcType="VARCHAR" property="demo3" />
+	</resultMap>
+	<sql id="Page_Query_Begin">
+		select * from(select t.*,rownum rn from(
+	</sql>
+	<sql id="Page_Query_End">
+		) t where rownum &lt;= ${endRow}) where rn &gt; ${startRow}
+	</sql>
+	<sql id="Example_Where_Clause">
+		<where>
+			<trim prefix="(" prefixOverrides="and" suffix=")">
+				<if test="serialNo != null">
+					and SERIAL_NO = #{serialNo,jdbcType=VARCHAR}
+				</if>
+				<if test="sendTime != null">
+					and SEND_TIME = #{sendTime,jdbcType=TIMESTAMP}
+				</if>
+				<if test="receiveName != null">
+					and RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR}
+				</if>
+				<if test="receiveMobile != null">
+					and RECEIVE_MOBILE = #{receiveMobile,jdbcType=VARCHAR}
+				</if>
+				<if test="bizNo != null">
+					and BIZ_NO = #{bizNo,jdbcType=VARCHAR}
+				</if>
+				<if test="smsState != null">
+					and SMS_STATE = #{smsState,jdbcType=VARCHAR}
+				</if>
+				<if test="oriSerialNo != null">
+					and ORI_SERIAL_NO = #{oriSerialNo,jdbcType=VARCHAR}
+				</if>
+				<if test="smsDetail != null">
+					and SMS_DETAIL = #{smsDetail,jdbcType=VARCHAR}
+				</if>
+				<if test="demo1 != null">
+					and DEMO_1 = #{demo1,jdbcType=VARCHAR}
+				</if>
+				<if test="demo2 != null">
+					and DEMO_2 = #{demo2,jdbcType=VARCHAR}
+				</if>
+				<if test="demo3 != null">
+					and DEMO_3 = #{demo3,jdbcType=VARCHAR}
+				</if>
+			</trim>
+		</where>
+	</sql>
+	<sql id="Example_Set_Clause">
+		<set>
+			<trim suffixOverrides=",">
+				<if test="serialNo != null">
+					SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+				</if>
+				<if test="sendTime != null">
+					SEND_TIME = #{sendTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="receiveName != null">
+					RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR},
+				</if>
+				<if test="receiveMobile != null">
+					RECEIVE_MOBILE = #{receiveMobile,jdbcType=VARCHAR},
+				</if>
+				<if test="bizNo != null">
+					BIZ_NO = #{bizNo,jdbcType=VARCHAR},
+				</if>
+				<if test="smsState != null">
+					SMS_STATE = #{smsState,jdbcType=VARCHAR},
+				</if>
+				<if test="oriSerialNo != null">
+					ORI_SERIAL_NO = #{oriSerialNo,jdbcType=VARCHAR},
+				</if>
+				<if test="smsDetail != null">
+					SMS_DETAIL = #{smsDetail,jdbcType=VARCHAR},
+				</if>
+				<if test="demo1 != null">
+					DEMO_1 = #{demo1,jdbcType=VARCHAR},
+				</if>
+				<if test="demo2 != null">
+					DEMO_2 = #{demo2,jdbcType=VARCHAR},
+				</if>
+				<if test="demo3 != null">
+					DEMO_3 = #{demo3,jdbcType=VARCHAR},
+				</if>
+			</trim>
+		</set>
+	</sql>
+	<sql id="Base_Column_List">
+		ID,
+		SERIAL_NO,
+		SEND_TIME,
+		RECEIVE_NAME,
+		RECEIVE_MOBILE,
+		BIZ_NO,
+		SMS_STATE,
+		ORI_SERIAL_NO,
+		SMS_DETAIL,
+		DEMO_1,
+		DEMO_2,
+		DEMO_3,
+	</sql>
+	<sql id="Base_Set_Clause">
+		<set>
+			<trim suffixOverrides=",">
+				SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+				SEND_TIME = #{sendTime,jdbcType=TIMESTAMP},
+				RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR},
+				RECEIVE_MOBILE = #{receiveMobile,jdbcType=VARCHAR},
+				BIZ_NO = #{bizNo,jdbcType=VARCHAR},
+				SMS_STATE = #{smsState,jdbcType=VARCHAR},
+				ORI_SERIAL_NO = #{oriSerialNo,jdbcType=VARCHAR},
+				SMS_DETAIL = #{smsDetail,jdbcType=VARCHAR},
+				DEMO_1 = #{demo1,jdbcType=VARCHAR},
+				DEMO_2 = #{demo2,jdbcType=VARCHAR},
+				DEMO_3 = #{demo3,jdbcType=VARCHAR},
+			</trim>
+		</set>
+	</sql>
+	<sql id="Selective_Column_List">
+		ID,
+		<if test="serialNo != null">
+			SERIAL_NO,
+		</if>
+		<if test="sendTime != null">
+			SEND_TIME,
+		</if>
+		<if test="receiveName != null">
+			RECEIVE_NAME,
+		</if>
+		<if test="receiveMobile != null">
+			RECEIVE_MOBILE,
+		</if>
+		<if test="bizNo != null">
+			BIZ_NO,
+		</if>
+		<if test="smsState != null">
+			SMS_STATE,
+		</if>
+		<if test="oriSerialNo != null">
+			ORI_SERIAL_NO,
+		</if>
+		<if test="smsDetail != null">
+			SMS_DETAIL,
+		</if>
+		<if test="demo1 != null">
+			DEMO_1,
+		</if>
+		<if test="demo2 != null">
+			DEMO_2,
+		</if>
+		<if test="demo3 != null">
+			DEMO_3,
+		</if>
+	</sql>
+	<sql id="Base_Value_List">
+		#{id,jdbcType=BIGINT},
+		#{serialNo,jdbcType=VARCHAR},
+		#{sendTime,jdbcType=TIMESTAMP},
+		#{receiveName,jdbcType=VARCHAR},
+		#{receiveMobile,jdbcType=VARCHAR},
+		#{bizNo,jdbcType=VARCHAR},
+		#{smsState,jdbcType=VARCHAR},
+		#{oriSerialNo,jdbcType=VARCHAR},
+		#{smsDetail,jdbcType=VARCHAR},
+		#{demo1,jdbcType=VARCHAR},
+		#{demo2,jdbcType=VARCHAR},
+		#{demo3,jdbcType=VARCHAR},
+	</sql>
+	<sql id="Selective_Value_List">
+		SEQ_sms_info.nextval,
+		<if test="serialNo != null">
+			#{serialNo,jdbcType=VARCHAR},
+		</if>
+		<if test="sendTime != null">
+			#{sendTime,jdbcType=TIMESTAMP},
+		</if>
+		<if test="receiveName != null">
+			#{receiveName,jdbcType=VARCHAR},
+		</if>
+		<if test="receiveMobile != null">
+			#{receiveMobile,jdbcType=VARCHAR},
+		</if>
+		<if test="bizNo != null">
+			#{bizNo,jdbcType=VARCHAR},
+		</if>
+		<if test="smsState != null">
+			#{smsState,jdbcType=VARCHAR},
+		</if>
+		<if test="oriSerialNo != null">
+			#{oriSerialNo,jdbcType=VARCHAR},
+		</if>
+		<if test="smsDetail != null">
+			#{smsDetail,jdbcType=VARCHAR},
+		</if>
+		<if test="demo1 != null">
+			#{demo1,jdbcType=VARCHAR},
+		</if>
+		<if test="demo2 != null">
+			#{demo2,jdbcType=VARCHAR},
+		</if>
+		<if test="demo3 != null">
+			#{demo3,jdbcType=VARCHAR},
+		</if>
+	</sql>
+
+	<select id="selectByExample" parameterType="SmsInfo"
+		resultMap="BaseResultMap">
+		select
+		<trim suffixOverrides=",">
+			<include refid="Base_Column_List" />
+		</trim>
+		from sms_info
+		<include refid="Example_Where_Clause" />
+		<!-- order by CREATE_DATE -->
+	</select>
+	<select id="selectById" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<trim suffixOverrides=",">
+			<include refid="Base_Column_List" />
+		</trim>
+		from sms_info
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from sms_info
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<delete id="deleteByExample" parameterType="SmsInfo">
+		delete from sms_info
+		<include refid="Example_Where_Clause" />
+	</delete>
+	<insert id="save" parameterType="SmsInfo">
+		insert into sms_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<include refid="Base_Column_List" />
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<include refid="Base_Value_List" />
+		</trim>
+	</insert>
+	<insert id="insertSelective" parameterType="SmsInfo">
+		insert into sms_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<include refid="Selective_Column_List" />
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<include refid="Selective_Value_List" />
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="SmsInfo"
+		resultType="java.lang.Integer">
+		select count(*) from sms_info
+		<include refid="Example_Where_Clause" />
+	</select>
+	<update id="updateByPrimaryKeySelective" parameterType="SmsInfo">
+		update sms_info
+		<include refid="Example_Set_Clause" />
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="SmsInfo">
+		update sms_info
+		<include refid="Base_Set_Clause" />
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+
+	<select id="selectPageByExample" parameterType="SmsInfo"
+		resultMap="BaseResultMap">
+		<include refid="Page_Query_Begin" />
+		select
+		<trim suffixOverrides=",">
+			<include refid="Base_Column_List" />
+		</trim>
+		from sms_info
+		<include refid="Example_Where_Clause" />
+		<!-- order by CREATE_DATE -->
+		<include refid="Page_Query_End" />
+	</select>
+</mapper>

@@ -1,0 +1,1409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbjdl.oa.repository.WfTaskInfoRepository">
+	<resultMap id="BaseResultMap" type="com.zbjdl.oa.dto.wftask.WfTaskInfo">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="BUSINESS_SOURCE" jdbcType="VARCHAR" property="businessSource" />
+	  <result column="BUSINESS_SOURCE_ADDRESS" jdbcType="VARCHAR" property="businessSourceAddress" />
+	  <result column="IS_SPECIAL_BUSINESS" jdbcType="VARCHAR" property="isSpecialBusiness" />
+	  <result column="MEDIATION_NAME" jdbcType="VARCHAR" property="mediationName" />
+	  <result column="MEDIATION_PHONE" jdbcType="VARCHAR" property="mediationPhone" />
+	  <result column="SALESMAN_NAME" jdbcType="VARCHAR" property="salesmanName" />
+	  <result column="SALESMAN_PHONE" jdbcType="VARCHAR" property="salesmanPhone" />
+	  <result column="IS_CREDITINVEST" jdbcType="VARCHAR" property="isCreditinvest" />
+	  <result column="IS_INTERM_STANDARD" jdbcType="VARCHAR" property="isIntermStandard" />
+	  <result column="INTERM_STANDARD_FEE" jdbcType="DECIMAL" property="intermStandardFee" />
+	  <result column="IS_SELLER_SITUATION" jdbcType="VARCHAR" property="isSellerSituation" />
+	  <result column="IS_SIGN_THREE_AGREEMENT" jdbcType="VARCHAR" property="isSignThreeAgreement" />
+	  <result column="AGREEMENG_TIME" jdbcType="DATE" property="agreemengTime" />
+	  <result column="IS_NOTARY" jdbcType="VARCHAR" property="isNotary" />
+	  <result column="NOTARY_OFFICE" jdbcType="VARCHAR" property="notaryOffice" />
+	  <result column="NOTARY_FEE" jdbcType="DECIMAL" property="notaryFee" />
+	  <result column="NOTARY_TIME" jdbcType="DATE" property="notaryTime" />
+	  <result column="IS_SIGN_BANK_AGREEMENT" jdbcType="VARCHAR" property="isSignBankAgreement" />
+	  <result column="OLD_LOAN_BANK" jdbcType="VARCHAR" property="oldLoanBank" />
+	  <result column="OLD_LOAN_BRANCHBANK" jdbcType="VARCHAR" property="oldLoanBranchbank" />
+	  <result column="NOW_LOAN_BANK" jdbcType="VARCHAR" property="nowLoanBank" />
+	  <result column="NOW_LOAN_BRANCHBANK" jdbcType="VARCHAR" property="nowLoanBranchbank" />
+	  <result column="LOAN_TYPE" jdbcType="VARCHAR" property="loanType" />
+	  <result column="GUARANTEE_FEE" jdbcType="DECIMAL" property="guaranteeFee" />
+	  <result column="ASSESS_COMPANY_NAME" jdbcType="VARCHAR" property="assessCompanyName" />
+	  <result column="ASSESS_FEE" jdbcType="DECIMAL" property="assessFee" />
+	  <result column="ASSESS_OTHER_FEE" jdbcType="DECIMAL" property="assessOtherFee" />
+	  <result column="IS_NEW_OPEN_BANKCARD" jdbcType="VARCHAR" property="isNewOpenBankcard" />
+	  <result column="IS_NEW_OPEN_UKEY" jdbcType="VARCHAR" property="isNewOpenUkey" />
+	  <result column="NEW_OPEN_TIME" jdbcType="DATE" property="newOpenTime" />
+	  <result column="IS_HOUSE_FROZEN" jdbcType="VARCHAR" property="isHouseFrozen" />
+	  <result column="HOUSE_FROZEN_TIME" jdbcType="DATE" property="houseFrozenTime" />
+	  <result column="IS_ISSUE_GUARANTEE" jdbcType="VARCHAR" property="isIssueGuarantee" />
+	  <result column="ISSUE_GUARANTEE_TIME" jdbcType="DATE" property="issueGuaranteeTime" />
+	  <result column="IS_BANK_LENDING" jdbcType="VARCHAR" property="isBankLending" />
+	  <result column="BANK_LENDING_TIME" jdbcType="DATE" property="bankLendingTime" />
+	  <result column="IS_LOAN_AGREEMENT_RECEIVED" jdbcType="VARCHAR" property="isLoanAgreementReceived" />
+	  <result column="IS_RECEIPT_RECEIVED" jdbcType="VARCHAR" property="isReceiptReceived" />
+	  <result column="IS_BANKCARD_RECEIVED" jdbcType="VARCHAR" property="isBankcardReceived" />
+	  <result column="LOAN_RECEIVED_TIME" jdbcType="DATE" property="loanReceivedTime" />
+	  <result column="IS_HOUSE_FREEZING" jdbcType="VARCHAR" property="isHouseFreezing" />
+	  <result column="HOUSE_FREEZING_TIME" jdbcType="DATE" property="houseFreezingTime" />
+	  <result column="IS_FINAL_PASS" jdbcType="VARCHAR" property="isFinalPass" />
+	  <result column="IS_GUARANTEE_FEE" jdbcType="VARCHAR" property="isGuaranteeFee" />
+	  <result column="GUARANTEE_FEE_TIME" jdbcType="DATE" property="guaranteeFeeTime" />
+	  <result column="IS_LOAN_PAYMENT" jdbcType="VARCHAR" property="isLoanPayment" />
+	  <result column="LOAN_PAYMENT_TIME" jdbcType="DATE" property="loanPaymentTime" />
+	  <result column="FINAL_TIME" jdbcType="DATE" property="finalTime" />
+	  <result column="APPROVAL_STEP" jdbcType="VARCHAR" property="approvalStep" />
+	  <result column="APPROVAL_STATUS" jdbcType="VARCHAR" property="approvalStatus" />
+	  <result column="STATUS" jdbcType="VARCHAR" property="status" />
+	  <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+	  <result column="WORKFLOW_ID" jdbcType="VARCHAR" property="workflowId" />
+	  <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+	  <result column="EXTEND_1" jdbcType="VARCHAR" property="extend1" />
+	  <result column="PAY_STATUS" jdbcType="VARCHAR" property="payStatus" />
+	  <result column="EXTEND_2" jdbcType="VARCHAR" property="extend2" />
+	  <result column="EXTEND_3" jdbcType="DECIMAL" property="extend3" />
+	  <result column="EXTEND_4" jdbcType="VARCHAR" property="extend4" />
+	  <result column="EXTEND_5" jdbcType="VARCHAR" property="extend5" />
+	  <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+	  <result column="TASK_NO" jdbcType="VARCHAR" property="taskNo" />
+	  <result column="GUARANTEEFEE_OTHER" jdbcType="VARCHAR" property="guaranteeFeeOther" />
+	  <result column="GUARANTEE_TYPE" jdbcType="VARCHAR" property="guaranteeType" />
+	  <result column="CREATE_USER_ID" jdbcType="VARCHAR" property="createUserId" />
+	  <result column="CREATE_USER_NAME" jdbcType="VARCHAR" property="createUserName" />
+	  <result column="USER_PHONE" jdbcType="VARCHAR" property="userPhone" />
+	  <result column="DOWN_PAYMENT" jdbcType="DECIMAL" property="downPayment" />
+	  <result column="BALANCE_AMOUNT" jdbcType="DECIMAL" property="balanceAmount" />
+	  <result column="IS_BALANCE_ONBANK" jdbcType="VARCHAR" property="isBalanceOnBank" />
+	  <result column="IS_PAYMENT_CONFIRM" jdbcType="VARCHAR" property="isPaymentConfirm" />
+	  <result column="PAYMENT_CONFIRM_TIME" jdbcType="DATE" property="paymentConfirmTime" />
+	  <result column="OTHE_GUARANTEE_FEE" jdbcType="DECIMAL" property="otheGuaranteeFee" />
+	  <result column="IS_BALANCE_AMOUNT" jdbcType="VARCHAR" property="isBalanceAmount" />
+	  <result column="BALANCE_TIME" jdbcType="DATE" property="balanceTime" />
+	  <result column="IS_TRANSFER_HOUSE" jdbcType="VARCHAR" property="isTransferHouse" />
+	  <result column="TRANSFER_HOUSE_TIME" jdbcType="DATE" property="transferHouseTime" />
+	  <result column="LOAN_AMOUNT" jdbcType="DECIMAL" property="loanAmount" />
+	  <result column="IS_WIN_RIGHT" jdbcType="VARCHAR" property="isWinRight" />
+	  <result column="WIN_RIGHT_TIME" jdbcType="DATE" property="winRightTime" />
+  </resultMap>
+  <sql id="Page_Query_Begin">
+    select * from(select t.*,rownum rn from(
+  </sql>
+  <sql id="Page_Query_End">
+  	) t where rownum &lt;= ${endRow}) where rn &gt; ${startRow}
+  </sql>
+  <sql id="Example_Where_Clause">
+    <where>
+      <trim prefix="(" prefixOverrides="and" suffix=")">
+      <if test="businessSource != null" >
+	      and BUSINESS_SOURCE = #{businessSource,jdbcType=VARCHAR}
+	    </if>
+      <if test="businessSourceAddress != null" >
+	      and BUSINESS_SOURCE_ADDRESS = #{businessSourceAddress,jdbcType=VARCHAR}
+	    </if>
+      <if test="isSpecialBusiness != null" >
+	      and IS_SPECIAL_BUSINESS = #{isSpecialBusiness,jdbcType=VARCHAR}
+	    </if>
+      <if test="mediationName != null" >
+	      and MEDIATION_NAME = #{mediationName,jdbcType=VARCHAR}
+	    </if>
+      <if test="mediationPhone != null" >
+	      and MEDIATION_PHONE = #{mediationPhone,jdbcType=VARCHAR}
+	    </if>
+      <if test="salesmanName != null" >
+	      and SALESMAN_NAME = #{salesmanName,jdbcType=VARCHAR}
+	    </if>
+      <if test="salesmanPhone != null" >
+	      and SALESMAN_PHONE = #{salesmanPhone,jdbcType=VARCHAR}
+	    </if>
+      <if test="isCreditinvest != null" >
+	      and IS_CREDITINVEST = #{isCreditinvest,jdbcType=VARCHAR}
+	    </if>
+      <if test="isIntermStandard != null" >
+	      and IS_INTERM_STANDARD = #{isIntermStandard,jdbcType=VARCHAR}
+	    </if>
+      <if test="intermStandardFee != null" >
+	      and INTERM_STANDARD_FEE = #{intermStandardFee,jdbcType=DECIMAL}
+	    </if>
+      <if test="isSellerSituation != null" >
+	      and IS_SELLER_SITUATION = #{isSellerSituation,jdbcType=VARCHAR}
+	    </if>
+      <if test="isSignThreeAgreement != null" >
+	      and IS_SIGN_THREE_AGREEMENT = #{isSignThreeAgreement,jdbcType=VARCHAR}
+	    </if>
+      <if test="agreemengTime != null" >
+	      and AGREEMENG_TIME = #{agreemengTime,jdbcType=DATE}
+	    </if>
+      <if test="isNotary != null" >
+	      and IS_NOTARY = #{isNotary,jdbcType=VARCHAR}
+	    </if>
+      <if test="notaryOffice != null" >
+	      and NOTARY_OFFICE = #{notaryOffice,jdbcType=VARCHAR}
+	    </if>
+      <if test="notaryFee != null" >
+	      and NOTARY_FEE = #{notaryFee,jdbcType=DECIMAL}
+	    </if>
+      <if test="notaryTime != null" >
+	      and NOTARY_TIME = #{notaryTime,jdbcType=DATE}
+	    </if>
+      <if test="isSignBankAgreement != null" >
+	      and IS_SIGN_BANK_AGREEMENT = #{isSignBankAgreement,jdbcType=VARCHAR}
+	    </if>
+      <if test="oldLoanBank != null" >
+	      and OLD_LOAN_BANK = #{oldLoanBank,jdbcType=VARCHAR}
+	    </if>
+      <if test="oldLoanBranchbank != null" >
+	      and OLD_LOAN_BRANCHBANK = #{oldLoanBranchbank,jdbcType=VARCHAR}
+	    </if>
+      <if test="nowLoanBank != null" >
+	      and NOW_LOAN_BANK = #{nowLoanBank,jdbcType=VARCHAR}
+	    </if>
+      <if test="nowLoanBranchbank != null" >
+	      and NOW_LOAN_BRANCHBANK = #{nowLoanBranchbank,jdbcType=VARCHAR}
+	    </if>
+      <if test="loanType != null" >
+	      and LOAN_TYPE = #{loanType,jdbcType=VARCHAR}
+	    </if>
+      <if test="guaranteeFee != null" >
+	      and GUARANTEE_FEE = #{guaranteeFee,jdbcType=DECIMAL}
+	    </if>
+      <if test="assessCompanyName != null" >
+	      and ASSESS_COMPANY_NAME = #{assessCompanyName,jdbcType=VARCHAR}
+	    </if>
+      <if test="assessFee != null" >
+	      and ASSESS_FEE = #{assessFee,jdbcType=DECIMAL}
+	    </if>
+      <if test="assessOtherFee != null" >
+	      and ASSESS_OTHER_FEE = #{assessOtherFee,jdbcType=DECIMAL}
+	    </if>
+      <if test="isNewOpenBankcard != null" >
+	      and IS_NEW_OPEN_BANKCARD = #{isNewOpenBankcard,jdbcType=VARCHAR}
+	    </if>
+      <if test="isNewOpenUkey != null" >
+	      and IS_NEW_OPEN_UKEY = #{isNewOpenUkey,jdbcType=VARCHAR}
+	    </if>
+      <if test="newOpenTime != null" >
+	      and NEW_OPEN_TIME = #{newOpenTime,jdbcType=DATE}
+	    </if>
+      <if test="isHouseFrozen != null" >
+	      and IS_HOUSE_FROZEN = #{isHouseFrozen,jdbcType=VARCHAR}
+	    </if>
+      <if test="houseFrozenTime != null" >
+	      and HOUSE_FROZEN_TIME = #{houseFrozenTime,jdbcType=DATE}
+	    </if>
+      <if test="isIssueGuarantee != null" >
+	      and IS_ISSUE_GUARANTEE = #{isIssueGuarantee,jdbcType=VARCHAR}
+	    </if>
+      <if test="issueGuaranteeTime != null" >
+	      and ISSUE_GUARANTEE_TIME = #{issueGuaranteeTime,jdbcType=DATE}
+	    </if>
+      <if test="isBankLending != null" >
+	      and IS_BANK_LENDING = #{isBankLending,jdbcType=VARCHAR}
+	    </if>
+      <if test="bankLendingTime != null" >
+	      and BANK_LENDING_TIME = #{bankLendingTime,jdbcType=DATE}
+	    </if>
+      <if test="isLoanAgreementReceived != null" >
+	      and IS_LOAN_AGREEMENT_RECEIVED = #{isLoanAgreementReceived,jdbcType=VARCHAR}
+	    </if>
+      <if test="isReceiptReceived != null" >
+	      and IS_RECEIPT_RECEIVED = #{isReceiptReceived,jdbcType=VARCHAR}
+	    </if>
+      <if test="isBankcardReceived != null" >
+	      and IS_BANKCARD_RECEIVED = #{isBankcardReceived,jdbcType=VARCHAR}
+	    </if>
+      <if test="loanReceivedTime != null" >
+	      and LOAN_RECEIVED_TIME = #{loanReceivedTime,jdbcType=DATE}
+	    </if>
+      <if test="isHouseFreezing != null" >
+	      and IS_HOUSE_FREEZING = #{isHouseFreezing,jdbcType=VARCHAR}
+	    </if>
+      <if test="houseFreezingTime != null" >
+	      and HOUSE_FREEZING_TIME = #{houseFreezingTime,jdbcType=DATE}
+	    </if>
+      <if test="isFinalPass != null" >
+	      and IS_FINAL_PASS = #{isFinalPass,jdbcType=VARCHAR}
+	    </if>
+      <if test="isGuaranteeFee != null" >
+	      and IS_GUARANTEE_FEE = #{isGuaranteeFee,jdbcType=VARCHAR}
+	    </if>
+      <if test="guaranteeFeeTime != null" >
+	      and GUARANTEE_FEE_TIME = #{guaranteeFeeTime,jdbcType=DATE}
+	    </if>
+      <if test="isLoanPayment != null" >
+	      and IS_LOAN_PAYMENT = #{isLoanPayment,jdbcType=VARCHAR}
+	    </if>
+      <if test="loanPaymentTime != null" >
+	      and LOAN_PAYMENT_TIME = #{loanPaymentTime,jdbcType=DATE}
+	    </if>
+      <if test="finalTime != null" >
+	      and FINAL_TIME = #{finalTime,jdbcType=DATE}
+	    </if>
+      <if test="approvalStep != null" >
+	      and APPROVAL_STEP = #{approvalStep,jdbcType=VARCHAR}
+	    </if>
+      <if test="status != null" >
+	      and STATUS = #{status,jdbcType=VARCHAR}
+	    </if>
+      <if test="userId != null" >
+	      and USER_ID = #{userId,jdbcType=VARCHAR}
+	    </if>
+      <if test="workflowId != null" >
+	      and WORKFLOW_ID = #{workflowId,jdbcType=VARCHAR}
+	    </if>
+      <if test="createTime != null" >
+	      and CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+	    </if>
+      <if test="updateTime != null" >
+	      and UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+	    </if>
+      <if test="extend1 != null" >
+	      and EXTEND_1 = #{extend1,jdbcType=VARCHAR}
+	    </if>
+	     <if test="payStatus != null" >
+	      and PAY_STATUS = #{payStatus,jdbcType=VARCHAR}
+	    </if>
+      <if test="extend2 != null" >
+	      and EXTEND_2 = #{extend2,jdbcType=VARCHAR}
+	    </if>
+      <if test="extend3 != null" >
+	      and EXTEND_3 = #{extend3,jdbcType=DECIMAL}
+	    </if>
+      <if test="extend4 != null" >
+	      and EXTEND_4 = #{extend4,jdbcType=VARCHAR}
+	    </if>
+      <if test="extend5 != null" >
+	      and EXTEND_5 = #{extend5,jdbcType=VARCHAR}
+	    </if>
+	    <if test="userName != null" >
+	      and USER_NAME = #{userName,jdbcType=VARCHAR}
+	    </if>
+	    <if test="taskNo != null" >
+	      and TASK_NO = #{taskNo,jdbcType=VARCHAR}
+	    </if>
+	    <if test="approvalStatus != null" >
+	      and APPROVAL_STATUS = #{approvalStatus,jdbcType=VARCHAR}
+	    </if>
+	    <if test="guaranteeFeeOther != null" >
+	      and GUARANTEEFEE_OTHER = #{guaranteeFeeOther,jdbcType=VARCHAR}
+	    </if>
+	    <if test="guaranteeType != null" >
+	      and GUARANTEE_TYPE = #{guaranteeType,jdbcType=VARCHAR}
+	    </if>
+	    <if test="createUserId != null" >
+	      and CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR}
+	    </if>
+	    <if test="createUserName != null" >
+	      and CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR}
+	    </if>
+	    <if test="userPhone != null" >
+	      and USER_PHONE = #{userPhone,jdbcType=VARCHAR}
+	    </if>
+	    <if test="downPayment != null" >
+	      and DOWN_PAYMENT = #{downPayment,jdbcType=DECIMAL}
+	    </if>
+	    <if test="balanceAmount != null" >
+	      and BALANCE_AMOUNT = #{balanceAmount,jdbcType=DECIMAL}
+	    </if>
+	    <if test="isBalanceOnBank != null" >
+	      and IS_BALANCE_ONBANK = #{isBalanceOnBank,jdbcType=VARCHAR}
+	    </if>
+	    <if test="isPaymentConfirm != null" >
+	      and IS_PAYMENT_CONFIRM = #{isPaymentConfirm,jdbcType=VARCHAR}
+	    </if>
+	    <if test="paymentConfirmTime != null" >
+	      and PAYMENT_CONFIRM_TIME = #{paymentConfirmTime,jdbcType=DATE}
+	    </if>
+	    <if test="otheGuaranteeFee != null" >
+	      and OTHE_GUARANTEE_FEE = #{otheGuaranteeFee,jdbcType=DECIMAL}
+	    </if>
+	    <if test="isBalanceAmount != null" >
+	      and IS_BALANCE_AMOUNT = #{isBalanceAmount,jdbcType=VARCHAR}
+	    </if>
+	    <if test="balanceTime != null" >
+	      and BALANCE_TIME = #{balanceTime,jdbcType=DATE}
+	    </if>
+	    <if test="isTransferHouse != null" >
+	      and IS_TRANSFER_HOUSE = #{isTransferHouse,jdbcType=VARCHAR}
+	    </if>
+	    <if test="transferHouseTime != null" >
+	      and TRANSFER_HOUSE_TIME = #{transferHouseTime,jdbcType=DATE}
+	     </if> 
+	      <if test="loanAmount != null" >
+	      and LOAN_AMOUNT = #{loanAmount,jdbcType=DECIMAL}
+	    </if>
+	     <if test="isWinRight != null" >
+	      and IS_WIN_RIGHT = #{isWinRight,jdbcType=VARCHAR}
+	    </if>
+	    <if test="winRightTime != null" >
+	      and WIN_RIGHT_TIME = #{winRightTime,jdbcType=DATE}
+	     </if> 
+	  </trim>
+    </where>
+  </sql>
+  <sql id="Example_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+      <if test="businessSource != null">
+        BUSINESS_SOURCE = #{businessSource,jdbcType=VARCHAR},
+      </if>
+      <if test="businessSourceAddress != null">
+        BUSINESS_SOURCE_ADDRESS = #{businessSourceAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isSpecialBusiness != null">
+        IS_SPECIAL_BUSINESS = #{isSpecialBusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="mediationName != null">
+        MEDIATION_NAME = #{mediationName,jdbcType=VARCHAR},
+      </if>
+      <if test="mediationPhone != null">
+        MEDIATION_PHONE = #{mediationPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="salesmanName != null">
+        SALESMAN_NAME = #{salesmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="salesmanPhone != null">
+        SALESMAN_PHONE = #{salesmanPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isCreditinvest != null">
+        IS_CREDITINVEST = #{isCreditinvest,jdbcType=VARCHAR},
+      </if>
+      <if test="isIntermStandard != null">
+        IS_INTERM_STANDARD = #{isIntermStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="intermStandardFee != null">
+        INTERM_STANDARD_FEE = #{intermStandardFee,jdbcType=DECIMAL},
+      </if>
+      <if test="isSellerSituation != null">
+        IS_SELLER_SITUATION = #{isSellerSituation,jdbcType=VARCHAR},
+      </if>
+      <if test="isSignThreeAgreement != null">
+        IS_SIGN_THREE_AGREEMENT = #{isSignThreeAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="agreemengTime != null">
+        AGREEMENG_TIME = #{agreemengTime,jdbcType=DATE},
+      </if>
+      <if test="isNotary != null">
+        IS_NOTARY = #{isNotary,jdbcType=VARCHAR},
+      </if>
+      <if test="notaryOffice != null">
+        NOTARY_OFFICE = #{notaryOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="notaryFee != null">
+        NOTARY_FEE = #{notaryFee,jdbcType=DECIMAL},
+      </if>
+      <if test="notaryTime != null">
+        NOTARY_TIME = #{notaryTime,jdbcType=DATE},
+      </if>
+      <if test="isSignBankAgreement != null">
+        IS_SIGN_BANK_AGREEMENT = #{isSignBankAgreement,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLoanBank != null">
+        OLD_LOAN_BANK = #{oldLoanBank,jdbcType=VARCHAR},
+      </if>
+      <if test="oldLoanBranchbank != null">
+        OLD_LOAN_BRANCHBANK = #{oldLoanBranchbank,jdbcType=VARCHAR},
+      </if>
+      <if test="nowLoanBank != null">
+        NOW_LOAN_BANK = #{nowLoanBank,jdbcType=VARCHAR},
+      </if>
+      <if test="nowLoanBranchbank != null">
+        NOW_LOAN_BRANCHBANK = #{nowLoanBranchbank,jdbcType=VARCHAR},
+      </if>
+      <if test="loanType != null">
+        LOAN_TYPE = #{loanType,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeFee != null">
+        GUARANTEE_FEE = #{guaranteeFee,jdbcType=DECIMAL},
+      </if>
+      <if test="assessCompanyName != null">
+        ASSESS_COMPANY_NAME = #{assessCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="assessFee != null">
+        ASSESS_FEE = #{assessFee,jdbcType=DECIMAL},
+      </if>
+      <if test="assessOtherFee != null">
+        ASSESS_OTHER_FEE = #{assessOtherFee,jdbcType=DECIMAL},
+      </if>
+      <if test="isNewOpenBankcard != null">
+        IS_NEW_OPEN_BANKCARD = #{isNewOpenBankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="isNewOpenUkey != null">
+        IS_NEW_OPEN_UKEY = #{isNewOpenUkey,jdbcType=VARCHAR},
+      </if>
+      <if test="newOpenTime != null">
+        NEW_OPEN_TIME = #{newOpenTime,jdbcType=DATE},
+      </if>
+      <if test="isHouseFrozen != null">
+        IS_HOUSE_FROZEN = #{isHouseFrozen,jdbcType=VARCHAR},
+      </if>
+      <if test="houseFrozenTime != null">
+        HOUSE_FROZEN_TIME = #{houseFrozenTime,jdbcType=DATE},
+      </if>
+      <if test="isIssueGuarantee != null">
+        IS_ISSUE_GUARANTEE = #{isIssueGuarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="issueGuaranteeTime != null">
+        ISSUE_GUARANTEE_TIME = #{issueGuaranteeTime,jdbcType=DATE},
+      </if>
+      <if test="isBankLending != null">
+        IS_BANK_LENDING = #{isBankLending,jdbcType=VARCHAR},
+      </if>
+      <if test="bankLendingTime != null">
+        BANK_LENDING_TIME = #{bankLendingTime,jdbcType=DATE},
+      </if>
+      <if test="isLoanAgreementReceived != null">
+        IS_LOAN_AGREEMENT_RECEIVED = #{isLoanAgreementReceived,jdbcType=VARCHAR},
+      </if>
+      <if test="isReceiptReceived != null">
+        IS_RECEIPT_RECEIVED = #{isReceiptReceived,jdbcType=VARCHAR},
+      </if>
+      <if test="isBankcardReceived != null">
+        IS_BANKCARD_RECEIVED = #{isBankcardReceived,jdbcType=VARCHAR},
+      </if>
+      <if test="loanReceivedTime != null">
+        LOAN_RECEIVED_TIME = #{loanReceivedTime,jdbcType=DATE},
+      </if>
+      <if test="isHouseFreezing != null">
+        IS_HOUSE_FREEZING = #{isHouseFreezing,jdbcType=VARCHAR},
+      </if>
+      <if test="houseFreezingTime != null">
+        HOUSE_FREEZING_TIME = #{houseFreezingTime,jdbcType=DATE},
+      </if>
+      <if test="isFinalPass != null">
+        IS_FINAL_PASS = #{isFinalPass,jdbcType=VARCHAR},
+      </if>
+      <if test="isGuaranteeFee != null">
+        IS_GUARANTEE_FEE = #{isGuaranteeFee,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeFeeTime != null">
+        GUARANTEE_FEE_TIME = #{guaranteeFeeTime,jdbcType=DATE},
+      </if>
+      <if test="isLoanPayment != null">
+        IS_LOAN_PAYMENT = #{isLoanPayment,jdbcType=VARCHAR},
+      </if>
+      <if test="loanPaymentTime != null">
+        LOAN_PAYMENT_TIME = #{loanPaymentTime,jdbcType=DATE},
+      </if>
+      <if test="finalTime != null">
+        FINAL_TIME = #{finalTime,jdbcType=DATE},
+      </if>
+      <if test="approvalStep != null">
+        APPROVAL_STEP = #{approvalStep,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="workflowId != null">
+        WORKFLOW_ID = #{workflowId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+        UPDATE_TIME = sysdate(),
+      <if test="extend1 != null">
+        EXTEND_1 = #{extend1,jdbcType=VARCHAR},
+      </if>
+       <if test="payStatus != null">
+        PAY_STATUS = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="extend2 != null">
+        EXTEND_2 = #{extend2,jdbcType=VARCHAR},
+      </if>
+      <if test="extend3 != null">
+        EXTEND_3 = #{extend3,jdbcType=DECIMAL},
+      </if>
+      <if test="extend4 != null">
+        EXTEND_4 = #{extend4,jdbcType=VARCHAR},
+      </if>
+      <if test="extend5 != null">
+        EXTEND_5 = #{extend5,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskNo != null">
+        TASK_NO = #{taskNo,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalStatus != null">
+        APPROVAL_STATUS = #{approvalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeFeeOther != null">
+        GUARANTEEFEE_OTHER = #{guaranteeFeeOther,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeType != null">
+        GUARANTEE_TYPE = #{guaranteeType,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserName != null">
+        CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null">
+        USER_PHONE = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="downPayment != null">
+        DOWN_PAYMENT = #{downPayment,jdbcType=DECIMAL},
+      </if>
+      <if test="balanceAmount != null">
+        BALANCE_AMOUNT = #{balanceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="isBalanceOnBank != null">
+        IS_BALANCE_ONBANK = #{isBalanceOnBank,jdbcType=VARCHAR},
+      </if>
+      <if test="isPaymentConfirm != null">
+        IS_PAYMENT_CONFIRM = #{isPaymentConfirm,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentConfirmTime != null">
+        PAYMENT_CONFIRM_TIME = #{paymentConfirmTime,jdbcType=DATE},
+      </if>
+      <if test="otheGuaranteeFee != null">
+        OTHE_GUARANTEE_FEE = #{otheGuaranteeFee,jdbcType=DECIMAL},
+      </if>
+      <if test="isBalanceAmount != null">
+        IS_BALANCE_AMOUNT = #{isBalanceAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceTime != null">
+        BALANCE_TIME = #{balanceTime,jdbcType=DATE},
+      </if>
+      <if test="isTransferHouse != null">
+        IS_TRANSFER_HOUSE = #{isTransferHouse,jdbcType=VARCHAR},
+      </if>
+      <if test="transferHouseTime != null">
+        TRANSFER_HOUSE_TIME = #{transferHouseTime,jdbcType=DATE},
+      </if>
+      <if test="loanAmount != null">
+        LOAN_AMOUNT = #{loanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="isWinRight != null">
+        IS_WIN_RIGHT = #{isWinRight,jdbcType=VARCHAR},
+      </if>
+      <if test="winRightTime != null">
+        WIN_RIGHT_TIME = #{winRightTime,jdbcType=DATE},
+      </if>
+      </trim>
+    </set>
+  </sql>
+  <sql id="Base_Column_List">
+    ID,
+    BUSINESS_SOURCE,
+    BUSINESS_SOURCE_ADDRESS,
+    IS_SPECIAL_BUSINESS,
+    MEDIATION_NAME,
+    MEDIATION_PHONE,
+    SALESMAN_NAME,
+    SALESMAN_PHONE,
+    IS_CREDITINVEST,
+    IS_INTERM_STANDARD,
+    INTERM_STANDARD_FEE,
+    IS_SELLER_SITUATION,
+    IS_SIGN_THREE_AGREEMENT,
+    AGREEMENG_TIME,
+    IS_NOTARY,
+    NOTARY_OFFICE,
+    NOTARY_FEE,
+    NOTARY_TIME,
+    IS_SIGN_BANK_AGREEMENT,
+    OLD_LOAN_BANK,
+    OLD_LOAN_BRANCHBANK,
+    NOW_LOAN_BANK,
+    NOW_LOAN_BRANCHBANK,
+    LOAN_TYPE,
+    GUARANTEE_FEE,
+    ASSESS_COMPANY_NAME,
+    ASSESS_FEE,
+    ASSESS_OTHER_FEE,
+    IS_NEW_OPEN_BANKCARD,
+    IS_NEW_OPEN_UKEY,
+    NEW_OPEN_TIME,
+    IS_HOUSE_FROZEN,
+    HOUSE_FROZEN_TIME,
+    IS_ISSUE_GUARANTEE,
+    ISSUE_GUARANTEE_TIME,
+    IS_BANK_LENDING,
+    BANK_LENDING_TIME,
+    IS_LOAN_AGREEMENT_RECEIVED,
+    IS_RECEIPT_RECEIVED,
+    IS_BANKCARD_RECEIVED,
+    LOAN_RECEIVED_TIME,
+    IS_HOUSE_FREEZING,
+    HOUSE_FREEZING_TIME,
+    IS_FINAL_PASS,
+    IS_GUARANTEE_FEE,
+    GUARANTEE_FEE_TIME,
+    IS_LOAN_PAYMENT,
+    LOAN_PAYMENT_TIME,
+    FINAL_TIME,
+    APPROVAL_STEP,
+    STATUS,
+    USER_ID,
+    WORKFLOW_ID,
+    CREATE_TIME,
+    UPDATE_TIME,
+    EXTEND_1,
+    PAY_STATUS,
+    EXTEND_2,
+    EXTEND_3,
+    EXTEND_4,
+    EXTEND_5,
+    USER_NAME,
+    TASK_NO,
+    APPROVAL_STATUS,
+    GUARANTEEFEE_OTHER,
+    GUARANTEE_TYPE,
+    CREATE_USER_ID,
+    CREATE_USER_NAME,
+    USER_PHONE,
+    DOWN_PAYMENT,
+    BALANCE_AMOUNT,
+    IS_BALANCE_ONBANK,
+    IS_PAYMENT_CONFIRM,
+    PAYMENT_CONFIRM_TIME,
+    OTHE_GUARANTEE_FEE,
+    IS_BALANCE_AMOUNT,
+    BALANCE_TIME,
+    IS_TRANSFER_HOUSE,
+    TRANSFER_HOUSE_TIME,
+    LOAN_AMOUNT,
+    IS_WIN_RIGHT,
+    WIN_RIGHT_TIME,
+  </sql>
+  <sql id="Base_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+        BUSINESS_SOURCE = #{businessSource,jdbcType=VARCHAR},
+        BUSINESS_SOURCE_ADDRESS = #{businessSourceAddress,jdbcType=VARCHAR},
+        IS_SPECIAL_BUSINESS = #{isSpecialBusiness,jdbcType=VARCHAR},
+        MEDIATION_NAME = #{mediationName,jdbcType=VARCHAR},
+        MEDIATION_PHONE = #{mediationPhone,jdbcType=VARCHAR},
+        SALESMAN_NAME = #{salesmanName,jdbcType=VARCHAR},
+        SALESMAN_PHONE = #{salesmanPhone,jdbcType=VARCHAR},
+        IS_CREDITINVEST = #{isCreditinvest,jdbcType=VARCHAR},
+        IS_INTERM_STANDARD = #{isIntermStandard,jdbcType=VARCHAR},
+        INTERM_STANDARD_FEE = #{intermStandardFee,jdbcType=DECIMAL},
+        IS_SELLER_SITUATION = #{isSellerSituation,jdbcType=VARCHAR},
+        IS_SIGN_THREE_AGREEMENT = #{isSignThreeAgreement,jdbcType=VARCHAR},
+        AGREEMENG_TIME = #{agreemengTime,jdbcType=DATE},
+        IS_NOTARY = #{isNotary,jdbcType=VARCHAR},
+        NOTARY_OFFICE = #{notaryOffice,jdbcType=VARCHAR},
+        NOTARY_FEE = #{notaryFee,jdbcType=DECIMAL},
+        NOTARY_TIME = #{notaryTime,jdbcType=DATE},
+        IS_SIGN_BANK_AGREEMENT = #{isSignBankAgreement,jdbcType=VARCHAR},
+        OLD_LOAN_BANK = #{oldLoanBank,jdbcType=VARCHAR},
+        OLD_LOAN_BRANCHBANK = #{oldLoanBranchbank,jdbcType=VARCHAR},
+        NOW_LOAN_BANK = #{nowLoanBank,jdbcType=VARCHAR},
+        NOW_LOAN_BRANCHBANK = #{nowLoanBranchbank,jdbcType=VARCHAR},
+        LOAN_TYPE = #{loanType,jdbcType=VARCHAR},
+        GUARANTEE_FEE = #{guaranteeFee,jdbcType=DECIMAL},
+        ASSESS_COMPANY_NAME = #{assessCompanyName,jdbcType=VARCHAR},
+        ASSESS_FEE = #{assessFee,jdbcType=DECIMAL},
+        ASSESS_OTHER_FEE = #{assessOtherFee,jdbcType=DECIMAL},
+        IS_NEW_OPEN_BANKCARD = #{isNewOpenBankcard,jdbcType=VARCHAR},
+        IS_NEW_OPEN_UKEY = #{isNewOpenUkey,jdbcType=VARCHAR},
+        NEW_OPEN_TIME = #{newOpenTime,jdbcType=DATE},
+        IS_HOUSE_FROZEN = #{isHouseFrozen,jdbcType=VARCHAR},
+        HOUSE_FROZEN_TIME = #{houseFrozenTime,jdbcType=DATE},
+        IS_ISSUE_GUARANTEE = #{isIssueGuarantee,jdbcType=VARCHAR},
+        ISSUE_GUARANTEE_TIME = #{issueGuaranteeTime,jdbcType=DATE},
+        IS_BANK_LENDING = #{isBankLending,jdbcType=VARCHAR},
+        BANK_LENDING_TIME = #{bankLendingTime,jdbcType=DATE},
+        IS_LOAN_AGREEMENT_RECEIVED = #{isLoanAgreementReceived,jdbcType=VARCHAR},
+        IS_RECEIPT_RECEIVED = #{isReceiptReceived,jdbcType=VARCHAR},
+        IS_BANKCARD_RECEIVED = #{isBankcardReceived,jdbcType=VARCHAR},
+        LOAN_RECEIVED_TIME = #{loanReceivedTime,jdbcType=DATE},
+        IS_HOUSE_FREEZING = #{isHouseFreezing,jdbcType=VARCHAR},
+        HOUSE_FREEZING_TIME = #{houseFreezingTime,jdbcType=DATE},
+        IS_FINAL_PASS = #{isFinalPass,jdbcType=VARCHAR},
+        IS_GUARANTEE_FEE = #{isGuaranteeFee,jdbcType=VARCHAR},
+        GUARANTEE_FEE_TIME = #{guaranteeFeeTime,jdbcType=DATE},
+        IS_LOAN_PAYMENT = #{isLoanPayment,jdbcType=VARCHAR},
+        LOAN_PAYMENT_TIME = #{loanPaymentTime,jdbcType=DATE},
+        FINAL_TIME = #{finalTime,jdbcType=DATE},
+        APPROVAL_STEP = #{approvalStep,jdbcType=VARCHAR},
+        STATUS = #{status,jdbcType=VARCHAR},
+        USER_ID = #{userId,jdbcType=VARCHAR},
+        WORKFLOW_ID = #{workflowId,jdbcType=VARCHAR},
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+        EXTEND_1 = #{extend1,jdbcType=VARCHAR},
+        PAY_STATUS = #{payStatus,jdbcType=VARCHAR},
+        EXTEND_2 = #{extend2,jdbcType=VARCHAR},
+        EXTEND_3 = #{extend3,jdbcType=DECIMAL},
+        EXTEND_4 = #{extend4,jdbcType=VARCHAR},
+        EXTEND_5 = #{extend5,jdbcType=VARCHAR},
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+        TASK_NO = #{taskNo,jdbcType=VARCHAR},
+        APPROVAL_STATUS = #{approvalStatus,jdbcType=VARCHAR},
+         GUARANTEEFEE_OTHER = #{guaranteeFeeOther,jdbcType=VARCHAR},
+         GUARANTEE_TYPE = #{guaranteeType,jdbcType=VARCHAR},
+         CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+         CREATE_USER_NAME = #{createUserName,jdbcType=VARCHAR},
+         USER_PHONE = #{userPhone,jdbcType=VARCHAR},
+         DOWN_PAYMENT = #{downPayment,jdbcType=DECIMAL},
+         BALANCE_AMOUNT = #{balanceAmount,jdbcType=DECIMAL},
+         IS_BALANCE_ONBANK = #{isBalanceOnBank,jdbcType=VARCHAR},
+         IS_PAYMENT_CONFIRM = #{isPaymentConfirm,jdbcType=VARCHAR},
+         PAYMENT_CONFIRM_TIME = #{paymentConfirmTime,jdbcType=DATE},
+         OTHE_GUARANTEE_FEE = #{otheGuaranteeFee,jdbcType=DECIMAL},
+         IS_BALANCE_AMOUNT = #{isBalanceAmount,jdbcType=VARCHAR},
+         BALANCE_TIME = #{balanceTime,jdbcType=DATE},
+         IS_TRANSFER_HOUSE = #{isTransferHouse,jdbcType=VARCHAR},
+         TRANSFER_HOUSE_TIME = #{transferHouseTime,jdbcType=DATE},
+         LOAN_AMOUNT = #{loanAmount,jdbcType=DECIMAL},
+         IS_WIN_RIGHT = #{isWinRight,jdbcType=VARCHAR},
+         WIN_RIGHT_TIME = #{winRightTime,jdbcType=DATE},
+      </trim>
+    </set>
+  </sql>
+  <sql id="Selective_Column_List">
+    <if test="businessSource != null">
+      BUSINESS_SOURCE,
+    </if>
+    <if test="businessSourceAddress != null">
+      BUSINESS_SOURCE_ADDRESS,
+    </if>
+    <if test="isSpecialBusiness != null">
+      IS_SPECIAL_BUSINESS,
+    </if>
+    <if test="mediationName != null">
+      MEDIATION_NAME,
+    </if>
+    <if test="mediationPhone != null">
+      MEDIATION_PHONE,
+    </if>
+    <if test="salesmanName != null">
+      SALESMAN_NAME,
+    </if>
+    <if test="salesmanPhone != null">
+      SALESMAN_PHONE,
+    </if>
+    <if test="isCreditinvest != null">
+      IS_CREDITINVEST,
+    </if>
+    <if test="isIntermStandard != null">
+      IS_INTERM_STANDARD,
+    </if>
+    <if test="intermStandardFee != null">
+      INTERM_STANDARD_FEE,
+    </if>
+    <if test="isSellerSituation != null">
+      IS_SELLER_SITUATION,
+    </if>
+    <if test="isSignThreeAgreement != null">
+      IS_SIGN_THREE_AGREEMENT,
+    </if>
+    <if test="agreemengTime != null">
+      AGREEMENG_TIME,
+    </if>
+    <if test="isNotary != null">
+      IS_NOTARY,
+    </if>
+    <if test="notaryOffice != null">
+      NOTARY_OFFICE,
+    </if>
+    <if test="notaryFee != null">
+      NOTARY_FEE,
+    </if>
+    <if test="notaryTime != null">
+      NOTARY_TIME,
+    </if>
+    <if test="isSignBankAgreement != null">
+      IS_SIGN_BANK_AGREEMENT,
+    </if>
+    <if test="oldLoanBank != null">
+      OLD_LOAN_BANK,
+    </if>
+    <if test="oldLoanBranchbank != null">
+      OLD_LOAN_BRANCHBANK,
+    </if>
+    <if test="nowLoanBank != null">
+      NOW_LOAN_BANK,
+    </if>
+    <if test="nowLoanBranchbank != null">
+      NOW_LOAN_BRANCHBANK,
+    </if>
+    <if test="loanType != null">
+      LOAN_TYPE,
+    </if>
+    <if test="guaranteeFee != null">
+      GUARANTEE_FEE,
+    </if>
+    <if test="assessCompanyName != null">
+      ASSESS_COMPANY_NAME,
+    </if>
+    <if test="assessFee != null">
+      ASSESS_FEE,
+    </if>
+    <if test="assessOtherFee != null">
+      ASSESS_OTHER_FEE,
+    </if>
+    <if test="isNewOpenBankcard != null">
+      IS_NEW_OPEN_BANKCARD,
+    </if>
+    <if test="isNewOpenUkey != null">
+      IS_NEW_OPEN_UKEY,
+    </if>
+    <if test="newOpenTime != null">
+      NEW_OPEN_TIME,
+    </if>
+    <if test="isHouseFrozen != null">
+      IS_HOUSE_FROZEN,
+    </if>
+    <if test="houseFrozenTime != null">
+      HOUSE_FROZEN_TIME,
+    </if>
+    <if test="isIssueGuarantee != null">
+      IS_ISSUE_GUARANTEE,
+    </if>
+    <if test="issueGuaranteeTime != null">
+      ISSUE_GUARANTEE_TIME,
+    </if>
+    <if test="isBankLending != null">
+      IS_BANK_LENDING,
+    </if>
+    <if test="bankLendingTime != null">
+      BANK_LENDING_TIME,
+    </if>
+    <if test="isLoanAgreementReceived != null">
+      IS_LOAN_AGREEMENT_RECEIVED,
+    </if>
+    <if test="isReceiptReceived != null">
+      IS_RECEIPT_RECEIVED,
+    </if>
+    <if test="isBankcardReceived != null">
+      IS_BANKCARD_RECEIVED,
+    </if>
+    <if test="loanReceivedTime != null">
+      LOAN_RECEIVED_TIME,
+    </if>
+    <if test="isHouseFreezing != null">
+      IS_HOUSE_FREEZING,
+    </if>
+    <if test="houseFreezingTime != null">
+      HOUSE_FREEZING_TIME,
+    </if>
+    <if test="isFinalPass != null">
+      IS_FINAL_PASS,
+    </if>
+    <if test="isGuaranteeFee != null">
+      IS_GUARANTEE_FEE,
+    </if>
+    <if test="guaranteeFeeTime != null">
+      GUARANTEE_FEE_TIME,
+    </if>
+    <if test="isLoanPayment != null">
+      IS_LOAN_PAYMENT,
+    </if>
+    <if test="loanPaymentTime != null">
+      LOAN_PAYMENT_TIME,
+    </if>
+    <if test="finalTime != null">
+      FINAL_TIME,
+    </if>
+    <if test="approvalStep != null">
+      APPROVAL_STEP,
+    </if>
+    <if test="status != null">
+      STATUS,
+    </if>
+    <if test="userId != null">
+      USER_ID,
+    </if>
+    <if test="workflowId != null">
+      WORKFLOW_ID,
+    </if>
+      CREATE_TIME,
+    <if test="updateTime != null">
+      UPDATE_TIME,
+    </if>
+    <if test="extend1 != null">
+      EXTEND_1,
+    </if>
+      <if test="payStatus != null">
+      PAY_STATUS,
+    </if>
+    <if test="extend2 != null">
+      EXTEND_2,
+    </if>
+    <if test="extend3 != null">
+      EXTEND_3,
+    </if>
+    <if test="extend4 != null">
+      EXTEND_4,
+    </if>
+    <if test="extend5 != null">
+      EXTEND_5,
+    </if>
+    <if test="userName != null">
+      USER_NAME,
+    </if>
+    <if test="taskNo != null">
+      TASK_NO,
+    </if>
+    <if test="approvalStatus != null">
+      APPROVAL_STATUS,
+    </if>
+    <if test="guaranteeFeeOther != null">
+      GUARANTEEFEE_OTHER,
+    </if>
+    <if test="guaranteeType != null">
+      GUARANTEE_TYPE,
+    </if>
+    <if test="createUserId != null">
+      CREATE_USER_ID,
+    </if>
+    <if test="createUserName != null">
+      CREATE_USER_NAME,
+    </if>
+    <if test="userPhone != null">
+      USER_PHONE,
+    </if>
+    <if test="downPayment != null">
+      DOWN_PAYMENT,
+    </if>
+    <if test="balanceAmount != null">
+      BALANCE_AMOUNT,
+    </if>
+    <if test="isBalanceOnBank != null">
+      IS_BALANCE_ONBANK,
+    </if>
+    <if test="isPaymentConfirm != null">
+      IS_PAYMENT_CONFIRM,
+    </if>
+    <if test="paymentConfirmTime != null">
+      PAYMENT_CONFIRM_TIME,
+    </if>
+    <if test="otheGuaranteeFee != null">
+      OTHE_GUARANTEE_FEE,
+    </if>
+    <if test="isBalanceAmount != null">
+      IS_BALANCE_AMOUNT,
+    </if>
+    <if test="balanceTime != null">
+      BALANCE_TIME,
+    </if>
+    <if test="isTransferHouse != null">
+      IS_TRANSFER_HOUSE,
+    </if>
+    <if test="transferHouseTime != null">
+      TRANSFER_HOUSE_TIME,
+    </if>
+    <if test="loanAmount != null">
+      LOAN_AMOUNT,
+    </if>
+    <if test="isWinRight != null">
+      IS_WIN_RIGHT,
+    </if>
+    <if test="winRightTime != null">
+      WIN_RIGHT_TIME,
+    </if>
+  </sql>
+	<sql id="Base_Value_List">
+    #{id,jdbcType=BIGINT},
+    #{businessSource,jdbcType=VARCHAR},
+    #{businessSourceAddress,jdbcType=VARCHAR},
+    #{isSpecialBusiness,jdbcType=VARCHAR},
+    #{mediationName,jdbcType=VARCHAR},
+    #{mediationPhone,jdbcType=VARCHAR},
+    #{salesmanName,jdbcType=VARCHAR},
+    #{salesmanPhone,jdbcType=VARCHAR},
+    #{isCreditinvest,jdbcType=VARCHAR},
+    #{isIntermStandard,jdbcType=VARCHAR},
+    #{intermStandardFee,jdbcType=DECIMAL},
+    #{isSellerSituation,jdbcType=VARCHAR},
+    #{isSignThreeAgreement,jdbcType=VARCHAR},
+    #{agreemengTime,jdbcType=DATE},
+    #{isNotary,jdbcType=VARCHAR},
+    #{notaryOffice,jdbcType=VARCHAR},
+    #{notaryFee,jdbcType=DECIMAL},
+    #{notaryTime,jdbcType=DATE},
+    #{isSignBankAgreement,jdbcType=VARCHAR},
+    #{oldLoanBank,jdbcType=VARCHAR},
+    #{oldLoanBranchbank,jdbcType=VARCHAR},
+    #{nowLoanBank,jdbcType=VARCHAR},
+    #{nowLoanBranchbank,jdbcType=VARCHAR},
+    #{loanType,jdbcType=VARCHAR},
+    #{guaranteeFee,jdbcType=DECIMAL},
+    #{assessCompanyName,jdbcType=VARCHAR},
+    #{assessFee,jdbcType=DECIMAL},
+    #{assessOtherFee,jdbcType=DECIMAL},
+    #{isNewOpenBankcard,jdbcType=VARCHAR},
+    #{isNewOpenUkey,jdbcType=VARCHAR},
+    #{newOpenTime,jdbcType=DATE},
+    #{isHouseFrozen,jdbcType=VARCHAR},
+    #{houseFrozenTime,jdbcType=DATE},
+    #{isIssueGuarantee,jdbcType=VARCHAR},
+    #{issueGuaranteeTime,jdbcType=DATE},
+    #{isBankLending,jdbcType=VARCHAR},
+    #{bankLendingTime,jdbcType=DATE},
+    #{isLoanAgreementReceived,jdbcType=VARCHAR},
+    #{isReceiptReceived,jdbcType=VARCHAR},
+    #{isBankcardReceived,jdbcType=VARCHAR},
+    #{loanReceivedTime,jdbcType=DATE},
+    #{isHouseFreezing,jdbcType=VARCHAR},
+    #{houseFreezingTime,jdbcType=DATE},
+    #{isFinalPass,jdbcType=VARCHAR},
+    #{isGuaranteeFee,jdbcType=VARCHAR},
+    #{guaranteeFeeTime,jdbcType=DATE},
+    #{isLoanPayment,jdbcType=VARCHAR},
+    #{loanPaymentTime,jdbcType=DATE},
+    #{finalTime,jdbcType=DATE},
+    #{approvalStep,jdbcType=VARCHAR},
+    #{status,jdbcType=VARCHAR},
+    #{userId,jdbcType=VARCHAR},
+    #{workflowId,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{updateTime,jdbcType=TIMESTAMP},
+    #{extend1,jdbcType=VARCHAR},
+    #{payStatus,jdbcType=VARCHAR},
+    #{extend2,jdbcType=VARCHAR},
+    #{extend3,jdbcType=DECIMAL},
+    #{extend4,jdbcType=VARCHAR},
+    #{extend5,jdbcType=VARCHAR},
+    #{userName,jdbcType=VARCHAR},
+    #{taskNo,jdbcType=VARCHAR},
+    #{approvalStatus,jdbcType=VARCHAR},
+    #{guaranteeFeeOther,jdbcType=VARCHAR},
+    #{guaranteeType,jdbcType=VARCHAR},
+     #{createUserId,jdbcType=VARCHAR},
+      #{createUserName,jdbcType=VARCHAR},
+       #{userPhone,jdbcType=VARCHAR},
+    #{downPayment,jdbcType=DECIMAL},
+    #{balanceAmount,jdbcType=DECIMAL},
+    #{isBalanceOnBank,jdbcType=VARCHAR},   
+    #{isPaymentConfirm,jdbcType=VARCHAR}, 
+    #{paymentConfirmTime,jdbcType=DATE}, 
+    #{otheGuaranteeFee,jdbcType=DECIMAL}, 
+    #{isBalanceAmount,jdbcType=VARCHAR}, 
+    #{balanceTime,jdbcType=DATE}, 
+    #{isTransferHouse,jdbcType=VARCHAR}, 
+    #{transferHouseTime,jdbcType=DATE}, 
+    #{loanAmount,jdbcType=DECIMAL}, 
+    #{isWinRight,jdbcType=VARCHAR}, 
+    #{winRightTime,jdbcType=DATE}, 
+	</sql>
+  <sql id="Selective_Value_List">
+    <if test="businessSource != null">
+      #{businessSource,jdbcType=VARCHAR},
+    </if>
+    <if test="businessSourceAddress != null">
+      #{businessSourceAddress,jdbcType=VARCHAR},
+    </if>
+    <if test="isSpecialBusiness != null">
+      #{isSpecialBusiness,jdbcType=VARCHAR},
+    </if>
+    <if test="mediationName != null">
+      #{mediationName,jdbcType=VARCHAR},
+    </if>
+    <if test="mediationPhone != null">
+      #{mediationPhone,jdbcType=VARCHAR},
+    </if>
+    <if test="salesmanName != null">
+      #{salesmanName,jdbcType=VARCHAR},
+    </if>
+    <if test="salesmanPhone != null">
+      #{salesmanPhone,jdbcType=VARCHAR},
+    </if>
+    <if test="isCreditinvest != null">
+      #{isCreditinvest,jdbcType=VARCHAR},
+    </if>
+    <if test="isIntermStandard != null">
+      #{isIntermStandard,jdbcType=VARCHAR},
+    </if>
+    <if test="intermStandardFee != null">
+      #{intermStandardFee,jdbcType=DECIMAL},
+    </if>
+    <if test="isSellerSituation != null">
+      #{isSellerSituation,jdbcType=VARCHAR},
+    </if>
+    <if test="isSignThreeAgreement != null">
+      #{isSignThreeAgreement,jdbcType=VARCHAR},
+    </if>
+    <if test="agreemengTime != null">
+      #{agreemengTime,jdbcType=DATE},
+    </if>
+    <if test="isNotary != null">
+      #{isNotary,jdbcType=VARCHAR},
+    </if>
+    <if test="notaryOffice != null">
+      #{notaryOffice,jdbcType=VARCHAR},
+    </if>
+    <if test="notaryFee != null">
+      #{notaryFee,jdbcType=DECIMAL},
+    </if>
+    <if test="notaryTime != null">
+      #{notaryTime,jdbcType=DATE},
+    </if>
+    <if test="isSignBankAgreement != null">
+      #{isSignBankAgreement,jdbcType=VARCHAR},
+    </if>
+    <if test="oldLoanBank != null">
+      #{oldLoanBank,jdbcType=VARCHAR},
+    </if>
+    <if test="oldLoanBranchbank != null">
+      #{oldLoanBranchbank,jdbcType=VARCHAR},
+    </if>
+    <if test="nowLoanBank != null">
+      #{nowLoanBank,jdbcType=VARCHAR},
+    </if>
+    <if test="nowLoanBranchbank != null">
+      #{nowLoanBranchbank,jdbcType=VARCHAR},
+    </if>
+    <if test="loanType != null">
+      #{loanType,jdbcType=VARCHAR},
+    </if>
+    <if test="guaranteeFee != null">
+      #{guaranteeFee,jdbcType=DECIMAL},
+    </if>
+    <if test="assessCompanyName != null">
+      #{assessCompanyName,jdbcType=VARCHAR},
+    </if>
+    <if test="assessFee != null">
+      #{assessFee,jdbcType=DECIMAL},
+    </if>
+    <if test="assessOtherFee != null">
+      #{assessOtherFee,jdbcType=DECIMAL},
+    </if>
+    <if test="isNewOpenBankcard != null">
+      #{isNewOpenBankcard,jdbcType=VARCHAR},
+    </if>
+    <if test="isNewOpenUkey != null">
+      #{isNewOpenUkey,jdbcType=VARCHAR},
+    </if>
+    <if test="newOpenTime != null">
+      #{newOpenTime,jdbcType=DATE},
+    </if>
+    <if test="isHouseFrozen != null">
+      #{isHouseFrozen,jdbcType=VARCHAR},
+    </if>
+    <if test="houseFrozenTime != null">
+      #{houseFrozenTime,jdbcType=DATE},
+    </if>
+    <if test="isIssueGuarantee != null">
+      #{isIssueGuarantee,jdbcType=VARCHAR},
+    </if>
+    <if test="issueGuaranteeTime != null">
+      #{issueGuaranteeTime,jdbcType=DATE},
+    </if>
+    <if test="isBankLending != null">
+      #{isBankLending,jdbcType=VARCHAR},
+    </if>
+    <if test="bankLendingTime != null">
+      #{bankLendingTime,jdbcType=DATE},
+    </if>
+    <if test="isLoanAgreementReceived != null">
+      #{isLoanAgreementReceived,jdbcType=VARCHAR},
+    </if>
+    <if test="isReceiptReceived != null">
+      #{isReceiptReceived,jdbcType=VARCHAR},
+    </if>
+    <if test="isBankcardReceived != null">
+      #{isBankcardReceived,jdbcType=VARCHAR},
+    </if>
+    <if test="loanReceivedTime != null">
+      #{loanReceivedTime,jdbcType=DATE},
+    </if>
+    <if test="isHouseFreezing != null">
+      #{isHouseFreezing,jdbcType=VARCHAR},
+    </if>
+    <if test="houseFreezingTime != null">
+      #{houseFreezingTime,jdbcType=DATE},
+    </if>
+    <if test="isFinalPass != null">
+      #{isFinalPass,jdbcType=VARCHAR},
+    </if>
+    <if test="isGuaranteeFee != null">
+      #{isGuaranteeFee,jdbcType=VARCHAR},
+    </if>
+    <if test="guaranteeFeeTime != null">
+      #{guaranteeFeeTime,jdbcType=DATE},
+    </if>
+    <if test="isLoanPayment != null">
+      #{isLoanPayment,jdbcType=VARCHAR},
+    </if>
+    <if test="loanPaymentTime != null">
+      #{loanPaymentTime,jdbcType=DATE},
+    </if>
+    <if test="finalTime != null">
+      #{finalTime,jdbcType=DATE},
+    </if>
+    <if test="approvalStep != null">
+      #{approvalStep,jdbcType=VARCHAR},
+    </if>
+    <if test="status != null">
+      #{status,jdbcType=VARCHAR},
+    </if>
+    <if test="userId != null">
+      #{userId,jdbcType=VARCHAR},
+    </if>
+    <if test="workflowId != null">
+      #{workflowId,jdbcType=VARCHAR},
+    </if>
+    sysdate(),
+    <if test="updateTime != null">
+      #{updateTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="extend1 != null">
+      #{extend1,jdbcType=VARCHAR},
+    </if>
+      <if test="payStatus != null">
+      #{payStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="extend2 != null">
+      #{extend2,jdbcType=VARCHAR},
+    </if>
+    <if test="extend3 != null">
+      #{extend3,jdbcType=DECIMAL},
+    </if>
+    <if test="extend4 != null">
+      #{extend4,jdbcType=VARCHAR},
+    </if>
+    <if test="extend5 != null">
+      #{extend5,jdbcType=VARCHAR},
+    </if>
+    <if test="userName != null">
+      #{userName,jdbcType=VARCHAR},
+    </if>
+    <if test="taskNo != null">
+      #{taskNo,jdbcType=VARCHAR},
+    </if>
+    <if test="approvalStatus != null">
+      #{approvalStatus,jdbcType=VARCHAR},
+    </if>
+    <if test="guaranteeFeeOther != null">
+      #{guaranteeFeeOther,jdbcType=VARCHAR},
+    </if>
+    <if test="guaranteeType != null">
+      #{guaranteeType,jdbcType=VARCHAR},
+    </if>
+    <if test="createUserId != null">
+      #{createUserId,jdbcType=VARCHAR},
+    </if>
+    <if test="createUserName != null">
+      #{createUserName,jdbcType=VARCHAR},
+    </if>
+    <if test="userPhone != null">
+      #{userPhone,jdbcType=VARCHAR},
+    </if>
+    <if test="downPayment != null">
+      #{downPayment,jdbcType=DECIMAL},
+    </if>
+    <if test="balanceAmount != null">
+      #{balanceAmount,jdbcType=DECIMAL},
+    </if>
+    <if test="isBalanceOnBank != null">
+      #{isBalanceOnBank,jdbcType=VARCHAR},
+    </if>
+    <if test="isPaymentConfirm != null">
+      #{isPaymentConfirm,jdbcType=VARCHAR},
+    </if>
+    <if test="paymentConfirmTime != null">
+      #{paymentConfirmTime,jdbcType=DATE},
+    </if>
+    <if test="otheGuaranteeFee != null">
+      #{otheGuaranteeFee,jdbcType=DECIMAL},
+    </if>
+    <if test="isBalanceAmount != null">
+      #{isBalanceAmount,jdbcType=VARCHAR},
+    </if>
+    <if test="balanceTime != null">
+      #{balanceTime,jdbcType=DATE},
+    </if>
+    <if test="isTransferHouse != null">
+      #{isTransferHouse,jdbcType=VARCHAR},
+    </if>
+    <if test="transferHouseTime != null">
+      #{transferHouseTime,jdbcType=DATE},
+    </if>
+    <if test="loanAmount != null">
+      #{loanAmount,jdbcType=DECIMAL},
+    </if>
+    <if test="isWinRight != null">
+      #{isWinRight,jdbcType=VARCHAR},
+    </if>
+    <if test="winRightTime != null">
+      #{winRightTime,jdbcType=DATE},
+    </if>
+  </sql>
+  
+  <select id="findList" parameterType="WfTaskInfo" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from wf_task_info
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+  </select>
+  
+    <select id="findListByOrderNo" parameterType="WfTaskInfo" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from wf_task_info
+	where extend_1 =  #{extend1,jdbcType=VARCHAR}
+    <!-- order by CREATE_DATE -->
+  </select>
+  
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from wf_task_info
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="getMaxTaskNo" parameterType="java.lang.String" resultType="java.lang.String">
+    select MAX(o.TASK_NO) from wf_task_info o where o.TASK_NO like CONCAT(#{taskNo,jdbcType=VARCHAR},'%')
+
+  </select>
+ 
+  <insert id="save" parameterType="WfTaskInfo" keyProperty="id" useGeneratedKeys="true">
+    insert into wf_task_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Column_List"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Value_List"/>
+    </trim>
+    <selectKey resultType="java.lang.Long" keyProperty="id">  
+      select LAST_INSERT_ID() as id
+    </selectKey>
+  </insert>
+  <update id="update" parameterType="WfTaskInfo">
+    update wf_task_info
+    <include refid="Example_Set_Clause"/>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  
+  <select id="selectPageByExample" parameterType="WfTaskInfo" resultMap="BaseResultMap">
+  	<include refid="Page_Query_Begin" />
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from wf_task_info
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+    <include refid="Page_Query_End" />
+  </select>
+  <select id="queryDoingTaskInfoByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t1.* from wf_task_info t1 where t1.STATUS in ('1', '7', '8')
+			and (t1.MEDIATION_NAME = #{userid,jdbcType=BIGINT} OR t1.NOW_LOAN_BANK = 
+			(select t2.PRIMARYDEPARTMENTID from ransomfloor_admin.tbl_user t2 WHERE  t2.userid = #{userid,jdbcType=BIGINT})
+			or t1.NOW_LOAN_BRANCHBANK = 
+			(select t3.PRIMARYDEPARTMENTID from ransomfloor_admin.tbl_user t3 WHERE  t3.userid = #{userid,jdbcType=BIGINT}))
+  </select>
+  <select id="queryFinalTaskInfoByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t1.* from wf_task_info t1 where t1.STATUS in ('2', '3', '4','5','6','9','10')
+			and (t1.MEDIATION_NAME = #{userid,jdbcType=BIGINT} OR t1.NOW_LOAN_BANK = 
+			(select t2.PRIMARYDEPARTMENTID from ransomfloor_admin.tbl_user t2 WHERE  t2.userid = #{userid,jdbcType=BIGINT})
+			or t1.NOW_LOAN_BRANCHBANK = 
+			(select t3.PRIMARYDEPARTMENTID from ransomfloor_admin.tbl_user t3 WHERE  t3.userid = #{userid,jdbcType=BIGINT}))
+  </select>
+</mapper>

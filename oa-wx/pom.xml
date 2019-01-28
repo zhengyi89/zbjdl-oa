@@ -1,0 +1,208 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.zbjdl.oa</groupId>
+		<artifactId>oa-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>oa-wx</artifactId>
+	<packaging>war</packaging>
+	<name>oa::wx</name>
+	<url></url>
+
+
+	<properties>
+		<dbinit.skip>true</dbinit.skip>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.zbjdl.common.weixin</groupId>
+			<artifactId>weixin-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.zbjdl.oa</groupId>
+			<artifactId>oa-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.zbjdl.common.utils</groupId>
+			<artifactId>zbjdl-springboot-starter-dubbo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zbjdl.common.utils</groupId>
+			<artifactId>zbjdl-springboot-starter-config</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+		</dependency>
+
+		<!-- 查询组件 start -->
+		<dependency>
+			<groupId>com.zbjdl.utils</groupId>
+			<artifactId>zbjdl-query</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zbjdl.utils</groupId>
+			<artifactId>zbjdl-queryview</artifactId>
+		</dependency>
+
+		<!-- 查询组件 end -->
+		<dependency>
+			<groupId>org.springframework.mobile</groupId>
+			<artifactId>spring-mobile-device</artifactId>
+		</dependency>
+
+		<!-- spring-boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
+		</dependency>
+
+		<!-- Jasper -->
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Sitemesh -->
+		<dependency>
+			<groupId>org.sitemesh</groupId>
+			<artifactId>sitemesh</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>org.patchca</groupId>
+			<artifactId>patchca</artifactId>
+			<version>0.5.0</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		
+		 <dependency>  
+            <groupId>com.google.zxing</groupId>  
+            <artifactId>javase</artifactId>  
+            <version>3.0.0</version>  
+        </dependency>  
+
+		<!-- Gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.4</version>
+		</dependency>
+		
+		<!-- admin-api -->
+		<dependency>
+			<groupId>com.zbjdl.admin</groupId>
+			<artifactId>admin-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zbjdl.admin</groupId>
+			<artifactId>admin-api</artifactId>
+		</dependency>
+		
+	</dependencies>
+	<build>
+		<finalName>oa-wx</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework</groupId>
+				<artifactId>springloaded</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

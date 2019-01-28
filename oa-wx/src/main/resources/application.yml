@@ -1,0 +1,90 @@
+spring:
+    profiles:
+        active: production
+    mvc:
+        view:
+            prefix: /WEB-INF/views/
+            suffix: .jsp
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.120.206/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        validation-query: select 1 from dual
+        test-on-borrow: true
+        username: root
+        password: mysql
+
+# REDIS (RedisProperties)
+    redis:
+        host: redis.yunpal.in
+        port: 6379 
+        pool:
+            max-idle: 300 # pool settings ...
+            max-active: 600
+            max-wait: 1000
+#mybatis:
+#    config: classpath:mybatisConfig.xml
+
+
+endpoints:
+    jmx:
+        enabled: false 
+
+server:
+    contextPath: /ransomfloor-wx
+    port: 9025
+    sms:
+        url: http://172.16.10.169:9019/dynamicpassword-web/sms
+    admin-boss:
+        url: http://ztfang.yunpal.cn/admin-boss
+
+logging:
+    level:
+        com:
+            hengbao:
+                utils:
+                    query: DEBUG
+
+registry-address: 192.168.120.219:2181
+service-group: hengbao-service-group
+service-version: 1.0.0
+
+hengbao:
+    dubbo:
+        app: ransomfloor-wx
+        registry_address: registry.yunpal.in:2181
+
+---
+
+spring:
+    profiles: development
+    
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+
+
+server:
+    port: 8093
+
+---
+spring:
+    profiles: production
+
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://mysqldb.yunpal.in/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        validation-query: select 1 from dual
+        test-on-borrow: true
+        username: root
+        password: m&tpI4boxy7H
+
+server:
+    contextPath: /ransomfloor-wx
+    port: 9025
+    sms:
+        url: http://172.16.10.169:9019/dynamicpassword-web/sms
+    admin-boss:
+        url: http://172.16.10.171:9034/admin-boss        
+        

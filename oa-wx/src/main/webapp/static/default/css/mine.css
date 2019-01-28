@@ -1,0 +1,594 @@
+body,html{height:100%;-webkit-tap-highlight-color:transparent;background-color:#f2f2f2;color:#333;font-family:"Microsoft YaHei";font-size:14px;}
+body{overflow-x:hidden;}
+ul,li{list-style-type:none;margin:0px;padding:0px;}
+table,tr,th,td{border-collapse:collapse;}
+a,input{outline:0px;}
+input,select{font-family:"Microsoft YaHei";}
+.p_0{padding:0px!important;}
+.pt_10{padding-top:10px;}
+.pt_60{padding-top:60px;}
+.pb_36{padding-bottom:36px;}
+.mt_0{margin-top:0px!important;}
+.mt_10{margin-top:10px;}
+.line_30{line-height:30px;}
+.bg_angpao{background:#ebe2b8;}
+.mine_btn_primary{padding:0 15px;margin-top:3em;}
+.refresh{line-height:50px;font-size:12px;color:#999;text-align:center;}
+.container{height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:70px;}
+.p_none{padding-bottom:0px;}
+@media screen and (min-width:480px){
+  .container{padding-bottom:1px;}
+  .p_none{padding-bottom:0px;}
+  .weui_btn{font-size:24px;}
+  .weui_text_area .weui_msg_title{font-size:30px;margin-bottom:10px;}
+  .weui_text_area .weui_msg_desc{font-size:20px;}
+  .weui_icon_msg:before{font-size:120px;}
+  .weui_panel_hd{font-size:18px;}
+  .weui_media_bd .weui_media_title,.weui_media_text .weui_media_title{font-size:22px;}
+  .weui_media_bd .weui_media_desc,.weui_media_text .weui_media_desc{font-size:16px;}
+  .refresh{line-height:75px;font-size:18px;}
+  .weui_cells_title{font-size:20px;}
+  .weui_cell{font-size:20px;padding:15px 25px;}
+}
+/*----------输入框组规范----------*/
+.mine_form{position:relative;margin-top:10px;background:#fff;}
+.mine_form:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.mine_form:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.mine_form .detail{position:relative;padding:10px 15px;line-height:30px;}
+.mine_form .detail:after{content:" ";position:absolute;bottom:0px;left:0px;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.mine_form .detail .cell{position:absolute;left:15px;top:10px;width:90px;height:30px;}
+.mine_form .detail .content{position:relative;padding-left:90px;color:#999;}
+.mine_form .detail ul.content{height:30px;}
+.mine_form .detail .content li{float:left;width:46%;}
+.mine_form .detail .content li input{width:100%;}
+.mine_form .detail .content li.s{width:4%;color:#333;}
+.mine_form .detail .content.d{position:relative;padding-left:90px;padding-right:85px;}
+.mine_form .detail .content input{width:100%;border:0;outline:0;font-size:14px;}
+.mine_form .detail .content .select{-webkit-appearance:none;border:0;outline:0;width:100%;height:30px;line-height:30px;background-color:transparent;font-size:14px;}
+.mine_form .detail .content.s:after{
+  content:" ";position:absolute;top:9px;right:0px;width:8px;height:8px;border-width:1px 1px 0px 0px;border-color:#999;border-style:solid;
+  transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);
+}
+.mine_form .detail .content .right{float:right;}
+.mine_form .detail .gain{position:absolute;right:0px;top:0px;width:100px;height:50px;line-height:50px;text-align:center;background:#eaeaea;}
+.mine_form .detail .gain:before{content:" ";position:absolute;top:0;left:0;width:1px;height:100%;border-left:1px solid #dadada;color:#dadada;}
+.mine_form .detail p.tip{position:absolute;left:105px;top:40px;padding:5px 10px;background:#fff;z-index:10001;border-radius:5px;border:1px solid red;color:red;}
+.mine_form .detail p.tip:after{
+  content:" ";position:absolute;top:-6px;left:10px;width:10px;height:10px;border-width:1px 1px 0px 0px;border-color:red;border-style:solid;background:#fff;
+  transform:rotate(-45deg);-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-o-transform:rotate(-45deg);
+}
+.mine_form .detail label.tip{position:absolute;right:35px;top:3px;padding:5px 10px;background:#fff;border-radius:5px;border:1px solid red;color:red;z-index:10002;}
+.mine_form .detail label.tip:before{font-family:"weui";content:"\EA0B";position:absolute;right:-25px;top:3px;font-size:18px;color:red;}
+.mine_form .detail label.tip:after{
+  content:" ";position:absolute;right:-6px;top:12px;width:10px;height:10px;border-width:1px 1px 0px 0px;border-color:red;border-style:solid;background:#fff;
+  transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);
+}
+.mine_form .error{padding:10px 15px;color:red;}
+@media screen and (min-width:480px){
+  .mine_form{margin-top:15px;font-size:20px;}
+  .mine_form .detail{padding:15px 25px;line-height:45px;}
+  .mine_form .detail .cell{left:25px;top:15px;width:120px;height:45px;}
+  .mine_form .detail .content{padding-left:120px;}
+  .mine_form .detail ul.content{height:45px;}
+  .mine_form .detail .content.d{padding-left:120px;padding-right:120px;}
+  .mine_form .detail .content input{width:100%;border:0;outline:0;font-size:20px;}
+  .mine_form .detail .content .select{height:45px;line-height:45px;font-size:20px;}
+  .mine_form .detail .content.s:after{top:15px;right:0px;width:12px;height:12px;border-width:2px 2px 0px 0px;}
+  .mine_form .detail .gain{width:145px;height:75px;line-height:75px;}.mine_form .detail p.tip{position:absolute;left:105px;top:40px;padding:5px 10px;background:#fff;z-index:10001;border-radius:5px;border:1px solid red;color:red;text-align:right;}
+  .mine_form .detail p.tip{left:145px;top:60px;}
+  .mine_form .detail p.tip:after{top:-7px;left:10px;width:12px;height:12px;}
+  .mine_form .detail label.tip{right:50px;top:8px;padding:5px 10px;}
+  .mine_form .detail label.tip:before{right:-35px;top:5px;font-size:24px;}
+  .mine_form .detail label.tip:after{right:-7px;top:20px;width:12px;height:12px;}
+}
+.mine_checkbox{position:relative;height:40px;padding:10px 15px;overflow:hidden;clear:both;}
+.mine_checkbox:after{content:" ";position:absolute;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;left:15px;bottom:0px;}
+.mine_checkbox .icon_check{position:absolute;width:18px;height:18px;top:21px;background:url(../images/icon_check.png);background-size:18px 18px;}
+.mine_checkbox .icon_check.ed{background:url(../images/icon_checked.png);background-size:18px 18px;}
+.mine_checkbox .checkbox{position:absolute;left:-9999em;}
+.mine_checkbox .money{float:left;padding-left:30px;line-height:40px;font-size:18px;}
+.mine_checkbox .tip{float:right;text-align:right;font-size:12px;line-height:20px;}
+.mine_checkbox .tip .bottom{color:#999;}
+@media screen and (min-width:480px){
+  .mine_checkbox{height:60px;padding:15px 25px;}
+  .mine_checkbox .icon_check{width:24px;height:24px;top:33px;background:url(../images/icon_check.png);background-size:24px 24px;}
+  .mine_checkbox .icon_check.ed{background:url(../images/icon_checked.png);background-size:24px 24px;}
+  .mine_checkbox .money{padding-left:40px;line-height:60px;font-size:26px;}
+  .mine_checkbox .tip{text-align:right;font-size:18px;line-height:30px;}
+}
+/*----------蒙层规范----------*/
+.msg{position:fixed;top:0px;left:0px;width:100%;height:100%;}
+.msg .cover{position:fixed;top:0px;left:0px;width:100%;height:100%;background:#000;opacity:0.4;filter:alpha(opacity=40);}
+.msg .dialog{position:fixed;bottom:0px;left:0px;width:100%;height:400px;background:#f5f5f5;overflow:hidden;}
+.msg .dialog .title{position:relative;height:45px;padding:0px 15px;border-bottom:1px solid #dadada;line-height:45px;font-size:16px;text-align:center;}
+.msg .dialog .title:before{
+  content:" ";position:absolute;top:19px;right:24px;width:9px;height:9px;border-width:1px 1px 0px 0px;border-color:#999;border-style:solid;
+  transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);
+}
+.msg .dialog .title:after{
+  content:" ";position:absolute;top:19px;right:11px;width:9px;height:9px;border-width:0px 0px 1px 1px;border-color:#999;border-style:solid;
+  transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);
+}
+.dialogOut{width:100%;height:45px;margin-top:20px;clear:both;position:relative;border-top:1px solid #dadada;background:#fff;}
+.dialogOut:after{content:" ";position:absolute;top:0;left:50%;z-index:10003;width:1px;height:100%;border-right:1px solid #dadada;color:#dadada;}
+.dialogOut.l:after{border-right:0px;}
+.dialogOut .dialogInput{width:50%;height:45px;float:left;background:transparent;border:0px;font-size:16px;color:#3a97db;}
+.dialogOut.l .dialogInput{width:100%;}
+.password .title{padding:10px 15px;font-size:16px;}
+.password .insert{padding:0px 15px;margin-top:30px;height:50px;font-size:0px;}
+.password .insert .content{position:relative;height:50px;}
+.password .insert .content.l{background:#fff;}
+.password .insert .content:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.password .insert .content:after{content:" ";position:absolute;bottom:0;left:0;width:1px;height:100%;border-left:1px solid #dadada;color:#dadada;}
+.password .insert .cell{position:relative;display:inline-block;margin:0;padding:0;width:16.6666667%;height:50px;}
+.password .insert .cell:before{content:" ";position:absolute;top:0;right:0;width:1px;height:100%;border-right:1px solid #dadada;color:#dadada;}
+.password .insert .cell:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.password .insert .cell input{width:100%;height:50px;background:none;border:0px;outline:0px;font-size:24px;}
+.password .lost{margin-top:15px;padding:0px 15px;text-align:right;}
+.password .lost a{color:#3a97f4;}
+.password .keybord{position:relative;width:100%;height:200px;margin-top:37px;background:#fff;}
+.password .keybord.l{position:fixed;bottom:0px;left:0px;width:100%;height:300px;background:#fff;}
+.password .keybord:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.password .keybord:after{content:" ";position:absolute;top:0;left:0;width:1px;height:100%;border-left:1px solid #dadada;color:#dadada;}
+.password .keybord li{position:relative;float:left;width:33.3333333%;height:50px;line-height:50px;text-align:center;font-size:24px;}
+.password .keybord.l li{height:75px;line-height:75px;}
+.password .keybord li.s{font-size:18px;}
+.password .keybord li:before{content:" ";position:absolute;top:0;right:0;width:1px;height:100%;border-right:1px solid #dadada;color:#dadada;}
+.password .keybord li:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+@media screen and (min-width:480px){
+  .msg .dialog{height:600px;background:#f5f5f5;}
+  .msg .dialog .title{height:70px;padding:0px 25px;line-height:70px;font-size:24px;}
+  .msg .dialog .title:before{content:" ";position:absolute;top:25px;right:37px;width:15px;height:15px;border-width:2px 2px 0px 0px;}
+  .msg .dialog .title:after{content:" ";position:absolute;top:25px;right:16px;width:15px;height:15px;border-width:0px 0px 2px 2px;}
+  .password .title{padding:15px 25px;font-size:24px;}
+  .password .insert{padding:0px 25px;margin-top:45px;height:60px;font-size:0px;}
+  .password .insert .content,.password .insert .cell{height:60px;}
+  .password .insert .cell input{width:100%;height:50px;background:none;border:0px;outline:0px;font-size:24px;}
+  .password .lost{margin-top:30px;padding:0px 25px;}
+  .password .lost a{color:#3a97f4;font-size:20px;}
+  .password .keybord{height:300px;margin-top:60px;}
+  .password .keybord.l{height:400px;}
+  .password .keybord li{height:75px;line-height:75px;font-size:36px;}
+  .password .keybord.l li{height:100px;line-height:100px;}
+  .password .keybord li.s{font-size:24px;}
+}
+/*----------功能首页规范-左侧有彩色方框版本----------*/
+.colorful_index{position:relative;margin-top:10px;background:#fff;}
+.colorful_index:before{content:" ";position:absolute;left:0px;top:0px;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.colorful_index:after{content:" ";position:absolute;left:0px;bottom:0px;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.colorful_index li{position:relative;height:40px;padding:10px 15px;line-height:40px;font-size:18px;overflow:hidden;}
+.colorful_index li.apply:before{content:" ";position:absolute;left:0px;top:0px;height:100%;width:1px;border-left:3px solid #0eb587;}
+.colorful_index li.operate:before{content:" ";position:absolute;left:0px;top:0px;height:100%;width:1px;border-left:3px solid #fc914b;}
+.colorful_index li.search:before{content:" ";position:absolute;left:0px;top:0px;height:100%;width:1px;border-left:3px solid #41aee7;}
+.colorful_index li:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.colorful_index li div:after{
+  content:" ";position:absolute;top:25px;right:15px;width:8px;height:8px;border-width:1px 1px 0px 0px;border-color:#999;border-style:solid;
+  transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);
+}
+.colorful_index li .bg_1{padding-left:55px;background:url(../images/icon_t0_apply.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_2{padding-left:55px;background:url(../images/icon_t0_operate.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_3{padding-left:55px;background:url(../images/icon_t0_search.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_4{padding-left:55px;background:url(../images/icon_deal_detail.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_5{padding-left:55px;background:url(../images/icon_deal_statistics.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_6{padding-left:55px;background:url(../images/icon_setup_unbund.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_7{padding-left:55px;background:url(../images/icon_setup_relogin.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_8{padding-left:55px;background:url(../images/icon_setup_repay.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_9{padding-left:55px;background:url(../images/icon_finance_creditcard.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_10{padding-left:55px;background:url(../images/icon_finance_manange.png) no-repeat;background-size:40px 40px;}
+.colorful_index li .bg_11{padding-left:55px;background:url(../images/icon_finance_loan.png) no-repeat;background-size:40px 40px;}
+@media screen and (min-width:480px){
+  .colorful_index{margin-top:15px;}
+  .colorful_index li{height:60px;padding:15px 25px;line-height:60px;font-size:26px;overflow:hidden;}
+  .colorful_index li.apply:before{border-left:5px solid #0eb587;}
+  .colorful_index li.operate:before{border-left:5px solid #fc914b;}
+  .colorful_index li.search:before{border-left:5px solid #41aee7;}
+  .colorful_index li div:after{top:35px;right:25px;width:12px;height:12px;border-width:2px 2px 0px 0px;}
+  .colorful_index li .bg_1,.colorful_index li .bg_2,.colorful_index li .bg_3,.colorful_index li .bg_4,
+  .colorful_index li .bg_5,.colorful_index li .bg_6,.colorful_index li .bg_7,.colorful_index li .bg_8,
+  .colorful_index li .bg_9,.colorful_index li .bg_10,.colorful_index li .bg_11{padding-left:75px;background-size:60px 60px;}
+}
+/*----------钱包-导航----------*/
+.mine_nav{position:fixed;bottom:0;left:0;width:100%;height:60px;background:#fff;}
+.mine_nav:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.mine_nav li{float:left;width:33.3333333%;font-size:12px;}
+.mine_nav li .logo{padding-top:26px;margin:10px auto 0px;width:24px;color:#999;}
+.mine_nav li .logo.bg_1{background:url(../images/icon_nav_wallet.png) no-repeat;background-size:24px 24px;}
+.mine_nav li .logo.bg_2{background:url(../images/icon_nav_finance.png) no-repeat;background-size:24px 24px;}
+.mine_nav li .logo.bg_3{background:url(../images/icon_nav_account.png) no-repeat;background-size:24px 24px;}
+.mine_nav li .logo.ed{color:#3395f7;}
+.mine_nav li .logo.ed.bg_1{background:url(../images/icon_nav_wallet_ed.png) no-repeat;background-size:24px 24px;}
+.mine_nav li .logo.ed.bg_2{background:url(../images/icon_nav_finance_ed.png) no-repeat;background-size:24px 24px;}
+.mine_nav li .logo.ed.bg_3{background:url(../images/icon_nav_account_ed.png) no-repeat;background-size:24px 24px;}
+@media screen and (min-width:480px){
+  .mine_nav{height:90px;}
+  .mine_nav li{font-size:18px;}
+  .mine_nav li .logo{padding-top:40px;margin:15px auto 0px;width:36px;color:#999;}
+  .mine_nav li .logo.bg_1{background-size:36px 36px;}
+  .mine_nav li .logo.bg_2{background-size:36px 36px;}
+  .mine_nav li .logo.bg_3{background-size:36px 36px;}
+  .mine_nav li .logo.ed.bg_1{background-size:36px 36px;}
+  .mine_nav li .logo.ed.bg_2{background-size:36px 36px;}
+  .mine_nav li .logo.ed.bg_3{background-size:36px 36px;}
+}
+/*----------钱包-顶部资产栏-带用户名and无用户名----------*/
+.wallet_account{padding:10px 15px;background:#3a97f4;color:#fff;}
+.wallet_account .username{height:30px;padding-left:40px;background:url(../images/icon_wallet_username.png) no-repeat;background-size:30px 30px;line-height:30px;}
+.wallet_account .subaccount{margin-top:40px;text-align:center;}
+.wallet_account .subaccount .number{font-size:32px;line-height:50px;}
+.wallet_account .subaccount.dis{margin-top:20px;padding-bottom:20px;}
+.wallet_account .departaccount{height:48px;padding-bottom:10px;margin-top:30px;line-height:24px;text-align:center;clear:both;}
+.wallet_account .departaccount li{float:left;width:50%;}
+.wallet_account .departaccount li .number{font-size:16px;}
+.wallet_crash_account{padding:15px;background:#3a97f4;color:#fff;}
+.wallet_crash_account .title{line-height:15px;}
+.wallet_crash_account .count{margin-top:40px;font-size:32px;text-align:right;line-height:35px;}
+@media screen and (min-width:480px){
+  .wallet_account{padding:15px 25px;}
+  .wallet_account .username{height:45px;padding-left:60px;background-size:45px 45px;line-height:45px;font-size:20px;}
+  .wallet_account .subaccount{margin-top:60px;font-size:20px;}
+  .wallet_account .subaccount .number{font-size:48px;line-height:75px;}
+  .wallet_account .subaccount.dis{margin-top:30px;padding-bottom:30px;}
+  .wallet_account .departaccount{height:72px;padding-bottom:15px;margin-top:45px;line-height:36px;font-size:20px;}
+  .wallet_account .departaccount li .number{font-size:24px;}
+  .wallet_crash_account{padding:25px;background:#3a97f4;color:#fff;}
+  .wallet_crash_account .title{line-height:25px;font-size:20px;}
+  .wallet_crash_account .count{margin-top:60px;font-size:48px;line-height:50px;}
+}
+/*----------钱包-顶部操作栏-两栏and三栏----------*/
+.wallet_operate,.wallet_crash_operate{height:50px;background:#fff;border-bottom:1px solid #dadada;clear:both;}
+.wallet_operate li,.wallet_crash_operate li{float:left;width:33.333333%;height:50px;cursor:pointer;}
+.wallet_operate li p,.wallet_crash_operate li p{width:42px;padding-left:30px;margin:15px auto;line-height:20px;}
+.wallet_operate li p.accountin,.wallet_crash_operate li p.accountin{background:url(../images/icon_wallet_accountin.png) no-repeat;background-size:20px 20px;}
+.wallet_operate li p.accountout,.wallet_crash_operate li p.accountout{background:url(../images/icon_wallet_accountout.png) no-repeat;background-size:20px 20px;}
+.wallet_operate li p.bankcard{background:url(../images/icon_wallet_bankcard.png) no-repeat;background-size:20px 20px;}
+.wallet_crash_operate li{float:left;width:50%;height:50px;cursor:pointer;}
+@media screen and (min-width:480px){
+  .wallet_operate,.wallet_crash_operate{height:75px;}
+  .wallet_operate li,.wallet_crash_operate li{height:75px;font-size:20px;}
+  .wallet_operate li p,.wallet_crash_operate li p{width:63px;padding-left:45px;margin:25px auto;line-height:30px;}
+  .wallet_operate li p.accountin,.wallet_crash_operate li p.accountin{background-size:30px 30px;}
+  .wallet_operate li p.accountout,.wallet_crash_operate li p.accountout{background-size:30px 30px;}
+  .wallet_operate li p.bankcard{background-size:30px 30px;}
+  .wallet_crash_operate li{float:left;width:50%;height:75px;cursor:pointer;}
+}
+/*----------钱包-页面入口-单行版and两行版----------*/
+.wallet_finance,.wallet_detail{position:relative;margin-top:10px;background:#fff;overflow:hidden;}
+.wallet_finance .title,.wallet_detail .title{position:relative;height:50px;padding:0px 15px;line-height:50px;font-size:16px;}
+.wallet_finance .title:before,.wallet_detail .title:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.wallet_finance .title:after,.wallet_detail .title:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_finance .content{position:relative;height:120px;line-height:60px;}
+.wallet_finance .content:before,.wallet_detail .content:before{content:" ";position:absolute;top:0;right:0;width:1px;height:100%;border-right:1px solid #dadada;color:#dadada;}
+.wallet_finance .content:after,.wallet_detail .content:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_finance .content li{position:relative;float:left;width:50%;height:60px;}
+.wallet_finance .content li:before,.wallet_detail .content li:before{content:" ";position:absolute;top:0;right:0;width:1px;height:100%;border-right:1px solid #dadada;color:#dadada;}
+.wallet_finance .content li:after,.wallet_detail .content li:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_finance .content li div{margin-top:18px;margin-left:15px;padding-left:39px;line-height:24px;}
+.wallet_finance .content li div.bg_1{background:url(../images/icon_wallet_myloan.png) no-repeat;background-size:24px 24px;}
+.wallet_finance .content li div.bg_2{background:url(../images/icon_wallet_mymanage.png) no-repeat;background-size:24px 24px;}
+.wallet_finance .content li div.bg_3{background:url(../images/icon_wallet_mydistribution.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content{position:relative;height:400px;}
+.wallet_detail .content:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_detail .content.s{height:160px;}
+.wallet_detail .content li{position:relative;float:left;width:50%;height:80px;}
+.wallet_detail .content li div{margin-top:20px;margin-left:15px;padding-left:39px;}
+.wallet_detail .content li div p.name{line-height:18px;}
+.wallet_detail .content li div p.count{line-height:22px;color:#999;}
+.wallet_detail .content li div.bg_1{background:url(../images/icon_wallet_account_crash.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_2{background:url(../images/icon_wallet_account_statement.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_3{background:url(../images/icon_wallet_account_dcrash.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_4{background:url(../images/icon_wallet_account_integration.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_5{background:url(../images/icon_wallet_account_angpao.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_6{background:url(../images/icon_wallet_account_loan.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_7{background:url(../images/icon_wallet_account_manage.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_8{background:url(../images/icon_wallet_account_distribution.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_9{background:url(../images/icon_wallet_wait_bankcard.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_10{background:url(../images/icon_wallet_wait_alipay.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_11{background:url(../images/icon_wallet_wait_weixin.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_12{background:url(../images/icon_wallet_wait_online.png) no-repeat;background-size:24px 24px;}
+.wallet_detail .content li div.bg_13{background:url(../images/icon_wallet_account_balance.png) no-repeat;background-size:24px 24px;}
+@media screen and (min-width:480px){
+  .wallet_finance,.wallet_detail{margin-top:15px;}
+  .wallet_finance .title,.wallet_detail .title{height:75px;padding:0px 25px;line-height:75px;font-size:24px;}
+  .wallet_finance .content{height:180px;line-height:90px;}
+  .wallet_finance .content li{height:90px;}
+  .wallet_finance .content li div{margin-top:27px;margin-left:25px;padding-left:60px;line-height:36px;font-size:21px;}
+  .wallet_finance .content li div.bg_1{background-size:36px 36px;}
+  .wallet_finance .content li div.bg_2{background-size:36px 36px;}
+  .wallet_finance .content li div.bg_3{background-size:36px 36px;}
+  .wallet_detail .content{height:600px;}
+  .wallet_detail .content.s{height:240px;}
+  .wallet_detail .content li{height:120px;}
+  .wallet_detail .content li div{margin-top:30px;margin-left:25px;padding-left:50px;font-size:21px;}
+  .wallet_detail .content li div p.name{line-height:24px;}
+  .wallet_detail .content li div p.count{line-height:36px;color:#999;}
+  .wallet_detail .content li div.bg_1,.wallet_detail .content li div.bg_2,.wallet_detail .content li div.bg_3,.wallet_detail .content li div.bg_4,
+  .wallet_detail .content li div.bg_5,.wallet_detail .content li div.bg_6,.wallet_detail .content li div.bg_7,.wallet_detail .content li div.bg_8,
+  .wallet_detail .content li div.bg_9,.wallet_detail .content li div.bg_10,.wallet_detail .content li div.bg_11,.wallet_detail .content li div.bg_12,
+  .wallet_detail .content li div.bg_13{background-size:36px 36px;}
+}
+/*----------钱包-账务相关现金明细----------*/
+.wallet_crash_detail{position:relative;margin-top:10px;background:#fff;overflow:hidden;}
+.wallet_crash_detail .title{position:relative;height:50px;padding:0px 15px;line-height:50px;font-size:16px;}
+.wallet_crash_detail .title:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_crash_detail.m_none{margin-top:0px;}
+.wallet_crash_detail:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.wallet_crash_detail:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_crash_detail .content li{position:relative;height:60px;clear:both;overflow:hidden;}
+.wallet_crash_detail .content li:after{content:" ";position:absolute;bottom:0;left:15px;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_crash_detail .content li div.left{float:left;height:30px;padding-left:45px;margin-top:15px;margin-left:15px;line-height:30px;font-size:16px;}
+.wallet_crash_detail .content li div.right{float:right;height:40px;margin-top:10px;margin-right:15px;line-height:20px;text-align:right;}
+.wallet_crash_detail .content li div.right .date{color:#999;font-size:12px;}
+.wallet_crash_detail .content li div.in{background:url(../images/icon_wallet_detailin.png) no-repeat;background-size:30px 30px;}
+.wallet_crash_detail .content li div.out{background:url(../images/icon_wallet_detailout.png) no-repeat;background-size:30px 30px;}
+.wallet_crash_detail .content li div.reckon{background:url(../images/icon_wallet_detailreckon.png) no-repeat;background-size:30px 30px;}
+.wallet_crash_detail .content li div.bankcard{background:url(../images/icon_wallet_wd_bankcard.png) no-repeat;background-size:30px 30px;}
+.wallet_crash_detail .content li div.alipay{background:url(../images/icon_wallet_wd_alipay.png) no-repeat;background-size:30px 30px;}
+.wallet_crash_detail .content li div.weixin{background:url(../images/icon_wallet_wd_weixin.png) no-repeat;background-size:30px 30px;}
+.wallet_crash_detail .content li div.online{background:url(../images/icon_wallet_wd_online.png) no-repeat;background-size:30px 30px;}
+.wallet_crash_detail .content li div.crash{background:url(../images/icon_wallet_wd_crash.png) no-repeat;background-size:30px 30px;}
+@media screen and (min-width:480px){
+  .wallet_crash_detail{margin-top:15px;}
+  .wallet_crash_detail .title{height:75px;padding:0px 25px;line-height:75px;font-size:24px;}
+  .wallet_crash_detail .content li{height:90px;}
+  .wallet_crash_detail .content li div.left{height:45px;padding-left:60px;margin-top:25px;margin-left:25px;line-height:45px;font-size:24px;}
+  .wallet_crash_detail .content li div.right{height:60px;margin-top:15px;margin-right:25px;line-height:30px;text-align:right;font-size:18px;}
+  .wallet_crash_detail .content li div.right .date{font-size:18px;}
+  .wallet_crash_detail .content li div.in,.wallet_crash_detail .content li div.out,.wallet_crash_detail .content li div.reckon,.wallet_crash_detail .content li div.bankcard,
+  .wallet_crash_detail .content li div.alipay,.wallet_crash_detail .content li div.weixin,.wallet_crash_detail .content li div.online,.wallet_crash_detail .content li div.crash{background-size:45px 45px;}
+}
+/*----------钱包-充值提现-金额提示----------*/
+.wallet_accountin_tip{padding:10px 15px;}
+.wallet_accountin_tip .content{height:20px;padding-left:30px;background:url(../images/icon_wallet_tip.png) no-repeat;background-size:20px 20px;line-height:20px;color:#999;}
+@media screen and (min-width:480px){
+  .wallet_accountin_tip{padding:15px 25px;}
+  .wallet_accountin_tip .content{height:30px;padding-left:45px;background-size:30px 30px;line-height:30px;font-size:21px;}
+}
+/*----------钱包-充值提现-输入金额----------*/
+.wallet_accountin_insert{position:relative;height:50px;padding-left:15px;background:#fff;line-height:50px;}
+.wallet_accountin_insert:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.wallet_accountin_insert:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_accountin_insert .name{position:absolute;top:0px;left:15px;width:85px;}
+.wallet_accountin_insert .cell{padding-left:85px;}
+.wallet_accountin_insert .cell input{width:100%;height:50px;border:0px;outline:0px;font-size:14px;}
+@media screen and (min-width:480px){
+  .wallet_accountin_insert{height:75px;padding-left:25px;line-height:75px;}
+  .wallet_accountin_insert .name{top:0px;left:25px;width:120px;font-size:21px;}
+  .wallet_accountin_insert .cell{padding-left:120px;}
+  .wallet_accountin_insert .cell input{height:75px;font-size:21px;}
+}
+/*----------钱包-理财账户-TAB----------*/
+.wallet_manage .title li{float:left;position:relative;width:33.333333%;height:40px;background:#fff;text-align:center;line-height:40px;}
+.wallet_manage .title li:before{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_manage .title li.ed{color:#3a97f4;}
+.wallet_manage .title li.ed:before{border-bottom:1px solid #3a97f4;color:#3a97f4;}
+@media screen and (min-width:480px){
+  .wallet_manage .title li{height:60px;line-height:60px;font-size:21px;}
+}
+/*----------钱包-红包账户----------*/
+.wallet_angpao_title{text-align:center;}
+.wallet_angpao_title img{width:100%;max-width:360px;}
+.wallet_angpao_content{width:100%;max-width:360px;min-height:100px;margin:-20px auto 0px auto;padding:20px 0px 30px 0px;background:#f94e46;border-radius:10px;}
+.wallet_angpao_content .detail{height:60px;padding:0px 15px;clear:both;}
+.wallet_angpao_content .detail .left{float:left;height:40px;padding-left:45px;margin-top:10px;background:url(../images/icon_wallet_angpao.png) no-repeat;background-size:30px 40px;color:#fff;font-size:12px;line-height:20px;}
+.wallet_angpao_content .detail .right{float:right;height:60px;text-align:right;color:#fad30f;font-size:18px;line-height:60px;}
+@media screen and (min-width:480px){
+  .wallet_angpao_title img{max-width:480px;}
+  .wallet_angpao_content{max-width:480px;min-height:300px;padding:30px 0px 50px 0px;}
+  .wallet_angpao_content .detail{height:90px;padding:0px 25px;}
+  .wallet_angpao_content .detail .left{height:60px;padding-left:60px;margin-top:15px;background-size:45px 60px;font-size:18px;line-height:30px;}
+  .wallet_angpao_content .detail .right{height:90px;font-size:26px;line-height:90px;}
+}
+/*----------钱包-银行卡列表-银行卡选择and支持列表and银行卡详情----------*/
+.wallet_bankcard_select{position:relative;margin-top:10px;background:#fff;overflow:hidden;}
+.wallet_bankcard_select:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.wallet_bankcard_select:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_bankcard_select .entery{position:relative;height:40px;padding:10px 15px;clear:both;}
+.wallet_bankcard_select .entery:before{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_bankcard_select .entery.ed:after{font-family:"weui";content:"\EA08";position:absolute;top:0px;right:15px;font-size:16px;line-height:60px;color:#3a97f4;}
+.wallet_bankcard_select .entery .fl{padding-left:45px;line-height:20px;}
+.wallet_bankcard_select .entery .fl .name{font-size:16px;}
+.wallet_bankcard_select .entery .fl .number{font-size:12px;color:#999;}
+.wallet_bankcard_select .entery .bank{padding-left:45px;line-height:40px;font-size:16px;}
+.wallet_bankcard_select .detail{position:relative;padding:10px 15px;line-height:30px;}
+.wallet_bankcard_select .detail:after{content:" ";position:absolute;bottom:0px;left:0px;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_bankcard_select .detail .cell{position:absolute;left:15px;top:10px;width:90px;height:30px;}
+.wallet_bankcard_select .detail .content{position:relative;padding-left:90px;color:#999;}
+.wallet_pop_warn{padding:10px;position:absolute;left:320px;top:42px;z-index:10001;border-radius:5px;border:1px solid #E64340;font-size:14px;color:#E64340;background:#fff;}
+.wallet_pop_warn .outer{display:block;width:0px;height:0px;position:absolute;top:-19px;left:10px;font-size:0px;border-width:10px;border-style:solid;border-color:transparent transparent #E64340 transparent;}
+.wallet_pop_warn .inner{display:block;width:0px;height:0px;position:absolute;top:-17px;left:11px;font-size:0px;border-width:9px;border-style:solid;border-color:transparent transparent #fff transparent;}
+@media screen and (min-width:480px){
+  .wallet_bankcard_select{margin-top:15px;}
+  .wallet_bankcard_select .entery{height:60px;padding:15px 25px;clear:both;}
+  .wallet_bankcard_select .entery.ed:after{top:0px;right:25px;font-size:24px;line-height:90px;color:#3a97f4;}
+  .wallet_bankcard_select .entery .fl{padding-left:60px;line-height:30px;}
+  .wallet_bankcard_select .entery .fl .name{font-size:24px;}
+  .wallet_bankcard_select .entery .fl .number{font-size:18px;color:#999;}
+  .wallet_bankcard_select .entery .bank{padding-left:70px;line-height:60px;font-size:24px;}
+  .wallet_bankcard_select .detail{padding:15px 25px;line-height:45px;font-size:21px;}
+  .wallet_bankcard_select .detail .cell{left:25px;top:15px;width:110px;height:45px;}
+  .wallet_bankcard_select .detail .content{padding-left:135px;}
+}
+/*----------钱包-充值提现-银行卡选择入口----------*/
+.wallet_bankcard_l{position:relative;height:40px;padding:15px 0px;margin-top:10px;background:#fff;clear:both;}
+.wallet_bankcard_l:before{content:" ";position:absolute;top:0;left:0;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.wallet_bankcard_l:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.wallet_bankcard_l .fl{padding-left:45px;margin-left:15px;line-height:20px;}
+.wallet_bankcard_l .fl .name{font-size:16px;}
+.wallet_bankcard_l .fl .number{font-size:12px;color:#999;}
+.wallet_bankcard_l .ft{position:absolute;top:0px;right:15px;margin-right:15px;}
+.wallet_bankcard_l .ft:after{
+  content:" ";position:absolute;top:29px;width:8px;height:8px;border-width:1px 1px 0px 0px;border-color:#999;border-style:solid;
+  transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);
+}
+@media screen and (min-width:480px){
+  .wallet_bankcard_l{height:60px;padding:25px 0px;margin-top:15px;}
+  .wallet_bankcard_l .fl{padding-left:60px;margin-left:25px;line-height:30px;}
+  .wallet_bankcard_l .fl .name{font-size:24px;}
+  .wallet_bankcard_l .fl .number{font-size:18px;}
+  .wallet_bankcard_l .ft:after{top:45px;width:12px;height:12px;border-width:2px 2px 0px 0px;}
+}
+/*----------钱包-银行卡-我的银行卡列表----------*/
+.wallet_bankcard_mine{height:120px;margin-top:10px;padding:0px 15px;color:#fff;}
+.wallet_bankcard_mine .bg_red{padding:10px 15px;height:100px;border-radius:5px;background:url(../images/bg_bank_red.jpg) repeat-x;}
+.wallet_bankcard_mine .bg_blue{padding:10px 15px;height:100px;border-radius:5px;background:url(../images/bg_bank_blue.jpg) repeat-x;}
+.wallet_bankcard_mine .bg_green{padding:10px 15px;height:100px;border-radius:5px;background:url(../images/bg_bank_green.jpg) repeat-x;}
+.wallet_bankcard_mine .top{height:40px;padding-left:55px;}
+.wallet_bankcard_mine .top .name{line-height:26px;font-size:16px;}
+.wallet_bankcard_mine .top .type{line-height:14px;font-size:12px;}
+.wallet_bankcard_mine .bottom{height:40px;margin-top:20px;line-height:40px;text-align:right;font-size:26px;}
+.weui_icon_area img{width:90px;}
+@media screen and (min-width:480px){
+  .wallet_bankcard_mine{height:180px;margin-top:15px;padding:0px 15px;color:#fff;}
+  .wallet_bankcard_mine .bg_red,.wallet_bankcard_mine .bg_blue,.wallet_bankcard_mine .bg_green{padding:20px;height:140px;border-radius:10px;}
+  .wallet_bankcard_mine .top{height:60px;padding-left:75px;}
+  .wallet_bankcard_mine .top .name{line-height:35px;font-size:24px;}
+  .wallet_bankcard_mine .top .type{line-height:25px;font-size:18px;}
+  .wallet_bankcard_mine .bottom{height:60px;margin-top:25px;line-height:60px;text-align:right;font-size:39px;}
+  .weui_icon_area img{width:120px;}
+}
+/*----------银行卡图标汇总----------*/
+.abc{background:url(../images/icon_bank_abc.png) no-repeat;background-size:30px 40px;}/*农业银行-ABC*/
+.boc{background:url(../images/icon_bank_boc.png) no-repeat;background-size:30px 40px;}/*中国银行-BOC*/
+.bosh{background:url(../images/icon_bank_bosh.png) no-repeat;background-size:30px 40px;}/*上海银行-BOSH*/
+.ccb{background:url(../images/icon_bank_ccb.png) no-repeat;background-size:30px 40px;}/*建设银行-CCB*/
+.ceb{background:url(../images/icon_bank_ceb.png) no-repeat;background-size:30px 40px;}/*光大银行-CEB*/
+.cgb{background:url(../images/icon_bank_cgb.png) no-repeat;background-size:30px 40px;}/*广发银行-CGB*/
+.cmb{background:url(../images/icon_bank_cmb.png) no-repeat;background-size:30px 40px;}/*招商银行-CMB*/
+.icbc{background:url(../images/icon_bank_icbc.png) no-repeat;background-size:30px 40px;}/*工商银行-ICBC*/
+.pab{background:url(../images/icon_bank_pab.png) no-repeat;background-size:30px 40px;}/*平安银行-PAB*/
+.spbd{background:url(../images/icon_bank_spbd.png) no-repeat;background-size:30px 40px;}/*浦发银行-SPBD*/
+.abc_c{background:url(../images/icon_bankc_abc.png) no-repeat;background-size:40px 40px;}/*农业银行-ABC*/
+.boc_c{background:url(../images/icon_bankc_boc.png) no-repeat;background-size:40px 40px;}/*中国银行-BOC*/
+.bosh_c{background:url(../images/icon_bankc_bosh.png) no-repeat;background-size:40px 40px;}/*上海银行-BOSH*/
+.ccb_c{background:url(../images/icon_bankc_ccb.png) no-repeat;background-size:40px 40px;}/*建设银行-CCB*/
+.ceb_c{background:url(../images/icon_bankc_ceb.png) no-repeat;background-size:40px 40px;}/*光大银行-CEB*/
+.cgb_c{background:url(../images/icon_bankc_cgb.png) no-repeat;background-size:40px 40px;}/*广发银行-CGB*/
+.cmb_c{background:url(../images/icon_bankc_cmb.png) no-repeat;background-size:40px 40px;}/*招商银行-CMB*/
+.icbc_c{background:url(../images/icon_bankc_icbc.png) no-repeat;background-size:40px 40px;}/*工商银行-ICBC*/
+.pab_c{background:url(../images/icon_bankc_pab.png) no-repeat;background-size:40px 40px;}/*平安银行-PAB*/
+.spbd_c{background:url(../images/icon_bankc_spbd.png) no-repeat;background-size:40px 40px;}/*浦发银行-SPBD*/
+@media screen and (min-width:480px){
+  .abc,.boc,.bosh,.ccb,.ceb,.cgb,.cmb,.icbc,.pab,.spbd{background-size:45px 60px;}/*浦发银行-SPBD*/
+  .abc_c,.boc_c,.bosh_c,.ccb_c,.ceb_c,.cgb_c,.cmb_c,.icbc_c,.pab_c,.spbd_c{background-size:60px 60px;}/*浦发银行-SPBD*/
+}
+/*----------金融超市-贷款----------*/
+.loan_icon_area{width:100%;}
+.loan_icon_area img{width:80%;max-width:420px;margin-bottom:20px;}
+.loan_mask_icon{width:50px;height:90px;background:url(../images/arr.png) no-repeat;position:fixed;top:0px;right:0px;z-index:10001;}
+.loan_mask_text{width:80%;max-width:400px;text-align:center;color:#fff;position:fixed;top:50%;left:50%;z-index:10002;-webkit-transform:tranlate(-50%,-50%);transform:translate(-50%,-50%);}
+.loan_index{width:100%;height:230px;text-align:center;background:#2da6f9;overflow:hidden;position:relative;}
+.loan_index img{position:absolute;width:80%;max-width:400px;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);}
+@media (min-width:400px){.loan_index{height:280px;}}
+.loan_pop_warn{padding:10px;position:absolute;left:120px;top:42px;z-index:10001;border-radius:5px;border:1px solid #E64340;font-size:14px;color:#E64340;background:#fff;}
+.loan_pop_warn .outer{display:block;width:0px;height:0px;position:absolute;top:-19px;left:10px;font-size:0px;border-width:10px;border-style:solid;border-color:transparent transparent #E64340 transparent;}
+.loan_pop_warn .inner{display:block;width:0px;height:0px;position:absolute;top:-17px;left:11px;font-size:0px;border-width:9px;border-style:solid;border-color:transparent transparent #fff transparent;}
+/*----------统计报表----------*/
+.trade_detail_select li{float:left;position:relative;width:25%;height:50px;background:#fff;text-align:center;line-height:50px;}
+.trade_detail_select li:after{content:" ";position:absolute;bottom:0;left:0;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.trade_detail_select li.ed{color:#3a97f4;z-index:1000;}
+.trade_detail_select li.ed:after{border-bottom-color:#3a97f4;color:#3a97f4;}
+.trade_detail_select li .more{display:block;width:100%;height:50px;background:#3a97f4;color:#fff;}
+.trade_detail_select.fixed{position:fixed;top:0px;left:0px;width:100%;height:50px;}
+.trade_summary{position:fixed;top:60px;bottom:10px;left:0px;right:0px;overflow-y:auto;}
+.trade_summary.result{top:10px;}
+.trade_summary .detail{position:relative;background:#fff;overflow-x:hidden;}
+.trade_summary .detail:before{content:" ";position:absolute;top:0px;left:0px;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.trade_summary .detail:after{content:" ";position:absolute;bottom:0px;left:0px;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.trade_summary .detail .title{padding:0px 15px;line-height:50px;border-bottom:1px solid #dadada;}
+.trade_summary .detail .title .ft{float:right;font-size:12px;color:#999;}
+.trade_summary .detail .content li{position:relative;padding:15px;height:20px;line-height:20px;}
+.trade_summary .detail .content li:after{content:" ";position:absolute;bottom:0px;left:15px;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.trade_summary .detail .content li p{float:left;width:33.3333333%;}
+.trade_summary .detail .content li p .bg_1{display:block;padding-left:35px;height:20px;background:url(../images/icon_trade_spending.png) no-repeat;background-size:20px 20px;}
+.trade_summary .detail .content li p .bg_2{display:block;padding-left:35px;height:20px;background:url(../images/icon_trade_revoke.png) no-repeat;background-size:20px 20px;}
+.trade_summary .detail .content li p .bg_3{display:block;padding-left:35px;height:20px;background:url(../images/icon_trade_refund.png) no-repeat;background-size:20px 20px;}
+.trade_summary .detail .content li p .bg_4{display:block;padding-left:35px;height:20px;background:url(../images/icon_trade_total.png) no-repeat;background-size:20px 20px;}
+.trade_summary .detail .content li p.count,.trade_summary .detail .content li p.money{text-align:right;color:#999;}
+.trade_summary .detail .top,.trade_summary .detail .bottom{position:relative;padding:15px 15px 15px 70px;}
+.trade_summary .detail .top .logo{position:absolute;top:45px;left:15px;width:30px;height:30px;}
+.trade_summary .detail .top .logo.weixin{background:url(../images/icon_wallet_wd_weixin.png) no-repeat;background-size:30px;}
+.trade_summary .detail .top .logo.alipay{background:url(../images/icon_wallet_wd_alipay.png) no-repeat;background-size:30px;}
+.trade_summary .detail .top .logo.bankcard{background:url(../images/icon_wallet_wd_bankcard.png) no-repeat;background-size:30px;}
+.trade_summary .detail .top .logo.crash{background:url(../images/icon_wallet_wd_crash.png) no-repeat;background-size:30px;}
+.trade_summary .detail .top .depart li,.trade_summary .detail .bottom .depart li{height:30px;line-height:30px;font-size:13px;}
+.trade_summary .detail .top .depart li p,.trade_summary .detail .bottom .depart li p{float:left;width:33.333333%;}
+.trade_summary .detail .top .depart li p.count,.trade_summary .detail .bottom .depart li p.count{text-align:center;color:#999;}
+.trade_summary .detail .top .depart li p.money,.trade_summary .detail .bottom .depart li p.money{text-align:right;color:#999;}
+.trade_summary .detail .bottom .depart li{height:20px;line-height:20px;}
+.trade_summary .detail .bottom:before{content:" ";position:absolute;left:15px;top:0px;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.trade_summary .detail .bottom .logo{position:absolute;top:15px;left:15px;width:20px;height:20px;background:url(../images/icon_trade_total.png) no-repeat;background-size:20px 20px;}
+@media screen and (min-width:480px){
+  .trade_detail_select li{height:75px;line-height:75px;font-size:20px;}
+  .trade_detail_select li .more{height:75px;}
+  .trade_detail_select.fixed{height:75px;}
+  .trade_summary{top:90px;bottom:15px;left:}
+  .trade_summary.result{top:15px;}
+  .trade_summary .detail .title{padding:0px 25px;line-height:75px;font-size:20px;}
+  .trade_summary .detail .title .ft{font-size:18px;}
+  .trade_summary .detail .content li{padding:25px;height:30px;line-height:30px;font-size:20px;}
+  .trade_summary .detail .content li:after{left:25px;}
+  .trade_summary .detail .content li p .bg_1,.trade_summary .detail .content li p .bg_2,.trade_summary .detail .content li p .bg_3,
+  .trade_summary .detail .content li p .bg_4{padding-left:45px;height:30px;background-size:30px 30px;}
+  .trade_summary .detail .content li p.count,.trade_summary .detail .content li p.money{text-align:right;color:#999;}
+  .trade_summary .detail .top,.trade_summary .detail .bottom{padding:15px 25px 15px 105px;}
+  .trade_summary .detail .top .logo{top:50px;left:25px;width:45px;height:45px;}
+  .trade_summary .detail .top .logo.weixin,.trade_summary .detail .top .logo.alipay,.trade_summary .detail .top .logo.bankcard,.trade_summary .detail .top .logo.crash{background-size:45px 45px;}
+  .trade_summary .detail .top .depart{height:120px;}
+  .trade_summary .detail .top .depart li,.trade_summary .detail .bottom .depart li{font-size:19px;line-height:40px;}
+  .trade_summary .detail .bottom .depart li{height:30px;line-height:30px;}
+  .trade_summary .detail .bottom:before{left:25px;}
+  .trade_summary .detail .bottom .logo{top:15px;left:25px;width:30px;height:30px;background-size:30px 30px;}
+}
+/*----------T0业务----------*/
+.t0_search_top{position:fixed;top:10px;left:0px;width:100%;height:100px;background:#fff;}
+.t0_search_detail .content{padding:0px 15px;}
+.t0_search_detail .content table{width:100%;text-align:center;}
+.t0_search_detail .content table tr{height:40px;}
+.t0_operate_search{position:fixed;top:0px;left:0px;width:100%;height:50px;background:#fff;}
+.t0_operate_search .date_team,.t0_search_top .date_team{padding-right:100px;}
+.t0_operate_search .date_team li,.t0_search_top .date_team li{float:left;width:42%;padding:15px 0px 15px 2%;line-height:20px;}
+.t0_operate_search .date_team li.s,.t0_search_top .date_team li.s{width:10%;}
+.t0_operate_search .btn_search{position:absolute;top:0px;right:0px;width:100px;height:50px;background:#3a97f4;color:#fff;font-size:14px;border:0;outline:0;}
+.t0_search_top .btn_search{position:absolute;top:50px;right:0px;width:100px;height:50px;background:#3a97f4;color:#fff;font-size:14px;border:0;outline:0;}
+.t0_operate_search:after,.t0_search_top:after{content:" ";position:absolute;bottom:0px;left:0px;width:100%;height:1px;border-bottom:1px solid #dadada;color:#dadada;}
+.t0_operate_detail{position:fixed;top:60px;bottom:60px;left:0px;right:0px;overflow-x:hidden;overflow-y:auto;background:#fff;border-top:1px solid #dadada;border-bottom:1px solid #dadada;clear:both;}
+.t0_search_detail{position:fixed;top:120px;bottom:10px;left:0px;right:0px;overflow-x:hidden;overflow-y:auto;background:#fff;border-top:1px solid #dadada;border-bottom:1px solid #dadada;clear:both;}
+.t0_search_detail.border_none{border-top:0px;border-bottom:0px;}
+.t0_search_detail.position_1{top:10px;}
+.t0_operate_detail .left,.t0_search_detail .left{float:left;font-size:18px;line-height:40px;padding-left:5px;}
+.t0_operate_detail .right,.t0_search_detail .right{float:right;text-align:right;font-size:12px;line-height:20px;}
+.t0_operate_detail .right .date,.t0_search_detail .right .date{color:#999;}
+.t0_operate_select{position:fixed;bottom:0px;left:0px;width:100%;height:50px;background:#fff;overflow:hidden;}
+.t0_operate_select:before{content:" ";position:absolute;top:0px;left:0px;width:100%;height:1px;border-top:1px solid #dadada;color:#dadada;}
+.t0_operate_select li{position:relative;float:left;width:50%;height:50px;text-align:center;line-height:50px;font-size:16px;}
+.t0_operate_select li:before{content:" ";position:absolute;top:0px;right:0px;width:1px;height:100%;border-right:1px solid #dadada;color:#dadada;}
+@media screen and (min-width:480px){
+  .t0_search_top{top:15px;height:150px;}
+  .t0_search_detail{top:180px;bottom:15px;}
+  .t0_search_detail.position_1{top:15px;}
+  .t0_operate_search{height:75px;background:#fff;font-size:20px;}
+  .t0_operate_search .date_team,.t0_search_top .date_team{padding-right:150px;}
+  .t0_operate_search .date_team li,.t0_search_top .date_team li{line-height:45px;font-size:20px;}
+  .t0_operate_search .btn_search{width:150px;height:75px;font-size:20px;}
+  .t0_search_top .btn_search{top:75px;width:150px;height:75px;font-size:20px;}
+  .t0_operate_detail{top:90px;bottom:90px;}
+  .t0_operate_detail .left,.t0_search_detail .left{font-size:26px;line-height:60px;padding-left:10px;}
+  .weui_cells_checkbox .weui_icon_checked:before{font-size:30px;}
+  .t0_operate_detail .right,.t0_search_detail .right{font-size:18px;line-height:30px;}
+  .t0_operate_detail .right .date,.t0_search_detail .right .date{color:#999;}
+  .t0_search_detail .content{padding:0px 25px;}
+  .t0_search_detail .content table tr{height:60px;font-size:20px;}
+  .t0_operate_select{height:75px;background:#fff;overflow:hidden;}
+  .t0_operate_select li{height:75px;line-height:75px;font-size:24px;}
+}
+/*----------未开通蒙层----------*/
+.notCon{position:fixed;top:40%;width:80%;padding:15px 0px 25px 0px;border-radius:5px;}
+.notCon .img img{width:100px;}
+.notCon .tip{line-height:30px;}
+.notCon .button{width:80%;height:35px;margin-top:10px;background:#3395f8;font-size:14px;color:#fff;border:0px;border-radius:5px;}
+@media screen and (min-width:480px){
+  .notCon{font-size:20px;padding:20px 0px 30px 0px;}
+  .notCon .img img{width:140px;}
+  .notCon .tip{line-height:45px;}
+  .notCon .button{height:50px;margin-top:15px;font-size:20px;}
+}

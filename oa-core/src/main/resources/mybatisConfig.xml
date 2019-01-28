@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 实体类别名 -->
+	<typeAliases>
+		<!-- <package name="com.zbjdl.oa.model" /> -->
+		
+		<package name="com.zbjdl.oa.dto" />
+		
+	</typeAliases>
+
+	<!-- 类型转换处理器 -->
+	<typeHandlers>
+		<typeHandler
+			handler="com.zbjdl.common.respository.mybatis.AmountTypeHandler"
+			javaType="com.zbjdl.common.amount.Amount" />
+	</typeHandlers>
+
+	<!-- 映射文件 -->
+	<mappers>
+		
+		<mapper resource="sqlmap/SmsInfoMapper.xml" /><!-- 短信信息 -->
+		<mapper resource="sqlmap/WfTaskInfoMapper.xml" /><!-- 流程任务表 -->
+		<mapper resource="sqlmap/WfUserInfoMapper.xml" /><!-- 买卖方基本信息表 -->
+		<mapper resource="sqlmap/WfTaskFileMapper.xml" /><!-- 任务附件 -->
+		<mapper resource="sqlmap/BussDemandMapper.xml" /><!-- 业务需求 -->
+		<mapper resource="sqlmap/UserinfoMapper.xml" /><!-- 用户 -->
+		<mapper resource="sqlmap/NoticeMapper.xml" /><!-- 用户 -->
+		<mapper resource="sqlmap/WfTaskRemarkMapper.xml" /><!-- 任务备注表 -->
+		
+	</mappers>
+
+</configuration>

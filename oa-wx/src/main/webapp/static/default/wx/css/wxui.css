@@ -1,0 +1,168 @@
+@charset "UTF-8";
+
+/*---------- 登录部分 ----------*/
+.index_bg{width:100%;min-height:100%;background:url(../images/login_bg.jpg) center center no-repeat;background-size:cover;}
+.login_form{padding:7rem 2.5rem 0rem 2.5rem;}
+.login_form .input_box{position:relative;height:3.5rem;margin-bottom:1.7rem;padding:1rem 1rem 1rem 3.5rem;background:#fff;border-radius:5px;}
+.login_form .input_box.yzm{padding-right:8rem;}
+.login_form .input_box .icon_tel{position:absolute;top:0px;left:0px;width:3.5rem;height:3.5rem;background:url(../images/login_1.png) no-repeat;background-size:100%;}
+.login_form .input_box .icon_yzm{position:absolute;top:0px;left:0px;width:3.5rem;height:3.5rem;background:url(../images/login_2.png) no-repeat;background-size:100%;}
+.login_form .input_box input[type="text"]{width:100%;font-size:1.1rem;}
+.login_form .input_box .getyzm{position:absolute;right:1rem;top:0.75rem;padding:0px 1rem;background:#fff;border:1px solid #00d9b3;border-radius:5px;line-height:2rem;text-align:center;color:#00d9b3;font-size:1rem;}
+.login_form .input_box .err{position:absolute;top:2.9rem;left:3.5rem;z-index:999;padding:0.6rem 1.2rem 0.6rem 2.6rem;background:#fff;border-radius:5px;border:1px solid #ff4646;line-height:1.1rem;color:#ff4646;}
+.login_form .input_box .err:before{content:" ";position:absolute;top:0.6rem;left:0.8rem;width:1.1rem;height:1.1rem;background:url(../images/login_err.png) no-repeat;background-size:100%;border-radius:200%;border:1.3px solid #ff4646;line-height:1.1rem;text-align:center;}
+.login_form .input_box .err:after{transform:rotate(45deg);content:" ";position:absolute;top:-0.4rem;left:1rem;width:0.8rem;height:0.8rem;background:#fff;border-top:1px solid #ff4646;border-left:1px solid #ff4646;}
+.login_form .submit{margin-top:2.5rem;}
+.login_form .submit input{width:100%;height:3.5rem;background:#00d9b3;border-radius:5px;border:0px;color:#fff;font-size:1.35rem;}
+
+/*---------- 顶通 ----------*/
+.topbar{position:fixed;top:0px;left:0px;z-index:1000;width:100%;height:3.6rem;background:#00d9b3;line-height:3.6rem;text-align:center;color:#fff;font-size:1.4rem;}
+.topbar .return{display:block;position:absolute;left:0px;top:0px;width:3.6rem;height:3.6rem;background:url(../images/toolbar.png) center center no-repeat;background-size:100%;}
+.topbar .submit{position:absolute;top:0rem;right:1rem;font-size:1.15rem;}
+.showbox{overflow:auto;position:fixed;top:3.6rem;left:0px;right:0px;bottom:0px;}
+
+/*---------- 贷款服务 ----------*/
+.loan_service{padding-left:1rem;padding-right:1rem;}
+.loan_service .box{position:relative;height:8.1rem;margin-top:1rem;margin-bottom:1rem;padding-left:9rem;background-color:#fff;border-radius:5px;}
+.loan_service .icon{position:absolute;top:0px;left:0px;width:8.1rem;height:8.1rem;}
+.loan_service .icon.bg_1{background:url(../images/loan_service1.png) center center no-repeat;background-size:100%;}
+.loan_service .icon.bg_2{background:url(../images/loan_service2.png) center center no-repeat;background-size:100%;}
+.loan_service .icon.bg_3{background:url(../images/loan_service3.png) center center no-repeat;background-size:100%;}
+.loan_service .icon.bg_4{background:url(../images/loan_service4.png) center center no-repeat;background-size:100%;}
+.loan_service h2{padding-top:0.5rem;line-height:4rem;color:#000;font-size:1.35rem;}
+.loan_service h4{color:#868686;font-size:1.1rem;}
+
+/*---------- 置业顾问 ----------*/
+.adviser{padding-left:1rem;padding-right:1rem;}
+.adviser .box{position:relative;height:8rem;margin-top:1rem;margin-bottom:1rem;padding:1rem 1rem 1rem 9rem;background-color:#fff;border-radius:5px;line-height:1.8rem;}
+.adviser .head_portrait{overflow:hidden;position:absolute;top:1rem;left:1rem;width:5.5rem;height:5.5rem;border-radius:200%;background:url(../images/head_portrait.jpg);background-size:cover;}
+.adviser h2{line-height:2.4rem;color:#000;font-size:1.35rem;}
+.adviser h4{color:#868686;font-size:1.1rem;}
+.adviser .position{position:absolute;top:1rem;right:1rem;padding:0rem 0.7rem;border:1px solid #ff7469;border-radius:5px;line-height:1.7rem;color:#ff7469;}
+
+/*---------- 附件 ----------*/
+.options{padding-left:1rem;padding-right:1rem;}
+.options .box{position:relative;height:8rem;margin-top:1rem;margin-bottom:1rem;padding:1rem 1rem 1rem 11rem;background-color:#fff;border-radius:5px;}
+.options .picture{overflow:hidden;position:absolute;top:1rem;left:1rem;width:8rem;height:6rem;text-align:center;line-height:6rem;background:#fff;overflow:hidden;}
+.options .picture img{width:8rem;}
+.options h2{padding-bottom:0.5rem;line-height:3rem;color:#000;font-size:1.35rem;}
+.options h4{color:#868686;font-size:1.1rem;}
+#imgMsg{display:none;}
+.imgMsg{position:fixed;top:0px;left:0px;bottom:0px;right:0px;z-index:1003;background:#000;}
+.showImg{text-align:center;}
+.showImg img{position:fixed;top:50%;left:50%;z-index:1004;max-width:100%;margin-left:-50%;margin-top:-50%;}
+
+/*---------- 进度列表 ----------*/
+.schedule{position:relative;height:7.5rem;padding:1rem 1rem 1rem 7.5rem;background:#fff;border-bottom:1px solid #e3e3e3;line-height:2.5rem;}
+.schedule .head_portrait{overflow:hidden;position:absolute;top:1rem;left:1rem;width:5.5rem;height:5.5rem;border-radius:200%;background:url(../images/head_portrait.jpg);background-size:cover;}
+.schedule h2{line-height:2.5rem;color:#000;font-size:1.35rem;}
+.schedule h4{line-height:2.5rem;color:#868686;font-size:1.1rem;}
+.schedule_list{margin-top:0.75rem;padding:0rem 1rem 2rem 1rem;background:#fff;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;}
+.schedule_list .title{line-height:3.5rem;color:#868686;font-size:1.1rem;}
+.schedule_list .step{position:relative;min-height:5.2rem;padding-left:8.5rem;padding-bottom:1rem;}
+.schedule_list .step.end{min-height:0rem;}
+.schedule_list .step:before{display:block;content:" ";position:absolute;left:7rem;top:0rem;width:1px;height:100%;border-left:1px solid #c6c6c6;}
+.schedule_list .step.end:before{border-left:0px;}
+.schedule_list .step .state{position:absolute;top:0px;left:0px;width:6rem;line-height:1.5rem;text-align:center;color:#00d9b3;font-size:0.9rem;}
+.schedule_list .step .state .date{color:#b7b7ba;}
+.schedule_list .step .number{position:absolute;top:0px;left:6.25rem;width:1.5rem;height:1.5rem;background:#62a7fc;border-radius:200%;line-height:1.5rem;text-align:center;color:#fff;}
+.schedule_list .step.end .number{max-width:1.5rem;background:url(../images/schedule.png) no-repeat;background-size:100%;}
+.schedule_list .step .text{transform:translateY(-0.7rem);padding:0.7rem 1rem;text-align:justify;}
+.schedule_list .step .text.checked{background:#fff5ea;border-radius:5px;border:1px dashed #ffaf5a;}
+.schedule_list .step .text h2{padding-bottom:0.2rem;line-height:1.5rem;color:#434343;font-size:1.25rem;}
+.schedule_list .step .text h4{line-height:1.5rem;color:#868686;font-size:1.05rem;}
+
+/*---------- 我的赎楼列表 ----------*/
+.redemption{padding-left:1rem;padding-right:1rem;}
+.redemption .box{position:relative;margin-top:1rem;margin-bottom:1rem;padding:1rem 0rem 1rem 7.5rem;background-color:#fff;border-radius:5px;line-height:1.8rem;}
+.redemption h2{line-height:2.4rem;color:#000;font-size:1.35rem;}
+.redemption h4{font-size:1.1rem;color:#868686;}
+.redemption .tiping{position:absolute;top:1rem;right:1rem;width:4rem;line-height:1.7rem;color:#00d9b3;border-radius:5px;border:1px solid #00d9b3;text-align:center;}
+.redemption .tipend{position:absolute;top:1rem;right:1rem;width:4rem;line-height:1.7rem;color:#ffaf5a;border-radius:5px;border:1px solid #ffaf5a;text-align:center;}
+.redemption .icon{position:absolute;top:2.5rem;left:1rem;width:5rem;height:5rem;}
+.redemption .icon.buy{background:url(../images/icon_buy.png) no-repeat;background-size:100%;}
+.redemption .icon.sell{background:url(../images/icon_sell.png) no-repeat;background-size:100%;}
+.redemption .icon.fail{background:url(../images/icon_fail.png) no-repeat;background-size:100%;}
+
+/*---------- 我的信息&楼盘信息 ----------*/
+.datatitle{width:100%;text-align:center;}
+.datatitle img{max-width:100%;}
+.mydata .title{padding-left:1.25rem;line-height:3.1rem;font-size:1.1rem;}
+.mydata .box{overflow:hidden;background:#fff;border-bottom:1px solid #e3e3e3;line-height:4.5rem;}
+.mydata .box.bottom{border-top:1px solid #e3e3e3;}
+.mydata .box p{position:relative;padding-left:1.25rem;padding-right:1.25rem;font-size:1.25rem;color:#585858;}
+.mydata .box p:before{content:" ";position:absolute;left:1.25rem;bottom:0px;width:100%;height:1px;border-bottom:1px solid #e3e3e3;}
+.mydata .box p.last:before{border-bottom:0px;}
+.mydata .box p span{float:right;}
+.mydata .box p span.pingfang{line-height:4rem;}
+
+/*---------- 我要买房&我要卖房 ----------*/
+.submit_input{border-bottom:1px solid #e3e3e3;}
+.submit_input p{overflow:hidden;position:relative;padding:1.25rem 1.75rem;line-height:1rem;background:#fff;}
+.submit_input p:before{content:" ";position:absolute;left:1.25rem;bottom:0px;width:100%;height:1px;border-bottom:1px solid #e3e3e3;}
+.submit_input p.last:before{border-bottom:0px;}
+.submit_input p input{width:100%;font-size:1.25rem;}
+.submit_text{height:8.5rem;margin-top:0.75rem;padding:1rem;background:#fff;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;}
+.submit_text textarea{resize:none;width:100%;height:100%;font-size:1.25rem;border:0px;}
+.msg{position:fixed;top:0px;left:0px;bottom:0px;right:0px;z-index:1001;background:#000;opacity:0.3;filter:alpha(opacity=30);}
+#serviceMsg{display:none;}
+.service{position:fixed;top:40%;left:50%;z-index:1002;width:24rem;margin-top:-9rem;margin-left:-12rem;padding:7rem 2rem 2rem;background:#fff;border-radius:5px;}
+.service .text{line-height:2rem;text-align:center;font-size:1.25rem;}
+.service .submit{width:100%;height:3.2rem;margin-top:2rem;}
+.service .submit input{width:100%;height:100%;background:#00d9b3;border-radius:5px;border:0px;color:#fff;font-size:1.25rem;}
+.service .title{position:absolute;top:-3rem;left:50%;width:9.6rem;height:9.6rem;margin-left:-4.8rem;background:url(../images/service.png) no-repeat;background-size:100%;}
+
+/*---------- 我的赎房详情 ----------*/
+.project{position:relative;padding-left:1.5rem;background:#fff;border-bottom:1px solid #e3e3e3;}
+.project h2{line-height:3.5rem;color:#000;font-size:1.25rem;}
+.project h4{padding-bottom:1rem;color:#868686;font-size:1.1rem;}
+.project .circleOuter{position:absolute;top:1.7rem;right:2rem;width:6.5rem;height:6.5rem;background:url(../images/circleBg.png);background-size:100%;}
+.project .circle{position:absolute;top:0.5rem;left:0.5rem;width:5.5rem;height:5.5rem;}
+.about_pay{margin-top:0.75rem;padding:1rem 1.5rem;background:#fff;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;line-height:2.5rem;color:#585858;font-size:1.25rem;}
+.about_pay input{float:right;width:5.5rem;height:2.5rem;background:#00d9b3;border-radius:5px;color:#fff;font-size:1.1rem;}
+.project_list{margin-top:0.75rem;padding-left:1.5rem;background:#fff;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;}
+.project_list .message{position:relative;height:4.5rem;padding:1rem 0rem 1rem 3.5rem;line-height:2.5rem;color:#585858;font-size:1.25rem;}
+.project_list .message:before{content:" ";position:absolute;left:0px;bottom:0px;width:100%;height:1px;border-bottom:1px solid #e3e3e3;}
+.project_list .message.last:before{border:0px;}
+.project_list .message:after{content:" ";position:absolute;right:1.5rem;top:1.75rem;transform:rotate(45deg);width:0.8rem;height:0.8rem;border-top:2px solid #bcbcbc;border-right:2px solid #bcbcbc;}
+.project_list .message .icon{position:absolute;left:0rem;top:1rem;width:2.5rem;height:2.5rem;}
+.project_list .message .icon.bg_1{background:url(../images/project_1.png) no-repeat;background-size:100%;}
+.project_list .message .icon.bg_2{background:url(../images/project_2.png) no-repeat;background-size:100%;}
+.project_list .message .icon.bg_3{background:url(../images/project_3.png) no-repeat;background-size:100%;}
+.project_list .message .icon.bg_4{background:url(../images/project_4.png) no-repeat;background-size:100%;}
+
+/*---------- 付款明细 ----------*/
+.paydetail_top{
+  width:100%;padding-bottom:2.5rem;text-align:center;
+  filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#00d9b3,endcolorstr=#29def3,gradientType=0);
+  -ms-filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#00d9b3,endcolorstr=#29def3,gradientType=0);/*IE8*/
+  background:#00d9b3; /* 一些不支持背景渐变的浏览器 */
+  background:-moz-linear-gradient(top, #00d9b3, #29def3);
+  background:-webkit-gradient(linear, 0 0, 0 bottom, from(#00d9b3), to(#29def3));
+  background:-o-linear-gradient(top, #00d9b3, #29def3);}
+.paydetail_top .title{line-height:4.5rem;color:#fff;font-size:1.3rem;}
+.paydetail_top .code{display:inline-block;width:23rem;height:22rem;padding:2rem;background:#fff;border-radius:5px;}
+.paydetail_top .code img{max-width:18rem;}
+.paydetail_bottom{width:100%;margin-top:2rem;}
+.paydetail_bottom td{padding-left:3rem;padding-bottom:2rem;color:#868686;font-size:1.25rem;}
+.paydetail_bottom tfoot{border-top:1px solid #e3e3e3;}
+.paydetail_bottom tfoot td{padding-top:1.5rem;}
+
+/*---------- 意见反馈 ----------*/
+.suggestion{height:14rem;padding:1rem;background:#fff;border-bottom:1px solid #e3e3e3;}
+.suggestion textarea{resize:none;width:100%;height:100%;border:0px;font-size:1.25rem;}
+
+/*---------- 关于赎楼 ----------*/
+.about{background:#fcf7df;color:#bd7400;font-family:"黑体";text-align:justify;}
+.about .banner img{width:100%;}
+.about .title1{float:left;width:11rem;height:2.5rem;background:url(../images/about_title1.jpg) no-repeat;background-size:100%;}
+.about .title2{float:right;width:11rem;height:4.5rem;background:url(../images/about_title2.jpg) no-repeat;background-size:100%;}
+.about .tip2{float:left;width:4rem;height:4.5rem;background:url(../images/about_tip2.jpg) no-repeat;background-size:100%;}
+.about .text{padding:1.2rem;font-size:1.1rem;line-height:2rem;}
+.about .text img{float:left;width:6rem;}
+.about .about_list{padding-top:0.5rem;padding-bottom:0.5rem;font-size:1.2rem;}
+.about .about_list li{position:relative;width:100%;height:5rem;margin-top:1rem;margin-bottom:1rem;padding:1rem 1.2rem;background:#f7eec5;}
+.about .about_list li:before{content:" ";position:absolute;top:0.3rem;left:0rem;width:100%;height:1px;border-bottom:0.1rem dashed #bd7400;}
+.about .about_list li:after{content:" ";position:absolute;bottom:0.3rem;left:0rem;width:100%;height:1px;border-top:0.1rem dashed #bd7400;}
+.about .about_list li .detail{display:table-cell;height:3rem;vertical-align:middle;line-height:1.5rem;}
+.about .about_list li .detail span{display:inline-block;vertical-align:middle;}

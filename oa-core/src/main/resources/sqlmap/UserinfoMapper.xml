@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zbjdl.oa.repository.UserinfoRepository" >
+  <resultMap id="BaseResultMap" type="com.zbjdl.oa.model.Userinfo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="USER_NO" property="userNo" jdbcType="VARCHAR" />
+    <result column="NAME_A" property="nameA" jdbcType="VARCHAR" />
+    <result column="PHONE_A" property="phoneA" jdbcType="VARCHAR" />
+    <result column="ID_CARD_A" property="idCardA" jdbcType="VARCHAR" />
+    <result column="NAME_B" property="nameB" jdbcType="VARCHAR" />
+    <result column="PHONE_B" property="phoneB" jdbcType="VARCHAR" />
+    <result column="ID_CARD_B" property="idCardB" jdbcType="VARCHAR" />
+    <result column="MARRY_TYPE" property="marryType" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="RELATION" property="relation" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_NO, NAME_A, PHONE_A, ID_CARD_A, NAME_B, PHONE_B, ID_CARD_B, MARRY_TYPE, 
+    USER_TYPE, RELATION, CREATE_TIME, UPDATE_TIME
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="findByNo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_no = #{no,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="findByMobile" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where phone_a = #{mobile,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_info
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="save" parameterType="com.zbjdl.oa.model.Userinfo" keyProperty="id" useGeneratedKeys="true">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userNo != null" >
+        USER_NO,
+      </if>
+      <if test="nameA != null" >
+        NAME_A,
+      </if>
+      <if test="phoneA != null" >
+        PHONE_A,
+      </if>
+      <if test="idCardA != null" >
+        ID_CARD_A,
+      </if>
+      <if test="nameB != null" >
+        NAME_B,
+      </if>
+      <if test="phoneB != null" >
+        PHONE_B,
+      </if>
+      <if test="idCardB != null" >
+        ID_CARD_B,
+      </if>
+      <if test="marryType != null" >
+        MARRY_TYPE,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE,
+      </if>
+      <if test="relation != null" >
+        RELATION,
+      </if>
+        CREATE_TIME,
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userNo != null" >
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="nameA != null" >
+        #{nameA,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneA != null" >
+        #{phoneA,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardA != null" >
+        #{idCardA,jdbcType=VARCHAR},
+      </if>
+      <if test="nameB != null" >
+        #{nameB,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneB != null" >
+        #{phoneB,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardB != null" >
+        #{idCardB,jdbcType=VARCHAR},
+      </if>
+      <if test="marryType != null" >
+        #{marryType,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        #{relation,jdbcType=VARCHAR},
+      </if>
+      sysdate(),
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+    <selectKey resultType="java.lang.Long" keyProperty="id">  
+      select LAST_INSERT_ID() as id
+    </selectKey>
+  </insert>
+  <update id="update" parameterType="com.zbjdl.oa.model.Userinfo" >
+    update user_info
+    set USER_NO = #{userNo,jdbcType=VARCHAR},
+      NAME_A = #{nameA,jdbcType=VARCHAR},
+      PHONE_A = #{phoneA,jdbcType=VARCHAR},
+      ID_CARD_A = #{idCardA,jdbcType=VARCHAR},
+      NAME_B = #{nameB,jdbcType=VARCHAR},
+      PHONE_B = #{phoneB,jdbcType=VARCHAR},
+      ID_CARD_B = #{idCardB,jdbcType=VARCHAR},
+      MARRY_TYPE = #{marryType,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=VARCHAR},
+      RELATION = #{relation,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = sysdate()
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="findList" parameterType="com.zbjdl.oa.model.Userinfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    <where>
+    <trim prefix="(" prefixOverrides="and" suffix=")">
+      <if test="userNo != null" >
+       and USER_NO = #{userNo,jdbcType=VARCHAR}
+      </if>
+      <if test="nameA != null" >
+       and NAME_A = #{nameA,jdbcType=VARCHAR}
+      </if>
+      <if test="phoneA != null" >
+       and PHONE_A = #{phoneA,jdbcType=VARCHAR}
+      </if>
+      <if test="idCardA != null" >
+       and ID_CARD_A = #{idCardA,jdbcType=VARCHAR}
+      </if>
+      <if test="nameB != null" >
+       and NAME_B = #{nameB,jdbcType=VARCHAR}
+      </if>
+      <if test="phoneB != null" >
+       and PHONE_B = #{phoneB,jdbcType=VARCHAR}
+      </if>
+      <if test="idCardB != null" >
+       and ID_CARD_B = #{idCardB,jdbcType=VARCHAR}
+      </if>
+      <if test="marryType != null" >
+       and MARRY_TYPE = #{marryType,jdbcType=VARCHAR}
+      </if>
+      <if test="userType != null" >
+       and USER_TYPE = #{userType,jdbcType=VARCHAR}
+      </if>
+      <if test="relation != null" >
+       and RELATION = #{relation,jdbcType=VARCHAR}
+      </if>
+    </trim>
+    </where>
+  </select>
+</mapper>

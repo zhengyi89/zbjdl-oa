@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="queryService" class="com.zbjdl.utils.query.impl.QueryServiceImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="querys">
+			<map>
+				<entry key="querySmsInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT  sms.ID id,
+										sms.SERIAL_NO serialno,
+										sms.SEND_TIME sendtime,
+										sms.RECEIVE_NAME receivename,
+										sms.RECEIVE_MOBILE receivemobile,
+										sms.BIZ_NO bizno,
+										sms.SMS_STATE smsstate,
+										sms.ORI_SERIAL_NO oriserialno,
+										sms.SMS_DETAIL smsdetail
+								 FROM SMS_INFO sms
+								WHERE 1=1 
+								      /~bizNo: and sms.BIZ_NO = {bizNo,string} ~/
+								      /~receiveName: and  instr(sms.RECEIVE_NAME,{receiveName,string})> 0 ~/
+								      /~receiveMobile: and sms.RECEIVE_MOBILE = {receiveMobile,string} ~/
+								      /~sendTime1: and sms.SEND_TIME >= {sendTime1,mintimestamp} ~/
+  									  /~sendTime2: and sms.SEND_TIME <= {sendTime2,nexttimestamp}~/
+  									  order by sms.SEND_TIME desc
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				
+				<entry key="queryNotice">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT  n.ID AS id,
+										n.SERIAL_NO AS bizno,
+										n.TITLE AS title,
+										n.CONTENT AS content,
+										n.CREATE_USER AS creuser,
+										n.CREATE_TIME AS cretime,
+										n.CREATE_USERID AS creuserid,
+										n.DEMO_1 as dem1
+								 FROM notice n
+								WHERE 1=1 
+								      /~title: and  instr(n.TITLE,{title,string})> 0 ~/
+								      /~cretime1: and n.CREATE_TIME >= {cretime1,mintimestamp} ~/
+  									  /~cretime2: and n.CREATE_TIME <= {cretime2,nexttimestamp}~/
+  									  order by n.DEMO_1 desc
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+
+				<entry key="queryTaskInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT DISTINCT
+									RES.ID_ as taskid,
+									RES.PROC_INST_ID_ as processInstanceId,
+										t.ID AS id,
+										t.TASK_NO AS taskno,
+										t.USER_NAME AS username,
+										(select user1.USERNAME from ransomfloor_admin.tbl_user user1 where user1.USERID = t.MEDIATION_NAME) as mediationname,
+										t.BUSINESS_SOURCE as businesssource,
+										seller.NAME_A AS sellername,
+										RES.NAME_ as taskname,
+									seller.SELLER_SOLUTION_AMOUNT as sellersolutionamount,
+										t.CREATE_TIME AS createtime,
+										buyer.NAME_A AS buyername,
+										t.STATUS as status
+									FROM
+										ACT_RU_TASK RES
+									LEFT JOIN ACT_RU_IDENTITYLINK I ON I.TASK_ID_ = RES.ID_
+									LEFT JOIN act_ru_execution t1 ON RES.EXECUTION_ID_ = t1.ID_
+									LEFT JOIN wf_task_info t ON t1.BUSINESS_KEY_ = t.ID
+									left JOIN WF_USER_INFO seller on t.id = seller.WF_TASK_INFO_ID AND seller.USER_TYPE = '1'
+									left join WF_USER_INFO buyer on t.id = buyer.WF_TASK_INFO_ID AND buyer.USER_TYPE = '0'
+								WHERE (1 = 1
+									/~userId: and RES.ASSIGNEE_ = {userId,string} ~/
+									OR (
+										RES.ASSIGNEE_ IS NULL
+										AND I.TYPE_ = 'candidate'
+										AND ( 1=1
+										/~userId: and I.USER_ID_ = {userId,string} ~/
+											OR I.GROUP_ID_ IN (SELECT ur.roleid from ransomfloor_admin.TBL_USERANDROLERELATION ur
+											where ur.USERID = (select usert1.userid from ransomfloor_admin.tbl_user usert1
+													WHERE 1=1 /~userId: and usert1.loginname = {userId,string} ~/)
+													 and ur.roleid not in (-1001,-1000,-999))
+										)
+									))
+										
+								      /~taskNo: and  instr(t.TASK_NO,{taskNo,string})> 0 ~/    
+								      /~userName: and instr(t.USER_NAME,{userName,string})> 0~/
+								      /~sellerName: and instr(seller.NAME_A,{sellerName,string})> 0~/
+								      /~sellerPhone: and instr(seller.PHONE_A,{sellerPhone,string})>0 ~/
+								      /~buyerName: and instr(buyer.NAME_A,{buyerName,string})>0 ~/
+								      /~buyerPhone: and instr(buyer.PHONE_A ,{buyerPhone,string}) >0 ~/
+								      /~createTimeBegin: and t.CREATE_TIME >= {createTimeBegin,mintimestamp} ~/
+  									  /~createTimeEnd: and t.CREATE_TIME <= {createTimeEnd,nexttimestamp}~/
+  									  ORDER BY RES.CREATE_TIME_ desc 
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryHasdoTaskInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT DISTINCT
+									RES.ID_ as taskid,
+									RES.PROC_INST_ID_ as processInstanceId,
+									DEF.KEY_ AS PROC_DEF_KEY_,
+									DEF.NAME_ AS PROC_DEF_NAME_,
+									t.ID AS id,
+									t.TASK_NO AS taskno,
+									t.USER_NAME AS username,
+									(select user1.USERNAME from ransomfloor_admin.tbl_user user1 where user1.USERID = t.MEDIATION_NAME) as mediationname,
+									t.BUSINESS_SOURCE as businesssource,
+									seller.NAME_A AS sellername,
+									t.APPROVAL_STEP as taskname,
+									seller.SELLER_SOLUTION_AMOUNT as sellersolutionamount,
+									t.CREATE_TIME AS createtime,
+									buyer.NAME_A AS buyername,
+									t.STATUS as status,
+									IFNULL(role.ROLENAME,t.USER_NAME) as groupname,
+									t.USER_ID as taskuserid
+									FROM
+										ACT_HI_PROCINST RES
+									LEFT OUTER JOIN ACT_RE_PROCDEF DEF ON RES.PROC_DEF_ID_ = DEF.ID_
+									left join act_ru_task task ON task.PROC_INST_ID_ = RES.PROC_INST_ID_
+									LEFT JOIN act_hi_identitylink link on link.TASK_ID_ = task.ID_ 
+									LEFT JOIN ransomfloor_admin.tbl_role role on role.ROLEID = link.GROUP_ID_
+									LEFT JOIN wf_task_info t ON RES.BUSINESS_KEY_ = t.ID
+									LEFT JOIN WF_USER_INFO seller ON t.id = seller.WF_TASK_INFO_ID
+									AND seller.USER_TYPE = '1'
+									LEFT JOIN WF_USER_INFO buyer ON t.id = buyer.WF_TASK_INFO_ID
+									AND buyer.USER_TYPE = '0'
+									WHERE ( 1=1 and
+								
+									EXISTS (
+										SELECT
+											LINK.USER_ID_
+										FROM
+											ACT_HI_IDENTITYLINK LINK
+										WHERE 1=1 
+											/~userId: and USER_ID_ = {userId,string} ~/
+										AND LINK.PROC_INST_ID_ = RES.ID_
+									))
+									AND t.`STATUS` != '0'	
+								      /~taskNo: and  instr(t.TASK_NO,{taskNo,string})> 0 ~/    
+								      /~userName: and instr(t.USER_NAME,{userName,string})> 0~/
+								      /~sellerName: and instr(seller.NAME_A,{sellerName,string})> 0~/
+								      /~sellerPhone: and instr(seller.PHONE_A,{sellerPhone,string})>0 ~/
+								      /~buyerName: and instr(buyer.NAME_A,{buyerName,string})>0 ~/
+								      /~buyerPhone: and instr(buyer.PHONE_A ,{buyerPhone,string}) >0 ~/
+								      /~createTimeBegin: and t.CREATE_TIME >= {createTimeBegin,mintimestamp} ~/
+  									  /~createTimeEnd: and t.CREATE_TIME <= {createTimeEnd,nexttimestamp}~/
+  									  
+  									  /~taskStatus == 'finish': and t.STATUS = '2'~/
+  									  /~taskStatus == 'other': and t.STATUS != '2'~/
+  									  order by t.UPDATE_TIME DESC
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryBusiTaskInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT DISTINCT
+									RES.ID_ as taskid,
+									RES.PROC_INST_ID_ as processInstanceId,
+									DEF.KEY_ AS PROC_DEF_KEY_,
+									DEF.NAME_ AS PROC_DEF_NAME_,
+									t.ID AS id,
+									t.TASK_NO AS taskno,
+									t.USER_NAME AS username,
+									(select user1.USERNAME from ransomfloor_admin.tbl_user user1 where user1.USERID = t.MEDIATION_NAME) as mediationname,
+									t.BUSINESS_SOURCE as businesssource,
+									seller.NAME_A AS sellername,
+									t.APPROVAL_STEP as taskname,
+									seller.SELLER_SOLUTION_AMOUNT as sellersolutionamount,
+									t.CREATE_TIME AS createtime,
+									buyer.NAME_A AS buyername,
+									t.STATUS as status
+								
+								FROM
+									ACT_HI_PROCINST RES
+								LEFT OUTER JOIN ACT_RE_PROCDEF DEF ON RES.PROC_DEF_ID_ = DEF.ID_
+								LEFT JOIN wf_task_info t ON RES.BUSINESS_KEY_ = t.ID
+								left JOIN WF_USER_INFO seller on t.id = seller.WF_TASK_INFO_ID AND seller.USER_TYPE = '1'
+								left join WF_USER_INFO buyer on t.id = buyer.WF_TASK_INFO_ID AND buyer.USER_TYPE = '0'
+								WHERE (1=1 
+									and (1=1 
+									/~userId: and t.MEDIATION_NAME = {userId,string} ~/
+									 OR t.NOW_LOAN_BRANCHBANK = (
+										SELECT
+											t3.ROLEID
+										FROM
+											ransomfloor_admin.tbl_userandrolerelation t3
+										WHERE
+											t3.roleid not in (-1001,-1000,-999)
+										/~userId: and t3.userid = {userId,string} ~/
+										)
+									)
+									)
+									AND t.`STATUS` != '0'	
+								      /~taskNo: and  instr(t.TASK_NO,{taskNo,string})> 0 ~/    
+								      /~userName: and instr(t.USER_NAME,{userName,string})> 0~/
+								      /~sellerName: and instr(seller.NAME_A,{sellerName,string})> 0~/
+								      /~sellerPhone: and instr(seller.PHONE_A,{sellerPhone,string})>0 ~/
+								      /~buyerName: and instr(buyer.NAME_A,{buyerName,string})>0 ~/
+								      /~buyerPhone: and instr(buyer.PHONE_A ,{buyerPhone,string}) >0 ~/
+								      /~createTimeBegin: and t.CREATE_TIME >= {createTimeBegin,mintimestamp} ~/
+  									  /~createTimeEnd: and t.CREATE_TIME <= {createTimeEnd,nexttimestamp}~/
+  									  order by t.UPDATE_TIME DESC
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryAdminTaskInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT DISTINCT
+									RES.ID_ as taskid,
+									RES.PROC_INST_ID_ as processInstanceId,
+									DEF.KEY_ AS PROC_DEF_KEY_,
+									DEF.NAME_ AS PROC_DEF_NAME_,
+									t.ID AS id,
+									t.TASK_NO AS taskno,
+									t.USER_NAME AS username,
+									(select user1.USERNAME from ransomfloor_admin.tbl_user user1 where user1.USERID = t.MEDIATION_NAME) as mediationname,
+									t.BUSINESS_SOURCE as businesssource,
+									seller.NAME_A AS sellername,
+									t.APPROVAL_STEP as taskname,
+									seller.SELLER_SOLUTION_AMOUNT as sellersolutionamount,
+									t.CREATE_TIME AS createtime,
+									buyer.NAME_A AS buyername,
+									t.STATUS as status
+								
+								FROM
+									ACT_HI_PROCINST RES
+								LEFT OUTER JOIN ACT_RE_PROCDEF DEF ON RES.PROC_DEF_ID_ = DEF.ID_
+								LEFT JOIN wf_task_info t ON RES.BUSINESS_KEY_ = t.ID
+								left JOIN WF_USER_INFO seller on t.id = seller.WF_TASK_INFO_ID AND seller.USER_TYPE = '1'
+								left join WF_USER_INFO buyer on t.id = buyer.WF_TASK_INFO_ID AND buyer.USER_TYPE = '0'
+								WHERE EXISTS (
+									select t3.ROLEID
+												FROM ransomfloor_admin.tbl_userandrolerelation t3
+									where t3.roleid = '33' 
+									/~userId: and t3.userid = {userId,string} ~/
+									)
+									
+								      /~taskNo: and  instr(t.TASK_NO,{taskNo,string})> 0 ~/    
+								      /~userName: and instr(t.USER_NAME,{userName,string})> 0~/
+								      /~sellerName: and instr(seller.NAME_A,{sellerName,string})> 0~/
+								      /~sellerPhone: and instr(seller.PHONE_A,{sellerPhone,string})>0 ~/
+								      /~buyerName: and instr(buyer.NAME_A,{buyerName,string})>0 ~/
+								      /~buyerPhone: and instr(buyer.PHONE_A ,{buyerPhone,string}) >0 ~/
+								      /~createTimeBegin: and t.CREATE_TIME >= {createTimeBegin,mintimestamp} ~/
+  									  /~createTimeEnd: and t.CREATE_TIME <= {createTimeEnd,nexttimestamp}~/
+  									  order by t.UPDATE_TIME DESC
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryRemarkTaskInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT DISTINCT
+									RES.ID_ as taskid,
+									RES.PROC_INST_ID_ as processInstanceId,
+									DEF.KEY_ AS PROC_DEF_KEY_,
+									DEF.NAME_ AS PROC_DEF_NAME_,
+									t.ID AS id,
+									t.TASK_NO AS taskno,
+									t.USER_NAME AS username,
+									(select user1.USERNAME from ransomfloor_admin.tbl_user user1 where user1.USERID = t.MEDIATION_NAME) as mediationname,
+									t.BUSINESS_SOURCE as businesssource,
+									seller.NAME_A AS sellername,
+									t.APPROVAL_STEP as taskname,
+									seller.SELLER_SOLUTION_AMOUNT as sellersolutionamount,
+									t.CREATE_TIME AS createtime,
+									buyer.NAME_A AS buyername,
+									t.STATUS as status,
+									IFNULL(role.ROLENAME,t.USER_NAME) as groupname,
+									t.USER_ID as taskuserid
+									FROM
+										ACT_HI_PROCINST RES
+									LEFT OUTER JOIN ACT_RE_PROCDEF DEF ON RES.PROC_DEF_ID_ = DEF.ID_
+									left join act_ru_task task ON task.PROC_INST_ID_ = RES.PROC_INST_ID_
+									LEFT JOIN act_hi_identitylink link on link.TASK_ID_ = task.ID_ 
+									LEFT JOIN ransomfloor_admin.tbl_role role on role.ROLEID = link.GROUP_ID_
+									LEFT JOIN wf_task_info t ON RES.BUSINESS_KEY_ = t.ID
+									LEFT JOIN WF_USER_INFO seller ON t.id = seller.WF_TASK_INFO_ID
+									AND seller.USER_TYPE = '1'
+									LEFT JOIN WF_USER_INFO buyer ON t.id = buyer.WF_TASK_INFO_ID
+									AND buyer.USER_TYPE = '0'
+									WHERE t.`STATUS` != '0' 
+									/~userId: and t.USER_ID = {userId,string} ~/
+								      /~taskNo: and  instr(t.TASK_NO,{taskNo,string})> 0 ~/    
+								      /~sellerName: and instr(seller.NAME_A,{sellerName,string})> 0~/
+								      /~sellerPhone: and instr(seller.PHONE_A,{sellerPhone,string})>0 ~/
+								      /~buyerName: and instr(buyer.NAME_A,{buyerName,string})>0 ~/
+								      /~buyerPhone: and instr(buyer.PHONE_A ,{buyerPhone,string}) >0 ~/
+								      /~createTimeBegin: and t.CREATE_TIME >= {createTimeBegin,mintimestamp} ~/
+  									  /~createTimeEnd: and t.CREATE_TIME <= {createTimeEnd,nexttimestamp}~/
+  									  
+  									  order by t.UPDATE_TIME DESC
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryRemarkIndex">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								select t1.ID as id,
+										t1.wf_task_id as wftaskid,
+										t1.remark as remark,
+										t1.create_id as createid,
+										t1.create_name as createname,
+										t1.create_date as createdate,
+										t1.update_date as updatedate
+										from wf_task_remark t1
+										where t1.wf_task_id = {taskId,string}
+								
+  									  order by t1.create_date DESC
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryTaskEditInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT DISTINCT
+									t.ID AS id,
+									t.TASK_NO AS taskno,
+									t.USER_NAME AS username,
+									(select user1.USERNAME from ransomfloor_admin.tbl_user user1 where user1.USERID = t.MEDIATION_NAME) as mediationname,
+									t.BUSINESS_SOURCE as businesssource,
+									seller.NAME_A AS sellername,
+									seller.SELLER_SOLUTION_AMOUNT as sellersolutionamount,
+									t.CREATE_TIME AS createtime,
+									buyer.NAME_A AS buyername,
+									t.STATUS as status,
+
+									t.USER_ID as taskuserid
+									FROM
+									wf_task_info t 
+									LEFT JOIN WF_USER_INFO seller ON t.id = seller.WF_TASK_INFO_ID
+									AND seller.USER_TYPE = '1'
+									LEFT JOIN WF_USER_INFO buyer ON t.id = buyer.WF_TASK_INFO_ID
+									AND buyer.USER_TYPE = '0'
+									WHERE t.`STATUS` = '0' 
+									/~userId: and t.CREATE_USER_ID = {userId,string} ~/
+								      /~taskNo: and  instr(t.TASK_NO,{taskNo,string})> 0 ~/    
+								      /~sellerName: and instr(seller.NAME_A,{sellerName,string})> 0~/
+								      /~sellerPhone: and instr(seller.PHONE_A,{sellerPhone,string})>0 ~/
+								      /~buyerName: and instr(buyer.NAME_A,{buyerName,string})>0 ~/
+								      /~buyerPhone: and instr(buyer.PHONE_A ,{buyerPhone,string}) >0 ~/
+								      /~createTimeBegin: and t.CREATE_TIME >= {createTimeBegin,mintimestamp} ~/
+  									  /~createTimeEnd: and t.CREATE_TIME <= {createTimeEnd,nexttimestamp}~/
+  									  
+  									  order by t.UPDATE_TIME DESC
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryBussDemand">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT  ID,
+										NAME,
+										PHONE,
+										ADDRESS,
+										AMOUNT,
+										TYPE,
+										NOTE,
+										WECHAT,
+										CREATE_TIME,
+										UPDATE_TIME
+								 FROM BUSS_DEMAND 
+								WHERE 1=1 
+								      /~timeFrom: and CREATE_TIME >= {timeFrom,timestamp} ~/
+								       /~timeTo: and CREATE_TIME <= {timeTo,timestamp} ~/
+								      /~type: and TYPE = {type,string} ~/
+								       /~name: and NAME = {name,string} ~/
+								        /~phone: and PHONE = {phone,string} ~/
+  									  order by CREATE_TIME desc
+                                ]]>
+							</value>
+						</property>
+						<property name="sumSelect">
+							<value>
+								select count(id)
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryCostSummary">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT
+										wf.`STATUS` AS status,
+										count(*) AS sums,
+										SUM(wfu.SELLER_SOLUTION_AMOUNT) AS solutionamountcount,
+										SUM(wf.GUARANTEE_FEE) AS guaranteefeecount,
+										SUM(wf.ASSESS_FEE) AS assessfeecount,
+										SUM(wf.ASSESS_OTHER_FEE) AS assessotherfeecount,
+										SUM(wf.NOTARY_FEE) AS notaryfeecount
+									FROM
+										wf_task_info wf
+									LEFT JOIN wf_user_info wfu ON wf.ID = wfu.WF_TASK_INFO_ID
+									WHERE 1=1
+									  AND wfu.USER_TYPE = '1'
+								      /~status: AND wf.`STATUS` = {status,string} ~/
+								      /~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  /~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+  									  GROUP BY wf.`STATUS`
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryBizSummary">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT
+										wf.`STATUS` AS status,	
+										wf.BUSINESS_SOURCE AS businesssource,
+										wf.BUSINESS_SOURCE_ADDRESS AS businesssourceaddress,
+										COUNT(*) as counts,
+										SUM(wfu.SELLER_SOLUTION_AMOUNT) AS solutionamountcount
+									FROM
+										wf_task_info wf
+									LEFT JOIN wf_user_info wfu ON wf.ID = wfu.WF_TASK_INFO_ID
+									WHERE 1=1
+										AND wfu.USER_TYPE = '1'
+								      /~status: AND wf.`STATUS` = {status,string} ~/
+								      /~businessSource: AND wf.BUSINESS_SOURCE = {businessSource,string} ~/
+								      /~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  /~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+  									  GROUP BY wf.BUSINESS_SOURCE_ADDRESS
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryFundSummary">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT
+										wf.`STATUS` AS status,
+										wf.NOW_LOAN_BANK AS nowloanbank,
+										wf.NOW_LOAN_BRANCHBANK AS nowloanbranchbank,
+										COUNT(*) AS counts,
+										SUM(wfu.SELLER_SOLUTION_AMOUNT) AS solutionamountcount
+									FROM
+										wf_task_info wf
+									LEFT JOIN wf_user_info wfu ON wf.ID = wfu.WF_TASK_INFO_ID
+									WHERE 1=1
+										AND wfu.USER_TYPE = '1'
+								      /~status: AND wf.`STATUS` = {status,string} ~/
+								      /~nowLoanBank: AND wf.NOW_LOAN_BANK = {nowLoanBank,string} ~/
+								      /~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  /~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+  									  GROUP BY wf.NOW_LOAN_BRANCHBANK
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryPerformanceSummary">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+                                SELECT
+										xianjin.xianjinamount AS xianjinamount,
+										xianjin.xianjincounts AS xianjincounts,
+										danbao.danbaoamount AS danbaoamount,
+										danbao.danbaocounts AS danbaocounts,
+										daiban.daibanamount AS daibanamount,
+										daiban.daibancounts AS daibancounts
+									FROM
+										(
+											(
+												SELECT
+													COUNT(*) AS xianjincounts,
+													SUM(wfu.SELLER_SOLUTION_AMOUNT) AS xianjinamount
+												FROM
+													wf_task_info wf
+												LEFT JOIN wf_user_info wfu ON wf.ID = wfu.WF_TASK_INFO_ID
+												WHERE 1=1
+													AND wfu.SELLER_BUSSINESS_TYPE = '0'
+													/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  				/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS xianjin,
+											(
+												SELECT
+													COUNT(*) AS danbaocounts,
+													SUM(wfu.SELLER_SOLUTION_AMOUNT) AS danbaoamount
+												FROM
+													wf_task_info wf
+												LEFT JOIN wf_user_info wfu ON wf.ID = wfu.WF_TASK_INFO_ID
+												WHERE 1=1
+													AND wfu.SELLER_BUSSINESS_TYPE = '1'
+													/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  				/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS danbao,
+											(
+												SELECT
+													COUNT(*) AS daibancounts,
+													SUM(wfu.SELLER_SOLUTION_AMOUNT) AS daibanamount
+												FROM
+													wf_task_info wf
+												LEFT JOIN wf_user_info wfu ON wf.ID = wfu.WF_TASK_INFO_ID
+												WHERE 1=1
+													AND wfu.SELLER_BUSSINESS_TYPE = '2'
+													/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  				/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS daiban
+										)
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryTransactionSummary">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+	                               SELECT
+										succ.succcounts AS succcounts,
+										baohan.baohancounts AS baohancounts,
+										bohui.bohuicounts AS bohuicounts,
+										audit.auditcounts AS auditcounts,
+										guoqi.guoqicounts AS guoqicounts,
+										going.goingcounts-bohui.bohuicounts-audit.auditcounts-guoqi.guoqicounts AS othergoing
+									FROM
+										(
+											(
+												SELECT
+													COUNT(*) AS succcounts
+												FROM
+													wf_task_info wf
+												WHERE
+													1 = 1
+												AND wf.`STATUS` = '5'
+												/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  			/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS succ,
+											(
+												SELECT
+													COUNT(*) AS baohancounts
+												FROM
+													wf_task_info wf
+												WHERE
+													1 = 1
+												AND wf.IS_ISSUE_GUARANTEE = '1'
+												/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  			/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS baohan,
+											(
+												SELECT
+													COUNT(*) AS bohuicounts
+												FROM
+													wf_task_info wf
+												WHERE
+													1 = 1
+												AND wf.`STATUS` = '3'
+												/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  			/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS bohui,
+											(
+												SELECT
+													COUNT(*) AS auditcounts
+												FROM
+													wf_task_info wf
+												WHERE
+													1 = 1
+												AND wf.`STATUS` = '8'
+												/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  			/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS audit,
+											(
+												SELECT
+													COUNT(*) AS guoqicounts
+												FROM
+													wf_task_info wf
+												WHERE
+													1 = 1
+												AND wf.`STATUS` = '9'
+												/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  			/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS guoqi,
+											(
+												SELECT
+													COUNT(*) AS goingcounts
+												FROM
+													wf_task_info wf
+												WHERE
+													1 = 1
+												AND wf.`STATUS` = '1'
+												/~createTime1: AND wf.CREATE_TIME >= {createTime1,mintimestamp} ~/
+  									  			/~createTime2: AND wf.CREATE_TIME <= {createTime2,nexttimestamp}~/
+											) AS going
+										)
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+				<entry key="queryCustomerInfo">
+					<bean class="com.zbjdl.utils.query.Query">
+						<property name="sql">
+							<value>
+                                <![CDATA[
+								SELECT
+									uuse.USER_NO AS userno,
+									uuse.NAME_A AS namea,
+									uuse.ID_CARD_A AS idcarda,
+									uuse.PHONE_A AS phonea,
+									uuse.USER_TYPE AS usertype,
+									uuse.CREATE_TIME AS ceratetime,
+									uuse.UPDATE_TIME AS updtetime
+								FROM
+									user_info uuse
+								ORDER BY
+									uuse.CREATE_TIME DESC;
+                                ]]>
+							</value>
+						</property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans>

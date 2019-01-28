@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbjdl.oa.repository.BussDemandRepository">
+	<resultMap id="BaseResultMap" type="BussDemand">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="NAME" jdbcType="VARCHAR" property="name" />
+	  <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+	  <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+	  <result column="AMOUNT" jdbcType="DECIMAL" property="amount" />
+	  <result column="TYPE" jdbcType="VARCHAR" property="type" />
+	  <result column="NOTE" jdbcType="VARCHAR" property="note" />
+	  <result column="WECHAT" jdbcType="VARCHAR" property="wechat" />
+	  <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Page_Query_Begin">
+    select * from(select t.*,rownum rn from(
+  </sql>
+  <sql id="Page_Query_End">
+  	) t where rownum &lt;= ${endRow}) where rn &gt; ${startRow}
+  </sql>
+  <sql id="Example_Where_Clause">
+    <where>
+      <trim prefix="(" prefixOverrides="and" suffix=")">
+      <if test="name != null" >
+	      and NAME = #{name,jdbcType=VARCHAR}
+	    </if>
+      <if test="phone != null" >
+	      and PHONE = #{phone,jdbcType=VARCHAR}
+	    </if>
+      <if test="address != null" >
+	      and ADDRESS = #{address,jdbcType=VARCHAR}
+	    </if>
+      <if test="amount != null" >
+	      and AMOUNT = #{amount,jdbcType=DECIMAL}
+	    </if>
+      <if test="type != null" >
+	      and TYPE = #{type,jdbcType=VARCHAR}
+	    </if>
+      <if test="note != null" >
+	      and NOTE = #{note,jdbcType=VARCHAR}
+	    </if>
+      <if test="wechat != null" >
+	      and WECHAT = #{wechat,jdbcType=VARCHAR}
+	    </if>
+      <if test="createTime != null" >
+	      and CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+	    </if>
+      <if test="updateTime != null" >
+	      and UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+	    </if>
+	  </trim>
+    </where>
+  </sql>
+  <sql id="Example_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        WECHAT = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      </trim>
+    </set>
+  </sql>
+  <sql id="Base_Column_List">
+    ID,
+    NAME,
+    PHONE,
+    ADDRESS,
+    AMOUNT,
+    TYPE,
+    NOTE,
+    WECHAT,
+    CREATE_TIME,
+    UPDATE_TIME,
+  </sql>
+  <sql id="Base_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+        NAME = #{name,jdbcType=VARCHAR},
+        PHONE = #{phone,jdbcType=VARCHAR},
+        ADDRESS = #{address,jdbcType=VARCHAR},
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+        TYPE = #{type,jdbcType=VARCHAR},
+        NOTE = #{note,jdbcType=VARCHAR},
+        WECHAT = #{wechat,jdbcType=VARCHAR},
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </trim>
+    </set>
+  </sql>
+  <sql id="Selective_Column_List">
+    <if test="name != null">
+      NAME,
+    </if>
+    <if test="phone != null">
+      PHONE,
+    </if>
+    <if test="address != null">
+      ADDRESS,
+    </if>
+    <if test="amount != null">
+      AMOUNT,
+    </if>
+    <if test="type != null">
+      TYPE,
+    </if>
+    <if test="note != null">
+      NOTE,
+    </if>
+    <if test="wechat != null">
+      WECHAT,
+    </if>
+      CREATE_TIME,
+    <if test="updateTime != null">
+      UPDATE_TIME,
+    </if>
+  </sql>
+	<sql id="Base_Value_List">
+    #{id,jdbcType=INTEGER},
+    #{name,jdbcType=VARCHAR},
+    #{phone,jdbcType=VARCHAR},
+    #{address,jdbcType=VARCHAR},
+    #{amount,jdbcType=DECIMAL},
+    #{type,jdbcType=VARCHAR},
+    #{note,jdbcType=VARCHAR},
+    #{wechat,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{updateTime,jdbcType=TIMESTAMP},
+	</sql>
+  <sql id="Selective_Value_List">
+    <if test="name != null">
+      #{name,jdbcType=VARCHAR},
+    </if>
+    <if test="phone != null">
+      #{phone,jdbcType=VARCHAR},
+    </if>
+    <if test="address != null">
+      #{address,jdbcType=VARCHAR},
+    </if>
+    <if test="amount != null">
+      #{amount,jdbcType=DECIMAL},
+    </if>
+    <if test="type != null">
+      #{type,jdbcType=VARCHAR},
+    </if>
+    <if test="note != null">
+      #{note,jdbcType=VARCHAR},
+    </if>
+    <if test="wechat != null">
+      #{wechat,jdbcType=VARCHAR},
+    </if>
+    now(),
+    <if test="updateTime != null">
+      #{updateTime,jdbcType=TIMESTAMP},
+    </if>
+  </sql>
+  
+  <select id="findList" parameterType="BussDemand" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from buss_demand
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+  </select>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from buss_demand
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <insert id="insert" parameterType="BussDemand">
+    insert into buss_demand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Base_Column_List"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Base_Value_List"/>
+    </trim>
+  </insert>
+  <insert id="save" parameterType="BussDemand">
+    insert into buss_demand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Column_List"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Value_List"/>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="BussDemand" resultType="java.lang.Integer">
+    select count(*) from buss_demand
+    <include refid="Example_Where_Clause" />
+  </select>
+  <update id="update" parameterType="BussDemand">
+    update buss_demand
+    <include refid="Example_Set_Clause"/>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="BussDemand">
+    update buss_demand
+    <include refid="Base_Set_Clause"/>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  
+  <select id="selectPageByExample" parameterType="BussDemand" resultMap="BaseResultMap">
+  	<include refid="Page_Query_Begin" />
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from buss_demand
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+    <include refid="Page_Query_End" />
+  </select>
+</mapper>

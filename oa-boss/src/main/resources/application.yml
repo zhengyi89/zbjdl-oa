@@ -1,0 +1,95 @@
+spring:
+    profiles:
+        active: production
+    mvc:
+        view:
+            prefix: /WEB-INF/views/
+            suffix: .jsp
+
+# REDIS (RedisProperties)
+    redis:
+        host: redis.yunpal.in
+        port: 6379 
+        pool:
+            max-idle: 300 # pool settings ...
+            max-active: 600
+            max-wait: 1000
+
+endpoints:
+    jmx:
+        enabled: false 
+
+server:
+    contextPath: /ransomfloor-boss
+    port: 8087
+
+logging:
+    level:
+        com:
+            hengbao:
+                utils:
+                    query: DEBUG
+
+registry-address: registry.yunpal.in:2181
+service-group: hengbao-service-group
+service-version: 1.0.0
+
+hengbao:
+    dubbo:
+        app: ransomfloor-boss
+        registry_address: registry.yunpal.in:2181
+
+---
+
+spring:
+    profiles: development
+    
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://mysqldb.yunpal.in/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        username: root
+        password: mysql
+        test-on-borrow: true
+        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计
+        filters: stat,slf4j
+        # 初始化大小，最小，最大
+        initialSize: 20
+        minIdle: 5
+        maxActive: 50
+        # 配置获取连接等待超时的时间
+        maxWait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒 
+        minEvictableIdleTimeMillis: 30000
+        validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        # 通过connectProperties属性来打开mergeSql功能慢SQL记录
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        # 合并多个DruidDataSource的监控数据
+        useGlobalDataSourceStat: true
+        #对于长时间不使用的连接强制关闭
+        removeAbandoned: true
+        #超过60分钟开始关闭空闲连接
+        removeAbandonedTimeout: 60
+        #将当前关闭动作记录到日志
+        logAbandoned: true
+
+
+server:
+    port: 8087
+---
+spring:
+    profiles: production
+
+    datasource:
+        driverClassName: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://mysqldb.yunpal.in/ransomfloor?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        username: root
+        password: m&tpI4boxy7H
+
+  
+        

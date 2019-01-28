@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbjdl.oa.repository.NoticeRepository">
+	<resultMap id="BaseResultMap" type="Notice">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="SERIAL_NO" jdbcType="VARCHAR" property="serialNo" />
+	  <result column="TITLE" jdbcType="VARCHAR" property="title" />
+	  <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+	  <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+	  <result column="CREATE_USERID" jdbcType="VARCHAR" property="createUserid" />
+	  <result column="DEMO_1" jdbcType="TIMESTAMP" property="demo1" />
+	  <result column="DEMO_2" jdbcType="VARCHAR" property="demo2" />
+	  <result column="DEMO_3" jdbcType="VARCHAR" property="demo3" />
+  </resultMap>
+  <sql id="Page_Query_Begin">
+    select * from(select t.*,rownum rn from(
+  </sql>
+  <sql id="Page_Query_End">
+  	) t where rownum &lt;= ${endRow}) where rn &gt; ${startRow}
+  </sql>
+  <sql id="Example_Where_Clause">
+    <where>
+      <trim prefix="(" prefixOverrides="and" suffix=")">
+      <if test="serialNo != null" >
+	      and SERIAL_NO = #{serialNo,jdbcType=VARCHAR}
+	    </if>
+      <if test="title != null" >
+	      and TITLE = #{title,jdbcType=VARCHAR}
+	    </if>
+      <if test="content != null" >
+	      and CONTENT = #{content,jdbcType=VARCHAR}
+	    </if>
+      <if test="createTime != null" >
+	      and CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+	    </if>
+      <if test="createUser != null" >
+	      and CREATE_USER = #{createUser,jdbcType=VARCHAR}
+	    </if>
+      <if test="createUserid != null" >
+	      and CREATE_USERID = #{createUserid,jdbcType=VARCHAR}
+	    </if>
+      <if test="demo1 != null" >
+	      and DEMO_1 = #{demo1,jdbcType=TIMESTAMP}
+	    </if>
+      <if test="demo2 != null" >
+	      and DEMO_2 = #{demo2,jdbcType=VARCHAR}
+	    </if>
+      <if test="demo3 != null" >
+	      and DEMO_3 = #{demo3,jdbcType=VARCHAR}
+	    </if>
+	  </trim>
+    </where>
+  </sql>
+  <sql id="Example_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+      <if test="serialNo != null">
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserid != null">
+        CREATE_USERID = #{createUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="demo1 != null">
+        DEMO_1 = #{demo1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="demo2 != null">
+        DEMO_2 = #{demo2,jdbcType=VARCHAR},
+      </if>
+      <if test="demo3 != null">
+        DEMO_3 = #{demo3,jdbcType=VARCHAR},
+      </if>
+      </trim>
+    </set>
+  </sql>
+  <sql id="Base_Column_List">
+    ID,
+    SERIAL_NO,
+    TITLE,
+    CONTENT,
+    CREATE_TIME,
+    CREATE_USER,
+    CREATE_USERID,
+    DEMO_1,
+    DEMO_2,
+    DEMO_3,
+  </sql>
+  <sql id="Base_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+        TITLE = #{title,jdbcType=VARCHAR},
+        CONTENT = #{content,jdbcType=VARCHAR},
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+        CREATE_USERID = #{createUserid,jdbcType=VARCHAR},
+        DEMO_1 = #{demo1,jdbcType=TIMESTAMP},
+        DEMO_2 = #{demo2,jdbcType=VARCHAR},
+        DEMO_3 = #{demo3,jdbcType=VARCHAR},
+      </trim>
+    </set>
+  </sql>
+  <sql id="Selective_Column_List">
+    <if test="serialNo != null">
+      SERIAL_NO,
+    </if>
+    <if test="title != null">
+      TITLE,
+    </if>
+    <if test="content != null">
+      CONTENT,
+    </if>
+    <if test="createTime != null">
+      CREATE_TIME,
+    </if>
+    <if test="createUser != null">
+      CREATE_USER,
+    </if>
+    <if test="createUserid != null">
+      CREATE_USERID,
+    </if>
+    <if test="demo1 != null">
+      DEMO_1,
+    </if>
+    <if test="demo2 != null">
+      DEMO_2,
+    </if>
+    <if test="demo3 != null">
+      DEMO_3,
+    </if>
+  </sql>
+	<sql id="Base_Value_List">
+    #{id,jdbcType=BIGINT},
+    #{serialNo,jdbcType=VARCHAR},
+    #{title,jdbcType=VARCHAR},
+    #{content,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{createUser,jdbcType=VARCHAR},
+    #{createUserid,jdbcType=VARCHAR},
+    #{demo1,jdbcType=TIMESTAMP},
+    #{demo2,jdbcType=VARCHAR},
+    #{demo3,jdbcType=VARCHAR},
+	</sql>
+  <sql id="Selective_Value_List">
+    <if test="serialNo != null">
+      #{serialNo,jdbcType=VARCHAR},
+    </if>
+    <if test="title != null">
+      #{title,jdbcType=VARCHAR},
+    </if>
+    <if test="content != null">
+      #{content,jdbcType=VARCHAR},
+    </if>
+    <if test="createTime != null">
+      #{createTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="createUser != null">
+      #{createUser,jdbcType=VARCHAR},
+    </if>
+    <if test="createUserid != null">
+      #{createUserid,jdbcType=VARCHAR},
+    </if>
+    <if test="demo1 != null">
+      #{demo1,jdbcType=TIMESTAMP},
+    </if>
+    <if test="demo2 != null">
+      #{demo2,jdbcType=VARCHAR},
+    </if>
+    <if test="demo3 != null">
+      #{demo3,jdbcType=VARCHAR},
+    </if>
+  </sql>
+  
+  <select id="findList" parameterType="Notice" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from notice
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+  </select>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from notice
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from notice
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="Notice">
+    delete from notice
+    <include refid="Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterType="Notice">
+    insert into notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Base_Column_List"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Base_Value_List"/>
+    </trim>
+  </insert>
+  <insert id="save" parameterType="Notice">
+    insert into notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Column_List"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Value_List"/>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="Notice" resultType="java.lang.Integer">
+    select count(*) from notice
+    <include refid="Example_Where_Clause" />
+  </select>
+  <update id="update" parameterType="Notice">
+    update notice
+    <include refid="Example_Set_Clause"/>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Notice">
+    update notice
+    <include refid="Base_Set_Clause"/>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  
+  <select id="selectPageByExample" parameterType="Notice" resultMap="BaseResultMap">
+  	<include refid="Page_Query_Begin" />
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from notice
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+    <include refid="Page_Query_End" />
+  </select>
+</mapper>

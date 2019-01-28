@@ -1,0 +1,178 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<artifactId>oa-boss</artifactId>
+	<name>oa-boss</name>
+	<packaging>war</packaging>
+	<description>boss project </description>
+	<parent>
+		<groupId>com.zbjdl.oa</groupId>
+		<artifactId>oa-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.zbjdl.oa</groupId>
+			<artifactId>oa-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.zbjdl.common.utils</groupId>
+			<artifactId>ftpclient</artifactId>
+		</dependency>
+
+		<!-- druid -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.19</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zbjdl.utils</groupId>
+			<artifactId>zbjdl-query</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zbjdl.utils</groupId>
+			<artifactId>zbjdl-queryview</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zbjdl.admin</groupId>
+			<artifactId>admin-utils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zbjdl.common.utils</groupId>
+			<artifactId>zbjdl-springboot-starter-dubbo</artifactId>
+		</dependency>
+
+
+		<!-- 获取下拉菜单的 -->
+
+		<dependency>
+			<groupId>com.zbjdl.common.utils</groupId>
+			<artifactId>zbjdl-springboot-starter-config</artifactId>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- spring-boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.h2database</groupId>
+					<artifactId>h2</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-redis</artifactId>
+		</dependency>
+
+		<!-- Jasper -->
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Sitemesh -->
+		<dependency>
+			<groupId>org.sitemesh</groupId>
+			<artifactId>sitemesh</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>javax.servlet.jsp</groupId> <artifactId>jsp-api</artifactId> 
+			<version>2.1</version> <scope>provided</scope> </dependency> -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
+		<dependency>
+		  <groupId>com.zbjdl.common</groupId>
+		<artifactId>zbjdl-common</artifactId>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<warName>oa-boss</warName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework</groupId>
+				<artifactId>springloaded</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	</project>
