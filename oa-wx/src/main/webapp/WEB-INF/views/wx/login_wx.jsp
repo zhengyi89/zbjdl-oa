@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>中天房管家</title>
+<title>大连八戒财税</title>
 <link rel="stylesheet" href="${def}/wx/css/warehouse.css" media="screen" title="no title" charset="utf-8" />
 <link rel="stylesheet" href="${def}/wx/css/wxui.css" media="screen" title="no title" charset="utf-8">
 </head>
@@ -15,15 +15,13 @@
 		<form class="login_form" id="loginForm" action="" method="">
 			<div class="input_box">
 				<p class="icon_tel"></p>
-				<input type="text" id="mobile" name="mobile" placeholder="请输入手机号" />
+					<input type="text" id="mobile" name="mobile" placeholder="请输入用户名或手机号" />
 				<p class="tip none" id="mobileTip"></p>
 			</div>
 			<div class="input_box yzm">
 				<p class="icon_yzm"></p>
-				<input type="text" id="code" name="code" placeholder="请输入短信验证码" />
-				<input type="button" class="getyzm"
-					onclick="toggleTime(this);sendMsg();" value="获取验证码" />
-				<p class="tip none" id="codeTip"></p>
+					<input type="password" id="password" name="password" placeholder="请输入密码" />
+				<p class="tip none" id="passwordTip"></p>
 			</div>
 			<div class="submit">
 				<input id="loginSubmit" type="button" value="登   录"
@@ -33,24 +31,6 @@
 	</div>
 	<script src="${ext}/js/zepto.min.js"></script>
 	<script type="text/javascript">
-	
-	
-		var countdown = 60;
-	    function toggleTime(obj){
-	      if(countdown == 0){
-	        obj.removeAttribute("disabled");
-	        obj.value="获取验证码";
-	        countdown = 60;
-	        return;
-	      }else{
-	        console.log(countdown);
-	        obj.setAttribute("disabled",true);
-	        obj.value=countdown+"s";
-	        countdown--;
-	      }
-	      setTimeout(function(){toggleTime(obj)},1000);
-	    }
-	    
 	    function checkMobile(){
 			var mobile=$("#mobile").val();
 			cssChange("mobileTip", true, "");
@@ -61,25 +41,21 @@
 			return true;
 		}
 		
-		function checkCode(){
-			var code=$("#code").val();
-			cssChange("codeTip", true, "");
-			if (code.length==0) {
-				cssChange("codeTip", false, "验证码不能为空");
-				return false;
-			}else if(code.length!=6) {
-				cssChange("codeTip", false, "验证码位6位");
+		function checkPassword(){
+			var password=$("#password").val();
+			cssChange("passwordTip", true, "");
+			if (password.length==0) {
+				cssChange("passwordTip", false, "密码不能为空");
 				return false;
 			}
 			return true;
 		}
 		
 		function checkInput(){
-			
 			if (!checkMobile()) {
 				return false;
 			}
-			if (!checkCode()) {
+			if (!checkPassword()) {
 				return false;
 			}
 			return true;
@@ -109,7 +85,7 @@
 						window.location.href = callUrl;
 						return;
 					}
-					cssChange("codeTip", false, "验证码错误");
+					cssChange("passwordTip", false, "验证码错误");
 					resetLogin();
 				},
 				error : function() {
@@ -118,26 +94,6 @@
 				}
 			});
 					
-		}
-
-		function sendMsg() {
-			if (!checkMobile()) {
-				return;
-			}
-			$.ajax({
-				url : "${ctx}/msg/send?mobile=" + $("#mobile").val(),
-				method : "GET",
-				success : function(data) {
-
-				},
-				error : function() {
-					alert("系统异常，请稍后重试");
-				}
-			});
-		}
-
-		function addErrorBorder(id, error) {
-			$("#" + id).addClass("color_red").show().html(error);
 		}
 
 		function cssChange(inputId, type, message) {

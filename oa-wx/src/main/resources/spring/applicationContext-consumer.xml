@@ -18,4 +18,8 @@
 	<dubbo:reference id="weixinUserService" interface="com.zbjdl.common.wx.service.WeixinUserService" 
 		group="${service-group}" version="${service-version}" check="false">
 	</dubbo:reference>
+	
+	<dubbo:reference id="userinfoService" interface="com.zbjdl.oa.service.UserinfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
 </beans>

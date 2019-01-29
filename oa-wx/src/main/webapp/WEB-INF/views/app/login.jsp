@@ -20,7 +20,7 @@
     <meta charset="utf-8"/>
   	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
-    <title>中天房管家</title>
+    <title>大连八戒财税</title>
     <link rel="stylesheet" href="${def}/app/css/warehouse.css" media="screen" title="no title" charset="utf-8"/>
     <link rel="stylesheet" href="${def}/app/css/wxui.css" media="screen" title="no title" charset="utf-8">
   </head>
@@ -50,22 +50,6 @@
     //初始化结束后，调用此方法去掉vc的按钮
     $(function(){ 
 
-    	if ("${os}"=="ios") {
-    		setupWebViewJavascriptBridge(function(bridge) {
-   				var uniqueId = 1
-   			});
-    		
-    		/*type: 0 登录成功跳转， 1:去掉登陆页面按钮*/
-        	WebViewJavascriptBridge.callHandler('testObjcCallbacka', {'type': '1'}, 
-        			function(response) {log('JS got response', response)});
-		}else if ("${os}"=="android" || "${os}"=="pos") {
-			android_bridge();
-	        window.WebViewJavascriptBridge.callHandler(
-		            'loginFromWeb'
-		            , {'param': {'type': '1'} }
-		            , function(responseData) { }
-		     ); 
-		}
    	}); 
     
 	//验证手机号
@@ -122,24 +106,7 @@
 				if (data.flag=='ok') {
 					var url2 = "<%=basePath %>app/flow/list?os="+"${os}";
 					var url_more = "<%=basePath %>app/more";
-					//判断终端类型，进行不同处理
-					if ("${os}"=="ios") {
-						/*type: 0 登录成功跳转， 1:去掉登陆页面按钮*/
-						WebViewJavascriptBridge.callHandler('testObjcCallbacka', 
-								{'type': '0', 'url':''+url2+'', 'url_more':''+url_more+''},
-								function(response) { });
-					}else if ("${os}"=="android" || "${os}"=="pos") {
-						var param = {'type': '0', 'url':''+url2+'', 'url_more':''+url_more+'', 'login_name':''+data.loginName+''};
-							
-				        window.WebViewJavascriptBridge.callHandler(
-				            'loginFromWeb'
-				            , {"param": param }
-				            , function(responseData) { }
-				        ); 
-					}else {
-						window.location.href= "${ctx}/app/flow/list";
-					}
-					
+					window.location.href= "${ctx}/app/flow/list";
 				}else if (data.flag == 'failed') {
 					alert(data.errorMessage);
 					resetLogin();
