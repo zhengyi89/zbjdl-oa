@@ -17,9 +17,11 @@ public class UserInfoDto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private java.lang.Long id;
+	private java.lang.String jobNo;
 	private java.lang.String userName;
 	private java.lang.String mobile;
 	private java.lang.String password;
+	private java.lang.String region;
 	private java.lang.String city;
 	private java.lang.String duty;
 	private java.lang.String status;
@@ -39,6 +41,21 @@ public class UserInfoDto implements Serializable{
 	 */
 	public Long getId() {
 		return this.id;
+	}
+	/**
+	 * 工号
+	 * @param jobNo
+	 */
+	public void setJobNo(java.lang.String jobNo) {
+		this.jobNo = jobNo;
+	}
+	
+	/**
+	 * 工号
+	 * @return
+	 */
+	public java.lang.String getJobNo() {
+		return this.jobNo;
 	}
 	/**
 	 * 用户名
@@ -84,6 +101,21 @@ public class UserInfoDto implements Serializable{
 	 */
 	public java.lang.String getPassword() {
 		return this.password;
+	}
+	/**
+	 * 区域
+	 * @param region
+	 */
+	public void setRegion(java.lang.String region) {
+		this.region = region;
+	}
+	
+	/**
+	 * 区域
+	 * @return
+	 */
+	public java.lang.String getRegion() {
+		return this.region;
 	}
 	/**
 	 * 地区

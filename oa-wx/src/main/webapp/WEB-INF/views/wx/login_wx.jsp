@@ -15,8 +15,8 @@
 		<form class="login_form" id="loginForm" action="" method="">
 			<div class="input_box">
 				<p class="icon_tel"></p>
-					<input type="text" id="mobile" name="mobile" placeholder="请输入用户名或手机号" />
-				<p class="tip none" id="mobileTip"></p>
+					<input type="text" id="userName" name="userName" placeholder="请输入用户名" />
+				<p class="tip none" id="userNameTip"></p>
 			</div>
 			<div class="input_box yzm">
 				<p class="icon_yzm"></p>
@@ -34,11 +34,11 @@
 	</div>
 	<script src="${ext}/js/zepto.min.js"></script>
 	<script type="text/javascript">
-	    function checkMobile(){
-			var mobile=$("#mobile").val();
-			cssChange("mobileTip", true, "");
-			if(mobile.length==0){
-				cssChange("mobileTip", false, "手机号不能为空");
+	    function checkUserName(){
+			var userName=$("#userName").val();
+			cssChange("userNameTip", true, "");
+			if(userName.length==0){
+				cssChange("userNameTip", false, "用户名不能为空");
 				return false;
 			} 
 			return true;
@@ -55,7 +55,7 @@
 		}
 		
 		function checkInput(){
-			if (!checkMobile()) {
+			if (!checkUserName()) {
 				return false;
 			}
 			if (!checkPassword()) {
@@ -80,13 +80,15 @@
 				async: false,
 				data : $("#loginForm").serialize(),
 				success : function(data) {
-					var status = data.status;
-					var error = wxconfig.getTip(status) || data.message;
+					var code = data.code;
+					var error = data.message;
+					console.log('code:'+code);
 					//原有逻辑不变
-					if ("ok" == status) {
+					if ("0000" == code) {
 						var callUrl = "${ctx}/bind/success?callback=${param.callback}";
-						window.location.href = callUrl;
-						return;
+						console.log('url:'+callUrl);
+						//window.location.href = callUrl;
+						//return;
 					}
 					cssChange("passwordTip", false, "验证码错误");
 					resetLogin();

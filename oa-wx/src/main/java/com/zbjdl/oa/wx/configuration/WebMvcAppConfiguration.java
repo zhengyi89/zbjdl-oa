@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.zbjdl.oa.wx.interceptor.ApplicationInterceptor;
-import com.zbjdl.oa.wx.interceptor.AppInterceptor;
 import com.zbjdl.oa.wx.interceptor.SecurityInterceptor;
 import com.zbjdl.oa.wx.interceptor.SessionInterceptor;
 
@@ -71,18 +70,6 @@ public class WebMvcAppConfiguration extends WebMvcConfigurerAdapter{
     	.excludePathPatterns("/msg/send")
     	.excludePathPatterns("/nologin/*")
     	.excludePathPatterns("/**/error");  
-
-//    	@Bean 
-//    	public AppInterceptor posAppInterceptor(){
-//    		return new AppInterceptor();
-//    	}
-//    	//Pos App 拦截
-//    	registry.addInterceptor(posAppInterceptor())
-//    	.addPathPatterns("/app/**").excludePathPatterns("/app/login").excludePathPatterns("/app/login/do");
-    	
-//    	registry.addInterceptor(applicationInterceptor())
-//    	.addPathPatterns("/**")
-//    	.excludePathPatterns("/static/**");  
 
 
     } 

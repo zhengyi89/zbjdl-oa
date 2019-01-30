@@ -87,10 +87,9 @@ public class AppBussController extends BaseController {
 					// 生成token
 					Object userId = jsonObject.get("userId");
 					Object userName = jsonObject.get("userName");
-					Object os = session.getOs();
 					Object departmentId = jsonObject.get("primaryDepartmentId");
 					String token = DESUtil.encrypt(userId + ";" + mobile + ";" + userName + ";" + departmentId + ";"
-							+ os + ";" + System.currentTimeMillis());
+							+ ";" + System.currentTimeMillis());
 					jsonObject.put("token", token);
 					result = jsonObject.toString();
 					// 设置cookie

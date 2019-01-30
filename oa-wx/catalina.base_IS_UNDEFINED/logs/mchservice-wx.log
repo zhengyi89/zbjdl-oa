@@ -31931,3 +31931,465 @@ com.alibaba.dubbo.rpc.RpcException: Failed to invoke the method queryBindUserByU
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.30.jar:8.0.30]
 	at java.lang.Thread.run(Thread.java:745) [na:1.7.0_80]
 09:32:56.992 [http-nio-9025-exec-5] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+09:42:19.930 [http-nio-9025-exec-1] ERROR c.z.oa.wx.exception.WxExceptionHandler - 系统异常
+java.lang.NullPointerException: null
+	at com.zbjdl.oa.wx.controller.UserInfoController.login(UserInfoController.java:77) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_80]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_80]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_80]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[na:1.7.0_80]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:222) ~[spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:137) ~[spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:110) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:814) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:737) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:959) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:243) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at com.zbjdl.oa.wx.configuration.WebConfiguration$2.doFilter(WebConfiguration.java:117) [classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.sitemesh.webapp.contentfilter.ContentBufferingFilter.bufferAndPostProcess(ContentBufferingFilter.java:169) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.webapp.contentfilter.ContentBufferingFilter.doFilter(ContentBufferingFilter.java:126) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.webapp.SiteMeshFilter.doFilter(SiteMeshFilter.java:120) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.config.ConfigurableSiteMeshFilter.doFilter(ConfigurableSiteMeshFilter.java:163) [sitemesh-3.0.1.jar:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:111) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:87) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:125) [spring-session-1.0.2.RELEASE.jar:na]
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:65) [spring-session-1.0.2.RELEASE.jar:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:521) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1096) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:674) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [na:1.7.0_80]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [na:1.7.0_80]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at java.lang.Thread.run(Thread.java:745) [na:1.7.0_80]
+09:44:11.591 [http-nio-9025-exec-4] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+09:44:28.918 [http-nio-9025-exec-6] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+09:44:55.647 [http-nio-9025-exec-9] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+09:47:09.328 [http-nio-9025-exec-3] INFO  c.z.oa.wx.controller.UserInfoController - user login , param is {"password":"zhangan","userName":"zhangsan"}
+09:48:29.738 [http-nio-9025-exec-5] INFO  c.z.oa.wx.controller.UserInfoController - user login , param is {"password":"zhangsan","userName":"zhangsan"}
+09:48:29.825 [http-nio-9025-exec-5] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+09:48:30.276 [http-nio-9025-exec-4] INFO  c.z.o.wx.interceptor.SecurityInterceptor - -------------用户id：307,手机号：zhangsan
+09:48:30.666 [http-nio-9025-exec-6] ERROR c.z.oa.wx.exception.WxExceptionHandler - Requested URL=http://localhost:9025/oa-wx/menu , 请求参数={type=[Ljava.lang.String;@6fca7b26}
+09:48:30.667 [http-nio-9025-exec-6] ERROR c.z.oa.wx.exception.WxExceptionHandler - Parameter conditions "type=""" OR "type=bind" not met for actual request parameters: type={oa_list}
+org.springframework.web.bind.UnsatisfiedServletRequestParameterException: Parameter conditions "type=""" OR "type=bind" not met for actual request parameters: type={oa_list}
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:238) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:370) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:310) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:60) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:351) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1120) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:932) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:243) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at com.zbjdl.oa.wx.configuration.WebConfiguration$2.doFilter(WebConfiguration.java:117) [classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.sitemesh.webapp.contentfilter.ContentBufferingFilter.bufferAndPostProcess(ContentBufferingFilter.java:169) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.webapp.contentfilter.ContentBufferingFilter.doFilter(ContentBufferingFilter.java:126) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.webapp.SiteMeshFilter.doFilter(SiteMeshFilter.java:120) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.config.ConfigurableSiteMeshFilter.doFilter(ConfigurableSiteMeshFilter.java:163) [sitemesh-3.0.1.jar:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:111) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:87) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:125) [spring-session-1.0.2.RELEASE.jar:na]
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:65) [spring-session-1.0.2.RELEASE.jar:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:521) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1096) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:674) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [na:1.7.0_80]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [na:1.7.0_80]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at java.lang.Thread.run(Thread.java:745) [na:1.7.0_80]
+09:49:51.669 [http-nio-9025-exec-2] INFO  c.z.oa.wx.controller.UserInfoController - user login , param is {"password":"zhangsan","userName":"zhangsan"}
+09:49:51.734 [http-nio-9025-exec-2] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+09:49:52.168 [http-nio-9025-exec-1] INFO  c.z.o.wx.interceptor.SecurityInterceptor - -------------用户id：307,手机号：zhangsan
+09:49:52.568 [http-nio-9025-exec-3] ERROR c.z.oa.wx.exception.WxExceptionHandler - Requested URL=http://localhost:9025/oa-wx/menu , 请求参数={type=[Ljava.lang.String;@52501de0}
+09:49:52.569 [http-nio-9025-exec-3] ERROR c.z.oa.wx.exception.WxExceptionHandler - Parameter conditions "type=""" OR "type=bind" not met for actual request parameters: type={oa_list}
+org.springframework.web.bind.UnsatisfiedServletRequestParameterException: Parameter conditions "type=""" OR "type=bind" not met for actual request parameters: type={oa_list}
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:238) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:370) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:310) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:60) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:351) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1120) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:932) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:893) ~[spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:622) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846) [spring-webmvc-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:291) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:243) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at com.zbjdl.oa.wx.configuration.WebConfiguration$2.doFilter(WebConfiguration.java:117) [classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.sitemesh.webapp.contentfilter.ContentBufferingFilter.bufferAndPostProcess(ContentBufferingFilter.java:169) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.webapp.contentfilter.ContentBufferingFilter.doFilter(ContentBufferingFilter.java:126) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.webapp.SiteMeshFilter.doFilter(SiteMeshFilter.java:120) [sitemesh-3.0.1.jar:na]
+	at org.sitemesh.config.ConfigurableSiteMeshFilter.doFilter(ConfigurableSiteMeshFilter.java:163) [sitemesh-3.0.1.jar:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:111) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:87) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:77) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:125) [spring-session-1.0.2.RELEASE.jar:na]
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:65) [spring-session-1.0.2.RELEASE.jar:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.1.RELEASE.jar:1.3.1.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.3.RELEASE.jar:4.2.3.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:239) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:521) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1096) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:674) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1500) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1456) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145) [na:1.7.0_80]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615) [na:1.7.0_80]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.30.jar:8.0.30]
+	at java.lang.Thread.run(Thread.java:745) [na:1.7.0_80]
+09:50:12.559 [http-nio-9025-exec-7] INFO  c.z.oa.wx.controller.UserInfoController - user login , param is {"password":"zhangan","userName":"zhangsan"}
+09:50:18.505 [http-nio-9025-exec-9] INFO  c.z.oa.wx.controller.UserInfoController - user login , param is {"password":"zhagnsan","userName":"zhangsan"}
+09:50:51.336 [http-nio-9025-exec-1] INFO  c.z.oa.wx.controller.UserInfoController - user login , param is {"password":"zhangsan","userName":"zhangsan"}
+09:50:51.381 [http-nio-9025-exec-1] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+09:51:18.151 [http-nio-9025-exec-4] INFO  c.z.oa.wx.controller.UserInfoController - user login , param is {"password":"zhangsan","userName":"zhangsan"}
+09:51:18.204 [http-nio-9025-exec-4] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+09:51:40.180 [http-nio-9025-exec-7] INFO  c.z.oa.wx.controller.UserInfoController - user login , param is {"password":"zhangsan","userName":"zhangsan"}
+09:51:40.218 [http-nio-9025-exec-7] INFO  com.zbjdl.oa.wx.service.SessionService - reload session phone
+10:14:23.620 [main] INFO  com.zbjdl.oa.wx.OaWxAppApplication - Starting OaWxAppApplication on localhost with PID 1543 (/Users/zhengy/Documents/github_zbjdl/zbjdl-oa/oa-wx/target/classes started by zhengy in /Users/zhengy/Documents/github_zbjdl/zbjdl-oa/oa-wx)
+10:14:23.625 [main] INFO  com.zbjdl.oa.wx.OaWxAppApplication - The following profiles are active: default
+10:14:23.732 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@25984c63: startup date [Wed Jan 30 10:14:23 CST 2019]; root of context hierarchy
+10:14:23.731 [pool-1-thread-1] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.2.2.Final
+10:14:25.437 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [spring/applicationContext-consumer.xml]
+10:14:25.784 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+10:14:26.013 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'characterEncodingFilter' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=webConfiguration; factoryMethodName=characterEncodingFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/zbjdl/oa/wx/configuration/WebConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.HttpEncodingAutoConfiguration; factoryMethodName=characterEncodingFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/HttpEncodingAutoConfiguration.class]]
+10:14:26.876 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userInfoService': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+10:14:26.886 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userFacade': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+10:14:26.891 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration$ServerPropertiesConfiguration' of type [class com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration$ServerPropertiesConfiguration$$EnhancerBySpringCGLIB$$3260c23b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.009 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userInfoService': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+10:14:27.024 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userFacade': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+10:14:27.157 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator' of type [class org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.166 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'serverProperties' of type [class org.springframework.boot.autoconfigure.web.ServerProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.176 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userInfoService': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+10:14:27.185 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userFacade': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+10:14:27.214 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'zbjdl.dubbo.CONFIGURATION_PROPERTIES' of type [class com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.217 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' of type [class com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration$$EnhancerBySpringCGLIB$$df45903f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.241 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'consumerConfig' of type [class com.alibaba.dubbo.config.ConsumerConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.273 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'application' of type [class com.alibaba.dubbo.config.ApplicationConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.285 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'registry' of type [class com.alibaba.dubbo.config.RegistryConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.287 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'weixinUserService' of type [class com.alibaba.dubbo.config.spring.ReferenceBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.301 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userInfoService' of type [class com.alibaba.dubbo.config.spring.ReferenceBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.311 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userFacade' of type [class com.alibaba.dubbo.config.spring.ReferenceBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.314 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3bdd20a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+10:14:27.726 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9025 (http)
+10:14:27.739 [main] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+10:14:27.741 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.0.30
+10:14:28.359 [localhost-startStop-1] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+10:14:28.366 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/oa-wx] - Initializing Spring embedded WebApplicationContext
+10:14:28.366 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4634 ms
+10:14:29.251 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+10:14:29.252 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'metricFilter' to: [/*]
+10:14:29.253 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'springSessionRepositoryFilter' to: [/*]
+10:14:29.253 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+10:14:29.253 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+10:14:29.253 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+10:14:29.254 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+10:14:29.254 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'sitemeshFilter' to urls: [/*]
+10:14:29.254 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'myCharsetEncodingFilter' to: [/*]
+10:14:29.254 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+10:14:29.255 [localhost-startStop-1] INFO  o.s.b.c.embedded.ServletRegistrationBean - Mapping servlet: 'freemarkerServlet' to [*.ftl]
+10:14:29.256 [localhost-startStop-1] INFO  o.s.b.c.embedded.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+10:14:29.257 [localhost-startStop-1] INFO  o.s.b.c.embedded.ServletRegistrationBean - Mapping servlet: 'soa' to [/soa/*]
+10:14:33.008 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@25984c63: startup date [Wed Jan 30 10:14:23 CST 2019]; root of context hierarchy
+10:14:33.193 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/app/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.zbjdl.oa.wx.controller.AppBussController.showLogin(javax.servlet.http.HttpServletRequest)
+10:14:33.194 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/app/login/do],methods=[POST || GET]}" onto public java.lang.String com.zbjdl.oa.wx.controller.AppBussController.login(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+10:14:33.195 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/app/userinfo/get],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.zbjdl.oa.wx.controller.AppBussController.getUserinfo(javax.servlet.http.HttpServletRequest) throws com.zbjdl.common.json.JSONException
+10:14:33.195 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/app/about]}" onto public java.lang.String com.zbjdl.oa.wx.controller.AppBussController.about(org.springframework.ui.Model)
+10:14:33.196 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/ajax/bindAjax/unBind]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindAjaxController.unBind(java.lang.String)
+10:14:33.200 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/menu],params=[type=bind]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindController.bind(org.springframework.ui.Model)
+10:14:33.201 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/logout],methods=[GET]}" onto public java.lang.String com.zbjdl.oa.wx.controller.center.bind.BindController.loginOut(javax.servlet.http.HttpSession)
+10:14:33.201 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/bind/success]}" onto public java.lang.String com.zbjdl.oa.wx.controller.center.bind.BindController.bindSuccess(javax.servlet.http.HttpServletRequest,java.lang.String,org.springframework.ui.Model,java.lang.String) throws java.io.UnsupportedEncodingException
+10:14:33.201 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/nologin/unbind/success]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindController.unbindSuccess(javax.servlet.http.HttpSession)
+10:14:33.202 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/unbind/failed]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindController.unbindFailed(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+10:14:33.202 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/unbind]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindController.unbind(org.springframework.ui.Model)
+10:14:33.206 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/jsSign]}" onto public com.zbjdl.common.wechat.dto.js_sdk.SignDto com.zbjdl.oa.wx.controller.common.CommonController.jsSign(java.lang.String)
+10:14:33.208 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/general/error]}" onto public java.lang.String com.zbjdl.oa.wx.controller.common.WxGeneralController.error(java.lang.String,org.springframework.ui.Model)
+10:14:33.209 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/general/toView]}" onto public java.lang.String com.zbjdl.oa.wx.controller.common.WxGeneralController.toView(javax.servlet.http.HttpSession,org.springframework.ui.Model)
+10:14:33.209 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/general/gotoView]}" onto public java.lang.String com.zbjdl.oa.wx.controller.common.WxGeneralController.gotoView(java.lang.String) throws java.io.UnsupportedEncodingException
+10:14:33.210 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/menu],params=[type=""]}" onto protected java.lang.Object com.zbjdl.oa.wx.controller.MenuController.process(com.zbjdl.oa.wx.vo.WxVo)
+10:14:33.212 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/static/mcs/plugin/userInfo]}" onto public java.lang.String com.zbjdl.oa.wx.controller.plugin.PluginController.index(org.springframework.ui.Model,javax.servlet.http.HttpServletRequest)
+10:14:33.213 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/static/mcs/plugin/ajax/userInfo]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.zbjdl.oa.wx.controller.plugin.PluginController.userInfo(java.lang.String)
+10:14:33.215 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/activate/index]}" onto public java.lang.String com.zbjdl.oa.wx.controller.UserInfoController.login(org.springframework.ui.Model)
+10:14:33.216 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/login]}" onto public com.zbjdl.oa.dto.resp.BaseRespDto com.zbjdl.oa.wx.controller.UserInfoController.login(com.zbjdl.oa.wx.controller.common.vo.UserVo,javax.servlet.http.HttpSession,javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+10:14:33.216 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/login/index]}" onto public java.lang.String com.zbjdl.oa.wx.controller.UserInfoController.loginIndex(org.springframework.ui.Model)
+10:14:33.216 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/activate]}" onto public com.zbjdl.oa.dto.resp.BaseRespDto com.zbjdl.oa.wx.controller.UserInfoController.activate(com.zbjdl.oa.wx.controller.common.vo.UserVo)
+10:14:33.217 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/edit/index]}" onto public java.lang.String com.zbjdl.oa.wx.controller.UserInfoController.editIndex(org.springframework.ui.Model)
+10:14:33.218 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/]}" onto public java.lang.String com.zbjdl.oa.wx.controller.WxController.index()
+10:14:33.218 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wx/mpapi.action],methods=[POST]}" onto public void com.zbjdl.oa.wx.controller.WxController.doPost(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException,java.io.IOException
+10:14:33.219 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wx/mpapi.action],methods=[GET]}" onto public void com.zbjdl.oa.wx.controller.WxController.checkSignature(java.lang.String,java.lang.String,java.lang.String,java.lang.String,javax.servlet.http.HttpServletResponse)
+10:14:33.228 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+10:14:33.229 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+10:14:33.314 [main] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+10:14:33.315 [main] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+10:14:33.400 [main] INFO  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Detected @ExceptionHandler methods in wxExceptionHandler
+10:14:33.518 [main] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+10:14:33.654 [main] INFO  c.z.c.u.s.a.dubbo.DubboAutoConfiguration - ### get port:9025
+10:14:34.356 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.357 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+10:14:34.358 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.358 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.359 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.361 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+10:14:34.361 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.362 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.363 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.364 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+10:14:34.364 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.365 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+10:14:34.551 [main] INFO  o.s.ui.freemarker.SpringTemplateLoader - SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@25984c63: startup date [Wed Jan 30 10:14:23 CST 2019]; root of context hierarchy] and template loader path [classpath:/templates/]
+10:14:34.553 [main] INFO  o.s.w.s.v.f.FreeMarkerConfigurer - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+10:14:34.579 [main] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+10:14:34.873 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+10:14:34.885 [main] INFO  o.s.c.support.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+10:14:35.000 [main] INFO  o.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9025"]
+10:14:35.015 [main] INFO  o.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9025"]
+10:14:35.021 [main] INFO  o.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+10:14:35.079 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 9025 (http)
+10:14:35.091 [main] INFO  com.zbjdl.oa.wx.OaWxAppApplication - Started OaWxAppApplication in 12.188 seconds (JVM running for 13.1)
+10:14:35.091 [main] INFO  com.zbjdl.oa.wx.OaWxAppApplication - Spring boot loaded
+10:14:49.839 [http-nio-9025-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/oa-wx] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+10:14:49.840 [http-nio-9025-exec-1] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+10:14:49.858 [http-nio-9025-exec-1] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+11:30:20.348 [main] INFO  com.zbjdl.oa.wx.OaWxAppApplication - Starting OaWxAppApplication on localhost with PID 1635 (/Users/zhengy/Documents/github_zbjdl/zbjdl-oa/oa-wx/target/classes started by zhengy in /Users/zhengy/Documents/github_zbjdl/zbjdl-oa/oa-wx)
+11:30:20.353 [main] INFO  com.zbjdl.oa.wx.OaWxAppApplication - The following profiles are active: default
+11:30:20.470 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5bb59065: startup date [Wed Jan 30 11:30:20 CST 2019]; root of context hierarchy
+11:30:20.483 [pool-1-thread-1] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 5.2.2.Final
+11:30:22.818 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [spring/applicationContext-consumer.xml]
+11:30:23.187 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+11:30:23.419 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'characterEncodingFilter' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=webConfiguration; factoryMethodName=characterEncodingFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/zbjdl/oa/wx/configuration/WebConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.HttpEncodingAutoConfiguration; factoryMethodName=characterEncodingFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/HttpEncodingAutoConfiguration.class]]
+11:30:24.527 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userInfoService': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+11:30:24.539 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userFacade': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+11:30:24.546 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration$ServerPropertiesConfiguration' of type [class com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration$ServerPropertiesConfiguration$$EnhancerBySpringCGLIB$$db15a02c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:24.705 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userInfoService': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+11:30:24.718 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userFacade': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+11:30:24.934 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator' of type [class org.hibernate.validator.internal.constraintvalidators.bv.NotNullValidator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:24.947 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'serverProperties' of type [class org.springframework.boot.autoconfigure.web.ServerProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:24.957 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userInfoService': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+11:30:24.964 [main] WARN  o.s.b.f.s.DefaultListableBeanFactory - Bean creation exception on FactoryBean type check: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userFacade': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'application' defined in class path resource [com/zbjdl/common/utils/springboot/autoconfigure/dubbo/DubboAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.config.ApplicationConfig]: Circular reference involving containing bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' - consider declaring the factory method as static for independence from its containing instance. Factory method 'application' threw exception; nested exception is java.lang.NullPointerException
+11:30:25.022 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'zbjdl.dubbo.CONFIGURATION_PROPERTIES' of type [class com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.028 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration' of type [class com.zbjdl.common.utils.springboot.autoconfigure.dubbo.DubboAutoConfiguration$$EnhancerBySpringCGLIB$$87fa6e30] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.059 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'consumerConfig' of type [class com.alibaba.dubbo.config.ConsumerConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.080 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'application' of type [class com.alibaba.dubbo.config.ApplicationConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.098 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'registry' of type [class com.alibaba.dubbo.config.RegistryConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.103 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'weixinUserService' of type [class com.alibaba.dubbo.config.spring.ReferenceBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.132 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userInfoService' of type [class com.alibaba.dubbo.config.spring.ReferenceBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.147 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userFacade' of type [class com.alibaba.dubbo.config.spring.ReferenceBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.153 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ac72affb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+11:30:25.589 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9025 (http)
+11:30:25.603 [main] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+11:30:25.604 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.0.30
+11:30:26.348 [localhost-startStop-1] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+11:30:26.355 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/oa-wx] - Initializing Spring embedded WebApplicationContext
+11:30:26.356 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 5886 ms
+11:30:27.797 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+11:30:27.802 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'metricFilter' to: [/*]
+11:30:27.804 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'springSessionRepositoryFilter' to: [/*]
+11:30:27.804 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+11:30:27.805 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+11:30:27.805 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+11:30:27.806 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+11:30:27.806 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'sitemeshFilter' to urls: [/*]
+11:30:27.807 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'myCharsetEncodingFilter' to: [/*]
+11:30:27.807 [localhost-startStop-1] INFO  o.s.b.c.embedded.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+11:30:27.808 [localhost-startStop-1] INFO  o.s.b.c.embedded.ServletRegistrationBean - Mapping servlet: 'freemarkerServlet' to [*.ftl]
+11:30:27.810 [localhost-startStop-1] INFO  o.s.b.c.embedded.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+11:30:27.811 [localhost-startStop-1] INFO  o.s.b.c.embedded.ServletRegistrationBean - Mapping servlet: 'soa' to [/soa/*]
+11:30:32.524 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5bb59065: startup date [Wed Jan 30 11:30:20 CST 2019]; root of context hierarchy
+11:30:32.738 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/app/about]}" onto public java.lang.String com.zbjdl.oa.wx.controller.AppBussController.about(org.springframework.ui.Model)
+11:30:32.741 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/app/login/do],methods=[POST || GET]}" onto public java.lang.String com.zbjdl.oa.wx.controller.AppBussController.login(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+11:30:32.742 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/app/login],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.zbjdl.oa.wx.controller.AppBussController.showLogin(javax.servlet.http.HttpServletRequest)
+11:30:32.743 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/app/userinfo/get],methods=[GET]}" onto public org.springframework.web.servlet.ModelAndView com.zbjdl.oa.wx.controller.AppBussController.getUserinfo(javax.servlet.http.HttpServletRequest) throws com.zbjdl.common.json.JSONException
+11:30:32.744 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/ajax/bindAjax/unBind]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindAjaxController.unBind(java.lang.String)
+11:30:32.752 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/menu],params=[type=bind]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindController.bind(org.springframework.ui.Model)
+11:30:32.754 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/logout],methods=[GET]}" onto public java.lang.String com.zbjdl.oa.wx.controller.center.bind.BindController.loginOut(javax.servlet.http.HttpSession)
+11:30:32.755 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/bind/success]}" onto public java.lang.String com.zbjdl.oa.wx.controller.center.bind.BindController.bindSuccess(javax.servlet.http.HttpServletRequest,java.lang.String,org.springframework.ui.Model,java.lang.String) throws java.io.UnsupportedEncodingException
+11:30:32.756 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/nologin/unbind/success]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindController.unbindSuccess(javax.servlet.http.HttpSession)
+11:30:32.757 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/unbind/failed]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindController.unbindFailed(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+11:30:32.757 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/unbind]}" onto public java.lang.Object com.zbjdl.oa.wx.controller.center.bind.BindController.unbind(org.springframework.ui.Model)
+11:30:32.767 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/jsSign]}" onto public com.zbjdl.common.wechat.dto.js_sdk.SignDto com.zbjdl.oa.wx.controller.common.CommonController.jsSign(java.lang.String)
+11:30:32.772 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/general/error]}" onto public java.lang.String com.zbjdl.oa.wx.controller.common.WxGeneralController.error(java.lang.String,org.springframework.ui.Model)
+11:30:32.773 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/general/gotoView]}" onto public java.lang.String com.zbjdl.oa.wx.controller.common.WxGeneralController.gotoView(java.lang.String) throws java.io.UnsupportedEncodingException
+11:30:32.773 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/general/toView]}" onto public java.lang.String com.zbjdl.oa.wx.controller.common.WxGeneralController.toView(javax.servlet.http.HttpSession,org.springframework.ui.Model)
+11:30:32.775 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/menu],params=[type=""]}" onto protected java.lang.Object com.zbjdl.oa.wx.controller.MenuController.process(com.zbjdl.oa.wx.vo.WxVo)
+11:30:32.778 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/static/mcs/plugin/userInfo]}" onto public java.lang.String com.zbjdl.oa.wx.controller.plugin.PluginController.index(org.springframework.ui.Model,javax.servlet.http.HttpServletRequest)
+11:30:32.780 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/static/mcs/plugin/ajax/userInfo]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.zbjdl.oa.wx.controller.plugin.PluginController.userInfo(java.lang.String)
+11:30:32.785 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/save]}" onto public java.lang.String com.zbjdl.oa.wx.controller.UserInfoController.save(com.zbjdl.oa.dto.UserInfoDto)
+11:30:32.786 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/login/index]}" onto public java.lang.String com.zbjdl.oa.wx.controller.UserInfoController.loginIndex(org.springframework.ui.Model)
+11:30:32.787 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/activate]}" onto public com.zbjdl.oa.dto.resp.BaseRespDto com.zbjdl.oa.wx.controller.UserInfoController.activate(com.zbjdl.oa.dto.UserInfoDto)
+11:30:32.788 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/edit/index]}" onto public java.lang.String com.zbjdl.oa.wx.controller.UserInfoController.editIndex(org.springframework.ui.Model)
+11:30:32.788 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/login]}" onto public com.zbjdl.oa.dto.resp.BaseRespDto com.zbjdl.oa.wx.controller.UserInfoController.login(com.zbjdl.oa.dto.UserInfoDto,javax.servlet.http.HttpSession,javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+11:30:32.789 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/user/activate/index]}" onto public java.lang.String com.zbjdl.oa.wx.controller.UserInfoController.login(org.springframework.ui.Model)
+11:30:32.792 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/]}" onto public java.lang.String com.zbjdl.oa.wx.controller.WxController.index()
+11:30:32.794 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wx/mpapi.action],methods=[GET]}" onto public void com.zbjdl.oa.wx.controller.WxController.checkSignature(java.lang.String,java.lang.String,java.lang.String,java.lang.String,javax.servlet.http.HttpServletResponse)
+11:30:32.795 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/wx/mpapi.action],methods=[POST]}" onto public void com.zbjdl.oa.wx.controller.WxController.doPost(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException,java.io.IOException
+11:30:32.817 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+11:30:32.818 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+11:30:32.997 [main] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+11:30:32.998 [main] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+11:30:33.094 [main] INFO  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Detected @ExceptionHandler methods in wxExceptionHandler
+11:30:33.160 [main] INFO  o.s.w.s.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+11:30:33.343 [main] INFO  c.z.c.u.s.a.dubbo.DubboAutoConfiguration - ### get port:9025
+11:30:34.145 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+11:30:34.147 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+11:30:34.147 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.148 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.150 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+11:30:34.150 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.151 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.152 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.153 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.154 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.155 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.155 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+11:30:34.413 [main] INFO  o.s.ui.freemarker.SpringTemplateLoader - SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5bb59065: startup date [Wed Jan 30 11:30:20 CST 2019]; root of context hierarchy] and template loader path [classpath:/templates/]
+11:30:34.418 [main] INFO  o.s.w.s.v.f.FreeMarkerConfigurer - ClassTemplateLoader for Spring macros added to FreeMarker configuration
+11:30:34.455 [main] WARN  o.s.b.a.f.FreeMarkerAutoConfiguration - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+11:30:34.822 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+11:30:34.835 [main] INFO  o.s.c.support.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+11:30:34.944 [main] INFO  o.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9025"]
+11:30:34.961 [main] INFO  o.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9025"]
+11:30:34.967 [main] INFO  o.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+11:30:35.050 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 9025 (http)
+11:30:35.068 [main] INFO  com.zbjdl.oa.wx.OaWxAppApplication - Started OaWxAppApplication in 15.426 seconds (JVM running for 16.246)
+11:30:35.068 [main] INFO  com.zbjdl.oa.wx.OaWxAppApplication - Spring boot loaded
+11:30:39.989 [http-nio-9025-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/oa-wx] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+11:30:39.990 [http-nio-9025-exec-1] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+11:30:40.012 [http-nio-9025-exec-1] INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 22 ms

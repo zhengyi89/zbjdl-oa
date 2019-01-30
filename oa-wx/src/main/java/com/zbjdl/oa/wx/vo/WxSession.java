@@ -67,52 +67,22 @@ public class WxSession implements Serializable {
 	 * 用户标识id
 	 */
 	private String userId;
-	/**
-	 * 商户编号
-	 */
-	private String merchantCode;
-	/**
-	 * 登录名（注册类型对应的登录名）
-	 */
-	private String loginName;
-	/**
-	 * 判断会员是否已经进行了实名认证
-	 */
-	private boolean isVerified;
-	/**
-	 * 判断会员是否已经设置
-	 */
-	private boolean isSetTrxPassword;
-	/**
-	 * 判断会员是否已经设置了安保问题
-	 */
-	private boolean isSetPwdQuestion;
-
-	/**
-	 * 会员归属地-省
-	 */
-	private String province;
-
-	/**
-	 * 会员归属地-市
-	 */
-	private String city;
-	
-	/**
-	 * app系统
-	 */
-	private String os;
 
 	/**
 	 * 所属部门id
 	 */
 	private String departmentId;
-	
+
 	/**
 	 * 用户名
 	 */
 	private String userName;
-	
+
+	/**
+	 * 登陆名
+	 */
+	private String loginName;
+
 	/**
 	 * 判断用户是否已经绑定了会员
 	 * 
@@ -162,46 +132,6 @@ public class WxSession implements Serializable {
 		this.userId = userId;
 	}
 
-	public String getLoginName() {
-		return loginName;
-	}
-
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
-	}
-
-	public String getMerchantCode() {
-		return merchantCode;
-	}
-
-	public void setMerchantCode(String merchantCode) {
-		this.merchantCode = merchantCode;
-	}
-
-	public boolean isVerified() {
-		return isVerified;
-	}
-
-	public void setVerified(boolean isVerified) {
-		this.isVerified = isVerified;
-	}
-
-	public boolean isSetTrxPassword() {
-		return isSetTrxPassword;
-	}
-
-	public void setSetTrxPassword(boolean isSetTrxPassword) {
-		this.isSetTrxPassword = isSetTrxPassword;
-	}
-
-	public boolean isSetPwdQuestion() {
-		return isSetPwdQuestion;
-	}
-
-	public void setSetPwdQuestion(boolean isSetPwdQuestion) {
-		this.isSetPwdQuestion = isSetPwdQuestion;
-	}
-
 	public String getOpi() {
 		return opi;
 	}
@@ -215,30 +145,6 @@ public class WxSession implements Serializable {
 	 */
 	public boolean isWxBrowser() {
 		return wxBrowser;
-	}
-
-	public String getProvince() {
-		return province;
-	}
-
-	public void setProvince(String province) {
-		this.province = province;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getOs() {
-		return os;
-	}
-
-	public void setOs(String os) {
-		this.os = os;
 	}
 
 	public String getDepartmentId() {
@@ -256,5 +162,13 @@ public class WxSession implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+
 }

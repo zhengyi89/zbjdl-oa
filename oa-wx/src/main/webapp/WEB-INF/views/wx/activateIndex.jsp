@@ -81,7 +81,7 @@
 					var error = wxconfig.getTip(status) || data.msg;
 					//原有逻辑不变
 					if ("0000" == data.code) {
-						window.location.href = "${ctx}/user/login/index";
+						window.location.href = "${ctx}/user/edit/index";
 						return;
 					}
 					cssChange("passwordTip", false, "用户名或错误");
