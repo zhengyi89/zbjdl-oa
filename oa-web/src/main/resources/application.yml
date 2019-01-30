@@ -1,10 +1,6 @@
 spring:
     profiles:
-        active: production
-    activemq:
-        broker-url: tcp://192.168.120.223:61616
-        user: admin
-        password: admin
+        active: default
 
     datasource:
         driverClassName: com.mysql.jdbc.Driver
@@ -40,6 +36,7 @@ spring:
     batch:
         job:
             enabled: false
+            
 # REDIS (RedisProperties)
     redis:
         host: redis.zbjdl.in
@@ -48,13 +45,8 @@ spring:
             max-idle: 300 # pool settings ...
             max-active: 600
             max-wait: 1000
-           
-    
-
-    
 mybatis:
     config: classpath:mybatisConfig.xml
-
 
 server:
     contextPath: /oa-web
@@ -65,9 +57,6 @@ weixin:
     appSecret: 2a447001267716495c0fcfbccda28a56
     templateId: srv8wHUU-1cQ2pzadXlUM2cU3msX1-27lSr52loSm6Y
     url: http://www.zbjdl.cn
-    
-sms:
-    url: http://192.168.120.232:8081/dynamicpassword-web/sms    
 
 dubbo:
     registry-address: registry.zbjdl.in:2181
@@ -81,14 +70,6 @@ zbjdl:
     dubbo:
         app: oa-web
         registry_address: registry.zbjdl.in:2181
-#        service-group: zbjdl-service-group
-#        service-version: 1.0.0
-#        service-retries: 2
-#        service-timeout: 3000
-#        registry_protocol: zookeeper
-#        protocol: hessian
-#        server: servlet
-#        port: ${server.port}
 
 endpoints:
     jmx:

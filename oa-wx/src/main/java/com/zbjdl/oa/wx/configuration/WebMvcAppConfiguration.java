@@ -32,7 +32,6 @@ public class WebMvcAppConfiguration extends WebMvcConfigurerAdapter{
 		
 		List<String> noBind = new ArrayList<>();
 		noBind.add("/menu?type=bind");
-		noBind.add("/ajax/*");
 		noBind.add("/wx/sign/*");
 		noBind.add("/login/*");
 		noBind.add("/logout");
@@ -46,10 +45,7 @@ public class WebMvcAppConfiguration extends WebMvcConfigurerAdapter{
 	public SessionInterceptor sessionInterceptor(){
 		return new SessionInterceptor();
 	}
-	@Bean 
-	public AppInterceptor posAppInterceptor(){
-		return new AppInterceptor();
-	}
+	
     /** 
      * 配置拦截器 
      * @param registry 
@@ -68,8 +64,7 @@ public class WebMvcAppConfiguration extends WebMvcConfigurerAdapter{
     	registry.addInterceptor(securityInterceptor())
     	.addPathPatterns("/**")
     	.excludePathPatterns("/wx/mpapi.action")
-    	.excludePathPatterns("/app/**")
-    	.excludePathPatterns("/pay/**")
+    	.excludePathPatterns("/user/**")
     	.excludePathPatterns("/static/**")
     	.excludePathPatterns("/login")
     	.excludePathPatterns("/logout")
@@ -77,10 +72,13 @@ public class WebMvcAppConfiguration extends WebMvcConfigurerAdapter{
     	.excludePathPatterns("/nologin/*")
     	.excludePathPatterns("/**/error");  
 
-    	
-    	//Pos App 拦截
-    	registry.addInterceptor(posAppInterceptor())
-    	.addPathPatterns("/app/**").excludePathPatterns("/app/login").excludePathPatterns("/app/login/do");
+//    	@Bean 
+//    	public AppInterceptor posAppInterceptor(){
+//    		return new AppInterceptor();
+//    	}
+//    	//Pos App 拦截
+//    	registry.addInterceptor(posAppInterceptor())
+//    	.addPathPatterns("/app/**").excludePathPatterns("/app/login").excludePathPatterns("/app/login/do");
     	
 //    	registry.addInterceptor(applicationInterceptor())
 //    	.addPathPatterns("/**")

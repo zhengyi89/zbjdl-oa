@@ -15,8 +15,8 @@
 		<form class="login_form" id="loginForm" action="" method="">
 			<div class="input_box">
 				<p class="icon_tel"></p>
-					<input type="text" id="mobile" name="mobile" placeholder="请输入用户名或手机号" />
-				<p class="tip none" id="mobileTip"></p>
+					<input type="text" id="userName" name="userName" placeholder="boss系统用户名" />
+				<p class="tip none" id="userNameTip"></p>
 			</div>
 			<div class="input_box yzm">
 				<p class="icon_yzm"></p>
@@ -24,21 +24,18 @@
 				<p class="tip none" id="passwordTip"></p>
 			</div>
 			<div class="submit">
-				<input id="loginSubmit" type="button" value="登   录"
+				<input id="loginSubmit" type="button" value="激   活"
 					onclick="this.setAttribute('disabled',true);this.value='登录中…';dologin();" />
-			</div>
-			<div align="right" style="padding-top: 20px;">
-				<a href="${ctx}/user/activate/index">账号激活</a>
 			</div>
 		</form>
 	</div>
 	<script src="${ext}/js/zepto.min.js"></script>
 	<script type="text/javascript">
-	    function checkMobile(){
-			var mobile=$("#mobile").val();
-			cssChange("mobileTip", true, "");
-			if(mobile.length==0){
-				cssChange("mobileTip", false, "手机号不能为空");
+	    function checkUsername(){
+			var userName=$("#userName").val();
+			cssChange("userNameTip", true, "");
+			if(userName.length==0){
+				cssChange("userNameTip", false, "用户名不能为空");
 				return false;
 			} 
 			return true;
@@ -55,7 +52,7 @@
 		}
 		
 		function checkInput(){
-			if (!checkMobile()) {
+			if (!checkUsername()) {
 				return false;
 			}
 			if (!checkPassword()) {
@@ -66,7 +63,7 @@
 
 		function resetLogin(){
 	    	$("#loginSubmit").removeAttr("disabled");
-	    	$("#loginSubmit").val("登   录");
+	    	$("#loginSubmit").val("激   活");
 	    }
 		
 		function dologin() {
@@ -75,20 +72,19 @@
 				return;
 			}
 			$.ajax({
-				url : "${ctx}/user/login",
+				url : "${ctx}/user/activate",
 				method : "POST",
 				async: false,
 				data : $("#loginForm").serialize(),
 				success : function(data) {
-					var status = data.status;
-					var error = wxconfig.getTip(status) || data.message;
+					alert(data.code);
+					var error = wxconfig.getTip(status) || data.msg;
 					//原有逻辑不变
-					if ("ok" == status) {
-						var callUrl = "${ctx}/bind/success?callback=${param.callback}";
-						window.location.href = callUrl;
+					if ("0000" == data.code) {
+						window.location.href = "${ctx}/user/login/index";
 						return;
 					}
-					cssChange("passwordTip", false, "验证码错误");
+					cssChange("passwordTip", false, "用户名或错误");
 					resetLogin();
 				},
 				error : function() {

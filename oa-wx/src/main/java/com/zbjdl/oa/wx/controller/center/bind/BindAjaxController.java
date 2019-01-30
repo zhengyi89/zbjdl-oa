@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zbjdl.common.utils.StringUtils;
 import com.zbjdl.common.wx.service.WeixinUserService;
+import com.zbjdl.oa.dto.resp.BaseRespDto;
+import com.zbjdl.oa.enumtype.ReturnEnum;
 import com.zbjdl.oa.wx.config.Constants;
 import com.zbjdl.oa.wx.controller.BaseController;
-import com.zbjdl.oa.wx.vo.ResponseMessage;
 import com.zbjdl.oa.wx.vo.WxSession;
 
 /**
@@ -34,7 +35,7 @@ public class BindAjaxController extends BaseController {
 	public Object unBind(String code) {
 		try {
 			if (StringUtils.isBlank(code)) {
-				return ResponseMessage.getError("验证码错误");
+				return new BaseRespDto(ReturnEnum.FAILD.getCode(), "验证码错误");
 			}
 
 			WxSession session = super.getSession();
@@ -47,15 +48,15 @@ public class BindAjaxController extends BaseController {
 			boolean valid = true;
 
 			if (!valid) {
-				return ResponseMessage.getError("验证码错误");
+				return new BaseRespDto(ReturnEnum.FAILD.getCode(), "验证码错误");
 			}
 			// (2)进行解绑
 			weixunUserService.unBind(session.getUserId(), session.getOpi(), Constants.SYSTEM_CODE);
 			super.reloadSession();
 		} catch (Exception e) {
 			logger.error("系统异常，解绑失败", e);
-			return ResponseMessage.getError("网络异常，请稍后重试");
+			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "网络异常，请稍后重试");
 		}
-		return ResponseMessage.getOk("OK");
+		return new BaseRespDto(ReturnEnum.SUCCESS);
 	}
 }

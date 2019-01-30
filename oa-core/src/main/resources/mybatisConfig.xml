@@ -5,10 +5,7 @@
 <configuration>
 	<!-- 实体类别名 -->
 	<typeAliases>
-		<!-- <package name="com.zbjdl.oa.model" /> -->
-		
-		<package name="com.zbjdl.oa.dto" />
-		
+		<package name="com.zbjdl.oa.model" />
 	</typeAliases>
 
 	<!-- 类型转换处理器 -->
@@ -20,7 +17,7 @@
 
 	<!-- 映射文件 -->
 	<mappers>
-		<mapper resource="sqlmap/UserinfoMapper.xml" /><!-- 用户 -->
+		<mapper resource="sqlmap/UserInfoMapper.xml" /><!-- 用户 -->
 	</mappers>
 
 </configuration>

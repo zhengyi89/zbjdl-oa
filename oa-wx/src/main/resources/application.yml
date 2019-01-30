@@ -1,6 +1,6 @@
 spring:
     profiles:
-        active: production
+        active: default
     mvc:
         view:
             prefix: /WEB-INF/views/
@@ -31,10 +31,8 @@ endpoints:
 server:
     contextPath: /oa-wx
     port: 9025
-    sms:
-        url: http://172.16.10.169:9019/dynamicpassword-web/sms
     admin-boss:
-        url: http://ztfang.zbjdl.cn/admin-boss
+        url: http://testboss.zbjdl.net:8080/admin-boss
 
 logging:
     level:
@@ -43,7 +41,7 @@ logging:
                 utils:
                     query: DEBUG
 
-registry-address: 192.168.120.219:2181
+registry-address: registry.zbjdl.in:2181
 service-group: zbjdl-service-group
 service-version: 1.0.0
 
@@ -82,8 +80,3 @@ spring:
 server:
     contextPath: /oa-wx
     port: 9025
-    sms:
-        url: http://172.16.10.169:9019/dynamicpassword-web/sms
-    admin-boss:
-        url: http://172.16.10.171:9034/admin-boss        
-        

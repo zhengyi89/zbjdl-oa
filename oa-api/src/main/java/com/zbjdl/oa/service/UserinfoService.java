@@ -1,60 +1,24 @@
+/*
+ * Powered By zbjdl-code-generator
+ * Web Site: http://www.zbjdl.com
+ * Since 2018 - 2022
+ */
+
 package com.zbjdl.oa.service;
 
 import java.util.List;
 
-import com.zbjdl.oa.dto.UserDto;
+import com.zbjdl.oa.dto.UserInfoDto;
 
-/**
- * 买房卖房用户
- * 
- * @author zhengy
- * @date 2016/07/12
- */
-public interface UserinfoService {
-	/**
-	 * 查询用户信息
-	 * 
-	 * @param id
-	 * @return
-	 */
-	UserDto selectById(long id);
+public interface UserInfoService {
+	Integer save(UserInfoDto userInfoSaveReqDto);
 
-	/**
-	 * 根据用户编码查询
-	 * 
-	 * @param no
-	 * @return
-	 */
-	UserDto findByNo(String no);
+	Integer update(UserInfoDto userInfoSaveReqDto);
 
-	/**
-	 * 根据手机号查询
-	 * 
-	 * @param no
-	 * @return
-	 */
-	UserDto findByMobile(String mobile);
+	UserInfoDto selectById(Long id);
 
-	/**
-	 * 查询列表
-	 * 
-	 * @param UserDto
-	 * @return
-	 */
-	List<UserDto> findList(UserDto userinfo);
+	List<UserInfoDto> findList(UserInfoDto userInfoDto);
 
-	/**
-	 * 保存
-	 * 
-	 * @param UserDto
-	 */
-	void save(UserDto userinfo);
-
-	/**
-	 * 更新业务
-	 * 
-	 * @param UserDto
-	 */
-	void update(UserDto userinfo);
+	UserInfoDto login(String username, String password);
 
 }

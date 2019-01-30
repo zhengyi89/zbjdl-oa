@@ -14,7 +14,7 @@ import com.zbjdl.oa.wx.exception.WxIllegalAccessException;
 import com.zbjdl.oa.wx.service.PortalQAService;
 import com.zbjdl.oa.wx.service.PortalWxService;
 import com.zbjdl.oa.wx.service.SessionService;
-import com.zbjdl.oa.wx.service.UserInfoService.UserInfoModel;
+import com.zbjdl.oa.wx.service.WxUserInfoService.UserInfoModel;
 import com.zbjdl.oa.wx.util.WxUtil;
 import com.zbjdl.oa.wx.vo.WxSession;
 import org.slf4j.Logger;

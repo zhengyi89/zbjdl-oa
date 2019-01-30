@@ -13,13 +13,13 @@
     http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
     default-autowire="byName" default-lazy-init="true">
 
-	
-	
 	<dubbo:reference id="weixinUserService" interface="com.zbjdl.common.wx.service.WeixinUserService" 
 		group="${service-group}" version="${service-version}" check="false">
 	</dubbo:reference>
-	
-	<dubbo:reference id="userinfoService" interface="com.zbjdl.oa.service.UserinfoService" 
+	<dubbo:reference id="userInfoService" interface="com.zbjdl.oa.service.UserInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
+	<dubbo:reference id="userFacade" interface="com.zbjdl.boss.admin.facade.UserFacade" 
 		group="${service-group}" version="${service-version}" check="false">
 	</dubbo:reference>
 </beans>

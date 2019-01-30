@@ -1,13 +1,20 @@
+/*
+ * Powered By zbjdl-code-generator
+ * Web Site: http://www.zbjdl.com
+ * Since 2018 - 2022
+ */
+
 package com.zbjdl.oa.repository;
 
+import com.zbjdl.common.respository.mybatis.GenericRepository;
 import org.springframework.stereotype.Repository;
 
-import com.zbjdl.common.respository.mybatis.GenericRepository;
-import com.zbjdl.oa.model.Userinfo;
-
+/**
+ * UserInfo
+ * @author code-generator
+ *
+ */
 @Repository
-public interface UserinfoRepository extends GenericRepository{
-	public Userinfo findByNo(String no);
-
-	public Userinfo findByMobile(String mobile);
+public interface UserInfoRepository extends GenericRepository {
+	
 }

@@ -4,14 +4,17 @@
  * Since 2018 - 2022
  */
 
-package com.zbjdl.oa.model;
+package com.zbjdl.oa.dto;
+
+import java.io.Serializable;
 
 /**
- * UserInfo
+ * UserInfoDto
  * @author code-generator
  *
  */
-public class UserInfo {
+public class UserInfoDto implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	private java.lang.Long id;
 	private java.lang.String userName;

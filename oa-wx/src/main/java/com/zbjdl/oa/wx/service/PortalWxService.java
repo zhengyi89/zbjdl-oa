@@ -9,7 +9,7 @@ import com.zbjdl.common.wx.service.WeixinUserService;
 import com.zbjdl.common.wx.util.dto.WxBindUserDto;
 import com.zbjdl.oa.wx.config.Constants;
 import com.zbjdl.oa.wx.exception.WxIllegalAccessException;
-import com.zbjdl.oa.wx.service.UserInfoService.UserInfoModel;
+import com.zbjdl.oa.wx.service.WxUserInfoService.UserInfoModel;
 import com.zbjdl.oa.wx.util.dto.WeiXinUserInfoDto;
 import com.zbjdl.oa.wx.vo.WxSession;
 import org.slf4j.Logger;
@@ -32,10 +32,10 @@ public class PortalWxService extends SessionService{
 	 * 微信官网登录：系统验证
 	 */
 	public WxSession sigin(String code , UserInfoModel userInfoModel){
-		if(StringUtils.isBlank(code) || userInfoService == null){
+		if(StringUtils.isBlank(code) || wxUserInfoService == null){
 			throw new WxIllegalAccessException();
 		}
-		WeiXinUserInfoDto wxUserInfo = userInfoService.getUserInfo(userInfoModel, code);
+		WeiXinUserInfoDto wxUserInfo = wxUserInfoService.getUserInfo(userInfoModel, code);
 		WxSession wxSession = new WxSession(wxUserInfo);
 		String openId = wxSession.getOpi();
 		logger.info("openId:"+openId);

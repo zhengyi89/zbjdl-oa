@@ -14,9 +14,9 @@ import com.zbjdl.oa.wx.util.dto.WeiXinUserInfoDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Service("userInfoService")
-public class UserInfoService {
-	private Logger logger = LoggerFactory.getLogger(UserInfoService.class);
+@Service("wxUserInfoService")
+public class WxUserInfoService {
+	private Logger logger = LoggerFactory.getLogger(WxUserInfoService.class);
 	@Resource
 	private PortalWxService portalWxService;
 	

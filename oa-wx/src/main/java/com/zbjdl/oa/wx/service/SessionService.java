@@ -27,7 +27,7 @@ public class SessionService {
 	@Autowired
 	protected HttpSession session;
 	@Resource
-	protected UserInfoService userInfoService;
+	protected WxUserInfoService wxUserInfoService;
 	
 	@Resource
 	private PortalPhoneService portalPhoneService;

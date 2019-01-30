@@ -12,8 +12,6 @@
 	    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
 	default-autowire="byName" default-lazy-init="true">
 
-	<dubbo:service interface="com.zbjdl.oa.service.UserinfoService"
-		ref="userinfoService" group="${dubbo.service-group}" version="${dubbo.service-version}"
-		timeout="${dubbo.service-timeout}" retries="0" />
+	<dubbo:service interface="com.zbjdl.oa.service.UserInfoService" ref="userInfoService" />
 
 </beans>
