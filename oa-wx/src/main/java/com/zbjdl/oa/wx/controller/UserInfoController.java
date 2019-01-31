@@ -72,10 +72,10 @@ public class UserInfoController extends BaseController {
 		// TODO 根据手机号，取得用户标识id：user Id 或user 编码
 		UserInfoDto userDto = userInfoService.login(userName, Digest.md5Digest(password));
 
-		if (userDto==null) {
+		if (userDto == null) {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "用户名或密码错误");
 		}
-		
+
 		// 绑定账号、设定session
 		WxSession wxSession = super.getSession();
 		wxSession.setUserId(String.valueOf(userDto.getId()));
@@ -104,14 +104,14 @@ public class UserInfoController extends BaseController {
 	@ResponseBody
 	public BaseRespDto activate(UserInfoDto userVo) {
 
-		String username = userVo.getUserName();
+		String userName = userVo.getUserName();
 		String password = userVo.getPassword();
 
-		if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
+		if (StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "请输入登录信息");
 		}
 
-		UserDTO userDto = userFacade.userLoginValidate(username, password);
+		UserDTO userDto = userFacade.userLoginValidate(userName, password);
 		UserInfoDto user;
 		if (userDto != null) {
 
@@ -120,10 +120,10 @@ public class UserInfoController extends BaseController {
 			if (user == null) {
 				user = new UserInfoDto();
 				user.setBossUserId(userDto.getUserId());
-				user.setUserName(username);
+				user.setUserName(userName);
 				user.setMobile(userDto.getMobile());
 				DepartmentDTO department = userFacade.queryDepartmentById(userDto.getPrimaryDepartmentId());
-				user.setCity(department.getDepartmentName());
+				user.setCity(getCityByDepartment(department.getDepartmentName()));
 				user.setPassword(Digest.md5Digest(password));
 				user.setId(userDto.getUserId());
 				userInfoService.save(user);
@@ -132,6 +132,26 @@ public class UserInfoController extends BaseController {
 		} else {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "用户名或密码错误");
 		}
+		
+		
+		// 绑定账号、设定session
+		WxSession wxSession = super.getSession();
+		wxSession.setUserId(String.valueOf(user.getId()));
+		if (wxSession.isWxBrowser()) {
+			// 如果是微信浏览器，则直接建立openId 和当前用户的绑定关系
+			WxBindUserDto wxBindUserDto = new WxBindUserDto();
+			wxBindUserDto.setUserId(String.valueOf(user.getId()));
+			wxBindUserDto.setLoginName(userName);
+			wxBindUserDto.setOpenId(wxSession.getOpi());
+			wxBindUserDto.setSystemCode(Constants.SYSTEM_CODE);
+			logger.info("微信绑定用户信息：用户id:{},openId:{},system_code:{},loginName:{}", user.getId(), wxSession.getOpi(),
+					Constants.SYSTEM_CODE, userName);
+			weixinUserService.bind(wxBindUserDto);
+		}
+		wxSession.setLoginName(userName);
+		sessionService.setSession(wxSession);
+		super.reloadSession();
+		
 		return new BaseRespDto(ReturnEnum.SUCCESS);
 
 	}
@@ -140,8 +160,7 @@ public class UserInfoController extends BaseController {
 	public String login(Model model) {
 		return "/wx/activateIndex";
 	}
-	
-	
+
 	@RequestMapping("/edit/index")
 	public String editIndex(Model model) {
 		Long userId = Long.parseLong(getSessionSafe().getUserId());
@@ -149,12 +168,29 @@ public class UserInfoController extends BaseController {
 		model.addAttribute("user", userDto);
 		return "/user/userEditIndex";
 	}
-	
+
 	@RequestMapping("/save")
 	public String save(UserInfoDto userDto) {
-		
-		return "/wx/activateIndex";
+		UserInfoDto user = userInfoService.selectById(userDto.getId());
+		user.setJobNo(userDto.getJobNo());
+		userInfoService.update(user);
+		return "redirect:/index";
 	}
-	
+
+	private String getCityByDepartment(String department) {
+		if (StringUtils.isBlank(department)) {
+			return "";
+		}
+		if (department.indexOf("哈尔滨") > -1) {
+			return "哈尔滨";
+		} else if (department.indexOf("大连") > -1) {
+			return "大连";
+		} else if (department.indexOf("长春") > -1) {
+			return "长春";
+		} else if (department.indexOf("大连") > -1) {
+			return "大连";
+		}
+		return "无";
+	}
 
 }

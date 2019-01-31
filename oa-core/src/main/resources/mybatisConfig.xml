@@ -18,6 +18,7 @@
 	<!-- 映射文件 -->
 	<mappers>
 		<mapper resource="sqlmap/UserInfoMapper.xml" /><!-- 用户 -->
+		<mapper resource="sqlmap/OrderInfoMapper.xml" /><!-- 用户 -->
 	</mappers>
 
 </configuration>

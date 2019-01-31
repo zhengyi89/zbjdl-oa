@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbjdl.oa.repository.OrderInfoRepository">
+	<resultMap id="BaseResultMap" type="OrderInfo">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="user_id" jdbcType="BIGINT" property="userId" />
+	  <result column="order_date" jdbcType="DATE" property="orderDate" />
+	  <result column="product_type" jdbcType="VARCHAR" property="productType" />
+	  <result column="customer_type" jdbcType="VARCHAR" property="customerType" />
+	  <result column="customer_channel" jdbcType="VARCHAR" property="customerChannel" />
+	  <result column="product_detail_type" jdbcType="VARCHAR" property="productDetailType" />
+	  <result column="product_context" jdbcType="VARCHAR" property="productContext" />
+	  <result column="product_package" jdbcType="VARCHAR" property="productPackage" />
+	  <result column="server_details" jdbcType="VARCHAR" property="serverDetails" />
+	  <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+	  <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+	  <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	  <result column="order_sum_amount" jdbcType="DECIMAL" property="orderSumAmount" />
+	  <result column="order_real_amount" jdbcType="DECIMAL" property="orderRealAmount" />
+	  <result column="order_retail_amount" jdbcType="DECIMAL" property="orderRetailAmount" />
+	  <result column="cost1" jdbcType="DECIMAL" property="cost1" />
+	  <result column="cost2" jdbcType="DECIMAL" property="cost2" />
+	  <result column="cost3" jdbcType="DECIMAL" property="cost3" />
+	  <result column="cost4" jdbcType="DECIMAL" property="cost4" />
+	  <result column="cost5" jdbcType="DECIMAL" property="cost5" />
+	  <result column="cost6" jdbcType="DECIMAL" property="cost6" />
+	  <result column="cost7" jdbcType="DECIMAL" property="cost7" />
+	  <result column="cost8" jdbcType="DECIMAL" property="cost8" />
+	  <result column="cost9" jdbcType="DECIMAL" property="cost9" />
+	  <result column="cost10" jdbcType="DECIMAL" property="cost10" />
+	  <result column="cost_other" jdbcType="DECIMAL" property="costOther" />
+	  <result column="profit_amount" jdbcType="DECIMAL" property="profitAmount" />
+	  <result column="profit_account" jdbcType="DECIMAL" property="profitAccount" />
+	  <result column="profit_other" jdbcType="DECIMAL" property="profitOther" />
+	  <result column="zbj_id" jdbcType="VARCHAR" property="zbjId" />
+	  <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+	  <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+	  <result column="pay_channel" jdbcType="VARCHAR" property="payChannel" />
+	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <trim prefix="(" prefixOverrides="and" suffix=")">
+      	<if test="userId != null" >
+	      and user_id = #{userId,jdbcType=BIGINT}
+	    </if>
+      	<if test="orderDate != null" >
+	      and order_date = #{orderDate,jdbcType=DATE}
+	    </if>
+      	<if test="productType != null" >
+	      and product_type = #{productType,jdbcType=VARCHAR}
+	    </if>
+      	<if test="customerType != null" >
+	      and customer_type = #{customerType,jdbcType=VARCHAR}
+	    </if>
+      	<if test="customerChannel != null" >
+	      and customer_channel = #{customerChannel,jdbcType=VARCHAR}
+	    </if>
+      	<if test="productDetailType != null" >
+	      and product_detail_type = #{productDetailType,jdbcType=VARCHAR}
+	    </if>
+      	<if test="productContext != null" >
+	      and product_context = #{productContext,jdbcType=VARCHAR}
+	    </if>
+      	<if test="productPackage != null" >
+	      and product_package = #{productPackage,jdbcType=VARCHAR}
+	    </if>
+      	<if test="serverDetails != null" >
+	      and server_details = #{serverDetails,jdbcType=VARCHAR}
+	    </if>
+      	<if test="companyName != null" >
+	      and company_name = #{companyName,jdbcType=VARCHAR}
+	    </if>
+      	<if test="customerName != null" >
+	      and customer_name = #{customerName,jdbcType=VARCHAR}
+	    </if>
+      	<if test="mobile != null" >
+	      and mobile = #{mobile,jdbcType=VARCHAR}
+	    </if>
+      	<if test="orderSumAmount != null" >
+	      and order_sum_amount = #{orderSumAmount,jdbcType=DECIMAL}
+	    </if>
+      	<if test="orderRealAmount != null" >
+	      and order_real_amount = #{orderRealAmount,jdbcType=DECIMAL}
+	    </if>
+      	<if test="orderRetailAmount != null" >
+	      and order_retail_amount = #{orderRetailAmount,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost1 != null" >
+	      and cost1 = #{cost1,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost2 != null" >
+	      and cost2 = #{cost2,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost3 != null" >
+	      and cost3 = #{cost3,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost4 != null" >
+	      and cost4 = #{cost4,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost5 != null" >
+	      and cost5 = #{cost5,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost6 != null" >
+	      and cost6 = #{cost6,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost7 != null" >
+	      and cost7 = #{cost7,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost8 != null" >
+	      and cost8 = #{cost8,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost9 != null" >
+	      and cost9 = #{cost9,jdbcType=DECIMAL}
+	    </if>
+      	<if test="cost10 != null" >
+	      and cost10 = #{cost10,jdbcType=DECIMAL}
+	    </if>
+      	<if test="costOther != null" >
+	      and cost_other = #{costOther,jdbcType=DECIMAL}
+	    </if>
+      	<if test="profitAmount != null" >
+	      and profit_amount = #{profitAmount,jdbcType=DECIMAL}
+	    </if>
+      	<if test="profitAccount != null" >
+	      and profit_account = #{profitAccount,jdbcType=DECIMAL}
+	    </if>
+      	<if test="profitOther != null" >
+	      and profit_other = #{profitOther,jdbcType=DECIMAL}
+	    </if>
+      	<if test="zbjId != null" >
+	      and zbj_id = #{zbjId,jdbcType=VARCHAR}
+	    </if>
+      	<if test="orderNo != null" >
+	      and order_no = #{orderNo,jdbcType=VARCHAR}
+	    </if>
+      	<if test="contractNo != null" >
+	      and contract_no = #{contractNo,jdbcType=VARCHAR}
+	    </if>
+      	<if test="payChannel != null" >
+	      and pay_channel = #{payChannel,jdbcType=VARCHAR}
+	    </if>
+	  </trim>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id,
+    user_id,
+    order_date,
+    product_type,
+    customer_type,
+    customer_channel,
+    product_detail_type,
+    product_context,
+    product_package,
+    server_details,
+    company_name,
+    customer_name,
+    mobile,
+    order_sum_amount,
+    order_real_amount,
+    order_retail_amount,
+    cost1,
+    cost2,
+    cost3,
+    cost4,
+    cost5,
+    cost6,
+    cost7,
+    cost8,
+    cost9,
+    cost10,
+    cost_other,
+    profit_amount,
+    profit_account,
+    profit_other,
+    zbj_id,
+    order_no,
+    contract_no,
+    pay_channel,
+    create_time,
+    last_update_time,
+  </sql>
+  <sql id="Base_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+        user_id = #{userId,jdbcType=BIGINT},
+        order_date = #{orderDate,jdbcType=DATE},
+        product_type = #{productType,jdbcType=VARCHAR},
+        customer_type = #{customerType,jdbcType=VARCHAR},
+        customer_channel = #{customerChannel,jdbcType=VARCHAR},
+        product_detail_type = #{productDetailType,jdbcType=VARCHAR},
+        product_context = #{productContext,jdbcType=VARCHAR},
+        product_package = #{productPackage,jdbcType=VARCHAR},
+        server_details = #{serverDetails,jdbcType=VARCHAR},
+        company_name = #{companyName,jdbcType=VARCHAR},
+        customer_name = #{customerName,jdbcType=VARCHAR},
+        mobile = #{mobile,jdbcType=VARCHAR},
+        order_sum_amount = #{orderSumAmount,jdbcType=DECIMAL},
+        order_real_amount = #{orderRealAmount,jdbcType=DECIMAL},
+        order_retail_amount = #{orderRetailAmount,jdbcType=DECIMAL},
+        cost1 = #{cost1,jdbcType=DECIMAL},
+        cost2 = #{cost2,jdbcType=DECIMAL},
+        cost3 = #{cost3,jdbcType=DECIMAL},
+        cost4 = #{cost4,jdbcType=DECIMAL},
+        cost5 = #{cost5,jdbcType=DECIMAL},
+        cost6 = #{cost6,jdbcType=DECIMAL},
+        cost7 = #{cost7,jdbcType=DECIMAL},
+        cost8 = #{cost8,jdbcType=DECIMAL},
+        cost9 = #{cost9,jdbcType=DECIMAL},
+        cost10 = #{cost10,jdbcType=DECIMAL},
+        cost_other = #{costOther,jdbcType=DECIMAL},
+        profit_amount = #{profitAmount,jdbcType=DECIMAL},
+        profit_account = #{profitAccount,jdbcType=DECIMAL},
+        profit_other = #{profitOther,jdbcType=DECIMAL},
+        zbj_id = #{zbjId,jdbcType=VARCHAR},
+        order_no = #{orderNo,jdbcType=VARCHAR},
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+        pay_channel = #{payChannel,jdbcType=VARCHAR},
+  		LAST_UPDATE_TIME = sysdate(),
+      </trim>
+    </set>
+  </sql>
+  <sql id="Selective_Column_List">
+    <if test="userId != null">
+      user_id,
+    </if>
+    <if test="orderDate != null">
+      order_date,
+    </if>
+    <if test="productType != null">
+      product_type,
+    </if>
+    <if test="customerType != null">
+      customer_type,
+    </if>
+    <if test="customerChannel != null">
+      customer_channel,
+    </if>
+    <if test="productDetailType != null">
+      product_detail_type,
+    </if>
+    <if test="productContext != null">
+      product_context,
+    </if>
+    <if test="productPackage != null">
+      product_package,
+    </if>
+    <if test="serverDetails != null">
+      server_details,
+    </if>
+    <if test="companyName != null">
+      company_name,
+    </if>
+    <if test="customerName != null">
+      customer_name,
+    </if>
+    <if test="mobile != null">
+      mobile,
+    </if>
+    <if test="orderSumAmount != null">
+      order_sum_amount,
+    </if>
+    <if test="orderRealAmount != null">
+      order_real_amount,
+    </if>
+    <if test="orderRetailAmount != null">
+      order_retail_amount,
+    </if>
+    <if test="cost1 != null">
+      cost1,
+    </if>
+    <if test="cost2 != null">
+      cost2,
+    </if>
+    <if test="cost3 != null">
+      cost3,
+    </if>
+    <if test="cost4 != null">
+      cost4,
+    </if>
+    <if test="cost5 != null">
+      cost5,
+    </if>
+    <if test="cost6 != null">
+      cost6,
+    </if>
+    <if test="cost7 != null">
+      cost7,
+    </if>
+    <if test="cost8 != null">
+      cost8,
+    </if>
+    <if test="cost9 != null">
+      cost9,
+    </if>
+    <if test="cost10 != null">
+      cost10,
+    </if>
+    <if test="costOther != null">
+      cost_other,
+    </if>
+    <if test="profitAmount != null">
+      profit_amount,
+    </if>
+    <if test="profitAccount != null">
+      profit_account,
+    </if>
+    <if test="profitOther != null">
+      profit_other,
+    </if>
+    <if test="zbjId != null">
+      zbj_id,
+    </if>
+    <if test="orderNo != null">
+      order_no,
+    </if>
+    <if test="contractNo != null">
+      contract_no,
+    </if>
+    <if test="payChannel != null">
+      pay_channel,
+    </if>
+      CREATE_TIME,
+      LAST_UPDATE_TIME,
+  </sql>
+  <sql id="Selective_Value_List">
+    <if test="userId != null">
+      #{userId,jdbcType=BIGINT},
+    </if>
+    <if test="orderDate != null">
+      #{orderDate,jdbcType=DATE},
+    </if>
+    <if test="productType != null">
+      #{productType,jdbcType=VARCHAR},
+    </if>
+    <if test="customerType != null">
+      #{customerType,jdbcType=VARCHAR},
+    </if>
+    <if test="customerChannel != null">
+      #{customerChannel,jdbcType=VARCHAR},
+    </if>
+    <if test="productDetailType != null">
+      #{productDetailType,jdbcType=VARCHAR},
+    </if>
+    <if test="productContext != null">
+      #{productContext,jdbcType=VARCHAR},
+    </if>
+    <if test="productPackage != null">
+      #{productPackage,jdbcType=VARCHAR},
+    </if>
+    <if test="serverDetails != null">
+      #{serverDetails,jdbcType=VARCHAR},
+    </if>
+    <if test="companyName != null">
+      #{companyName,jdbcType=VARCHAR},
+    </if>
+    <if test="customerName != null">
+      #{customerName,jdbcType=VARCHAR},
+    </if>
+    <if test="mobile != null">
+      #{mobile,jdbcType=VARCHAR},
+    </if>
+    <if test="orderSumAmount != null">
+      #{orderSumAmount,jdbcType=DECIMAL},
+    </if>
+    <if test="orderRealAmount != null">
+      #{orderRealAmount,jdbcType=DECIMAL},
+    </if>
+    <if test="orderRetailAmount != null">
+      #{orderRetailAmount,jdbcType=DECIMAL},
+    </if>
+    <if test="cost1 != null">
+      #{cost1,jdbcType=DECIMAL},
+    </if>
+    <if test="cost2 != null">
+      #{cost2,jdbcType=DECIMAL},
+    </if>
+    <if test="cost3 != null">
+      #{cost3,jdbcType=DECIMAL},
+    </if>
+    <if test="cost4 != null">
+      #{cost4,jdbcType=DECIMAL},
+    </if>
+    <if test="cost5 != null">
+      #{cost5,jdbcType=DECIMAL},
+    </if>
+    <if test="cost6 != null">
+      #{cost6,jdbcType=DECIMAL},
+    </if>
+    <if test="cost7 != null">
+      #{cost7,jdbcType=DECIMAL},
+    </if>
+    <if test="cost8 != null">
+      #{cost8,jdbcType=DECIMAL},
+    </if>
+    <if test="cost9 != null">
+      #{cost9,jdbcType=DECIMAL},
+    </if>
+    <if test="cost10 != null">
+      #{cost10,jdbcType=DECIMAL},
+    </if>
+    <if test="costOther != null">
+      #{costOther,jdbcType=DECIMAL},
+    </if>
+    <if test="profitAmount != null">
+      #{profitAmount,jdbcType=DECIMAL},
+    </if>
+    <if test="profitAccount != null">
+      #{profitAccount,jdbcType=DECIMAL},
+    </if>
+    <if test="profitOther != null">
+      #{profitOther,jdbcType=DECIMAL},
+    </if>
+    <if test="zbjId != null">
+      #{zbjId,jdbcType=VARCHAR},
+    </if>
+    <if test="orderNo != null">
+      #{orderNo,jdbcType=VARCHAR},
+    </if>
+    <if test="contractNo != null">
+      #{contractNo,jdbcType=VARCHAR},
+    </if>
+    <if test="payChannel != null">
+      #{payChannel,jdbcType=VARCHAR},
+    </if>
+    sysdate(),
+    sysdate(),
+  </sql>
+  <select id="findList" parameterType="OrderInfo" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from order_info
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+  </select>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from order_info
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from order_info
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="save" parameterType="OrderInfo">
+    insert into order_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Column_List"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Value_List"/>
+    </trim>
+  </insert>
+  <update id="update" parameterType="OrderInfo">
+    update order_info
+    <include refid="Base_Set_Clause"/>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

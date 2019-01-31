@@ -88,8 +88,8 @@ public class AppBussController extends BaseController {
 					Object userId = jsonObject.get("userId");
 					Object userName = jsonObject.get("userName");
 					Object departmentId = jsonObject.get("primaryDepartmentId");
-					String token = DESUtil.encrypt(userId + ";" + mobile + ";" + userName + ";" + departmentId + ";"
-							+ ";" + System.currentTimeMillis());
+					String token = DESUtil.encrypt(userId + ";" + mobile + ";" + userName + ";" + departmentId + ";" + ";"
+							+ System.currentTimeMillis());
 					jsonObject.put("token", token);
 					result = jsonObject.toString();
 					// 设置cookie
@@ -152,8 +152,5 @@ public class AppBussController extends BaseController {
 	public String about(Model model) {
 		return "app/about";
 	}
-
-
-
 
 }

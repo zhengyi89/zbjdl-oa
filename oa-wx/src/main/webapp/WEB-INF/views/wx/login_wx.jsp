@@ -25,7 +25,7 @@
 			</div>
 			<div class="submit">
 				<input id="loginSubmit" type="button" value="登   录"
-					onclick="this.setAttribute('disabled',true);this.value='登录中…';dologin();" />
+					onclick="this.setAttribute('disabled',true);this.value='激活中…';dologin();" />
 			</div>
 			<div align="right" style="padding-top: 20px;">
 				<a href="${ctx}/user/activate/index">账号激活</a>
