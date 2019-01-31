@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zbjdl.common.utils.BeanUtils;
-
 import com.zbjdl.oa.manager.OrderInfoManager;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.model.OrderInfo;
 import com.zbjdl.oa.dto.OrderInfoDto;
+import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 
 @Service("orderInfoService")
 public class OrderInfoServiceImpl implements OrderInfoService {
@@ -59,6 +59,13 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 			orderInfoDtoList.add(respDto);
 		}
 		return orderInfoDtoList;
+	}
+
+	@Override
+	public List<OrderWithUserInfoDto> findListWithUser(OrderInfoDto orderInfoDto) {
+		OrderInfo orderInfo = new OrderInfo();
+		BeanUtils.copyProperties(orderInfoDto, orderInfo);
+		return orderInfoManager.findListWithUser(orderInfo);
 	}
 	
 }

@@ -18,7 +18,7 @@
   	<%pageContext.setAttribute("_textResource", new TextResource()); %>
     <div class="top_bar"><a class="return" onclick="go_page('${ctx}/order/creditIndex?type=${type }')"></a>订单填写</div>
     <div class="content_auto">
-      <form action="${ctx}/order/save" method="post" id="formId">
+      <form id="formId">
         <input type="hidden" id="id" name="id" value="${order.id }"/>
         <div class="insert_team bottom">
         	<div class="insert_message">
@@ -67,7 +67,7 @@
           	</div>
           	<div class="insert_option">
             	<label>套餐类型</label>
-            	<select class="" name="productContext" id="productContext" >
+            	<select class="" name="productPackage" id="productPackage" >
                 	<c:forEach var="type" items="${_textResource.getSysTextMap('OA_PACKAGE_TYPE')}">
 						<option value="${type.key}" <c:if test="${type.key == order.productContext }">selected</c:if>>${type.value}</option>
                 	</c:forEach> 
@@ -94,8 +94,7 @@
         <div class="insert_team bottom">
           	<div class="insert_message">
             	<label>总额</label>
-            	<input type="tel" id="orderSumAmount" name="orderSumAmount" placeholder="总额" value="${order.orderSumAmount }" readonly onclick="mobileInvoke(1);"/>
-            	<span class="mobile"></span>
+            	<input type="text" id="orderSumAmount" name="orderSumAmount" placeholder="总额" value="${order.orderSumAmount }"/>
           	</div>
           	<div class="insert_message">
             	<label>实收</label>
@@ -111,8 +110,7 @@
         <div class="insert_team">
           	<div class="insert_message">
             	<label>刻章</label>
-            	<input type="tel" id="cost1" name="cost1" placeholder="刻章" value="${order.cost1 }" readonly onclick="mobileInvoke(1);"/>
-            	<span class="mobile"></span>
+            	<input type="text" id="cost1" name="cost1" placeholder="刻章" value="${order.cost1 }"/>
           	</div>
           	<div class="insert_message">
             	<label>税控器</label>
@@ -147,16 +145,15 @@
         <p class="insert_title" style="background: #f5f5f5;">毛利</p>
         <div class="insert_team bottom">
           	<div class="insert_message">
-            	<label>总额</label>
-            	<input type="tel" id="profitOther" name="profitOther" placeholder="其他收入" value="${order.profitOther }" readonly onclick="mobileInvoke(1);"/>
-            	<span class="mobile"></span>
+            	<label>其他收入</label>
+            	<input type="text" id="profitOther" name="profitOther" placeholder="其他收入" value="${order.profitOther }"/>
           	</div>
           	<div class="insert_message">
-            	<label>实收</label>
+            	<label>代帐收入</label>
             	<input type="text" id="profitAccount" name="profitAccount" placeholder="代帐收入" value="${order.profitAccount }"/>
           	</div>
           	<div class="insert_message last">
-            	<label>尾款</label>
+            	<label>总额</label>
             	<input type="text" id="profitAmount" name="profitAmount" placeholder="总额" value="${order.profitAmount }"/>
           	</div>
         </div>
@@ -165,8 +162,7 @@
         <div class="insert_team">
           	<div class="insert_message">
             	<label>猪八戒ID</label>
-            	<input type="tel" id="zbjId" name="zbjId" placeholder="猪八戒ID" value="${order.zbjId }" readonly onclick="mobileInvoke(1);"/>
-            	<span class="mobile"></span>
+            	<input type="text" id="zbjId" name="zbjId" placeholder="猪八戒ID" value="${order.zbjId }" />
           	</div>
           	<div class="insert_message">
             	<label>订单ID</label>
@@ -206,18 +202,19 @@
         setTimeout("$('#errBox').removeClass('fadeOut').addClass('vnone')",3000);
     }
     
-    function submit() {
-    	
+    function do_submit() {
+    	console.log($("#formId").serialize());
     	$.ajax({
-    		url : "${ctx}/order/update",
-    		method : "POST",
+    		url : "${ctx}/order/save",
     		type : "POST",
-    		async : false,
+    		//async : false,
     		data : $("#formId").serialize(),
+    		contentType : "application/x-www-form-urlencoded",
     		success : function(data) {
-    			if (data.code == '0') {
-    				//$("#message12").html("修改成功");
-    				//$("#errBox12").show();
+    			console.log('result:'+data.code);
+    			if (data.code == '0000') {
+    				$("#message12").html("填写成功");
+    				$("#errBox12").show();
     				toggleTime();
     			} else {
     				if(data.msg == undefined){
@@ -228,10 +225,11 @@
     			}
     		},
     		error : function() {
+    			alert(11);
     			errtip("信息错误，请稍后重试");
     		}
     	});
-    	reset_button();
+    	//reset_button();
     }
 
     var countdown = 2;
@@ -247,7 +245,7 @@
     	}
     	setTimeout(function() {
     		toggleTime(obj);
-    		window.location.href = "${ctx}/order/creditIndex?type=${type}";
+    		window.location.href = "${ctx}/index";
     	}, 2000);
     	
     }
@@ -257,32 +255,6 @@
     		return true;
     	}
     	return false;
-    }
-    
-    function mobileInvoke(num){
-    	//给app发消息授权位置
-		try {
-			window.Android.mobileInvoke(num);
-		} catch (e) {
-			var shareData = {
-				'num' : num
-			};
-			try {
-				window.webkit.messageHandlers.mobileInvoke.postMessage(shareData);
-			} catch (e) { }
-		}
-    }
-    
-    
-    function setMobileForApp(num,mobile,name){
-    	//给app发消息授权位置
-		if(num==1 || num==2){
-			console.log(num+":"+mobile+":"+name);
-			$("#name"+num).val(name);
-			$("#mobile"+num).val(mobile);
-		}else{
-			alert("上送异常!");
-		}
     }
     
     $(function () {
@@ -323,7 +295,7 @@
 		<div class="tipMsg">
 			<p class="message" id="message12">保存成功</p>
 			<p class="btnbox">
-				<input class="submit" type="button" name="name" value="确定" onclick="window.location.href='${ctxorderer/home'">
+				<input class="submit" type="button" value="确定" onclick="window.location.href='${ctx}/index'">
 			</p>
 		</div>
 	</div>

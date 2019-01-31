@@ -39,6 +39,56 @@
 	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
 	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
   </resultMap>
+	<resultMap id="WithUserResultMap" type="com.zbjdl.oa.dto.OrderWithUserInfoDto">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="user_id" jdbcType="BIGINT" property="userId" />
+	  <result column="order_date" jdbcType="DATE" property="orderDate" />
+	  <result column="product_type" jdbcType="VARCHAR" property="productType" />
+	  <result column="customer_type" jdbcType="VARCHAR" property="customerType" />
+	  <result column="customer_channel" jdbcType="VARCHAR" property="customerChannel" />
+	  <result column="product_detail_type" jdbcType="VARCHAR" property="productDetailType" />
+	  <result column="product_context" jdbcType="VARCHAR" property="productContext" />
+	  <result column="product_package" jdbcType="VARCHAR" property="productPackage" />
+	  <result column="server_details" jdbcType="VARCHAR" property="serverDetails" />
+	  <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+	  <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+	  <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	  <result column="order_sum_amount" jdbcType="DECIMAL" property="orderSumAmount" />
+	  <result column="order_real_amount" jdbcType="DECIMAL" property="orderRealAmount" />
+	  <result column="order_retail_amount" jdbcType="DECIMAL" property="orderRetailAmount" />
+	  <result column="cost1" jdbcType="DECIMAL" property="cost1" />
+	  <result column="cost2" jdbcType="DECIMAL" property="cost2" />
+	  <result column="cost3" jdbcType="DECIMAL" property="cost3" />
+	  <result column="cost4" jdbcType="DECIMAL" property="cost4" />
+	  <result column="cost5" jdbcType="DECIMAL" property="cost5" />
+	  <result column="cost6" jdbcType="DECIMAL" property="cost6" />
+	  <result column="cost7" jdbcType="DECIMAL" property="cost7" />
+	  <result column="cost8" jdbcType="DECIMAL" property="cost8" />
+	  <result column="cost9" jdbcType="DECIMAL" property="cost9" />
+	  <result column="cost10" jdbcType="DECIMAL" property="cost10" />
+	  <result column="cost_other" jdbcType="DECIMAL" property="costOther" />
+	  <result column="profit_amount" jdbcType="DECIMAL" property="profitAmount" />
+	  <result column="profit_account" jdbcType="DECIMAL" property="profitAccount" />
+	  <result column="profit_other" jdbcType="DECIMAL" property="profitOther" />
+	  <result column="zbj_id" jdbcType="VARCHAR" property="zbjId" />
+	  <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+	  <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+	  <result column="pay_channel" jdbcType="VARCHAR" property="payChannel" />
+	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+	  
+	  <result column="job_no" jdbcType="VARCHAR" property="jobNo" />
+	  <result column="user_name" jdbcType="VARCHAR" property="userName" />
+	  <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	  <result column="password" jdbcType="VARCHAR" property="password" />
+	  <result column="region" jdbcType="VARCHAR" property="region" />
+	  <result column="city" jdbcType="VARCHAR" property="city" />
+	  <result column="duty" jdbcType="VARCHAR" property="duty" />
+	  <result column="status" jdbcType="VARCHAR" property="status" />
+	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+	  <result column="boss_user_id" jdbcType="BIGINT" property="bossUserId" />
+  </resultMap>
 
   <sql id="Example_Where_Clause">
     <where>
@@ -464,4 +514,8 @@
     <include refid="Base_Set_Clause"/>
     where ID = #{id,jdbcType=DECIMAL}
   </update>
+  
+  <select id="findListWithUser" parameterType="OrderInfo" resultMap="WithUserResultMap">
+   	select * from order_info o, user_info u where o.user_id = u.id
+  </select>
 </mapper>

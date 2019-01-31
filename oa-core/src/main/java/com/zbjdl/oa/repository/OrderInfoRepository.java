@@ -6,7 +6,12 @@
 
 package com.zbjdl.oa.repository;
 
+import java.util.List;
+
 import com.zbjdl.common.respository.mybatis.GenericRepository;
+import com.zbjdl.oa.dto.OrderWithUserInfoDto;
+import com.zbjdl.oa.model.OrderInfo;
+
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,5 +21,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface OrderInfoRepository extends GenericRepository {
+
+	List<OrderWithUserInfoDto> findListWithUser(OrderInfo orderInfo);
 	
 }

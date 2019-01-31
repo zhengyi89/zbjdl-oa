@@ -8,6 +8,7 @@ package com.zbjdl.oa.manager;
 
 import java.util.List;
 
+import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 import com.zbjdl.oa.model.OrderInfo;
 
 public interface OrderInfoManager {
@@ -19,5 +20,7 @@ public interface OrderInfoManager {
 	OrderInfo selectById(Long id);
 	
 	List<OrderInfo> findList(OrderInfo orderInfo);
+
+	List<OrderWithUserInfoDto> findListWithUser(OrderInfo orderInfo);
 	
 }

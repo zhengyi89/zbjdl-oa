@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.zbjdl.oa.repository.OrderInfoRepository;
+import com.zbjdl.oa.dto.OrderInfoDto;
+import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 import com.zbjdl.oa.manager.OrderInfoManager;
 import com.zbjdl.oa.model.OrderInfo;
 
@@ -39,6 +41,11 @@ public class OrderInfoManagerImpl implements OrderInfoManager {
 	@Override
 	public List<OrderInfo> findList(OrderInfo orderInfo) {
 		return orderInfoRepository.findList(orderInfo);
+	}
+
+	@Override
+	public List<OrderWithUserInfoDto> findListWithUser(OrderInfo orderInfo) {
+		return orderInfoRepository.findListWithUser(orderInfo);
 	}
 
 }

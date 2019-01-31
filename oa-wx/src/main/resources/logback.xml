@@ -20,7 +20,7 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${catalina.base}/logs/mchservice-wx.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${catalina.base}/logs/mchservice-wx.%d{yyyy-MM-dd}.zip</fileNamePattern>
+			<fileNamePattern>${catalina.base}/logs/oa-wx.%d{yyyy-MM-dd}.zip</fileNamePattern>
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 

@@ -15,7 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author code-generator
  *
  */
-public class OrderInfoDto implements Serializable{
+public class OrderWithUserInfoDto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private java.lang.Long id;
@@ -53,6 +53,19 @@ public class OrderInfoDto implements Serializable{
 	private java.lang.String orderNo;
 	private java.lang.String contractNo;
 	private java.lang.String payChannel;
+	
+	
+	
+	private java.lang.String jobNo;
+	private java.lang.String userName;
+	private java.lang.String password;
+	private java.lang.String region;
+	private java.lang.String city;
+	private java.lang.String duty;
+	private java.lang.String status;
+	private java.util.Date createTime;
+	private java.util.Date lastUpdateTime;
+	private java.lang.Long bossUserId;
 
 	/**
 	 * @param id
@@ -561,6 +574,86 @@ public class OrderInfoDto implements Serializable{
 	 */
 	public java.lang.String getPayChannel() {
 		return this.payChannel;
+	}
+
+	public java.lang.String getJobNo() {
+		return jobNo;
+	}
+
+	public void setJobNo(java.lang.String jobNo) {
+		this.jobNo = jobNo;
+	}
+
+	public java.lang.String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(java.lang.String userName) {
+		this.userName = userName;
+	}
+
+	public java.lang.String getPassword() {
+		return password;
+	}
+
+	public void setPassword(java.lang.String password) {
+		this.password = password;
+	}
+
+	public java.lang.String getRegion() {
+		return region;
+	}
+
+	public void setRegion(java.lang.String region) {
+		this.region = region;
+	}
+
+	public java.lang.String getCity() {
+		return city;
+	}
+
+	public void setCity(java.lang.String city) {
+		this.city = city;
+	}
+
+	public java.lang.String getDuty() {
+		return duty;
+	}
+
+	public void setDuty(java.lang.String duty) {
+		this.duty = duty;
+	}
+
+	public java.lang.String getStatus() {
+		return status;
+	}
+
+	public void setStatus(java.lang.String status) {
+		this.status = status;
+	}
+
+	public java.util.Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(java.util.Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public java.util.Date getLastUpdateTime() {
+		return lastUpdateTime;
+	}
+
+	public void setLastUpdateTime(java.util.Date lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;
+	}
+
+	public java.lang.Long getBossUserId() {
+		return bossUserId;
+	}
+
+	public void setBossUserId(java.lang.Long bossUserId) {
+		this.bossUserId = bossUserId;
 	}
 	
 }

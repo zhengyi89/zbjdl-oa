@@ -1,6 +1,7 @@
 package com.zbjdl.oa.wx.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +25,7 @@ import com.zbjdl.common.utils.StringUtils;
 import com.zbjdl.common.wx.service.WeixinUserService;
 import com.zbjdl.common.wx.util.dto.WxBindUserDto;
 import com.zbjdl.oa.dto.OrderInfoDto;
+import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 import com.zbjdl.oa.dto.UserInfoDto;
 import com.zbjdl.oa.dto.resp.BaseRespDto;
 import com.zbjdl.oa.enumtype.ReturnEnum;
@@ -59,7 +62,7 @@ public class OrderInfoController extends BaseController {
 
 
 	@RequestMapping("/add/index")
-	public String save(Model model, Long id) {
+	public String addIndex(Model model, Long id) {
 		if (id!=null) {
 			OrderInfoDto orderInfo = orderInfoService.selectById(id);
 			model.addAttribute("order", orderInfo);
@@ -67,17 +70,27 @@ public class OrderInfoController extends BaseController {
 		model.addAttribute("sysdate", DateUtils.SHORT_DATE_FORMAT.format(new Date()));
 		return "/order/orderAddIndex";
 	}
+	
+	@RequestMapping("/list")
+	public String addIndex(Model model) {
+		OrderInfoDto orderInfoDto = new OrderInfoDto();
+		List<OrderWithUserInfoDto> list = orderInfoService.findListWithUser(orderInfoDto);
+		model.addAttribute("list", list);
+		return "/order/orderList";
+	}
 
 	
 	/*
 	 * 编辑保存
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView orderInfoSave(OrderInfoDto orderInfoDto) {
+	@ResponseBody
+	public Object orderInfoSave(OrderInfoDto orderInfoDto, BindingResult bindingResult) {
 		logger.info("save OrderInfo, param is : {}", JSON.toJSONString(orderInfoDto));
+		orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
 		orderInfoService.saveOrUpdate(orderInfoDto);
-		ModelAndView mav = new ModelAndView("redirect:/order/index");
-		return mav;
+		BaseRespDto respDto = new BaseRespDto(ReturnEnum.SUCCESS);
+		return respDto;
 	}
 
 	/*

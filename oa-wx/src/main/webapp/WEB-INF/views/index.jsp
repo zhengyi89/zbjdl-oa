@@ -26,6 +26,14 @@
           <p class="icon bg_5"></p>
           每日订单
         </div>
+        <div class="message" onclick="window.location.href= '${ctx}/opportunity/add/index';">
+          <p class="icon bg_5"></p>
+          每日商机
+        </div>
+        <div class="message" onclick="window.location.href= '${ctx}/order/list';">
+          <p class="icon bg_6"></p>
+          订单汇总
+        </div>
         <div class="message" onclick="getUserinfo();">
           <p class="icon bg_6"></p>
           我的资料

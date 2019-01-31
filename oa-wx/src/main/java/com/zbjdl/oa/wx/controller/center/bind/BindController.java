@@ -73,10 +73,11 @@ public class BindController extends BaseController{
 		if (StringUtils.isNotBlank(callback)) {
 			model.addAttribute("callBackUrl", callback);
 		} else {
-			callback = Base64.encode(contexPath + "/menu?" + MenuConfig.FLOW_LIST);
+//			callback = Base64.encode(contexPath + "/menu?" + MenuConfig.FLOW_LIST);
+			callback=contexPath+"/index";
 			model.addAttribute("callBackUrl", callback);
 		}
-		callback = Base64.decode(callback);
+		//callback = Base64.decode(callback);
 		if (callback.startsWith(contexPath)) {
 			callback = callback.replace(contexPath, "");
 		}

@@ -68,7 +68,7 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter{
 					String callBackUrl = getCallBackUri(request);
 					String callBackUrlBase64 = Base64.encode(callBackUrl);
 					session.setAttribute(CALL_BACK_KEY, callBackUrl);
-					response.sendRedirect(contextPath + "/login?callback=" + callBackUrlBase64);
+					response.sendRedirect(contextPath + "/user/login/index?callback=" + callBackUrlBase64);
 					return false;
 				}
 		
