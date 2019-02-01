@@ -18,7 +18,8 @@
 	<!-- 映射文件 -->
 	<mappers>
 		<mapper resource="sqlmap/UserInfoMapper.xml" /><!-- 用户 -->
-		<mapper resource="sqlmap/OrderInfoMapper.xml" /><!-- 用户 -->
+		<mapper resource="sqlmap/OrderInfoMapper.xml" /><!-- 订单 -->
+		<mapper resource="sqlmap/OpportunityInfoMapper.xml" /><!-- 商机 -->
 	</mappers>
 
 </configuration>

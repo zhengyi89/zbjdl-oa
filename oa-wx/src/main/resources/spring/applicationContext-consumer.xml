@@ -19,6 +19,12 @@
 	<dubbo:reference id="userInfoService" interface="com.zbjdl.oa.service.UserInfoService" 
 		group="${service-group}" version="${service-version}" check="false">
 	</dubbo:reference>
+	<dubbo:reference id="orderInfoService" interface="com.zbjdl.oa.service.OrderInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
+	<dubbo:reference id="opportunityInfoService" interface="com.zbjdl.oa.service.OpportunityInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
 	<dubbo:reference id="userFacade" interface="com.zbjdl.boss.admin.facade.UserFacade" 
 		group="${service-group}" version="${service-version}" check="false">
 	</dubbo:reference>

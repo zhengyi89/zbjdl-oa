@@ -13,5 +13,7 @@
 	default-autowire="byName" default-lazy-init="true">
 
 	<dubbo:service interface="com.zbjdl.oa.service.UserInfoService" ref="userInfoService" />
+	<dubbo:service interface="com.zbjdl.oa.service.OrderInfoService" ref="orderInfoService" />
+	<dubbo:service interface="com.zbjdl.oa.service.OpportunityInfoService" ref="opportunityInfoService" />
 
 </beans>

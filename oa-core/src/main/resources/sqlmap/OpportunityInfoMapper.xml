@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbjdl.oa.repository.OpportunityInfoRepository">
+	<resultMap id="BaseResultMap" type="OpportunityInfo">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="user_id" jdbcType="BIGINT" property="userId" />
+	  <result column="opp_date" jdbcType="VARCHAR" property="oppDate" />
+	  <result column="opp_num1" jdbcType="INTEGER" property="oppNum1" />
+	  <result column="opp_num2" jdbcType="INTEGER" property="oppNum2" />
+	  <result column="opp_num3" jdbcType="INTEGER" property="oppNum3" />
+	  <result column="opp_num4" jdbcType="INTEGER" property="oppNum4" />
+	  <result column="opp_num5" jdbcType="INTEGER" property="oppNum5" />
+	  <result column="opp_num6" jdbcType="INTEGER" property="oppNum6" />
+	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  
+  <resultMap id="WithUserResultMap" type="OpportunityInfo">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="user_id" jdbcType="BIGINT" property="userId" />
+	  <result column="opp_date" jdbcType="VARCHAR" property="oppDate" />
+	  <result column="opp_num1" jdbcType="INTEGER" property="oppNum1" />
+	  <result column="opp_num2" jdbcType="INTEGER" property="oppNum2" />
+	  <result column="opp_num3" jdbcType="INTEGER" property="oppNum3" />
+	  <result column="opp_num4" jdbcType="INTEGER" property="oppNum4" />
+	  <result column="opp_num5" jdbcType="INTEGER" property="oppNum5" />
+	  <result column="opp_num6" jdbcType="INTEGER" property="oppNum6" />
+	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+	  
+	  
+	  <result column="job_no" jdbcType="VARCHAR" property="jobNo" />
+	  <result column="user_name" jdbcType="VARCHAR" property="userName" />
+	  <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+	  <result column="password" jdbcType="VARCHAR" property="password" />
+	  <result column="region" jdbcType="VARCHAR" property="region" />
+	  <result column="city" jdbcType="VARCHAR" property="city" />
+	  <result column="duty" jdbcType="VARCHAR" property="duty" />
+	  <result column="status" jdbcType="VARCHAR" property="status" />
+	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+	  <result column="boss_user_id" jdbcType="BIGINT" property="bossUserId" />
+  </resultMap>
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <trim prefix="(" prefixOverrides="and" suffix=")">
+      	<if test="userId != null" >
+	      and user_id = #{userId,jdbcType=BIGINT}
+	    </if>
+      	<if test="oppDate != null" >
+	      and opp_date = #{oppDate,jdbcType=VARCHAR}
+	    </if>
+      	<if test="oppNum1 != null" >
+	      and opp_num1 = #{oppNum1,jdbcType=INTEGER}
+	    </if>
+      	<if test="oppNum2 != null" >
+	      and opp_num2 = #{oppNum2,jdbcType=INTEGER}
+	    </if>
+      	<if test="oppNum3 != null" >
+	      and opp_num3 = #{oppNum3,jdbcType=INTEGER}
+	    </if>
+      	<if test="oppNum4 != null" >
+	      and opp_num4 = #{oppNum4,jdbcType=INTEGER}
+	    </if>
+      	<if test="oppNum5 != null" >
+	      and opp_num5 = #{oppNum5,jdbcType=INTEGER}
+	    </if>
+      	<if test="oppNum6 != null" >
+	      and opp_num6 = #{oppNum6,jdbcType=INTEGER}
+	    </if>
+	  </trim>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id,
+    user_id,
+    opp_date,
+    opp_num1,
+    opp_num2,
+    opp_num3,
+    opp_num4,
+    opp_num5,
+    opp_num6,
+    create_time,
+    last_update_time,
+  </sql>
+  <sql id="Base_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+        user_id = #{userId,jdbcType=BIGINT},
+        opp_date = #{oppDate,jdbcType=VARCHAR},
+        opp_num1 = #{oppNum1,jdbcType=INTEGER},
+        opp_num2 = #{oppNum2,jdbcType=INTEGER},
+        opp_num3 = #{oppNum3,jdbcType=INTEGER},
+        opp_num4 = #{oppNum4,jdbcType=INTEGER},
+        opp_num5 = #{oppNum5,jdbcType=INTEGER},
+        opp_num6 = #{oppNum6,jdbcType=INTEGER},
+  		LAST_UPDATE_TIME = sysdate(),
+      </trim>
+    </set>
+  </sql>
+  <sql id="Selective_Column_List">
+    <if test="userId != null">
+      user_id,
+    </if>
+    <if test="oppDate != null">
+      opp_date,
+    </if>
+    <if test="oppNum1 != null">
+      opp_num1,
+    </if>
+    <if test="oppNum2 != null">
+      opp_num2,
+    </if>
+    <if test="oppNum3 != null">
+      opp_num3,
+    </if>
+    <if test="oppNum4 != null">
+      opp_num4,
+    </if>
+    <if test="oppNum5 != null">
+      opp_num5,
+    </if>
+    <if test="oppNum6 != null">
+      opp_num6,
+    </if>
+      CREATE_TIME,
+      LAST_UPDATE_TIME,
+  </sql>
+  <sql id="Selective_Value_List">
+    <if test="userId != null">
+      #{userId,jdbcType=BIGINT},
+    </if>
+    <if test="oppDate != null">
+      #{oppDate,jdbcType=VARCHAR},
+    </if>
+    <if test="oppNum1 != null">
+      #{oppNum1,jdbcType=INTEGER},
+    </if>
+    <if test="oppNum2 != null">
+      #{oppNum2,jdbcType=INTEGER},
+    </if>
+    <if test="oppNum3 != null">
+      #{oppNum3,jdbcType=INTEGER},
+    </if>
+    <if test="oppNum4 != null">
+      #{oppNum4,jdbcType=INTEGER},
+    </if>
+    <if test="oppNum5 != null">
+      #{oppNum5,jdbcType=INTEGER},
+    </if>
+    <if test="oppNum6 != null">
+      #{oppNum6,jdbcType=INTEGER},
+    </if>
+    sysdate(),
+    sysdate(),
+  </sql>
+  <select id="findList" parameterType="OpportunityInfo" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from opportunity_info
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+  </select>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from opportunity_info
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from opportunity_info
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="save" parameterType="OpportunityInfo">
+    insert into opportunity_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Column_List"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Value_List"/>
+    </trim>
+  </insert>
+  <update id="update" parameterType="OpportunityInfo">
+    update opportunity_info
+    <include refid="Base_Set_Clause"/>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  
+  <select id="findListWithUser" parameterType="OpportunityInfo" resultMap="WithUserResultMap">
+   	SELECT
+   		u.user_name, 
+		SUM(opp_num1) opp_num1 ,
+		SUM(opp_num2) opp_num2 ,
+		SUM(opp_num3) opp_num3
+	FROM
+		opportunity_info o ,
+		user_info u
+	WHERE
+		o.user_id = u.id
+	GROUP BY
+		o.user_id
+  </select>
+</mapper>

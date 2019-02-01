@@ -9,6 +9,7 @@ package com.zbjdl.oa.service;
 import java.util.List;
 
 import com.zbjdl.oa.dto.OrderInfoDto;
+import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 
 public interface OrderInfoService {
 	Integer saveOrUpdate(OrderInfoDto orderInfoSaveReqDto);
@@ -16,5 +17,7 @@ public interface OrderInfoService {
 	OrderInfoDto selectById(Long id);
 	
 	List<OrderInfoDto> findList(OrderInfoDto orderInfoDto);
+
+	List<OrderWithUserInfoDto> findListWithUser(OrderInfoDto orderInfoDto);
 	
 }
