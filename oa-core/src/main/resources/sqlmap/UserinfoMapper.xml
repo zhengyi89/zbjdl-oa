@@ -10,6 +10,7 @@
 	  <result column="region" jdbcType="VARCHAR" property="region" />
 	  <result column="city" jdbcType="VARCHAR" property="city" />
 	  <result column="duty" jdbcType="VARCHAR" property="duty" />
+	  <result column="is_admin" jdbcType="BIT" property="isAdmin" />
 	  <result column="status" jdbcType="VARCHAR" property="status" />
 	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
 	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
@@ -40,6 +41,9 @@
       	<if test="duty != null" >
 	      and duty = #{duty,jdbcType=VARCHAR}
 	    </if>
+      	<if test="isAdmin != null" >
+	      and is_admin = #{isAdmin,jdbcType=BIT}
+	    </if>
       	<if test="status != null" >
 	      and status = #{status,jdbcType=VARCHAR}
 	    </if>
@@ -58,6 +62,7 @@
     region,
     city,
     duty,
+    is_admin,
     status,
     create_time,
     last_update_time,
@@ -73,6 +78,7 @@
         region = #{region,jdbcType=VARCHAR},
         city = #{city,jdbcType=VARCHAR},
         duty = #{duty,jdbcType=VARCHAR},
+        is_admin = #{isAdmin,jdbcType=BIT},
         status = #{status,jdbcType=VARCHAR},
   		LAST_UPDATE_TIME = sysdate(),
         boss_user_id = #{bossUserId,jdbcType=BIGINT},
@@ -100,6 +106,9 @@
     </if>
     <if test="duty != null">
       duty,
+    </if>
+    <if test="isAdmin != null">
+      is_admin,
     </if>
     <if test="status != null">
       status,
@@ -131,6 +140,9 @@
     </if>
     <if test="duty != null">
       #{duty,jdbcType=VARCHAR},
+    </if>
+    <if test="isAdmin != null">
+      #{isAdmin,jdbcType=BIT},
     </if>
     <if test="status != null">
       #{status,jdbcType=VARCHAR},

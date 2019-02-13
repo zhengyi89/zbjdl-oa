@@ -8,11 +8,14 @@
 <head>
 <title>大连八戒财税</title>
 <link rel="stylesheet" href="${def}/wx/css/warehouse.css" media="screen" title="no title" charset="utf-8" />
-<link rel="stylesheet" href="${def}/wx/css/wxui.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="${def}/css/wxui.css" media="screen" title="no title" charset="utf-8">
+
+
 </head>
 <body>
 	<div class="index_bg">
 		<form class="login_form" id="loginForm" action="" method="">
+			<h1 align="center" style="padding-bottom: 20px">账号激活</h1>
 			<div class="input_box">
 				<p class="icon_tel"></p>
 					<input type="text" id="userName" name="userName" placeholder="boss系统用户名" />
@@ -25,7 +28,10 @@
 			</div>
 			<div class="submit">
 				<input id="loginSubmit" type="button" value="激   活"
-					onclick="this.setAttribute('disabled',true);this.value='登录中…';dologin();" />
+					onclick="this.setAttribute('disabled',true);this.value='激活中…';dologin();" />
+			</div>
+			<div align="right" style="padding-top: 20px;">
+				<a href="${ctx}/user/login/index">去登录</a>
 			</div>
 		</form>
 	</div>
@@ -74,18 +80,20 @@
 			$.ajax({
 				url : "${ctx}/user/activate",
 				method : "POST",
-				async: false,
+				async: true,
 				data : $("#loginForm").serialize(),
 				success : function(data) {
-					alert(data.code);
+					console.log(data.code+"---"+data.msg);
 					var error = wxconfig.getTip(status) || data.msg;
 					//原有逻辑不变
 					if ("0000" == data.code) {
 						window.location.href = "${ctx}/user/edit/index";
 						return;
+					}else{
+						alert(data.msg);
+						resetLogin();
 					}
-					cssChange("passwordTip", false, "用户名或错误");
-					resetLogin();
+					
 				},
 				error : function() {
 					alert("系统异常，请稍后重试");

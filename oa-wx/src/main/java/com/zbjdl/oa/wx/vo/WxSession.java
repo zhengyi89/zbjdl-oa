@@ -83,6 +83,8 @@ public class WxSession implements Serializable {
 	 */
 	private String loginName;
 
+	private String city;
+
 	/**
 	 * 判断用户是否已经绑定了会员
 	 * 
@@ -169,6 +171,14 @@ public class WxSession implements Serializable {
 
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 }

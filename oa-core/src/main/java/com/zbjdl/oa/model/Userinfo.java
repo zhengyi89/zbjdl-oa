@@ -25,6 +25,7 @@ public class UserInfo {
 	private java.util.Date createTime;
 	private java.util.Date lastUpdateTime;
 	private java.lang.Long bossUserId;
+	private java.lang.Boolean isAdmin;
 
 	/**
 	 * @param id
@@ -204,4 +205,14 @@ public class UserInfo {
 	public java.lang.Long getBossUserId() {
 		return this.bossUserId;
 	}
+
+	public java.lang.Boolean getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(java.lang.Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+	
+	
 }

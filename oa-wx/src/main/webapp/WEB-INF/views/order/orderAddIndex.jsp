@@ -16,7 +16,7 @@
   </head>
   <body>
   	<%pageContext.setAttribute("_textResource", new TextResource()); %>
-    <div class="top_bar"><a class="return" onclick="go_page('${ctx}/order/creditIndex?type=${type }')"></a>订单填写</div>
+    <div class="top_bar"><a class="return" onclick="go_page('${ctx}/index')"></a>新建订单</div>
     <div class="content_auto">
       <form id="formId">
         <input type="hidden" id="id" name="id" value="${order.id }"/>
@@ -273,7 +273,7 @@
           startYear: currYear - 10, //开始年份
           endYear: currYear + 10 //结束年份
         };
-        $("#selectDate").mobiscroll($.extend(opt['date'], opt['default']));
+        $("#orderDate").mobiscroll($.extend(opt['date'], opt['default']));
         var optDateTime = $.extend(opt['datetime'], opt['default']);
         var optTime = $.extend(opt['time'], opt['default']);
         $("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);

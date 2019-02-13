@@ -14,7 +14,7 @@
   </head>
   <body>
   	<%pageContext.setAttribute("_textResource", new TextResource()); %>
-    <div class="top_bar"><a class="return"></a>订单列表</div>
+    <div class="top_bar"><a class="return" onclick="window.location.href = '${ctx}/index'"></a>获客渠道表</div>
     <div class="content_auto">
     <p><p>
     <p>

@@ -23,70 +23,61 @@
     <div class="showbox">
       <div class="project_list">
         <div class="message" onclick="window.location.href= '${ctx}/order/add/index';">
-          <p class="icon bg_5"></p>
-          每日订单
+          <p class="icon bg_1"></p>
+          新建订单
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/opportunity/add/index';">
-          <p class="icon bg_5"></p>
+          <p class="icon bg_4"></p>
           每日商机
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/order/list';">
-          <p class="icon bg_6"></p>
+          <p class="icon bg_1"></p>
           订单汇总
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/report/bussAnalyze';">
-          <p class="icon bg_6"></p>
+          <p class="icon bg_4"></p>
           商机数表
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/report/customerChannel';">
-          <p class="icon bg_6"></p>
+          <p class="icon bg_1"></p>
           获客渠道表
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/report/orderSummary';">
-          <p class="icon bg_6"></p>
+          <p class="icon bg_1"></p>
           战报表
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/opportunity/list';">
-          <p class="icon bg_6"></p>
+          <p class="icon bg_1"></p>
           销售月表
         </div>
-        <div class="message" onclick="window.location.href= '${ctx}/targer/assign/index';">
+        <div class="message" onclick="setTarget();">
           <p class="icon bg_6"></p>
           设置业绩目标
         </div>
-        <div class="message" onclick="getUserinfo();">
-          <p class="icon bg_6"></p>
+        <div class="message" onclick="window.location.href= '${ctx}/user/info';">
+          <p class="icon bg_5"></p>
           我的资料
-        </div>
-        <div class="message" onclick="getAbout();">
-          <p class="icon bg_6"></p>
-          关于
         </div>
         <div class="message last" onclick="logout();">
           <p class="icon bg_6"></p>
-          注销
+          解绑
         </div>
         
       </div>
     </div>
     <script type="text/javascript" src="${def}/app/js/WebViewJavascriptBridge.js"></script>
     <script type="text/javascript">
-	    function getUserinfo(){
-	  		window.location.href= "${ctx}/user/edit/index";
-	 	  }
-	    
-	    function getAbout(){
-	  		window.location.href= "${ctx}/app/about";
-	 	  }
-	    
-	    function logout(){
-	  		window.location.href= "${ctx}/app/logout";
-	 	  }
-	    
-	    function getNotice(){
-	  		window.location.href= "${ctx}/app/notice";
-	 	  }
-	    
+    	function setTarget(){
+    		$.ajax({
+				type : 'GET',
+				url : '${pageContext.request.contextPath}/target/init',
+				async: false,
+				success : function(data) {
+					window.location.href= '${ctx}/target/assign/index';
+				}
+			});
+  			
+ 	  	}
     </script>
   </body>
 </html>

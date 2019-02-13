@@ -16,7 +16,7 @@
   </head>
   <body>
   	<%pageContext.setAttribute("_textResource", new TextResource()); %>
-    <div class="top_bar"><a class="return" onclick="go_page('${ctx}/opportunity/creditIndex?type=${type }')"></a>订单填写</div>
+    <div class="top_bar"><a class="return" onclick="go_page('${ctx}/index')"></a>商机领取</div>
     <div class="content_auto">
       <form id="formId">
         <input type="hidden" id="id" name="id" value="${opportunity.id }"/>

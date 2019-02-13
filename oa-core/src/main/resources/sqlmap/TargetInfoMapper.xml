@@ -9,7 +9,18 @@
 	  <result column="assign_id" jdbcType="VARCHAR" property="assignId" />
 	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
 	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
-  </resultMap>
+  	</resultMap>
+  	
+	<resultMap id="ResultMapWithUser" type="com.zbjdl.oa.dto.TargetWithUserInfoDto">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="user_id" jdbcType="BIGINT" property="userId" />
+	  <result column="user_name" jdbcType="BIGINT" property="userName" />
+	  <result column="target_amount" jdbcType="DECIMAL" property="targetAmount" />
+	  <result column="target_month" jdbcType="VARCHAR" property="targetMonth" />
+	  <result column="assign_id" jdbcType="VARCHAR" property="assignId" />
+	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  	</resultMap>
 
   <sql id="Example_Where_Clause">
     <where>
@@ -90,6 +101,16 @@
     <include refid="Example_Where_Clause" />
     <!-- order by CREATE_DATE -->
   </select>
+  <select id="findListWithUserByCity" parameterType="java.lang.String" resultMap="ResultMapWithUser">
+  	SELECT
+		t.*, u.user_name
+	FROM
+		target_info t ,
+		user_info u
+	WHERE
+		t.user_id = u.id
+	AND u.city = #{0} and target_month = #{1}
+  </select>
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select
     <trim suffixOverrides=",">
@@ -116,4 +137,30 @@
     <include refid="Base_Set_Clause"/>
     where ID = #{id,jdbcType=DECIMAL}
   </update>
+  
+  <insert id="monthInit" parameterType="java.lang.String">
+    INSERT INTO target_info(
+		user_id ,
+		target_amount ,
+		target_month ,
+		assign_id ,
+		CREATE_time ,
+		last_update_time
+	) SELECT
+		u.id ,
+		0 ,
+		#{0} ,
+		#{2} ,
+		SYSDATE() ,
+		SYSDATE()
+	FROM
+		target_info t ,
+		user_info u
+	WHERE
+		t.user_id = u.id
+	AND u.city = #{1};
+
+  </insert>
+  
+  
 </mapper>

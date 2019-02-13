@@ -65,10 +65,6 @@ public class WebMvcAppConfiguration extends WebMvcConfigurerAdapter{
     	.excludePathPatterns("/wx/mpapi.action")
     	.excludePathPatterns("/user/**")
     	.excludePathPatterns("/static/**")
-    	.excludePathPatterns("/login")
-    	.excludePathPatterns("/logout")
-    	.excludePathPatterns("/msg/send")
-    	.excludePathPatterns("/nologin/*")
     	.excludePathPatterns("/**/error");  
 
 

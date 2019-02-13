@@ -24,15 +24,13 @@
 				<p class="tip none" id="passwordTip"></p>
 			</div>
 			<div class="submit">
-				<input id="loginSubmit" type="button" value="登   录"
-					onclick="this.setAttribute('disabled',true);this.value='激活中…';dologin();" />
+				<input id="loginSubmit" type="button" value="登   录" onclick="dologin();" />
 			</div>
 			<div align="right" style="padding-top: 20px;">
 				<a href="${ctx}/user/activate/index">账号激活</a>
 			</div>
 		</form>
 	</div>
-	<script src="${ext}/js/zepto.min.js"></script>
 	<script type="text/javascript">
 	    function checkUserName(){
 			var userName=$("#userName").val();
@@ -70,14 +68,16 @@
 	    }
 		
 		function dologin() {
+			$("#loginSubmit").attr('disabled',true);
+			$("#loginSubmit").val('登录中…');
 			if (!checkInput()) {
 				resetLogin();
-				return;
+				return; 
 			}
 			$.ajax({
 				url : "${ctx}/user/login",
 				method : "POST",
-				async: false,
+				async: true,
 				data : $("#loginForm").serialize(),
 				success : function(data) {
 					var code = data.code;
@@ -89,9 +89,10 @@
 						console.log('url:'+callUrl);
 						window.location.href = callUrl;
 						//return;
+					}else{
+						cssChange("passwordTip", false, "用户名或密码错误");
+						resetLogin();
 					}
-					cssChange("passwordTip", false, "用户名或密码错误");
-					resetLogin();
 				},
 				error : function() {
 					alert("系统异常，请稍后重试");

@@ -6,7 +6,11 @@
 
 package com.zbjdl.oa.repository;
 
+import java.util.List;
+
 import com.zbjdl.common.respository.mybatis.GenericRepository;
+import com.zbjdl.oa.dto.TargetWithUserInfoDto;
+
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,5 +20,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface TargetInfoRepository extends GenericRepository {
+
+	List<TargetWithUserInfoDto> findListWithUserByCity(String city, String month);
+
+	void monthInit(String targetMonth, String city, String userId);
 	
 }

@@ -21,6 +21,7 @@ import com.alibaba.fastjson.JSON;
 import com.zbjdl.boss.admin.facade.UserFacade;
 import com.zbjdl.boss.admin.user.dto.DepartmentDTO;
 import com.zbjdl.boss.admin.user.dto.UserDTO;
+import com.zbjdl.common.amount.Amount;
 import com.zbjdl.common.encrypt.Digest;
 import com.zbjdl.common.utils.DateUtils;
 import com.zbjdl.common.utils.StringUtils;
@@ -75,6 +76,7 @@ public class ReportController extends BaseController {
 				map.put(order.getUserId(), cdto);
 			}
 			CustomerChannelReportRespDto cdto = map.get(order.getUserId());
+			cdto.c3 = cdto.c3 == null ? new Amount() : cdto.c3;
 			cdto.c3 = cdto.c3.add(order.getProfitAmount());
 			if ("4".equals(order.getProductDetailType())) {
 				cdto.c4 += 1;
@@ -92,30 +94,29 @@ public class ReportController extends BaseController {
 				cdto.c9 += 1;
 			}
 			cdto.c10 += 1;
-			
-			// 新户：代帐、注册＋代帐  
-			if ("4".equals(order.getProductDetailType())||"6".equals(order.getProductDetailType())) {
+
+			// 新户：代帐、注册＋代帐
+			if ("4".equals(order.getProductDetailType()) || "6".equals(order.getProductDetailType())) {
 				cdto.c11 += 1;
 			}
-			
-			
+
 			if ("1".equals(order.getCustomerChannel())) {
 				cdto.c12 += 1;
-			}else if ("2".equals(order.getCustomerChannel())) {
+			} else if ("2".equals(order.getCustomerChannel())) {
 				cdto.c13 += 1;
-			}else if ("3".equals(order.getCustomerChannel())) {
+			} else if ("3".equals(order.getCustomerChannel())) {
 				cdto.c14 += 1;
-			}else if ("4".equals(order.getCustomerChannel())) {
+			} else if ("4".equals(order.getCustomerChannel())) {
 				cdto.c15 += 1;
-			}else if ("5".equals(order.getCustomerChannel())) {
+			} else if ("5".equals(order.getCustomerChannel())) {
 				cdto.c16 += 1;
-			}else if ("5".equals(order.getCustomerChannel())) {
+			} else if ("5".equals(order.getCustomerChannel())) {
 				cdto.c17 += 1;
-			}else if ("6".equals(order.getCustomerChannel())) {
+			} else if ("6".equals(order.getCustomerChannel())) {
 				cdto.c18 += 1;
-			}else if ("7".equals(order.getCustomerChannel())) {
+			} else if ("7".equals(order.getCustomerChannel())) {
 				cdto.c19 += 1;
-			}else if ("9".equals(order.getCustomerChannel())) {
+			} else if ("9".equals(order.getCustomerChannel())) {
 				cdto.c20 += 1;
 			}
 		}
@@ -130,22 +131,21 @@ public class ReportController extends BaseController {
 		model.addAttribute("list", list);
 		return "/order/orderList";
 	}
-	
+
 	@RequestMapping("/orderSummary")
 	public String orderSummary(Model model, String date) {
 		// 查询当月
 		List<OrderSummaryReportRespDto> list = orderInfoService.findOrderSummaryReport(date);
-		
+
 		model.addAttribute("list", list);
 		return "/report/orderSummaryReport";
 	}
-	
-	
+
 	@RequestMapping("/bussAnalyze")
 	public String bussAnalyze(Model model, String date) {
 		// 查询当月
 		List<BussAnalyzeReportRespDto> list = orderInfoService.findBussAnalyzeReport(date);
-		
+
 		model.addAttribute("list", list);
 		return "/report/bussAnalyzeReport";
 	}

@@ -1,5 +1,7 @@
 package com.zbjdl.oa.wx.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -110,11 +112,23 @@ public class UserInfoController extends BaseController {
 		if (StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "请输入登录信息");
 		}
-
-		UserDTO userDto = userFacade.userLoginValidate(userName, password);
+		
+		// 判断是否已激活
+		UserInfoDto queryDto = new UserInfoDto();
+		queryDto.setUserName(userVo.getUserName());
+		List<UserInfoDto> userList = userInfoService.findList(queryDto);
+		if (userList!=null && userList.size()>0) {
+			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "此账号已激活");
+		}
+		UserDTO userDto;
+		try {
+			userDto = userFacade.userLoginValidate(userName, password);
+		} catch (Exception e) {
+			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "用户名或密码错误");
+		}
+		
 		UserInfoDto user;
 		if (userDto != null) {
-
 			// 判断是否已经同步
 			user = userInfoService.selectById(userDto.getUserId());
 			if (user == null) {
@@ -126,6 +140,7 @@ public class UserInfoController extends BaseController {
 				user.setCity(getCityByDepartment(department.getDepartmentName()));
 				user.setPassword(Digest.md5Digest(password));
 				user.setId(userDto.getUserId());
+				user.setIsAdmin(userDto.getIsAdmin());
 				userInfoService.save(user);
 			}
 
@@ -149,6 +164,7 @@ public class UserInfoController extends BaseController {
 			weixinUserService.bind(wxBindUserDto);
 		}
 		wxSession.setLoginName(userName);
+		wxSession.setCity(user.getCity());
 		sessionService.setSession(wxSession);
 		super.reloadSession();
 		
@@ -167,6 +183,15 @@ public class UserInfoController extends BaseController {
 		UserInfoDto userDto = userInfoService.selectById(userId);
 		model.addAttribute("user", userDto);
 		return "/user/userEditIndex";
+	}
+	
+	
+	@RequestMapping("/info")
+	public String info(Model model) {
+		Long userId = Long.parseLong(getSessionSafe().getUserId());
+		UserInfoDto userDto = userInfoService.selectById(userId);
+		model.addAttribute("user", userDto);
+		return "/user/userInfo";
 	}
 
 	@RequestMapping("/save")
