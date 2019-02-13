@@ -26,7 +26,7 @@ import com.zbjdl.common.wx.service.WeixinUserService;
 import com.zbjdl.common.wx.util.dto.WxBindUserDto;
 import com.zbjdl.oa.dto.OpportunityInfoDto;
 import com.zbjdl.oa.dto.UserInfoDto;
-import com.zbjdl.oa.dto.resp.BaseRespDto;
+import com.zbjdl.oa.dto.response.BaseRespDto;
 import com.zbjdl.oa.enumtype.ReturnEnum;
 import com.zbjdl.oa.service.OpportunityInfoService;
 import com.zbjdl.oa.service.UserInfoService;

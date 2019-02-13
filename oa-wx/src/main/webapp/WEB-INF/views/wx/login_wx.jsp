@@ -90,7 +90,7 @@
 						window.location.href = callUrl;
 						//return;
 					}
-					cssChange("passwordTip", false, "验证码错误");
+					cssChange("passwordTip", false, "用户名或密码错误");
 					resetLogin();
 				},
 				error : function() {

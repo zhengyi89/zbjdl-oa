@@ -1,4 +1,4 @@
-package com.zbjdl.oa.dto.resp;
+package com.zbjdl.oa.dto.response;
 
 import java.io.Serializable;
 

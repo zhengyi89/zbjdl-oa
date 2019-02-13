@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.zbjdl.oa.repository.OrderInfoRepository;
-import com.zbjdl.oa.dto.OrderInfoDto;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
+import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 import com.zbjdl.oa.manager.OrderInfoManager;
 import com.zbjdl.oa.model.OrderInfo;
 

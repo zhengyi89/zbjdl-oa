@@ -34,21 +34,25 @@
           <p class="icon bg_6"></p>
           订单汇总
         </div>
-        <div class="message" onclick="window.location.href= '${ctx}/opportunity/list';">
+        <div class="message" onclick="window.location.href= '${ctx}/report/bussAnalyze';">
           <p class="icon bg_6"></p>
           商机数表
         </div>
-        <div class="message" onclick="window.location.href= '${ctx}/opportunity/list';">
+        <div class="message" onclick="window.location.href= '${ctx}/report/customerChannel';">
           <p class="icon bg_6"></p>
           获客渠道表
         </div>
-        <div class="message" onclick="window.location.href= '${ctx}/opportunity/list';">
+        <div class="message" onclick="window.location.href= '${ctx}/report/orderSummary';">
           <p class="icon bg_6"></p>
           战报表
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/opportunity/list';">
           <p class="icon bg_6"></p>
           销售月表
+        </div>
+        <div class="message" onclick="window.location.href= '${ctx}/targer/assign/index';">
+          <p class="icon bg_6"></p>
+          设置业绩目标
         </div>
         <div class="message" onclick="getUserinfo();">
           <p class="icon bg_6"></p>

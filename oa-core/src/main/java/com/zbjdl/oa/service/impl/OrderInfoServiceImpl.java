@@ -14,16 +14,22 @@ import org.springframework.stereotype.Service;
 
 import com.zbjdl.common.utils.BeanUtils;
 import com.zbjdl.oa.manager.OrderInfoManager;
+import com.zbjdl.oa.repository.OrderInfoRepository;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.model.OrderInfo;
 import com.zbjdl.oa.dto.OrderInfoDto;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
+import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
+import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 
 @Service("orderInfoService")
 public class OrderInfoServiceImpl implements OrderInfoService {
 	
 	@Autowired
 	private OrderInfoManager orderInfoManager;
+	
+	@Autowired
+	private OrderInfoRepository orderInfoRepository;
 	
 	@Override
 	public Integer saveOrUpdate(OrderInfoDto orderInfoDto) {
@@ -66,6 +72,16 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 		OrderInfo orderInfo = new OrderInfo();
 		BeanUtils.copyProperties(orderInfoDto, orderInfo);
 		return orderInfoManager.findListWithUser(orderInfo);
+	}
+
+	@Override
+	public List<OrderSummaryReportRespDto> findOrderSummaryReport(String date) {
+		return orderInfoRepository.findOrderSummaryReport(date);
+	}
+
+	@Override
+	public List<BussAnalyzeReportRespDto> findBussAnalyzeReport(String date) {
+		return orderInfoRepository.findBussAnalyzeReport(date);
 	}
 	
 }

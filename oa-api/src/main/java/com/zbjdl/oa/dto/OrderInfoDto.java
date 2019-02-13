@@ -10,6 +10,8 @@ import java.io.Serializable;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.zbjdl.common.amount.Amount;
+
 /**
  * OrderInfoDto
  * @author code-generator
@@ -470,7 +472,7 @@ public class OrderInfoDto implements Serializable{
 	 * @return
 	 */
 	public com.zbjdl.common.amount.Amount getProfitAmount() {
-		return this.profitAmount;
+		return this.profitAmount==null?new Amount():this.profitAmount;
 	}
 	/**
 	 * 代帐费用

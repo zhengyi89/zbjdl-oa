@@ -15,5 +15,6 @@
 	<dubbo:service interface="com.zbjdl.oa.service.UserInfoService" ref="userInfoService" />
 	<dubbo:service interface="com.zbjdl.oa.service.OrderInfoService" ref="orderInfoService" />
 	<dubbo:service interface="com.zbjdl.oa.service.OpportunityInfoService" ref="opportunityInfoService" />
+	<dubbo:service interface="com.zbjdl.oa.service.TargetInfoService" ref="targetInfoService" />
 
 </beans>

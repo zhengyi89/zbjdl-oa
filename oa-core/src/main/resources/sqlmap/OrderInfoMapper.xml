@@ -89,7 +89,35 @@
 	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
 	  <result column="boss_user_id" jdbcType="BIGINT" property="bossUserId" />
   </resultMap>
-
+  
+  
+  <resultMap id="OrderSummaryReportMap" type="com.zbjdl.oa.dto.response.OrderSummaryReportRespDto">
+	  <result column="city" jdbcType="VARCHAR" property="city" />
+	  <result column="dayAmount" jdbcType="DECIMAL" property="dayAmount" />
+	  <result column="monthAmount" jdbcType="DECIMAL" property="monthAmount" />
+	  <result column="targetAmount" jdbcType="DECIMAL" property="targetAmount" />
+	  <result column="unsellAmount" jdbcType="DECIMAL" property="unsellAmount" />
+	  <result column="finishRate" jdbcType="DECIMAL" property="finishRate" />
+  </resultMap>
+  
+  <resultMap id="BussAnalyzeReportMap" type="com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto">
+	  <result column="city" jdbcType="VARCHAR" property="city" />
+	  <result column="user_name" jdbcType="VARCHAR" property="userName" />
+	  <result column="id" jdbcType="VARCHAR" property="userId" />
+	  <result column="dayOpp1" jdbcType="INTEGER" property="dayOpp1" />
+	  <result column="dayOpp2" jdbcType="INTEGER" property="dayOpp2" />
+	  <result column="dayOpp3" jdbcType="INTEGER" property="dayOpp3" />
+	  <result column="monthOpp1" jdbcType="INTEGER" property="monthOpp1" />
+	  <result column="monthOpp2" jdbcType="INTEGER" property="monthOpp2" />
+	  <result column="monthOpp3" jdbcType="INTEGER" property="monthOpp3" />
+	  <result column="qdsDay" jdbcType="INTEGER" property="qdsDay" />
+	  <result column="qsbDay" jdbcType="INTEGER" property="qsbDay" />
+	  <result column="bossDay" jdbcType="INTEGER" property="bossDay" />
+	  <result column="qdsMonth" jdbcType="INTEGER" property="qdsMonth" />
+	  <result column="qsbMonth" jdbcType="INTEGER" property="qsbMonth" />
+	  <result column="bossMonth" jdbcType="INTEGER" property="bossMonth" />
+  </resultMap>
+  
   <sql id="Example_Where_Clause">
     <where>
       <trim prefix="(" prefixOverrides="and" suffix=")">
@@ -128,57 +156,6 @@
 	    </if>
       	<if test="mobile != null" >
 	      and mobile = #{mobile,jdbcType=VARCHAR}
-	    </if>
-      	<if test="orderSumAmount != null" >
-	      and order_sum_amount = #{orderSumAmount,jdbcType=DECIMAL}
-	    </if>
-      	<if test="orderRealAmount != null" >
-	      and order_real_amount = #{orderRealAmount,jdbcType=DECIMAL}
-	    </if>
-      	<if test="orderRetailAmount != null" >
-	      and order_retail_amount = #{orderRetailAmount,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost1 != null" >
-	      and cost1 = #{cost1,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost2 != null" >
-	      and cost2 = #{cost2,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost3 != null" >
-	      and cost3 = #{cost3,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost4 != null" >
-	      and cost4 = #{cost4,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost5 != null" >
-	      and cost5 = #{cost5,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost6 != null" >
-	      and cost6 = #{cost6,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost7 != null" >
-	      and cost7 = #{cost7,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost8 != null" >
-	      and cost8 = #{cost8,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost9 != null" >
-	      and cost9 = #{cost9,jdbcType=DECIMAL}
-	    </if>
-      	<if test="cost10 != null" >
-	      and cost10 = #{cost10,jdbcType=DECIMAL}
-	    </if>
-      	<if test="costOther != null" >
-	      and cost_other = #{costOther,jdbcType=DECIMAL}
-	    </if>
-      	<if test="profitAmount != null" >
-	      and profit_amount = #{profitAmount,jdbcType=DECIMAL}
-	    </if>
-      	<if test="profitAccount != null" >
-	      and profit_account = #{profitAccount,jdbcType=DECIMAL}
-	    </if>
-      	<if test="profitOther != null" >
-	      and profit_other = #{profitOther,jdbcType=DECIMAL}
 	    </if>
       	<if test="zbjId != null" >
 	      and zbj_id = #{zbjId,jdbcType=VARCHAR}
@@ -517,5 +494,75 @@
   
   <select id="findListWithUser" parameterType="OrderInfo" resultMap="WithUserResultMap">
    	select * from order_info o, user_info u where o.user_id = u.id
+  </select>
+  
+  <select id="findOrderSummaryReport" parameterType="java.lang.String" resultMap="OrderSummaryReportMap">
+  	SELECT
+		a.city ,
+		a.monthAmount ,
+		a.targetAmount ,
+		b.dayAmount ,
+		(a.targetAmount - a.monthAmount) unsellAmount ,
+		a.monthAmount / a.targetAmount finishRate
+	FROM
+		(
+			SELECT
+				u.city ,
+				sum(o.order_real_amount) monthAmount ,
+				sum(t.target_amount) targetAmount
+			FROM
+				order_info o ,
+				user_info u ,
+				target_info t
+			WHERE
+				u.id = o.user_id
+			AND t.user_id = o.user_id
+			AND t.target_month = date_format(o.order_date , '%Y-%m')
+			AND date_format(o.order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR} , 1 , 7)
+			AND o.order_date &lt;= #{date,jdbcType=VARCHAR}
+			GROUP BY u.city 
+		) a ,
+		(
+			SELECT
+				u1.city ,
+				sum(o1.order_real_amount) dayAmount
+			FROM
+				order_info o1 ,
+				user_info u1 WHERE u1.id = o1.user_id AND o1.order_date = #{date,jdbcType=VARCHAR} GROUP BY u1.city 
+		) b WHERE a.city = b.city
+  </select>
+  
+  
+  <select id="findBussAnalyzeReport" parameterType="java.lang.String" resultMap="BussAnalyzeReportMap">
+  	SELECT
+		a.*, b.monthOpp1 , b.monthOpp2 , b.monthOpp3 , c.qdsDay , d.qsbDay , e.bossDay , f.qdsMonth , g.qsbMonth , h.bossMonth
+	FROM
+		(
+			SELECT
+				u.city , u.user_name , u.id, sum(o.opp_num1) dayOpp1 , sum(o.opp_num2) dayOpp2 , sum(o.opp_num3) dayOpp3
+			FROM
+				user_info u , opportunity_info o
+			WHERE
+				u.id = o.user_id AND opp_date = #{date,jdbcType=VARCHAR}
+		) a
+	JOIN(
+		SELECT
+			u.id , sum(o.opp_num1) monthOpp1 , sum(o.opp_num2) monthOpp2 , sum(o.opp_num3) monthOpp3
+		FROM
+			user_info u ,opportunity_info o WHERE u.id = o.user_id AND date_format(o.opp_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR} , 1 , 7) GROUP BY u.city , u.user_name
+	) b ON a.id = b.id LEFT JOIN(
+		SELECT user_id ,count(1) qdsDay FROM order_info WHERE customer_channel = '1' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
+	) c ON a.id = c.user_id LEFT JOIN(
+		SELECT user_id ,count(1) qsbDay FROM order_info WHERE customer_channel = '2' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
+	) d ON a.id = d.user_id LEFT JOIN(
+		SELECT user_id ,
+		count(1) bossDay FROM order_info WHERE customer_channel = '6' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
+	) e ON a.id = e.user_id LEFT JOIN(
+		SELECT user_id ,count(1) qdsMonth FROM order_info WHERE customer_channel = '1' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
+	) f ON a.id = f.user_id LEFT JOIN(
+		SELECT user_id ,count(1) qsbMonth FROM order_info WHERE customer_channel = '2' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
+	) g ON a.id = g.user_id LEFT JOIN(
+		SELECT user_id ,count(1) bossMonth FROM order_info WHERE customer_channel = '6' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
+	) h ON a.id = h.user_id
   </select>
 </mapper>

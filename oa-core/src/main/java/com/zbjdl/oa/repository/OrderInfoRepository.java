@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.zbjdl.common.respository.mybatis.GenericRepository;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
+import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
+import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 import com.zbjdl.oa.model.OrderInfo;
 
 import org.springframework.stereotype.Repository;
@@ -23,5 +25,9 @@ import org.springframework.stereotype.Repository;
 public interface OrderInfoRepository extends GenericRepository {
 
 	List<OrderWithUserInfoDto> findListWithUser(OrderInfo orderInfo);
+
+	List<OrderSummaryReportRespDto> findOrderSummaryReport(String date);
+
+	List<BussAnalyzeReportRespDto> findBussAnalyzeReport(String date);
 	
 }

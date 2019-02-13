@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zbjdl.common.utils.StringUtils;
 import com.zbjdl.common.wx.service.WeixinUserService;
-import com.zbjdl.oa.dto.resp.BaseRespDto;
+import com.zbjdl.oa.dto.response.BaseRespDto;
 import com.zbjdl.oa.enumtype.ReturnEnum;
 import com.zbjdl.oa.wx.config.Constants;
 import com.zbjdl.oa.wx.controller.BaseController;

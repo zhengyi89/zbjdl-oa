@@ -29,7 +29,9 @@ import com.zbjdl.common.wx.util.dto.WxBindUserDto;
 import com.zbjdl.oa.dto.OrderInfoDto;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 import com.zbjdl.oa.dto.UserInfoDto;
-import com.zbjdl.oa.dto.resp.BaseRespDto;
+import com.zbjdl.oa.dto.response.BaseRespDto;
+import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
+import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 import com.zbjdl.oa.enumtype.ReturnEnum;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.service.UserInfoService;
@@ -127,6 +129,25 @@ public class ReportController extends BaseController {
 		List<OrderWithUserInfoDto> list = orderInfoService.findListWithUser(orderInfoDto);
 		model.addAttribute("list", list);
 		return "/order/orderList";
+	}
+	
+	@RequestMapping("/orderSummary")
+	public String orderSummary(Model model, String date) {
+		// 查询当月
+		List<OrderSummaryReportRespDto> list = orderInfoService.findOrderSummaryReport(date);
+		
+		model.addAttribute("list", list);
+		return "/report/orderSummaryReport";
+	}
+	
+	
+	@RequestMapping("/bussAnalyze")
+	public String bussAnalyze(Model model, String date) {
+		// 查询当月
+		List<BussAnalyzeReportRespDto> list = orderInfoService.findBussAnalyzeReport(date);
+		
+		model.addAttribute("list", list);
+		return "/report/bussAnalyzeReport";
 	}
 
 }

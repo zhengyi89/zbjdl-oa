@@ -25,6 +25,9 @@
 	<dubbo:reference id="opportunityInfoService" interface="com.zbjdl.oa.service.OpportunityInfoService" 
 		group="${service-group}" version="${service-version}" check="false">
 	</dubbo:reference>
+	<dubbo:reference id="targetInfoService" interface="com.zbjdl.oa.service.TargetInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
 	<dubbo:reference id="userFacade" interface="com.zbjdl.boss.admin.facade.UserFacade" 
 		group="${service-group}" version="${service-version}" check="false">
 	</dubbo:reference>

@@ -10,14 +10,20 @@ import java.util.List;
 
 import com.zbjdl.oa.dto.OrderInfoDto;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
+import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
+import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 
 public interface OrderInfoService {
 	Integer saveOrUpdate(OrderInfoDto orderInfoSaveReqDto);
 
 	OrderInfoDto selectById(Long id);
-	
+
 	List<OrderInfoDto> findList(OrderInfoDto orderInfoDto);
 
 	List<OrderWithUserInfoDto> findListWithUser(OrderInfoDto orderInfoDto);
-	
+
+	List<OrderSummaryReportRespDto> findOrderSummaryReport(String date);
+
+	List<BussAnalyzeReportRespDto> findBussAnalyzeReport(String date);
+
 }
