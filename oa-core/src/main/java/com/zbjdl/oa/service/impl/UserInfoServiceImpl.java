@@ -19,7 +19,7 @@ import com.zbjdl.oa.model.UserInfo;
 import com.zbjdl.oa.dto.UserInfoDto;
 
 @Service("userInfoService")
-public class UserInfoServiceImpl1 implements UserInfoService {
+public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
 	private UserInfoManager userInfoManager;

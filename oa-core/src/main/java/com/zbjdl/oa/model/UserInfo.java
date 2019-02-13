@@ -11,7 +11,7 @@ package com.zbjdl.oa.model;
  * @author code-generator
  *
  */
-public class UserInfo1 {
+public class UserInfo {
 	
 	private java.lang.Long id;
 	private java.lang.String jobNo;
