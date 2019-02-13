@@ -46,12 +46,11 @@ public class WxUtil {
 	 */
 	private static final String TOKEN = "f2250dd75f54b9b61fbf5bee7fc4c7ae";
 
-	public static final String WX_APPID = "wx12d00be7f56b9c01";
-	public static final String WX_SECRET = "fa41cb85f5a432a46d831c094592a664";
+	public static final String WX_APPID = "wx159708199306b751";
+	public static final String WX_SECRET = "b884e1077a37a8460a64c73573cecc88";
 	public static final String WX_API_SYSTEM_HOST = "https://api.weixin.qq.com";
-	public static final String WX_ACCESS_TOKEN = "jvNlpxePHPjU0Bs7Pzu5xLjloGWl65-LPiPVxi7yVkX0jV"
-			+ "ayMfNapGbU08JjFAXMXCj9WeaIxb0XGU0AceJDSCDaF3R_oUvPypWASI_ncsKhjeqSZQVHXHRlVbksX4B_GDOaABAMJU";
-	public static final String OA_WX_HOST = "http://ztfang1.zbjdl.net";
+	public static final String WX_ACCESS_TOKEN = "jvNlpxePHPjU0Bs7Pzu5xLjloGWl65-LPiPVxi7yVkX0jV";
+	public static final String OA_WX_HOST = "http://188.131.144.112:8081";
 
 	/**
 	 * 命名空间
