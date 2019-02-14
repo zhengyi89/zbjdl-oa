@@ -83,6 +83,7 @@
 					var code = data.code;
 					var error = data.message;
 					console.log('code:'+code);
+					alert('code:'+code);
 					//原有逻辑不变
 					if ("0000" == code) {
 						var callUrl = "${ctx}/bind/success?callback=${param.callback}";
