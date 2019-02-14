@@ -156,7 +156,7 @@ public class WxController extends BaseController {
 				//订阅事件 ,关注后发送
 				if(MessageUtil.EVENT_TYPE_SUBSCRIBE.equals(event)){
 					String contextPath = WxUtil.OA_WX_HOST + request.getContextPath();
-					String message = "您好,欢迎您来到中天担保";
+					String message = "欢迎来到八戒财税oa";
 					out.print(new TextNews(fromUserName , toUserName , message.replace("%appId%", WxUtil.WX_APPID).replace("%redirectURL%", contextPath)));
 					out.flush();
 					return;
