@@ -19,6 +19,7 @@ public class UserInfoDto implements Serializable {
 
 	private java.lang.Long id;
 	private java.lang.String jobNo;
+	private java.lang.String loginName;
 	private java.lang.String userName;
 	private java.lang.String mobile;
 	private java.lang.String password;
@@ -243,6 +244,14 @@ public class UserInfoDto implements Serializable {
 
 	public void setIsAdmin(java.lang.Boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+
+	public java.lang.String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(java.lang.String loginName) {
+		this.loginName = loginName;
 	}
 
 }

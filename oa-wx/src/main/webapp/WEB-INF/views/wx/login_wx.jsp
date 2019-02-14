@@ -15,8 +15,8 @@
 		<form class="login_form" id="loginForm" action="" method="">
 			<div class="input_box">
 				<p class="icon_tel"></p>
-					<input type="text" id="userName" name="userName" placeholder="请输入用户名" />
-				<p class="tip none" id="userNameTip"></p>
+					<input type="text" id="loginName" name="loginName" placeholder="请输入用户名" />
+				<p class="tip none" id="loginNameTip"></p>
 			</div>
 			<div class="input_box yzm">
 				<p class="icon_yzm"></p>
@@ -32,11 +32,11 @@
 		</form>
 	</div>
 	<script type="text/javascript">
-	    function checkUserName(){
-			var userName=$("#userName").val();
-			cssChange("userNameTip", true, "");
-			if(userName.length==0){
-				cssChange("userNameTip", false, "用户名不能为空");
+	    function checkloginName(){
+			var loginName=$("#loginName").val();
+			cssChange("loginNameTip", true, "");
+			if(loginName.length==0){
+				cssChange("loginNameTip", false, "用户名不能为空");
 				return false;
 			} 
 			return true;
@@ -53,7 +53,7 @@
 		}
 		
 		function checkInput(){
-			if (!checkUserName()) {
+			if (!checkloginName()) {
 				return false;
 			}
 			if (!checkPassword()) {

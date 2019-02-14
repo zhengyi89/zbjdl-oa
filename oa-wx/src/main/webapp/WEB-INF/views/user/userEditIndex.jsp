@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div class="topbar">
-		<a class="return" href="javascript:window.history.go(-1);"></a> 个人信息 <a class="submit" onclick="javascript:doSubmit();">提交</a>
+		 个人信息 <a class="submit" onclick="javascript:doSubmit();">提交</a>
 	</div>
 	<form action="${ctx}/user/save" id="form1" method="post">
 		<div class="showbox">
@@ -30,6 +30,7 @@
 			<p>
 				<input type="text" placeholder="请填写您的工号" name="jobNo" id="jobNo" value="${user.jobNo }"/>
 			</p>
+			<p>账号：<span>${user.loginName }</span></p>
 			<p>姓名：<span>${user.userName }</span></p>
 			<p>手机号：<span>${user.mobile }</span></p>
 			<p>所属大区：<span>${user.region }</span></p>

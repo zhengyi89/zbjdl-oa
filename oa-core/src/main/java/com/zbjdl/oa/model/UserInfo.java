@@ -8,13 +8,15 @@ package com.zbjdl.oa.model;
 
 /**
  * UserInfo
+ * 
  * @author code-generator
  *
  */
 public class UserInfo {
-	
+
 	private java.lang.Long id;
 	private java.lang.String jobNo;
+	private java.lang.String loginName;
 	private java.lang.String userName;
 	private java.lang.String mobile;
 	private java.lang.String password;
@@ -33,58 +35,68 @@ public class UserInfo {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public Long getId() {
 		return this.id;
 	}
+
 	/**
 	 * 工号
+	 * 
 	 * @param jobNo
 	 */
 	public void setJobNo(java.lang.String jobNo) {
 		this.jobNo = jobNo;
 	}
-	
+
 	/**
 	 * 工号
+	 * 
 	 * @return
 	 */
 	public java.lang.String getJobNo() {
 		return this.jobNo;
 	}
+
 	/**
 	 * 用户名
+	 * 
 	 * @param userName
 	 */
 	public void setUserName(java.lang.String userName) {
 		this.userName = userName;
 	}
-	
+
 	/**
 	 * 用户名
+	 * 
 	 * @return
 	 */
 	public java.lang.String getUserName() {
 		return this.userName;
 	}
+
 	/**
 	 * 手机号
+	 * 
 	 * @param mobile
 	 */
 	public void setMobile(java.lang.String mobile) {
 		this.mobile = mobile;
 	}
-	
+
 	/**
 	 * 手机号
+	 * 
 	 * @return
 	 */
 	public java.lang.String getMobile() {
 		return this.mobile;
 	}
+
 	/**
 	 * 
 	 * @param password
@@ -92,7 +104,7 @@ public class UserInfo {
 	public void setPassword(java.lang.String password) {
 		this.password = password;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -100,66 +112,79 @@ public class UserInfo {
 	public java.lang.String getPassword() {
 		return this.password;
 	}
+
 	/**
 	 * 区域
+	 * 
 	 * @param region
 	 */
 	public void setRegion(java.lang.String region) {
 		this.region = region;
 	}
-	
+
 	/**
 	 * 区域
+	 * 
 	 * @return
 	 */
 	public java.lang.String getRegion() {
 		return this.region;
 	}
+
 	/**
 	 * 地区
+	 * 
 	 * @param city
 	 */
 	public void setCity(java.lang.String city) {
 		this.city = city;
 	}
-	
+
 	/**
 	 * 地区
+	 * 
 	 * @return
 	 */
 	public java.lang.String getCity() {
 		return this.city;
 	}
+
 	/**
 	 * 职务
+	 * 
 	 * @param duty
 	 */
 	public void setDuty(java.lang.String duty) {
 		this.duty = duty;
 	}
-	
+
 	/**
 	 * 职务
+	 * 
 	 * @return
 	 */
 	public java.lang.String getDuty() {
 		return this.duty;
 	}
+
 	/**
 	 * 状态
+	 * 
 	 * @param status
 	 */
 	public void setStatus(java.lang.String status) {
 		this.status = status;
 	}
-	
+
 	/**
 	 * 状态
+	 * 
 	 * @return
 	 */
 	public java.lang.String getStatus() {
 		return this.status;
 	}
+
 	/**
 	 * 
 	 * @param createTime
@@ -167,7 +192,7 @@ public class UserInfo {
 	public void setCreateTime(java.util.Date createTime) {
 		this.createTime = createTime;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -175,6 +200,7 @@ public class UserInfo {
 	public java.util.Date getCreateTime() {
 		return this.createTime;
 	}
+
 	/**
 	 * 
 	 * @param lastUpdateTime
@@ -182,7 +208,7 @@ public class UserInfo {
 	public void setLastUpdateTime(java.util.Date lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -190,16 +216,19 @@ public class UserInfo {
 	public java.util.Date getLastUpdateTime() {
 		return this.lastUpdateTime;
 	}
+
 	/**
 	 * boss系统用户id
+	 * 
 	 * @param bossUserId
 	 */
 	public void setBossUserId(java.lang.Long bossUserId) {
 		this.bossUserId = bossUserId;
 	}
-	
+
 	/**
 	 * boss系统用户id
+	 * 
 	 * @return
 	 */
 	public java.lang.Long getBossUserId() {
@@ -213,6 +242,13 @@ public class UserInfo {
 	public void setIsAdmin(java.lang.Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
-	
-	
+
+	public java.lang.String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(java.lang.String loginName) {
+		this.loginName = loginName;
+	}
+
 }

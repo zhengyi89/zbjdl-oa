@@ -64,36 +64,44 @@ public class UserInfoController extends BaseController {
 	@ResponseBody
 	public BaseRespDto login(UserInfoDto userVo, HttpSession session, HttpServletRequest request, Model model) {
 		logger.info("user login , param is {}", JSON.toJSONString(userVo));
-		String userName = userVo.getUserName();
+		String loginName = userVo.getLoginName();
 		String password = userVo.getPassword();
 
-		if (StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
+		if (StringUtils.isBlank(loginName) || StringUtils.isBlank(password)) {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "请输入登录信息");
 		}
 
 		// TODO 根据手机号，取得用户标识id：user Id 或user 编码
-		UserInfoDto userDto = userInfoService.login(userName, Digest.md5Digest(password));
+		UserInfoDto userDto = userInfoService.login(loginName, Digest.md5Digest(password));
 		logger.info("用户登录返回结果：{}", JSON.toJSONString(userDto));
 		if (userDto == null) {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "用户名或密码错误");
 		}
 
 		// 绑定账号、设定session
-		WxSession wxSession = super.getSession();
+		logger.info("开始获取session信息");
+		WxSession wxSession = null;
+		try {
+			wxSession = super.getSession();
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage());
+		}
+		
 		logger.info("wxsession为：{}", JSON.toJSONString(wxSession));
 		wxSession.setUserId(String.valueOf(userDto.getId()));
 		if (wxSession.isWxBrowser()) {
 			// 如果是微信浏览器，则直接建立openId 和当前用户的绑定关系
 			WxBindUserDto wxBindUserDto = new WxBindUserDto();
 			wxBindUserDto.setUserId(String.valueOf(userDto.getId()));
-			wxBindUserDto.setLoginName(userName);
+			wxBindUserDto.setLoginName(loginName);
 			wxBindUserDto.setOpenId(wxSession.getOpi());
 			wxBindUserDto.setSystemCode(Constants.SYSTEM_CODE);
 			logger.info("微信绑定用户信息：用户id:{},openId:{},system_code:{},loginName:{}", userDto.getId(), wxSession.getOpi(),
-					Constants.SYSTEM_CODE, userName);
+					Constants.SYSTEM_CODE, loginName);
 			weixinUserService.bind(wxBindUserDto);
 		}
-		wxSession.setLoginName(userName);
+		wxSession.setLoginName(loginName);
 		sessionService.setSession(wxSession);
 		super.reloadSession();
 		logger.info("登录成功，返回");
@@ -108,41 +116,42 @@ public class UserInfoController extends BaseController {
 	@ResponseBody
 	public BaseRespDto activate(UserInfoDto userVo) {
 
-		String userName = userVo.getUserName();
+		String loginName = userVo.getLoginName();
 		String password = userVo.getPassword();
 
-		if (StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
+		if (StringUtils.isBlank(loginName) || StringUtils.isBlank(password)) {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "请输入登录信息");
 		}
 
 		// 判断是否已激活
 		UserInfoDto queryDto = new UserInfoDto();
-		queryDto.setUserName(userVo.getUserName());
+		queryDto.setLoginName(userVo.getLoginName());
 		List<UserInfoDto> userList = userInfoService.findList(queryDto);
 		if (userList != null && userList.size() > 0) {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "此账号已激活");
 		}
-		UserDTO userDto;
+		UserDTO bossUserDto;
 		try {
-			userDto = userFacade.userLoginValidate(userName, password);
+			bossUserDto = userFacade.userLoginValidate(loginName, password);
 		} catch (Exception e) {
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "用户名或密码错误");
 		}
 
 		UserInfoDto user;
-		if (userDto != null) {
+		if (bossUserDto != null) {
 			// 判断是否已经同步
-			user = userInfoService.selectById(userDto.getUserId());
+			user = userInfoService.selectById(bossUserDto.getUserId());
 			if (user == null) {
 				user = new UserInfoDto();
-				user.setBossUserId(userDto.getUserId());
-				user.setUserName(userName);
-				user.setMobile(userDto.getMobile());
-				DepartmentDTO department = userFacade.queryDepartmentById(userDto.getPrimaryDepartmentId());
+				user.setBossUserId(bossUserDto.getUserId());
+				user.setUserName(bossUserDto.getUserName());
+				user.setLoginName(loginName);
+				user.setMobile(bossUserDto.getMobile());
+				DepartmentDTO department = userFacade.queryDepartmentById(bossUserDto.getPrimaryDepartmentId());
 				user.setCity(getCityByDepartment(department.getDepartmentName()));
 				user.setPassword(Digest.md5Digest(password));
-				user.setId(userDto.getUserId());
-				user.setIsAdmin(userDto.getIsAdmin());
+				user.setId(bossUserDto.getUserId());
+				user.setIsAdmin(bossUserDto.getIsAdmin());
 				userInfoService.save(user);
 			}
 
@@ -157,14 +166,15 @@ public class UserInfoController extends BaseController {
 			// 如果是微信浏览器，则直接建立openId 和当前用户的绑定关系
 			WxBindUserDto wxBindUserDto = new WxBindUserDto();
 			wxBindUserDto.setUserId(String.valueOf(user.getId()));
-			wxBindUserDto.setLoginName(userName);
+			wxBindUserDto.setLoginName(loginName);
 			wxBindUserDto.setOpenId(wxSession.getOpi());
 			wxBindUserDto.setSystemCode(Constants.SYSTEM_CODE);
 			logger.info("微信绑定用户信息：用户id:{},openId:{},system_code:{},loginName:{}", user.getId(), wxSession.getOpi(), Constants.SYSTEM_CODE,
-					userName);
+					loginName);
 			weixinUserService.bind(wxBindUserDto);
 		}
-		wxSession.setLoginName(userName);
+		wxSession.setLoginName(loginName);
+		wxSession.setUserName(user.getUserName());
 		wxSession.setCity(user.getCity());
 		sessionService.setSession(wxSession);
 		super.reloadSession();

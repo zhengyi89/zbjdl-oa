@@ -28,6 +28,7 @@
 		<div class="submit_input">
 			<input type="hidden" name="id" id="id" value="${user.id }"/>
 			<p>工号：<span>${user.jobNo }</span></p>
+			<p>账号：<span>${user.loginName }</span></p>
 			<p>姓名：<span>${user.userName }</span></p>
 			<p>手机号：<span>${user.mobile }</span></p>
 			<p>所属大区：<span>${user.region }</span></p>

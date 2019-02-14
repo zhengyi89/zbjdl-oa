@@ -18,8 +18,8 @@
 			<h1 align="center" style="padding-bottom: 20px">账号激活</h1>
 			<div class="input_box">
 				<p class="icon_tel"></p>
-					<input type="text" id="userName" name="userName" placeholder="boss系统用户名" />
-				<p class="tip none" id="userNameTip"></p>
+					<input type="text" id="loginName" name="loginName" placeholder="boss系统用户名" />
+				<p class="tip none" id="loginNameTip"></p>
 			</div>
 			<div class="input_box yzm">
 				<p class="icon_yzm"></p>
@@ -37,11 +37,11 @@
 	</div>
 	<script src="${ext}/js/zepto.min.js"></script>
 	<script type="text/javascript">
-	    function checkUsername(){
-			var userName=$("#userName").val();
-			cssChange("userNameTip", true, "");
-			if(userName.length==0){
-				cssChange("userNameTip", false, "用户名不能为空");
+	    function checkloginName(){
+			var loginName=$("#loginName").val();
+			cssChange("loginNameTip", true, "");
+			if(loginName.length==0){
+				cssChange("loginNameTip", false, "用户名不能为空");
 				return false;
 			} 
 			return true;
@@ -58,7 +58,7 @@
 		}
 		
 		function checkInput(){
-			if (!checkUsername()) {
+			if (!checkloginName()) {
 				return false;
 			}
 			if (!checkPassword()) {
