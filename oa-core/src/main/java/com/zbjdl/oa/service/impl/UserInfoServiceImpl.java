@@ -65,9 +65,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public UserInfoDto login(String username, String password) {
+	public UserInfoDto login(String loginName, String password) {
 		UserInfoDto userInfo = new UserInfoDto();
-		userInfo.setUserName(username);
+		userInfo.setLoginName(loginName);
 		userInfo.setPassword(password);
 		List<UserInfoDto> list = this.findList(userInfo);
 		return list == null || list.size() < 1 ? null : list.get(0);
