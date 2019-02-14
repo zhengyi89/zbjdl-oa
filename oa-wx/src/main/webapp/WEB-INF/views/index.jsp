@@ -58,7 +58,7 @@
           <p class="icon bg_5"></p>
           我的资料
         </div>
-        <div class="message last" onclick="logout();">
+        <div class="message last" onclick="window.location.href= '${ctx}/user/unbind/index';">
           <p class="icon bg_6"></p>
           解绑
         </div>

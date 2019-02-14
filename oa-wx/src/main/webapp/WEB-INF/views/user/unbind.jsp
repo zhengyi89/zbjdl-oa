@@ -70,7 +70,7 @@
 	    	var _reason=$("#reason").val();
 	    	var _radio1=$('input[name="radio1"]:checked').val();
 			$.ajax({
-				url : "${ctx}/ajax/bindAjax/unBind",
+				url : "${ctx}/user/unBind",
 				method : "POST",
 				data:{"code":_radio1+_reason},
 				success : function(data) { 
@@ -78,17 +78,17 @@
 					var error  = data.message;
 					//原有逻辑不变
 					if("ok" == status){
-						var callUrl = "${ctx}/nologin/unbind/success";
+						var callUrl = "${ctx}/user/unbind/success";
 						window.location.href= callUrl;
 						return;
 					}else {
-						var callUrl = "${ctx}/unbind/failed?error="+encodeURI(error);
+						var callUrl = "${ctx}/user/unbind/failed?error="+encodeURI(error);
 						window.location.href= callUrl;
 						return;
 					}
 				},
 				error : function() {
-					var callUrl = "${ctx}/unbind/failed?error="+encodeURI("系统异常，请稍后重试");
+					var callUrl = "${ctx}/user/unbind/failed?error="+encodeURI("系统异常，请稍后重试");
 					window.location.href= callUrl;
 				}
 			});

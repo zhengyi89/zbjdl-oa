@@ -30,34 +30,7 @@ public class BindController extends BaseController {
 	private Logger logger = LoggerFactory.getLogger(BindController.class);
 
 
-	/**
-	 * 账户解绑
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/unbind")
-	public Object unbind(Model model) {
-		WxSession wxSession = (WxSession) super.reloadSession();
-		if (wxSession.isBind()) {
-			return "/wx/unbind";
-		} else {
-			return "redirect:/login";
-		}
-	}
-
-	/**
-	 * 退出
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String loginOut(HttpSession session) {
-		session.removeAttribute(WxSession.NAME);
-		return "redirect:/login";
-	}
-
+	
 	/**
 	 * 绑定成功
 	 */
@@ -83,26 +56,4 @@ public class BindController extends BaseController {
 //		}
 	}
 
-	/**
-	 * 解绑成功
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/nologin/unbind/success")
-	public Object unbindSuccess(HttpSession session) {
-		session.removeAttribute(WxSession.NAME);
-		return "/wx/unbind_success";
-	}
-
-	/**
-	 * 解绑失败
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/unbind/failed")
-	public Object unbindFailed(HttpServletRequest request, Model model) {
-		return "/wx/unbind_failed";
-	}
 }

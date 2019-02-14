@@ -65,6 +65,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 			if(StringUtils.isNotBlank(code)) {
 				logger.info("请求地址,uri:[{}] , code:[{}]" , request.getRequestURI() , code);
 				String userInfoModel = request.getParameter("userinfo");
+				logger.info("user info is : {}", userInfoModel);
 				UserInfoModel userInfo = StringUtils.isBlank(userInfoModel) ? UserInfoModel.BASE : UserInfoModel.valueOf(userInfoModel);
 				portalWxService.sigin(code , userInfo);
 				return true;

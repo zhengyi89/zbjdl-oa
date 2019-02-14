@@ -83,5 +83,16 @@ public class MenuController extends BaseController {
 	public String index(Model model) {
 		return "redirect:/index";
 	}
+	
+	/**
+	 * 解绑
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "menu", params = MenuConfig.UNBIND)
+	public String unbind(Model model) {
+		return "redirect:/user/unbind/index";
+	}
 
 }

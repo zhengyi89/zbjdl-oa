@@ -11,6 +11,10 @@ public interface MenuConfig {
 	 */
 	String LOGIN = "type=login";
 	/**
+	 * 解绑
+	 */
+	String UNBIND = "type=unbind";
+	/**
 	 * 创建订单
 	 */
 	String ADD_ORDER = "type=addOrder";

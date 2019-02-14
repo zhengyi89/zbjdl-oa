@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
@@ -49,7 +50,7 @@ public class UserInfoController extends BaseController {
 
 	@Autowired
 	private UserFacade userFacade;
-
+	
 	/**
 	 * 登录操作，需要使用Jquery相关框架
 	 */
@@ -59,7 +60,7 @@ public class UserInfoController extends BaseController {
 		if(wxSession.isBind()){
 			return "redirect:/menu?"+MenuConfig.INDEX;
 		} else {
-			return "/wx/login_wx";
+			return "/user/login";
 		}
 	}
 
@@ -195,7 +196,7 @@ public class UserInfoController extends BaseController {
 		if(wxSession.isBind()){
 			return "redirect:/menu?"+MenuConfig.INDEX;
 		} else {
-			return "/wx/activateIndex";
+			return "/user/activateIndex";
 		}
 	}
 
@@ -222,6 +223,94 @@ public class UserInfoController extends BaseController {
 		userInfoService.update(user);
 		return "redirect:/index";
 	}
+	
+	
+	
+	
+	/**
+	 * 用户解绑
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/unbind/index")
+	public Object unbind(Model model) {
+		WxSession wxSession = (WxSession) super.reloadSession();
+		if (wxSession.isBind()) {
+			return "/user/unbind";
+		} else {
+			return "redirect:/login";
+		}
+	}
+	
+	
+	/**
+	 * 解绑事件
+	 */
+	@RequestMapping(value = "/unBind")
+	@ResponseBody
+	public Object unBind(String code) {
+		try {
+			// if (StringUtils.isBlank(code)) {
+			// return new BaseRespDto(ReturnEnum.FAILD.getCode(), "验证码错误");
+			// }
+
+			WxSession session = super.getSession();
+			// WxBindUserDto bindUser =
+			// weixunUserService.queryBindUserByUserId(session.getUserId(),
+			// Constants.SYSTEM_CODE);
+
+			// (1)校验验证码
+			// boolean valid = true;
+			// if (!valid) {
+			// return new BaseRespDto(ReturnEnum.FAILD.getCode(), "验证码错误");
+			// }
+			// (2)进行解绑
+			weixinUserService.unBind(session.getUserId(), session.getOpi(), Constants.SYSTEM_CODE);
+			super.reloadSession();
+		} catch (Exception e) {
+			logger.error("系统异常，解绑失败", e);
+			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "网络异常，请稍后重试");
+		}
+		return new BaseRespDto(ReturnEnum.SUCCESS);
+	}
+
+	/**
+	 * 解绑成功
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/unbind/success")
+	public Object unbindSuccess(HttpSession session) {
+		session.removeAttribute(WxSession.NAME);
+		return "/user/unbind_success";
+	}
+
+	/**
+	 * 解绑失败
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/unbind/failed")
+	public Object unbindFailed(HttpServletRequest request, Model model) {
+		return "/user/unbind_failed";
+	}
+	
+	
+	/**
+	 * 退出
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String loginOut(HttpSession session) {
+		session.removeAttribute(WxSession.NAME);
+		return "redirect:/login";
+	}
+
 
 	private String getCityByDepartment(String department) {
 		if (StringUtils.isBlank(department)) {
@@ -235,6 +324,8 @@ public class UserInfoController extends BaseController {
 			return "长春";
 		} else if (department.indexOf("大连") > -1) {
 			return "大连";
+		} else if (department.indexOf("北京") > -1) {
+			return "北京";
 		}
 		return "无";
 	}
