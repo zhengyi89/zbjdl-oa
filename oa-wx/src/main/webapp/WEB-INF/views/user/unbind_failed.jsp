@@ -15,7 +15,6 @@
         </div>
         <div class="weui_opr_area">
           <p class="weui_btn_area">
-          
             <a href="${ctx}/user/login/index" class="weui_btn weui_btn_default">确定</a>
           </p>
         </div>
