@@ -60,6 +60,7 @@ html{font-size:10px;}
 	.top_bar a.return{position:absolute;top:0px;left:0px;display:block;width:4rem;height:4rem;background:url(../images/icon_return.png) no-repeat;background-size:100%;}
 	.top_bar a.communication{position:absolute;top:0px;right:0px;display:block;width:4rem;height:4rem;background:url(../images/icon_communication.png) no-repeat;background-size:100%;}
 	.top_bar a.confirm{position:absolute;top:0px;right:0.5rem;display:block;width:3.5rem;height:4rem;font-size:1.1rem;}
+	.top_bar .submit{position:absolute;top:0rem;right:1rem;font-size:1.15rem;}
 	.top_bar a.set{position:absolute;top:0px;right:0px;display:block;width:4rem;height:4rem;background:url(../images/icon_set.png) no-repeat;background-size:100%;}
 	.top_bar a.goto{position:absolute;top:0.25rem;right:1.5rem;line-height:3.5rem;font-size:0.9rem;}
 	.top_bar .top_city{position:absolute;top:0px;left:1rem;line-height:4rem;font-size:1.1rem;color:#fff;}

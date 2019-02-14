@@ -16,7 +16,11 @@
   </head>
   <body>
   	<%pageContext.setAttribute("_textResource", new TextResource()); %>
-    <div class="top_bar"><a class="return" onclick="go_page('${ctx}/index')"></a>新建订单</div>
+    <div class="top_bar">
+    	<a class="return" onclick="go_page('${ctx}/index')"></a>
+    	新建订单
+    	<a class="submit" onclick="javascript:doSubmit();">提交</a>
+    </div>
     <div class="content_auto">
       <form id="formId">
         <input type="hidden" id="id" name="id" value="${order.id }"/>
@@ -177,11 +181,6 @@
             	<input type="text" id="payChannel" name="payChannel" placeholder="付款方式" value="${order.payChannel }"/>
           	</div>
         </div>
-        <div class="btn_team bg_register">
-          	<p class="submit_btn">
-            	<input class="" type="button" id="submit_btn" value="保   存" onclick="do_submit();"/>
-          	</p>
-        </div>
       </form>
     </div>
     <div id="errBox" class="animated vnone">
@@ -202,7 +201,7 @@
         setTimeout("$('#errBox').removeClass('fadeOut').addClass('vnone')",3000);
     }
     
-    function do_submit() {
+    function doSubmit() {
     	console.log($("#formId").serialize());
     	$.ajax({
     		url : "${ctx}/order/save",
@@ -213,8 +212,8 @@
     		success : function(data) {
     			console.log('result:'+data.code);
     			if (data.code == '0000') {
-    				$("#message12").html("填写成功");
-    				$("#errBox12").show();
+    				/* $("#message12").html("填写成功"); */
+    				/* $("#errBox12").show(); */
     				toggleTime();
     			} else {
     				if(data.msg == undefined){
@@ -225,7 +224,6 @@
     			}
     		},
     		error : function() {
-    			alert(11);
     			errtip("信息错误，请稍后重试");
     		}
     	});
@@ -246,15 +244,8 @@
     	setTimeout(function() {
     		toggleTime(obj);
     		window.location.href = "${ctx}/index";
-    	}, 2000);
+    	}, 500);
     	
-    }
-    function checkIsAdd(){
-    	var mobile1 ='${order.mobile1}';
-    	if(mobile1==null || mobile1==''){
-    		return true;
-    	}
-    	return false;
     }
     
     $(function () {

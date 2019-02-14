@@ -267,7 +267,11 @@ public class UserInfoController extends BaseController {
 			// }
 			// (2)进行解绑
 			weixinUserService.unBind(session.getUserId(), session.getOpi(), Constants.SYSTEM_CODE);
-			super.reloadSession();
+			try {
+				super.reloadSession();
+			} catch (Exception e) {
+				logger.info("reload session");
+			}
 		} catch (Exception e) {
 			logger.error("系统异常，解绑失败", e);
 			return new BaseRespDto(ReturnEnum.FAILD.getCode(), "网络异常，请稍后重试");
