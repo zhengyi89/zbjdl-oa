@@ -30,7 +30,7 @@ public class WebMvcAppConfiguration extends WebMvcConfigurerAdapter{
 		SecurityInterceptor securityInterceptor =  new SecurityInterceptor();
 		
 		List<String> noBind = new ArrayList<>();
-		noBind.add("/menu?type=bind");
+		noBind.add("/menu?type=login");
 		noBind.add("/wx/sign/*");
 		noBind.add("/login/*");
 		noBind.add("/logout");
