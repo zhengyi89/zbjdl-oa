@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.alibaba.fastjson.JSON;
 import com.zbjdl.common.wx.util.ConfigEnum;
 import com.zbjdl.common.wx.util.ConfigUtils;
 import com.zbjdl.oa.wx.exception.WxIllegalAccessException;
@@ -17,6 +18,7 @@ import com.zbjdl.oa.wx.service.SessionService;
 import com.zbjdl.oa.wx.service.WxUserInfoService.UserInfoModel;
 import com.zbjdl.oa.wx.util.WxUtil;
 import com.zbjdl.oa.wx.vo.WxSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,10 +43,14 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		try {
 			WxSession session = sessionService.getSession();
+			logger.info("session interceptor : {}", session);
 			if(session != null && (StringUtils.isNotBlank(session.getOpi()) || StringUtils.isNotBlank(session.getUserId()))){
+				logger.info("session interceptor : {}", JSON.toJSONString(session));
 				return true;
 			} 
 			Boolean isWxProduct = (Boolean)ConfigUtils.getSysConfigParam(ConfigEnum.WX_PRODUCT);
+			logger.info("is wx product :{}", isWxProduct);
+			logger.info("request is {}", JSON.toJSONString(request));
 			if(!isWxProduct){
 				String opi = request.getParameter("opi");
 				logger.info("测试环境请求地址：[{}] , opi:[{}]" , request.getRequestURI() , opi);
@@ -54,6 +60,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 				sessionService.setSession(new WxSession(false));
 				return true;
 			} 
+			logger.info("非微信。。。。。。。。。。。。");
 			String code = request.getParameter("code");
 			if(StringUtils.isNotBlank(code)) {
 				logger.info("请求地址,uri:[{}] , code:[{}]" , request.getRequestURI() , code);
