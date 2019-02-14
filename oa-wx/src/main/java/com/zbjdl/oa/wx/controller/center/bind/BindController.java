@@ -89,7 +89,7 @@ public class BindController extends BaseController {
 //		}
 //
 //		if (WxUtil.isWxBrowser(request)) {
-//			return "/index";
+			return "/index";
 //		} else {
 //			return ("redirect:/" + callback).replace("//", "/");
 //		}

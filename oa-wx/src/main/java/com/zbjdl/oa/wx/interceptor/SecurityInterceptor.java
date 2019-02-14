@@ -60,7 +60,8 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter{
 			WxSession wxSession = (WxSession)session.getAttribute(WxSession.NAME);
 			if(wxSession == null){
 				logger.warn("系统未检测到微信Session,url:{}" , uri);
-				return true;
+				response.sendRedirect(contextPath + "/user/login/index");
+				return false;
 			} else {
 				String userId  = wxSession.getUserId();
 				logger.info("-------------用户id：{},手机号：{}", userId, wxSession.getLoginName());
