@@ -24,6 +24,7 @@ import com.zbjdl.oa.dto.response.BaseRespDto;
 import com.zbjdl.oa.enumtype.ReturnEnum;
 import com.zbjdl.oa.service.UserInfoService;
 import com.zbjdl.oa.wx.config.Constants;
+import com.zbjdl.oa.wx.config.MenuConfig;
 import com.zbjdl.oa.wx.vo.WxSession;
 
 import org.slf4j.Logger;
@@ -54,7 +55,12 @@ public class UserInfoController extends BaseController {
 	 */
 	@RequestMapping("/login/index")
 	public String loginIndex(Model model) {
-		return "/wx/login_wx";
+		WxSession wxSession = (WxSession)super.reloadSession();
+		if(wxSession.isBind()){
+			return "redirect:/menu?"+MenuConfig.INDEX;
+		} else {
+			return "/wx/login_wx";
+		}
 	}
 
 	/**
@@ -185,7 +191,12 @@ public class UserInfoController extends BaseController {
 
 	@RequestMapping("/activate/index")
 	public String login(Model model) {
-		return "/wx/activateIndex";
+		WxSession wxSession = (WxSession)super.reloadSession();
+		if(wxSession.isBind()){
+			return "redirect:/menu?"+MenuConfig.INDEX;
+		} else {
+			return "/wx/activateIndex";
+		}
 	}
 
 	@RequestMapping("/edit/index")

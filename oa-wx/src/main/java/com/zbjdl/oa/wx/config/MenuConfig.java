@@ -9,43 +9,23 @@ public interface MenuConfig {
 	/**
 	 * 账号绑定
 	 */
-	String BIND = "type=bind";
+	String LOGIN = "type=login";
 	/**
-	 * 进度查询
+	 * 创建订单
 	 */
-	String SHOW_FLOW = "type=flow_show";
+	String ADD_ORDER = "type=addOrder";
 	/**
-	 * 关于赎楼
+	 * 每日商机
 	 */
-	String ABOUT = "type=about";
-	/**
-	 * 赎楼列表
-	 */
-	String FLOW_LIST = "type=oa_list";
-
-	/**
-	 * 业务需求买房
-	 */
-	String BUSS_DEMAND_BUY = "type=bussDemandBuy";
-
-	/**
-	 * 业务需求卖房
-	 */
-	String BUSS_DEMAND_SELL = "type=bussDemandSell";
-
-	/**
-	 * 付款明细
-	 */
-	String PAY = "type=pay";
-
-	/**
-	 * 置业顾问
-	 */
-	String ADVISER = "type=adviser";
+	String ADD_OPP = "type=addOpp";
+	
 	
 	/**
-	 * 贷款产品
+	 * 首页
 	 */
-	String LOAN_PRODUCT = "type=product";
+	String INDEX = "type=index";
+	
+	
+	
 
 }

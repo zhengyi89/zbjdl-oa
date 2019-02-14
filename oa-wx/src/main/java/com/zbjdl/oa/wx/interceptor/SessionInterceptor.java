@@ -50,7 +50,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 			} 
 			Boolean isWxProduct = (Boolean)ConfigUtils.getSysConfigParam(ConfigEnum.WX_PRODUCT);
 			logger.info("is wx product :{}", isWxProduct);
-			logger.info("request is {}", JSON.toJSONString(request));
+			logger.info("request is {}", request.getHeader("user-agent"));
 			if(!isWxProduct){
 				String opi = request.getParameter("opi");
 				logger.info("测试环境请求地址：[{}] , opi:[{}]" , request.getRequestURI() , opi);
@@ -60,7 +60,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 				sessionService.setSession(new WxSession(false));
 				return true;
 			} 
-			logger.info("非微信。。。。。。。。。。。。");
+			logger.info("微信环境。。。。。。。。。。。。,code:{}", request.getParameter("code"));
 			String code = request.getParameter("code");
 			if(StringUtils.isNotBlank(code)) {
 				logger.info("请求地址,uri:[{}] , code:[{}]" , request.getRequestURI() , code);

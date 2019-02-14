@@ -29,18 +29,6 @@ import com.zbjdl.oa.wx.vo.WxSession;
 public class BindController extends BaseController {
 	private Logger logger = LoggerFactory.getLogger(BindController.class);
 
-	/**
-	 * 账号绑定
-	 */
-	@RequestMapping(value = "menu", params = MenuConfig.BIND)
-	public Object bind(Model model) {
-		WxSession wxSession = (WxSession) super.reloadSession();
-		if (wxSession.isBind()) {
-			return "redirect:/menu?" + MenuConfig.FLOW_LIST;
-		} else {
-			return "redirect:/login";
-		}
-	}
 
 	/**
 	 * 账户解绑

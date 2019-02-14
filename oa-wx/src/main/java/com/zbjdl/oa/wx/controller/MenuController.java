@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.zbjdl.oa.wx.config.MenuConfig;
+import com.zbjdl.oa.wx.vo.WxSession;
 import com.zbjdl.oa.wx.vo.WxVo;
 
 import org.slf4j.Logger;
@@ -31,14 +33,48 @@ public class MenuController extends BaseController{
 	
 	
 	/**
+	 * 登录
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "menu" , params=MenuConfig.LOGIN)
+	public String buy(Model model) {
+		return "redirect:/user/login/index";
+	}
+	
+	/**
+	 * 每日商机
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "menu" , params=MenuConfig.ADD_OPP)
+	public String addOpp(Model model) {
+		return "redirect:/opportunity/add/index";
+	}
+	
+	
+	/**
+	 * 新建订单
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "menu" , params=MenuConfig.ADD_ORDER)
+	public String addOrder(Model model) {
+		return "redirect:/order/add/index";
+	}
+	
+	/**
 	 * 首页
 	 * 
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/index")
-	public String about(Model model) {
-		return "/index";
+	@RequestMapping(value = "menu" , params=MenuConfig.INDEX)
+	public String index(Model model) {
+		return "redirect:/index";
 	}
 
 }

@@ -53,7 +53,7 @@ public class WxExceptionHandler extends ResponseEntityExceptionHandler {
 				
 				String host = WxUtil.OA_WX_HOST + request.getContextPath();
 				//重新网页授权openId，重启认证
-				return new ModelAndView(new RedirectView(WxUtil.getCode(host + "/menu?"+MenuConfig.FLOW_LIST, WxScopeConfig.BASE)));
+				return new ModelAndView(new RedirectView(WxUtil.getCode(host + "/menu?"+MenuConfig.INDEX, WxScopeConfig.BASE)));
 			}
 		} catch (Exception exception){
 			logger.error(e.getMessage() , e);
