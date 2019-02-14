@@ -87,7 +87,7 @@
 					if ("0000" == code) {
 						var callUrl = "${ctx}/bind/success?callback=${param.callback}";
 						console.log('url:'+callUrl);
-						window.location.href = callUrl;
+						window.location.href = "${ctx}/index";
 						//return;
 					}else{
 						cssChange("passwordTip", false, "用户名或密码错误");
