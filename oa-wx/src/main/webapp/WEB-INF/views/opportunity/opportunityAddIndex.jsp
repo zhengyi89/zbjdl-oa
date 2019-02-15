@@ -138,8 +138,8 @@
     var date = '${date }';
     $('#oppDate').bind('input change', function() {
     	var selectDate = $('#oppDate').val();
-    	console.log(tmp);
-    	if(date != tmp){
+    	console.log(selectDate);
+    	if(date != selectDate){
     		window.location.href= '${ctx}/opportunity/add/index?date='+selectDate;
     	}
     });	
