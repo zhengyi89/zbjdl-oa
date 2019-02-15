@@ -46,7 +46,7 @@ public class WxExceptionHandler extends ResponseEntityExceptionHandler {
 			if(!WxUtil.isWxBrowser(request)){
 				WxSession wxSession = new WxSession(false);
 				sessionService.setSession(wxSession);
-				View view = new RedirectView(request.getContextPath() + "/login");
+				View view = new RedirectView(request.getContextPath() + "/index");
 				return new ModelAndView(view);
 			} else {
 				// TODO 重新定义

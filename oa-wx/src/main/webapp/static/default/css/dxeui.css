@@ -70,6 +70,7 @@ html{font-size:10px;}
 	.top_bar .top_city span{display:inline-block;max-width:6rem;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
 
 /*---------- 功能板块分割 - 内容（有顶部无导航、有顶部有导航、无顶部有导航） ----------*/
+table th{word-break: keep-all;white-space:nowrap;}
 .content_through{position:fixed;left:0px;right:0px;top:4rem;bottom:0px;overflow-x:hidden;overflow-y:auto;background:#f5f5f5;z-index:100;}
 .content_auto{width:100%;height:100%;padding-top:4rem;background:#f5f5f5;}
 .content_middle{position:fixed;left:0px;right:0px;top:4rem;bottom:4.5rem;overflow-x:hidden;overflow-y:auto;background:#f5f5f5;z-index:100;}

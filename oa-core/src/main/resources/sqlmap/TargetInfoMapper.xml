@@ -139,7 +139,7 @@
   </update>
   
   <insert id="monthInit" parameterType="java.lang.String">
-    INSERT INTO target_info(
+  	INSERT INTO target_info(
 		user_id ,
 		target_amount ,
 		target_month ,
@@ -154,13 +154,37 @@
 		SYSDATE() ,
 		SYSDATE()
 	FROM
-		target_info t ,
 		user_info u
 	WHERE
-		t.user_id = u.id
-	AND u.city = #{1};
-
+		u.city = #{1}
+	AND u.id NOT IN(
+		SELECT
+			user_id
+		FROM
+			target_info
+		WHERE
+			city = #{1}
+		AND target_month = #{0}
+	)
   </insert>
+  
+  <select id="selectUnInit" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT
+		count(1)
+	FROM
+		user_info u
+	WHERE
+		u.city = #{1}
+	AND u.id NOT IN(
+		SELECT
+			user_id
+		FROM
+			target_info
+		WHERE
+			city = #{1}
+		AND target_month = #{0}
+	)
+  </select>
   
   
 </mapper>

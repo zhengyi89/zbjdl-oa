@@ -46,25 +46,27 @@ import org.slf4j.LoggerFactory;
 @RequestMapping(value = "/opportunity")
 public class OpportunityInfoController extends BaseController {
 	private Logger logger = LoggerFactory.getLogger(OpportunityInfoController.class);
-	
+
 	@Autowired
 	private OpportunityInfoService opportunityInfoService;
 
 	@Autowired
 	private UserInfoService userInfoService;
 
-
-
 	@RequestMapping("/add/index")
-	public String addIndex(Model model, Long id) {
-		if (id!=null) {
-			OpportunityInfoDto opportunityInfo = opportunityInfoService.selectById(id);
-			model.addAttribute("opportunity", opportunityInfo);
+	public String addIndex(Model model, String date) {
+		if (StringUtils.isBlank(date)) {
+			date = DateUtils.SHORT_DATE_FORMAT.format(new Date());
 		}
-		model.addAttribute("sysdate", DateUtils.SHORT_DATE_FORMAT.format(new Date()));
+		OpportunityInfoDto opportunityInfoDto = new OpportunityInfoDto();
+		opportunityInfoDto.setOppDate(date);
+		opportunityInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
+		List<OpportunityInfoDto> list = opportunityInfoService.findList(opportunityInfoDto);
+		model.addAttribute("opportunity", list == null || list.size() < 1 ? null : list.get(0));
+		model.addAttribute("date", date);
 		return "/opportunity/opportunityAddIndex";
 	}
-	
+
 	@RequestMapping("/list")
 	public String addIndex(Model model) {
 		OpportunityInfoDto opportunityInfoDto = new OpportunityInfoDto();
@@ -73,7 +75,6 @@ public class OpportunityInfoController extends BaseController {
 		return "/opportunity/opportunityList";
 	}
 
-	
 	/*
 	 * 编辑保存
 	 */

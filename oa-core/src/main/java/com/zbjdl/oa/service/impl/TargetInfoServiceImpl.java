@@ -25,28 +25,28 @@ import com.zbjdl.oa.dto.TargetWithUserInfoDto;
 
 @Service("targetInfoService")
 public class TargetInfoServiceImpl implements TargetInfoService {
-	
+
 	@Autowired
 	private TargetInfoManager targetInfoManager;
-	
+
 	@Autowired
 	private TargetInfoRepository targetInfoRepository;
-	
+
 	public static final SimpleDateFormat MONTH_FORMAT = new SimpleDateFormat("yyyy-MM");
-	
+
 	@Override
 	public Integer saveOrUpdate(TargetInfoDto targetInfoDto) {
-		if (targetInfoDto.getId()!=null) {
+		if (targetInfoDto.getId() != null) {
 			TargetInfo targetInfo = targetInfoManager.selectById(targetInfoDto.getId());
 			BeanUtils.copyProperties(targetInfoDto, targetInfo);
 			return targetInfoManager.update(targetInfo);
-		}else {
+		} else {
 			TargetInfo targetInfo = new TargetInfo();
 			BeanUtils.copyProperties(targetInfoDto, targetInfo);
 			return targetInfoManager.save(targetInfo);
 		}
 	}
-	
+
 	@Override
 	public TargetInfoDto selectById(Long id) {
 		TargetInfo targetInfo = targetInfoManager.selectById(id);
@@ -54,15 +54,15 @@ public class TargetInfoServiceImpl implements TargetInfoService {
 		BeanUtils.copyProperties(targetInfo, targetInfoDto);
 		return targetInfoDto;
 	}
-	
+
 	@Override
 	public List<TargetInfoDto> findList(TargetInfoDto targetInfoDto) {
 		TargetInfo targetInfo = new TargetInfo();
 		BeanUtils.copyProperties(targetInfoDto, targetInfo);
 		List<TargetInfo> targetInfoList = targetInfoManager.findList(targetInfo);
-		
+
 		List<TargetInfoDto> targetInfoDtoList = new ArrayList<TargetInfoDto>();
-		for(TargetInfo dto : targetInfoList){
+		for (TargetInfo dto : targetInfoList) {
 			TargetInfoDto respDto = new TargetInfoDto();
 			BeanUtils.copyProperties(dto, respDto);
 			targetInfoDtoList.add(respDto);
@@ -80,6 +80,10 @@ public class TargetInfoServiceImpl implements TargetInfoService {
 	public void monthInit(String targetMonth, String city, String userId) {
 		targetInfoRepository.monthInit(targetMonth, city, userId);
 	}
-	
-}
 
+	@Override
+	public Integer selectUnInit(String month, String city) {
+		return targetInfoRepository.selectUnInit(month, city);
+	}
+
+}

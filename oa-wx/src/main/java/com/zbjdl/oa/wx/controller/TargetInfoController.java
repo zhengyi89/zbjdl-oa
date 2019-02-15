@@ -68,17 +68,14 @@ public class TargetInfoController extends BaseController {
 	@ResponseBody
 	public Object targetInfoEditIndex() {
 		BaseRespDto respDto = new BaseRespDto(ReturnEnum.SUCCESS);
-
-		// 判断是否已经初始化
-		TargetInfoDto targetInfoDto = new TargetInfoDto();
-		targetInfoDto.setTargetMonth(MONTH_FORMAT.format(new Date()));
-		targetInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
-		List<TargetInfoDto> list = targetInfoService.findList(targetInfoDto);
-		if (list != null && list.size() > 0) {
-			respDto.setCode(ReturnEnum.FAILD.getCode());
-			respDto.setMsg("已初始化");
-		}else {
-			targetInfoService.monthInit(targetInfoDto.getTargetMonth(), getSession().getCity(), getSession().getUserId());
+		String month = MONTH_FORMAT.format(new Date());
+		String city = getSession().getCity();
+		logger.info("开始初始化业绩目标， month:{}, city:{}", month, city);
+		// 判断是否存在未初始化
+		Integer i = targetInfoService.selectUnInit(month, city);
+		logger.info("存在未初始化：{}", i);
+		if (i > 0) {
+			targetInfoService.monthInit(month, city, getSession().getUserId());
 		}
 		return respDto;
 	}
@@ -107,7 +104,7 @@ public class TargetInfoController extends BaseController {
 		for (TargetInfoDto targetInfoDto : targetInfoLit) {
 			targetInfoService.saveOrUpdate(targetInfoDto);
 		}
-		
+
 		return respDto;
 	}
 

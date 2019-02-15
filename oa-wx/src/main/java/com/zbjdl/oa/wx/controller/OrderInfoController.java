@@ -1,5 +1,6 @@
 package com.zbjdl.oa.wx.controller;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,7 @@ import org.slf4j.LoggerFactory;
 @RequestMapping(value = "/order")
 public class OrderInfoController extends BaseController {
 	private Logger logger = LoggerFactory.getLogger(OrderInfoController.class);
-	
+
 	@Autowired
 	private OrderInfoService orderInfoService;
 
@@ -60,26 +61,45 @@ public class OrderInfoController extends BaseController {
 	@Autowired
 	private UserFacade userFacade;
 
-
 	@RequestMapping("/add/index")
 	public String addIndex(Model model, Long id) {
-		if (id!=null) {
+		if (id != null) {
 			OrderInfoDto orderInfo = orderInfoService.selectById(id);
 			model.addAttribute("order", orderInfo);
 		}
 		model.addAttribute("sysdate", DateUtils.SHORT_DATE_FORMAT.format(new Date()));
 		return "/order/orderAddIndex";
 	}
-	
+
 	@RequestMapping("/list")
-	public String addIndex(Model model) {
+	public String addIndex(Model model, String date) {
+		if (StringUtils.isBlank(date)) {
+			date = DateUtils.sdfDateOnly.format(new Date());
+		}
+
 		OrderInfoDto orderInfoDto = new OrderInfoDto();
-		List<OrderWithUserInfoDto> list = orderInfoService.findListWithUser(orderInfoDto);
+		try {
+			orderInfoDto.setOrderDate(DateUtils.sdfDateOnly.parse(date));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		List<OrderWithUserInfoDto> list;
+
+		// 不同权限用户查询不同数据
+		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+
+		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+			orderInfoDto.setCity(getSession().getCity());
+		} else { // 普通员工，显示自己
+			orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
+		}
+		logger.info("查询订单列表，参数为：{}", JSON.toJSONString(orderInfoDto));
+		list = orderInfoService.findListWithUser(orderInfoDto);
 		model.addAttribute("list", list);
+		model.addAttribute("date", date);
 		return "/order/orderList";
 	}
 
-	
 	/*
 	 * 编辑保存
 	 */
@@ -88,6 +108,7 @@ public class OrderInfoController extends BaseController {
 	public Object orderInfoSave(OrderInfoDto orderInfoDto, BindingResult bindingResult) {
 		logger.info("save OrderInfo, param is : {}", JSON.toJSONString(orderInfoDto));
 		orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
+		orderInfoDto.setCity(getSession().getCity());
 		orderInfoService.saveOrUpdate(orderInfoDto);
 		BaseRespDto respDto = new BaseRespDto(ReturnEnum.SUCCESS);
 		return respDto;

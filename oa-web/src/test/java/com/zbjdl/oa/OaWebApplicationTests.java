@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSON;
 import com.zbjdl.oa.OaWebApplication;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 import com.zbjdl.oa.service.OrderInfoService;
+import com.zbjdl.oa.service.TargetInfoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -22,10 +23,19 @@ public class OaWebApplicationTests {
 
 	@Autowired
 	OrderInfoService os;
+	
+	@Autowired
+	TargetInfoService targetInfoService;
 	@Test
 	public void contextLoads() {
 		List<OrderSummaryReportRespDto> list = os.findOrderSummaryReport("2019-01-31");
 		System.out.println("-----------"+JSON.toJSONString(list));
+	}
+	
+	@Test
+	public void uninitTest() {
+		Integer i = targetInfoService.selectUnInit("2019-03", "北京");
+		System.out.println("-----------"+i);
 	}
 
 }

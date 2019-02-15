@@ -85,6 +85,10 @@ public class WxSession implements Serializable {
 
 	private String city;
 
+	private Boolean isAdmin;
+	
+	private Boolean isSuperAdmin;
+
 	/**
 	 * 判断用户是否已经绑定了会员
 	 * 
@@ -180,5 +184,23 @@ public class WxSession implements Serializable {
 	public void setCity(String city) {
 		this.city = city;
 	}
+
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public Boolean getIsSuperAdmin() {
+		return isSuperAdmin;
+	}
+
+	public void setIsSuperAdmin(Boolean isSuperAdmin) {
+		this.isSuperAdmin = isSuperAdmin;
+	}
+	
+	
 
 }

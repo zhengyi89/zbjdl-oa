@@ -23,7 +23,7 @@
         <div class="insert_team bottom">
         	<div class="insert_message">
             	<label>领取日期</label>
-            	<input type="text" name="oppDate" id="oppDate" value="${sysdate }" placeholder="订单日期"/>
+            	<input type="text" name="oppDate" id="oppDate" value="${date }" placeholder="订单日期"/>
           	</div>
          	<div class="insert_message">
             	<label>商机库	</label>
@@ -75,8 +75,8 @@
     		success : function(data) {
     			console.log('result:'+data.code);
     			if (data.code == '0000') {
-    				$("#message12").html("填写成功");
-    				$("#errBox12").show();
+    				/* $("#message12").html("填写成功");
+    				$("#errBox12").show(); */
     				toggleTime();
     			} else {
     				if(data.msg == undefined){
@@ -93,29 +93,22 @@
     	reset_button();
     }
 
-    var countdown = 2;
+    var countdown = 1;
 
     function toggleTime(obj) {
     	if (countdown == 0) {
-    		countdown = 2;
+    		countdown = 1;
     		return;
     	} else {
     		console.log(countdown);
-    		errtip("提交成功")
+    		errtip("保存成功")
     		countdown--;
     	}
     	setTimeout(function() {
     		toggleTime(obj);
     		window.location.href = "${ctx}/index";
-    	}, 2000);
+    	}, 500);
     	
-    }
-    function checkIsAdd(){
-    	var mobile1 ='${opportunity.mobile1}';
-    	if(mobile1==null || mobile1==''){
-    		return true;
-    	}
-    	return false;
     }
     
     $(function () {
@@ -134,7 +127,7 @@
           startYear: currYear - 10, //开始年份
           endYear: currYear + 10 //结束年份
         };
-        $("#selectDate").mobiscroll($.extend(opt['date'], opt['default']));
+        $("#oppDate").mobiscroll($.extend(opt['date'], opt['default']));
         var optDateTime = $.extend(opt['datetime'], opt['default']);
         var optTime = $.extend(opt['time'], opt['default']);
         $("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);
@@ -142,14 +135,15 @@
         //$("#selectDate").val(today());
       });
     
-	 	//获取当前的时间
-	    function today(){
-	      var today=new Date();
-	      var h=today.getFullYear();
-	      var m=today.getMonth()+1;
-	      var d=today.getDate();
-	      return h+"-"+m+"-"+d;
-	    }
+    var date = '${date }';
+    $('#oppDate').bind('input change', function() {
+    	var selectDate = $('#oppDate').val();
+    	console.log(tmp);
+    	if(date != tmp){
+    		window.location.href= '${ctx}/opportunity/add/index?date='+selectDate;
+    	}
+    });	
+    
     </script>
     <div id="errBox12" class="vnone">
 		<div class="tipCover"></div>

@@ -33,7 +33,7 @@
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/order/list';">
           <p class="icon bg_1"></p>
-          订单汇总
+          订单列表
         </div>
         <div class="message" onclick="window.location.href= '${ctx}/report/bussAnalyze';">
           <p class="icon bg_4"></p>
@@ -51,17 +51,25 @@
           <p class="icon bg_1"></p>
           销售月表
         </div>
-        <div class="message" onclick="setTarget();">
-          <p class="icon bg_6"></p>
-          设置业绩目标
-        </div>
+        <c:if test="${_wxSession.isAdmin }">
+        	<div class="message" onclick="setTarget();">
+	          <p class="icon bg_6"></p>
+	          设置业绩目标
+	        </div>
+        </c:if>
+        
         <div class="message" onclick="window.location.href= '${ctx}/user/info';">
           <p class="icon bg_5"></p>
           我的资料
         </div>
-        <div class="message last" onclick="window.location.href= '${ctx}/user/unbind/index';">
+       <%--  <div class="message last" onclick="window.location.href= '${ctx}/user/unbind/index';">
           <p class="icon bg_6"></p>
           解绑
+        </div> --%>
+        
+        <div class="message last" onclick="window.location.href= '${ctx}/user/logout';">
+          <p class="icon bg_6"></p>
+          退出登录
         </div>
         
       </div>

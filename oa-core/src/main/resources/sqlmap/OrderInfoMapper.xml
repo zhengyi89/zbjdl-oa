@@ -5,6 +5,7 @@
 	  <id column="ID" jdbcType="DECIMAL" property="id" />
 	  <result column="user_id" jdbcType="BIGINT" property="userId" />
 	  <result column="order_date" jdbcType="DATE" property="orderDate" />
+	  <result column="city" jdbcType="VARCHAR" property="city" />
 	  <result column="product_type" jdbcType="VARCHAR" property="productType" />
 	  <result column="customer_type" jdbcType="VARCHAR" property="customerType" />
 	  <result column="customer_channel" jdbcType="VARCHAR" property="customerChannel" />
@@ -43,6 +44,7 @@
 	  <id column="ID" jdbcType="DECIMAL" property="id" />
 	  <result column="user_id" jdbcType="BIGINT" property="userId" />
 	  <result column="order_date" jdbcType="DATE" property="orderDate" />
+	  <result column="city" jdbcType="VARCHAR" property="city" />
 	  <result column="product_type" jdbcType="VARCHAR" property="productType" />
 	  <result column="customer_type" jdbcType="VARCHAR" property="customerType" />
 	  <result column="customer_channel" jdbcType="VARCHAR" property="customerChannel" />
@@ -127,6 +129,9 @@
       	<if test="orderDate != null" >
 	      and order_date = #{orderDate,jdbcType=DATE}
 	    </if>
+      	<if test="city != null" >
+	      and city = #{city,jdbcType=VARCHAR}
+	    </if>
       	<if test="productType != null" >
 	      and product_type = #{productType,jdbcType=VARCHAR}
 	    </if>
@@ -176,6 +181,7 @@
     id,
     user_id,
     order_date,
+    city,
     product_type,
     customer_type,
     customer_channel,
@@ -215,6 +221,7 @@
       <trim suffixOverrides=",">
         user_id = #{userId,jdbcType=BIGINT},
         order_date = #{orderDate,jdbcType=DATE},
+        city = #{city,jdbcType=VARCHAR},
         product_type = #{productType,jdbcType=VARCHAR},
         customer_type = #{customerType,jdbcType=VARCHAR},
         customer_channel = #{customerChannel,jdbcType=VARCHAR},
@@ -256,6 +263,9 @@
     </if>
     <if test="orderDate != null">
       order_date,
+    </if>
+    <if test="city != null">
+      city,
     </if>
     <if test="productType != null">
       product_type,
@@ -359,6 +369,9 @@
     </if>
     <if test="orderDate != null">
       #{orderDate,jdbcType=DATE},
+    </if>
+    <if test="city != null">
+      #{city,jdbcType=VARCHAR},
     </if>
     <if test="productType != null">
       #{productType,jdbcType=VARCHAR},
@@ -494,6 +507,15 @@
   
   <select id="findListWithUser" parameterType="OrderInfo" resultMap="WithUserResultMap">
    	select * from order_info o, user_info u where o.user_id = u.id
+   	<if test="userId != null" >
+      and user_id = #{userId,jdbcType=BIGINT}
+    </if>
+     	<if test="orderDate != null" >
+      and order_date = #{orderDate,jdbcType=DATE}
+    </if>
+     	<if test="city != null" >
+      and city = #{city,jdbcType=VARCHAR}
+    </if>
   </select>
   
   <select id="findOrderSummaryReport" parameterType="java.lang.String" resultMap="OrderSummaryReportMap">

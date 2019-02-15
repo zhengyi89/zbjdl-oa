@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * TargetInfo
+ * 
  * @author code-generator
  *
  */
@@ -24,5 +25,7 @@ public interface TargetInfoRepository extends GenericRepository {
 	List<TargetWithUserInfoDto> findListWithUserByCity(String city, String month);
 
 	void monthInit(String targetMonth, String city, String userId);
-	
+
+	Integer selectUnInit(String month, String city);
+
 }

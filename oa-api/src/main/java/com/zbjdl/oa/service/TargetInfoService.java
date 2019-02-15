@@ -23,4 +23,6 @@ public interface TargetInfoService {
 
 	void monthInit(String targetMonth, String city, String userId);
 
+	Integer selectUnInit(String format, String city);
+
 }

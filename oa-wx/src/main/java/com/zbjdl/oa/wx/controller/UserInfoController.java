@@ -159,6 +159,7 @@ public class UserInfoController extends BaseController {
 				user.setPassword(Digest.md5Digest(password));
 				user.setId(bossUserDto.getUserId());
 				user.setIsAdmin(bossUserDto.getIsAdmin());
+				user.setIsSuperAdmin(bossUserDto.getIsSuperAdmin());
 				userInfoService.save(user);
 			}
 
@@ -183,6 +184,8 @@ public class UserInfoController extends BaseController {
 		wxSession.setLoginName(loginName);
 		wxSession.setUserName(user.getUserName());
 		wxSession.setCity(user.getCity());
+		wxSession.setIsAdmin(user.getIsAdmin());
+		wxSession.setIsSuperAdmin(user.getIsSuperAdmin());
 		sessionService.setSession(wxSession);
 		super.reloadSession();
 
@@ -312,7 +315,7 @@ public class UserInfoController extends BaseController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String loginOut(HttpSession session) {
 		session.removeAttribute(WxSession.NAME);
-		return "redirect:/login";
+		return "redirect:/user/login/index";
 	}
 
 

@@ -31,7 +31,7 @@ public class WxController extends BaseController {
 
 	@RequestMapping(value = "/" )
 	public String index(){
-		return "redirect:/login.do";
+		return "redirect:/index";
 	}
 
 	/**

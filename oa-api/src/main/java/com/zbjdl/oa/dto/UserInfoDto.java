@@ -31,6 +31,7 @@ public class UserInfoDto implements Serializable {
 	private java.util.Date lastUpdateTime;
 	private java.lang.Long bossUserId;
 	private java.lang.Boolean isAdmin;
+	private java.lang.Boolean isSuperAdmin;
 
 	/**
 	 * @param id
@@ -252,6 +253,14 @@ public class UserInfoDto implements Serializable {
 
 	public void setLoginName(java.lang.String loginName) {
 		this.loginName = loginName;
+	}
+
+	public java.lang.Boolean getIsSuperAdmin() {
+		return isSuperAdmin;
+	}
+
+	public void setIsSuperAdmin(java.lang.Boolean isSuperAdmin) {
+		this.isSuperAdmin = isSuperAdmin;
 	}
 
 }
