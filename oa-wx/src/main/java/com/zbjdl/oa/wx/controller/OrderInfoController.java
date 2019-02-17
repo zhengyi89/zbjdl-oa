@@ -89,6 +89,7 @@ public class OrderInfoController extends BaseController {
 		list = orderInfoService.findListWithUser(orderInfoDto);
 		model.addAttribute("list", list);
 		model.addAttribute("date", date);
+		model.addAttribute("row", 1);
 		return "/order/orderList";
 	}
 

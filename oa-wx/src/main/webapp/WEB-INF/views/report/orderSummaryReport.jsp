@@ -57,7 +57,7 @@
 		                <td>${dto.monthAmount }</td>
 		                <td>${dto.targetAmount }</td>
 		                <td>${dto.unsellAmount }</td>
-		                <td>${dto.finishRate }</td>
+		                <td>${dto.finishRate }%</td>
 		              </tr>
             	</c:forEach>
             </tbody>

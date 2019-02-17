@@ -38,11 +38,11 @@
     <!-- <p><p>
     <p> -->
       <div class="col-md-12">
-          <table class="table table-striped">
+          <table class="table table-striped" id="num">
             <thead>
               <tr>
                 <th>序号</th>
-                <th>日期</th>
+                <!-- <th>日期</th> -->
                 <th>工号</th>
                 <th>姓名</th>
                 <th>城市</th>
@@ -79,8 +79,8 @@
             <tbody>
             	<c:forEach items="${list }"  var="order">
             		 <tr>
-		                <td>1</td>
-		                <td><fmt:formatDate value="${order.orderDate }" pattern="yyyy-MM-dd" /></td>
+		                <td></td>
+		                <%-- <td><fmt:formatDate value="${order.orderDate }" pattern="yyyy-MM-dd" /></td> --%>
 		                <td>${order.jobNo }</td>
 		                <td>${order.userName }</td>
 		                <td>${order.city }</td>
@@ -122,7 +122,16 @@
 	<script type="text/javascript" src="${def}/app/js/dateformat.js"></script>
 	<script type="text/javascript" src="${def }/js/easySwipe.js"></script>
     <script type="text/javascript" src="${def }/js/common.js"></script>
+    <script type="text/javascript" src="${def }/js/jquery-1.7.2.js"></script>
     <script type="text/javascript">
+    
+    window.onload = function(){  
+        var oTable = document.getElementById("num");  
+        for(var i=1;i<oTable.rows.length;i++){  
+        oTable.rows[i].cells[0].innerHTML = (i);  
+    }  
+}  
+    
 	    $(function () {
 	        var currYear = (new Date()).getFullYear();
 	        var opt={};
@@ -144,6 +153,12 @@
 	        var optTime = $.extend(opt['time'], opt['default']);
 	        $("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);
 	        $("#appTime").mobiscroll(optTime).time(optTime);
+	        
+	        
+	        var len = $('table tr').length;
+	        for(var i = 1;i<len;i++){
+	            $('table tr:eq('+i+') td:first').text(i);
+	        }
 	      });
 	    
 	    var date = '${date }';

@@ -79,6 +79,22 @@ public class TargetInfoController extends BaseController {
 		}
 		return respDto;
 	}
+	
+	@RequestMapping(value = "/hasinit", method = RequestMethod.GET)
+	@ResponseBody
+	public Object hasinit() {
+		BaseRespDto respDto = new BaseRespDto(ReturnEnum.FAILD);
+		String month = MONTH_FORMAT.format(new Date());
+		String city = getSession().getCity();
+		logger.info("开始初始化业绩目标， month:{}, city:{}", month, city);
+		// 判断是否存在未初始化
+		Integer i = targetInfoService.selectUnInit(month, city);
+		logger.info("存在未初始化：{}", i);
+		if (i > 0) {
+			respDto.setCode(ReturnEnum.SUCCESS.getCode());
+		}
+		return respDto;
+	}
 
 	/*
 	 * 进入新增页面

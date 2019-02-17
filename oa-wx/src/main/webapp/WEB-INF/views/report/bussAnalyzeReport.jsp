@@ -80,17 +80,17 @@
 		                <td>${dto.bossDay }</td>
 		                <td>${dto.monthOpp1 }</td>
 		                <td>${dto.bossMonth }</td>
-		                <td>${dto.bossMonth/dto.monthOpp1 }</td>
+		                <td>${dto.bossMonth/dto.monthOpp1*100 }%</td>
 		                <td>${dto.dayOpp2 }</td>
 		                <td>${dto.qdsDay }</td>
 		                <td>${dto.monthOpp2 }</td>
 		                <td>${dto.qdsMonth }</td>
-		                <td>${dto.qdsMonth/dto.monthOpp2 }</td>
+		                <td>${dto.qdsMonth/dto.monthOpp2*100 }%</td>
 		                <td>${dto.dayOpp3 }</td>
 		                <td>${dto.qsbDay }</td>
 		                <td>${dto.monthOpp3 }</td>
 		                <td>${dto.qsbMonth }</td>
-		                <td>${dto.qsbMonth/dto.monthOpp3 }</td>
+		                <td>${dto.qsbMonth/dto.monthOpp3*100 }%</td>
 		              </tr>
             	</c:forEach>
             </tbody>

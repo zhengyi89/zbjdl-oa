@@ -525,7 +525,7 @@
 		a.targetAmount ,
 		b.dayAmount ,
 		(a.targetAmount - a.monthAmount) unsellAmount ,
-		a.monthAmount / a.targetAmount finishRate
+		a.monthAmount / a.targetAmount * 100 finishRate
 	FROM
 		(
 			SELECT

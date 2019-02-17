@@ -145,7 +145,7 @@
     });	
     
     </script>
-    <div id="errBox12" class="vnone">
+    <div id="errBox12" class="">
 		<div class="tipCover"></div>
 		<div class="tipMsg">
 			<p class="message" id="message12">保存成功</p>
@@ -155,12 +155,12 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$(function(){
-	 	    $("input").focus(function(){
-	 	    	console.log(2222);
-	 	    	this.select();
-	 	    });
-	    })
+	$(function(){
+ 	    $("input").focus(function(){
+ 	    	console.log(2222);
+ 	    	this.select();
+ 	    });
+    })
 	</script>
   </body>
 </html>
