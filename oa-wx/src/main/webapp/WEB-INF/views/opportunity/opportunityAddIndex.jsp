@@ -154,5 +154,13 @@
 			</p>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(function(){
+	 	    $("input").focus(function(){
+	 	    	console.log(2222);
+	 	    	this.select();
+	 	    });
+	    })
+	</script>
   </body>
 </html>

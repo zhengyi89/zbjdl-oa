@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,22 +17,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.zbjdl.boss.admin.facade.UserFacade;
-import com.zbjdl.boss.admin.user.dto.DepartmentDTO;
-import com.zbjdl.boss.admin.user.dto.UserDTO;
-import com.zbjdl.common.encrypt.Digest;
 import com.zbjdl.common.utils.DateUtils;
 import com.zbjdl.common.utils.StringUtils;
 import com.zbjdl.common.wx.service.WeixinUserService;
-import com.zbjdl.common.wx.util.dto.WxBindUserDto;
 import com.zbjdl.oa.dto.OrderInfoDto;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
-import com.zbjdl.oa.dto.UserInfoDto;
 import com.zbjdl.oa.dto.response.BaseRespDto;
 import com.zbjdl.oa.enumtype.ReturnEnum;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.service.UserInfoService;
-import com.zbjdl.oa.wx.config.Constants;
-import com.zbjdl.oa.wx.vo.WxSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

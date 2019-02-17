@@ -1,44 +1,30 @@
 package com.zbjdl.oa.wx.controller;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
-import com.zbjdl.boss.admin.facade.UserFacade;
-import com.zbjdl.boss.admin.user.dto.DepartmentDTO;
-import com.zbjdl.boss.admin.user.dto.UserDTO;
 import com.zbjdl.common.amount.Amount;
-import com.zbjdl.common.encrypt.Digest;
 import com.zbjdl.common.utils.DateUtils;
 import com.zbjdl.common.utils.StringUtils;
-import com.zbjdl.common.wx.service.WeixinUserService;
-import com.zbjdl.common.wx.util.dto.WxBindUserDto;
 import com.zbjdl.oa.dto.OrderInfoDto;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 import com.zbjdl.oa.dto.UserInfoDto;
-import com.zbjdl.oa.dto.response.BaseRespDto;
+import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
-import com.zbjdl.oa.enumtype.ReturnEnum;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.service.UserInfoService;
-import com.zbjdl.oa.wx.config.Constants;
 import com.zbjdl.oa.wx.dto.response.CustomerChannelReportRespDto;
-import com.zbjdl.oa.wx.vo.WxSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,11 +47,29 @@ public class ReportController extends BaseController {
 	private UserInfoService userInfoService;
 
 	@RequestMapping("/customerChannel")
-	public String customerChannel(Model model) {
+	public String customerChannel(Model model, String date) {
 
-		Map<Long, CustomerChannelReportRespDto> map = new HashMap<Long, CustomerChannelReportRespDto>();
+		if (StringUtils.isBlank(date)) {
+			date = DateUtils.sdfDateOnly.format(new Date());
+		}
+
+		Map<Long, CustomerChannelReportRespDto> map = new LinkedHashMap<Long, CustomerChannelReportRespDto>();
 		// 查询所有订单
 		OrderInfoDto orderInfoDto = new OrderInfoDto();
+		try {
+			orderInfoDto.setOrderDate(DateUtils.sdfDateOnly.parse(date));
+		} catch (ParseException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+
+		if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+			orderInfoDto.setCity(getSession().getCity());
+		} else { // 普通员工，显示自己
+			orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
+		}
+
+		
 		List<OrderInfoDto> list = orderInfoService.findList(orderInfoDto);
 		for (OrderInfoDto order : list) {
 			if (map.get(order.getUserId()) == null) {
@@ -110,16 +114,42 @@ public class ReportController extends BaseController {
 				cdto.c15 += 1;
 			} else if ("5".equals(order.getCustomerChannel())) {
 				cdto.c16 += 1;
-			} else if ("5".equals(order.getCustomerChannel())) {
-				cdto.c17 += 1;
 			} else if ("6".equals(order.getCustomerChannel())) {
-				cdto.c18 += 1;
+				cdto.c17 += 1;
 			} else if ("7".equals(order.getCustomerChannel())) {
-				cdto.c19 += 1;
+				cdto.c18 += 1;
 			} else if ("9".equals(order.getCustomerChannel())) {
-				cdto.c20 += 1;
+				cdto.c19 += 1;
 			}
 		}
+
+		// List<CustomerChannelReportRespDto>
+		model.addAttribute("date", date);
+		model.addAttribute("list", map);
+		
+		String city = "";
+		CustomerChannelReportRespDto summary = new CustomerChannelReportRespDto();
+		summary.c3 = new Amount();
+		for (Map.Entry<Long, CustomerChannelReportRespDto > entry : map.entrySet()) {
+			summary.c3 = summary.c3.add(entry.getValue().c3);
+			summary.c4 += entry.getValue().c4;
+			summary.c5 += entry.getValue().c5;
+			summary.c6 += entry.getValue().c6;
+			summary.c7 += entry.getValue().c7;
+			summary.c8 += entry.getValue().c8;
+			summary.c9 += entry.getValue().c9;
+			summary.c10 += entry.getValue().c10;
+			summary.c11 += entry.getValue().c11;
+			summary.c12 += entry.getValue().c12;
+			summary.c13 += entry.getValue().c13;
+			summary.c14 += entry.getValue().c14;
+			summary.c15 += entry.getValue().c15;
+			summary.c16 += entry.getValue().c16;
+			summary.c17 += entry.getValue().c17;
+			summary.c18 += entry.getValue().c18;
+			summary.c19 += entry.getValue().c19;
+		}
+		model.addAttribute("summary", summary);
 
 		return "/report/customerChannelReport";
 	}
@@ -134,18 +164,46 @@ public class ReportController extends BaseController {
 
 	@RequestMapping("/orderSummary")
 	public String orderSummary(Model model, String date) {
+		if (StringUtils.isBlank(date)) {
+			date = DateUtils.sdfDateOnly.format(new Date());
+		}
 		// 查询当月
 		List<OrderSummaryReportRespDto> list = orderInfoService.findOrderSummaryReport(date);
 
+		model.addAttribute("date", date);
 		model.addAttribute("list", list);
 		return "/report/orderSummaryReport";
 	}
 
+	/**
+	 * 商机数表
+	 * 
+	 * @param model
+	 * @param date
+	 * @return
+	 */
 	@RequestMapping("/bussAnalyze")
 	public String bussAnalyze(Model model, String date) {
-		// 查询当月
-		List<BussAnalyzeReportRespDto> list = orderInfoService.findBussAnalyzeReport(date);
+		if (StringUtils.isBlank(date)) {
+			date = DateUtils.sdfDateOnly.format(new Date());
+		}
 
+		ReportBaseReqDto dto = new ReportBaseReqDto();
+		dto.setDate(date);
+		// 不同权限用户查询不同数据
+		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+
+		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+			dto.setCity(getSession().getCity());
+		} else { // 普通员工，显示自己
+			dto.setUserId(Long.parseLong(getSession().getUserId()));
+		}
+		logger.info("查询订单列表，参数为：{}", JSON.toJSONString(dto));
+
+		// 查询当月
+		List<BussAnalyzeReportRespDto> list = orderInfoService.findBussAnalyzeReport(dto);
+		
+		model.addAttribute("date", date);
 		model.addAttribute("list", list);
 		return "/report/bussAnalyzeReport";
 	}

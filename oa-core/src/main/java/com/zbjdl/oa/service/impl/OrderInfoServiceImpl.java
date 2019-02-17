@@ -19,6 +19,7 @@ import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.model.OrderInfo;
 import com.zbjdl.oa.dto.OrderInfoDto;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
+import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 
@@ -80,8 +81,8 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 	}
 
 	@Override
-	public List<BussAnalyzeReportRespDto> findBussAnalyzeReport(String date) {
-		return orderInfoRepository.findBussAnalyzeReport(date);
+	public List<BussAnalyzeReportRespDto> findBussAnalyzeReport(ReportBaseReqDto dto) {
+		return orderInfoRepository.findBussAnalyzeReport(dto);
 	}
 	
 }

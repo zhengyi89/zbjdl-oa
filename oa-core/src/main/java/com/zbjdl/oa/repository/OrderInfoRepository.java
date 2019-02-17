@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.zbjdl.common.respository.mybatis.GenericRepository;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
+import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 import com.zbjdl.oa.model.OrderInfo;
@@ -28,6 +29,6 @@ public interface OrderInfoRepository extends GenericRepository {
 
 	List<OrderSummaryReportRespDto> findOrderSummaryReport(String date);
 
-	List<BussAnalyzeReportRespDto> findBussAnalyzeReport(String date);
+	List<BussAnalyzeReportRespDto> findBussAnalyzeReport(ReportBaseReqDto dto);
 	
 }

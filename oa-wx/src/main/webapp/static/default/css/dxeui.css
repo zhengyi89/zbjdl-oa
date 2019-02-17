@@ -73,6 +73,7 @@ html{font-size:10px;}
 table th{word-break: keep-all;white-space:nowrap;}
 .content_through{position:fixed;left:0px;right:0px;top:4rem;bottom:0px;overflow-x:hidden;overflow-y:auto;background:#f5f5f5;z-index:100;}
 .content_auto{width:100%;height:100%;padding-top:4rem;background:#f5f5f5;}
+.content_auto_nobg{width:100%;height:100%;padding-top:4rem;}
 .content_middle{position:fixed;left:0px;right:0px;top:4rem;bottom:4.5rem;overflow-x:hidden;overflow-y:auto;background:#f5f5f5;z-index:100;}
 .content_unbar{position:fixed;left:0px;right:0px;top:0px;bottom:4.5rem;overflow-x:hidden;overflow-y:auto;background:#f5f5f5;z-index:100;}
 	.content_unbar a.communication{position:absolute;top:0px;right:0.5rem;display:block;width:3.5rem;height:3.5rem;background:url(../images/icon_communication.png) no-repeat;background-size:100%;z-index:101;}

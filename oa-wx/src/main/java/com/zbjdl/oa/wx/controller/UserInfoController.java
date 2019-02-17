@@ -108,6 +108,9 @@ public class UserInfoController extends BaseController {
 					Constants.SYSTEM_CODE, loginName);
 			weixinUserService.bind(wxBindUserDto);
 		}
+		wxSession.setCity(userDto.getCity());
+		wxSession.setIsAdmin(userDto.getIsAdmin());
+		wxSession.setIsSuperAdmin(userDto.getIsSuperAdmin());
 		wxSession.setLoginName(loginName);
 		sessionService.setSession(wxSession);
 		super.reloadSession();

@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.zbjdl.oa.dto.OrderInfoDto;
 import com.zbjdl.oa.dto.OrderWithUserInfoDto;
+import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
 
@@ -24,6 +25,6 @@ public interface OrderInfoService {
 
 	List<OrderSummaryReportRespDto> findOrderSummaryReport(String date);
 
-	List<BussAnalyzeReportRespDto> findBussAnalyzeReport(String date);
+	List<BussAnalyzeReportRespDto> findBussAnalyzeReport(ReportBaseReqDto dto);
 
 }

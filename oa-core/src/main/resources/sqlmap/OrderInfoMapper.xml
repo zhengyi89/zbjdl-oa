@@ -513,8 +513,8 @@
      	<if test="orderDate != null" >
       and order_date = #{orderDate,jdbcType=DATE}
     </if>
-     	<if test="city != null" >
-      and city = #{city,jdbcType=VARCHAR}
+     <if test="city != null" >
+      and o.city = #{city,jdbcType=VARCHAR}
     </if>
   </select>
   
@@ -551,40 +551,49 @@
 			FROM
 				order_info o1 ,
 				user_info u1 WHERE u1.id = o1.user_id AND o1.order_date = #{date,jdbcType=VARCHAR} GROUP BY u1.city 
-		) b WHERE a.city = b.city
+		) b WHERE a.city = b.city order by a.city
   </select>
   
   
-  <select id="findBussAnalyzeReport" parameterType="java.lang.String" resultMap="BussAnalyzeReportMap">
-  	SELECT
-		a.*, b.monthOpp1 , b.monthOpp2 , b.monthOpp3 , c.qdsDay , d.qsbDay , e.bossDay , f.qdsMonth , g.qsbMonth , h.bossMonth
-	FROM
-		(
-			SELECT
-				u.city , u.user_name , u.id, sum(o.opp_num1) dayOpp1 , sum(o.opp_num2) dayOpp2 , sum(o.opp_num3) dayOpp3
-			FROM
-				user_info u , opportunity_info o
-			WHERE
-				u.id = o.user_id AND opp_date = #{date,jdbcType=VARCHAR}
-		) a
-	JOIN(
-		SELECT
-			u.id , sum(o.opp_num1) monthOpp1 , sum(o.opp_num2) monthOpp2 , sum(o.opp_num3) monthOpp3
+  <select id="findBussAnalyzeReport" parameterType="com.zbjdl.oa.dto.request.ReportBaseReqDto" resultMap="BussAnalyzeReportMap">
+  	select * from (
+	  	SELECT
+			a.*, b.monthOpp1 , b.monthOpp2 , b.monthOpp3 , c.qdsDay , d.qsbDay , e.bossDay , f.qdsMonth , g.qsbMonth , h.bossMonth
 		FROM
-			user_info u ,opportunity_info o WHERE u.id = o.user_id AND date_format(o.opp_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR} , 1 , 7) GROUP BY u.city , u.user_name
-	) b ON a.id = b.id LEFT JOIN(
-		SELECT user_id ,count(1) qdsDay FROM order_info WHERE customer_channel = '1' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
-	) c ON a.id = c.user_id LEFT JOIN(
-		SELECT user_id ,count(1) qsbDay FROM order_info WHERE customer_channel = '2' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
-	) d ON a.id = d.user_id LEFT JOIN(
-		SELECT user_id ,
-		count(1) bossDay FROM order_info WHERE customer_channel = '6' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
-	) e ON a.id = e.user_id LEFT JOIN(
-		SELECT user_id ,count(1) qdsMonth FROM order_info WHERE customer_channel = '1' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
-	) f ON a.id = f.user_id LEFT JOIN(
-		SELECT user_id ,count(1) qsbMonth FROM order_info WHERE customer_channel = '2' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
-	) g ON a.id = g.user_id LEFT JOIN(
-		SELECT user_id ,count(1) bossMonth FROM order_info WHERE customer_channel = '6' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
-	) h ON a.id = h.user_id
+			(
+				SELECT
+					u.city , u.user_name , u.id, sum(o.opp_num1) dayOpp1 , sum(o.opp_num2) dayOpp2 , sum(o.opp_num3) dayOpp3
+				FROM
+					user_info u , opportunity_info o
+				WHERE
+					u.id = o.user_id AND opp_date = #{date,jdbcType=VARCHAR}
+			) a
+		JOIN(
+			SELECT
+				u.id , sum(o.opp_num1) monthOpp1 , sum(o.opp_num2) monthOpp2 , sum(o.opp_num3) monthOpp3
+			FROM
+				user_info u ,opportunity_info o WHERE u.id = o.user_id AND date_format(o.opp_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR} , 1 , 7) GROUP BY u.city , u.user_name
+		) b ON a.id = b.id LEFT JOIN(
+			SELECT user_id ,count(1) qdsDay FROM order_info WHERE customer_channel = '1' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
+		) c ON a.id = c.user_id LEFT JOIN(
+			SELECT user_id ,count(1) qsbDay FROM order_info WHERE customer_channel = '2' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
+		) d ON a.id = d.user_id LEFT JOIN(
+			SELECT user_id ,
+			count(1) bossDay FROM order_info WHERE customer_channel = '6' AND order_date = #{date,jdbcType=VARCHAR} GROUP BY user_id
+		) e ON a.id = e.user_id LEFT JOIN(
+			SELECT user_id ,count(1) qdsMonth FROM order_info WHERE customer_channel = '1' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
+		) f ON a.id = f.user_id LEFT JOIN(
+			SELECT user_id ,count(1) qsbMonth FROM order_info WHERE customer_channel = '2' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
+		) g ON a.id = g.user_id LEFT JOIN(
+			SELECT user_id ,count(1) bossMonth FROM order_info WHERE customer_channel = '6' AND date_format(order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR}, 1 , 7) GROUP BY user_id
+		) h ON a.id = h.user_id
+	) t where 1=1
+	<if test="userId != null" >
+      and t.id = #{userId,jdbcType=BIGINT}
+    </if>
+     <if test="city != null" >
+      and t.city = #{city,jdbcType=VARCHAR}
+    </if>
+    order by t.city
   </select>
 </mapper>

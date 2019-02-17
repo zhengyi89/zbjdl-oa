@@ -43,14 +43,18 @@
           <p class="icon bg_1"></p>
           获客渠道表
         </div>
-        <div class="message" onclick="window.location.href= '${ctx}/report/orderSummary';">
-          <p class="icon bg_1"></p>
-          战报表
-        </div>
-        <div class="message" onclick="window.location.href= '${ctx}/opportunity/list';">
+        
+        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin}">
+        	<div class="message" onclick="window.location.href= '${ctx}/report/orderSummary';">
+	          <p class="icon bg_1"></p>
+	          战报表
+	        </div>
+        </c:if>
+        
+       <%--  <div class="message" onclick="window.location.href= '${ctx}/opportunity/list';">
           <p class="icon bg_1"></p>
           销售月表
-        </div>
+        </div> --%>
         <c:if test="${_wxSession.isAdmin }">
         	<div class="message" onclick="setTarget();">
 	          <p class="icon bg_6"></p>

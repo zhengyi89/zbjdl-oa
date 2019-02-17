@@ -7,22 +7,21 @@
   <head>
     <title>大连八戒财税</title>
    <%--  <%@ include file="/common/taglibs.jsp"%> --%>
-<style type="text/css">
-   .datecss {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    display: block;
-    width: 10rem;
-    height: 4rem;
-    background-size: 100%;
-}
-</style>   
+	<style type="text/css">
+	   .datecss {
+	    position: absolute;
+	    top: 0px;
+	    right: 0px;
+	    display: block;
+	    width: 10rem;
+	    height: 4rem;
+	    background-size: 100%;
+	}
+	</style>   
    <link rel="stylesheet" href="${def }/css/dxeui.css?version=1.5.0" media="screen" title="no title" charset="utf-8"/>
 	<link href="${def }/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <link href="${def }/css/bootstrap-theme.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="${def }/css/iosSelect.css?version=1.5.0" media="screen" title="no title">
 	<link rel="stylesheet" href="${def }/css/animate.min.css?version=1.5.0" media="screen" title="no title">
 	<link rel="stylesheet" href="${def }/css/hashChange.css?version=1.5.0" media="screen" title="no title">

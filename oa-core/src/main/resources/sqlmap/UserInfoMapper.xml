@@ -98,6 +98,9 @@
     </set>
   </sql>
   <sql id="Selective_Column_List">
+  	<if test="id != null">
+      id,
+    </if>
     <if test="jobNo != null">
       job_no,
     </if>
@@ -138,6 +141,9 @@
     </if>
   </sql>
   <sql id="Selective_Value_List">
+    <if test="id != null">
+      #{id,jdbcType=DECIMAL},
+    </if>
     <if test="jobNo != null">
       #{jobNo,jdbcType=VARCHAR},
     </if>

@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.zbjdl.common.wx.util.dto.WxBindUserDto;
+import com.zbjdl.oa.dto.UserInfoDto;
+import com.zbjdl.oa.service.UserInfoService;
 import com.zbjdl.oa.wx.exception.WxIllegalAccessException;
 import com.zbjdl.oa.wx.vo.WxSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,6 +36,9 @@ public class SessionService {
 	private PortalPhoneService portalPhoneService;
 	@Resource
 	private PortalWxService portalWxService;
+	
+	@Autowired
+	private UserInfoService userInfoService;
 	/**
 	 * 获取微信Sesison
 	 */
@@ -61,7 +67,7 @@ public class SessionService {
 		WxSession newSession = null;
 		if(!oldSession.isWxBrowser()){
 			logger.info("reload session phone");
-			newSession = portalPhoneService.reLoad(oldSession.getUserId(), oldSession.getLoginName());
+			newSession = portalPhoneService.reLoad(oldSession);
 		} else if(StringUtils.isBlank(oldSession.getOpi())){
 			throw new WxIllegalAccessException("重新加载Session时，Session不存在");
 		} else {
@@ -80,6 +86,14 @@ public class SessionService {
 			wxSession.setOpi(wxBindUserDto.getOpenId());
 			wxSession.setLoginName(wxBindUserDto.getLoginName());
 			wxSession.setUserId(wxBindUserDto.getUserId());
+			// 查询用户信息
+			UserInfoDto userDto = userInfoService.selectById(Long.parseLong(wxBindUserDto.getUserId()));
+			if (userDto !=null) {
+				wxSession.setCity(userDto.getCity());
+				wxSession.setIsAdmin(userDto.getIsAdmin());
+				wxSession.setIsSuperAdmin(userDto.getIsSuperAdmin());
+			}
+			
 		}
 	}
 	

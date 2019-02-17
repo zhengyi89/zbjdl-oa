@@ -270,6 +270,13 @@
         $("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);
         $("#appTime").mobiscroll(optTime).time(optTime);
         //$("#selectDate").val(today());
+        
+        
+        
+        $("input").focus(function(){
+    		console.log(2222);
+    		this.select();
+    	});
       });
     
 	 	//获取当前的时间
