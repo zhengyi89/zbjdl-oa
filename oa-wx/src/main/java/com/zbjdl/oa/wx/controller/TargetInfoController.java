@@ -34,7 +34,7 @@ import com.zbjdl.oa.service.UserInfoService;
  * 
  */
 @Controller
-@RequestMapping("target")
+@RequestMapping("/target")
 public class TargetInfoController extends BaseController {
 	private static final Logger logger = LoggerFactory.getLogger(TargetInfoController.class);
 	@Autowired
@@ -50,7 +50,6 @@ public class TargetInfoController extends BaseController {
 	 */
 	@RequestMapping(value = "/assign/index", method = RequestMethod.GET)
 	public String targetInfoIndex(Model model) {
-
 		UserInfoDto userInfoDto = userInfoService.selectById(Long.parseLong(getSession().getUserId()));
 		if (!userInfoDto.getIsAdmin()) {
 			return "target/targetAssignIndex";
@@ -98,19 +97,6 @@ public class TargetInfoController extends BaseController {
 	}
 
 	/*
-	 * 进入新增页面
-	 */
-	@RequestMapping(value = "/edit/index", method = RequestMethod.GET)
-	public ModelAndView targetInfoEditIndex(Long id) {
-		ModelAndView mav = new ModelAndView("target/targetEdit");
-		if (id != null) {
-			TargetInfoDto targetInfoDto = targetInfoService.selectById(id);
-			mav.addObject("dto", targetInfoDto);
-		}
-		return mav;
-	}
-
-	/*
 	 * 编辑保存
 	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -123,17 +109,6 @@ public class TargetInfoController extends BaseController {
 		}
 
 		return respDto;
-	}
-
-	/*
-	 * 详情展示
-	 */
-	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public ModelAndView targetInfoDetail(Long id, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("target/targetDetail");
-		TargetInfoDto targetInfoDto = targetInfoService.selectById(id);
-		mav.addObject("dto", targetInfoDto);
-		return mav;
 	}
 
 }
