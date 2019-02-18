@@ -107,6 +107,7 @@
 		</div> 
       </div>
     </div>
+    
     <script type="text/javascript" src="${def}/app/js/WebViewJavascriptBridge.js"></script>
     <script type="text/javascript">
     

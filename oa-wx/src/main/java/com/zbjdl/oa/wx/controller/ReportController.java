@@ -69,7 +69,6 @@ public class ReportController extends BaseController {
 			orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
 		}
 
-		
 		List<OrderInfoDto> list = orderInfoService.findList(orderInfoDto);
 		for (OrderInfoDto order : list) {
 			if (map.get(order.getUserId()) == null) {
@@ -126,11 +125,11 @@ public class ReportController extends BaseController {
 		// List<CustomerChannelReportRespDto>
 		model.addAttribute("date", date);
 		model.addAttribute("list", map);
-		
+
 		String city = "";
 		CustomerChannelReportRespDto summary = new CustomerChannelReportRespDto();
 		summary.c3 = new Amount();
-		for (Map.Entry<Long, CustomerChannelReportRespDto > entry : map.entrySet()) {
+		for (Map.Entry<Long, CustomerChannelReportRespDto> entry : map.entrySet()) {
 			summary.c3 = summary.c3.add(entry.getValue().c3);
 			summary.c4 += entry.getValue().c4;
 			summary.c5 += entry.getValue().c5;
@@ -202,7 +201,7 @@ public class ReportController extends BaseController {
 
 		// 查询当月
 		List<BussAnalyzeReportRespDto> list = orderInfoService.findBussAnalyzeReport(dto);
-		
+
 		model.addAttribute("date", date);
 		model.addAttribute("list", list);
 		return "/report/bussAnalyzeReport";

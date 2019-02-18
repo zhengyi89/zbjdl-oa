@@ -4,8 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.zbjdl.oa.dto.TargetInfoDto;
@@ -34,7 +31,7 @@ import com.zbjdl.oa.service.UserInfoService;
  * 
  */
 @Controller
-@RequestMapping("/target")
+@RequestMapping(value = "/target")
 public class TargetInfoController extends BaseController {
 	private static final Logger logger = LoggerFactory.getLogger(TargetInfoController.class);
 	@Autowired
@@ -52,7 +49,8 @@ public class TargetInfoController extends BaseController {
 	public String targetInfoIndex(Model model) {
 		UserInfoDto userInfoDto = userInfoService.selectById(Long.parseLong(getSession().getUserId()));
 		if (!userInfoDto.getIsAdmin()) {
-			return "target/targetAssignIndex";
+			logger.info("is not admin, return.");
+			return "/index";
 		}
 		// 查询部门员工
 		UserInfoDto querDto = new UserInfoDto();
@@ -61,7 +59,7 @@ public class TargetInfoController extends BaseController {
 		model.addAttribute("month", MONTH_FORMAT.format(new Date()));
 		model.addAttribute("list", list);
 		logger.info("返回list ： {}", JSON.toJSONString(list));
-		return "/target/targetAssignIndex";
+		return "/targetInfo/targetAssignIndex";
 	}
 
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
