@@ -61,7 +61,7 @@ public class TargetInfoController extends BaseController {
 		model.addAttribute("month", MONTH_FORMAT.format(new Date()));
 		model.addAttribute("list", list);
 		logger.info("返回list ： {}", JSON.toJSONString(list));
-		return "target/targetAssignIndex";
+		return "/target/targetAssignIndex";
 	}
 
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
