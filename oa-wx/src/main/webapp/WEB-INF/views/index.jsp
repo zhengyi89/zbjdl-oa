@@ -43,14 +43,18 @@
     </div>
     <div class="showbox">
       <div class="project_list">
-        <div class="message" onclick="window.location.href= '${ctx}/order/add/index';">
-          <p class="icon bg_1"></p>
-          新建订单
-        </div>
-        <div class="message" onclick="window.location.href= '${ctx}/opportunity/add/index';">
-          <p class="icon bg_4"></p>
-          每日商机
-        </div>
+      	<c:if test="${!_wxSession.isSuperAdmin }">
+      		<div class="message" onclick="window.location.href= '${ctx}/order/add/index';">
+	          <p class="icon bg_1"></p>
+	          新建订单
+	        </div>
+	        <div class="message" onclick="window.location.href= '${ctx}/opportunity/add/index';">
+	          <p class="icon bg_4"></p>
+	          每日商机
+	        </div>
+      	</c:if>
+        
+        
         <div class="message" onclick="window.location.href= '${ctx}/order/list';">
           <p class="icon bg_1"></p>
           订单列表

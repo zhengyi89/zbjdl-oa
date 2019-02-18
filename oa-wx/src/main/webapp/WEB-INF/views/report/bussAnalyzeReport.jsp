@@ -131,7 +131,7 @@
 	    	var tmp = $('#orderDate').val();
 	    	console.log(tmp);
 	    	if(date != tmp){
-	    		window.location.href= '${ctx}/report/orderSummary?date='+tmp;
+	    		window.location.href= '${ctx}/report/bussAnalyze?date='+tmp;
 	    	}
 	    });	
 	    

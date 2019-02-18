@@ -19,15 +19,15 @@
 	}
 	</style>   
    <link rel="stylesheet" href="${def }/css/dxeui.css?version=1.5.0" media="screen" title="no title" charset="utf-8"/>
-	<link href="${def }/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="${def }/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="${def }/css/iosSelect.css?version=1.5.0" media="screen" title="no title">
+   <link rel="stylesheet" href="${def }/css/iosSelect.css?version=1.5.0" media="screen" title="no title">
 	<link rel="stylesheet" href="${def }/css/animate.min.css?version=1.5.0" media="screen" title="no title">
 	<link rel="stylesheet" href="${def }/css/hashChange.css?version=1.5.0" media="screen" title="no title">
 	<link rel="stylesheet" href="${def}/app/css/warehouse.css" media="screen" title="no title" charset="utf-8" />
 	<link rel="stylesheet" href="${def}/app/css/wxui.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="${def}/app/css/mobiscroll.css" media="screen" title="no title" charset="utf-8">
+	<link href="${def }/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="${def }/css/bootstrap-theme.min.css" rel="stylesheet">
   </head>
   <body>
   	<%pageContext.setAttribute("_textResource", new TextResource()); %>
@@ -122,7 +122,6 @@
 	<script type="text/javascript" src="${def}/app/js/dateformat.js"></script>
 	<script type="text/javascript" src="${def }/js/easySwipe.js"></script>
     <script type="text/javascript" src="${def }/js/common.js"></script>
-    <script type="text/javascript" src="${def }/js/jquery-1.7.2.js"></script>
     <script type="text/javascript">
     
     window.onload = function(){  

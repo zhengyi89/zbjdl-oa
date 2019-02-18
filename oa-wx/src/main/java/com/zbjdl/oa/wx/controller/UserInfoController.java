@@ -158,7 +158,9 @@ public class UserInfoController extends BaseController {
 				user.setLoginName(loginName);
 				user.setMobile(bossUserDto.getMobile());
 				DepartmentDTO department = userFacade.queryDepartmentById(bossUserDto.getPrimaryDepartmentId());
-				user.setCity(getCityByDepartment(department.getDepartmentName()));
+				if (!bossUserDto.getIsSuperAdmin()) {
+					user.setCity(getCityByDepartment(department.getDepartmentName()));
+				}
 				user.setPassword(Digest.md5Digest(password));
 				user.setId(bossUserDto.getUserId());
 				user.setIsAdmin(bossUserDto.getIsAdmin());

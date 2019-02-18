@@ -7,7 +7,7 @@ spring:
             suffix: .jsp
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/zbjdl_oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         username: root
         password: wK=QwJmR<592
         validationQuery: SELECT 1 FROM DUAL
@@ -71,7 +71,7 @@ spring:
 
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/zbjdl_oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         validation-query: select 1 from dual
         test-on-borrow: true
         username: root
