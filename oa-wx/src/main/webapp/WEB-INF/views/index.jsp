@@ -59,16 +59,19 @@
           <p class="icon bg_1"></p>
           订单列表
         </div>
-        <div class="message" onclick="window.location.href= '${ctx}/report/bussAnalyze';">
-          <p class="icon bg_4"></p>
-          商机数表
-        </div>
+        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin }">
+        	<div class="message" onclick="window.location.href= '${ctx}/report/bussAnalyze';">
+	          <p class="icon bg_4"></p>
+	          商机数表
+	        </div>
+        </c:if>
+        
         <div class="message" onclick="window.location.href= '${ctx}/report/customerChannel';">
           <p class="icon bg_1"></p>
           获客渠道表
         </div>
         
-        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin}">
+        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin }">
         	<div class="message" onclick="window.location.href= '${ctx}/report/orderSummary';">
 	          <p class="icon bg_1"></p>
 	          战报表
@@ -116,17 +119,20 @@
     <script type="text/javascript">
     
     	$(function(){
-    		$.ajax({
-				type : 'GET',
-				url : '${pageContext.request.contextPath}/target/hasinit',
-				async: false,
-				success : function(data) {
-					if(data.code=="0000"){
-						//window.location.href= '${ctx}/target/assign/index';
-						$("#errBox12").show();
-					}
-				}
-			});    		
+    		if(${_wxSession.isAdmin }){
+    			$.ajax({
+    				type : 'GET',
+    				url : '${pageContext.request.contextPath}/target/hasinit',
+    				async: false,
+    				success : function(data) {
+    					if(data.code=="0000"){
+    						//window.location.href= '${ctx}/target/assign/index';
+    						$("#errBox12").show();
+    					}
+    				}
+    			});    		
+    		}
+    		
     	})
     	
     	function setTarget(){

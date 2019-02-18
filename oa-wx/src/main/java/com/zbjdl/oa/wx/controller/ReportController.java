@@ -63,7 +63,9 @@ public class ReportController extends BaseController {
 			throw new RuntimeException();
 		}
 
-		if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) {
+
+		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			orderInfoDto.setCity(getSession().getCity());
 		} else { // 普通员工，显示自己
 			orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
