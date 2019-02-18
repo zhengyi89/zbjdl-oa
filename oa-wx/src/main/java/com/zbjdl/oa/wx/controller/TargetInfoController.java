@@ -61,6 +61,7 @@ public class TargetInfoController extends BaseController {
 		List<TargetWithUserInfoDto> list = targetInfoService.findListWithUserByCity(querDto.getCity());
 		mav.addObject("month", MONTH_FORMAT.format(new Date()));
 		mav.addObject("list", list);
+		logger.info("返回list ： {}", JSON.toJSONString(list));
 		return mav;
 	}
 
@@ -79,7 +80,7 @@ public class TargetInfoController extends BaseController {
 		}
 		return respDto;
 	}
-	
+
 	@RequestMapping(value = "/hasinit", method = RequestMethod.GET)
 	@ResponseBody
 	public Object hasinit() {
