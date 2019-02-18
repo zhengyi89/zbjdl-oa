@@ -336,6 +336,8 @@ public class UserInfoController extends BaseController {
 			return "长春";
 		} else if (department.indexOf("大连") > -1) {
 			return "大连";
+		} else if (department.indexOf("沈阳") > -1) {
+			return "沈阳";
 		} else if (department.indexOf("北京") > -1) {
 			return "北京";
 		}

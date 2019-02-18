@@ -5,7 +5,7 @@ spring:
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/zbjdl_oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         username: root
         password: wK=QwJmR<592
         # 配置监控统计拦截的filters，去掉后监控界面sql无法统计
@@ -95,7 +95,7 @@ spring:
     datasource:
         driverClassName: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://mysqldb.zbjdl.in:3306/oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+        url: jdbc:mysql://mysqldb.zbjdl.in:3306/zbjdl_oa?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
         username: root
         password: m&tpI4boxy7H
 
