@@ -145,7 +145,7 @@
     });	
     
     </script>
-    <div id="errBox12" class="">
+    <div id="errBox12" class="vnone">
 		<div class="tipCover"></div>
 		<div class="tipMsg">
 			<p class="message" id="message12">保存成功</p>

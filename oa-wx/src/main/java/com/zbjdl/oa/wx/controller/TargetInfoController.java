@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,21 +49,20 @@ public class TargetInfoController extends BaseController {
 	 * 列表页面
 	 */
 	@RequestMapping(value = "/assign/index", method = RequestMethod.GET)
-	public ModelAndView targetInfoIndex() {
-		ModelAndView mav = new ModelAndView("target/targetAssignIndex");
+	public String targetInfoIndex(Model model) {
 
 		UserInfoDto userInfoDto = userInfoService.selectById(Long.parseLong(getSession().getUserId()));
 		if (!userInfoDto.getIsAdmin()) {
-			return mav;
+			return "target/targetAssignIndex";
 		}
 		// 查询部门员工
 		UserInfoDto querDto = new UserInfoDto();
 		querDto.setCity(userInfoDto.getCity());
 		List<TargetWithUserInfoDto> list = targetInfoService.findListWithUserByCity(querDto.getCity());
-		mav.addObject("month", MONTH_FORMAT.format(new Date()));
-		mav.addObject("list", list);
+		model.addAttribute("month", MONTH_FORMAT.format(new Date()));
+		model.addAttribute("list", list);
 		logger.info("返回list ： {}", JSON.toJSONString(list));
-		return mav;
+		return "target/targetAssignIndex";
 	}
 
 	@RequestMapping(value = "/init", method = RequestMethod.GET)
