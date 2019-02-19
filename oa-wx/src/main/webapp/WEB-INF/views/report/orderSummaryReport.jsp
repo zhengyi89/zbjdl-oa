@@ -62,6 +62,18 @@
             	</c:forEach>
             </tbody>
           </table>
+          
+          
+          <table class="table table-striped">
+            <tr>
+                <td>日业绩总金额</td>
+                <td>${sumDay }</td>
+              </tr>
+              <tr>
+              	 <td>月业绩总金额</td>
+                 <td>${sumMonth }</td>
+              </tr>
+          </table>
         </div>
     </div>
     <script type="text/javascript" src="${def}/app/js/mobiscroller.js"></script>

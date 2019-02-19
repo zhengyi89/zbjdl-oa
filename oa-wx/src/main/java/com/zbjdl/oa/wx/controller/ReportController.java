@@ -171,6 +171,14 @@ public class ReportController extends BaseController {
 		// 查询当月
 		List<OrderSummaryReportRespDto> list = orderInfoService.findOrderSummaryReport(date);
 
+		Amount sumDay = new Amount();
+		Amount sumMonth = new Amount();
+		for (OrderSummaryReportRespDto orderSummaryReportRespDto : list) {
+			sumDay = sumDay.add(orderSummaryReportRespDto.getDayAmount());
+			sumMonth = sumMonth.add(orderSummaryReportRespDto.getMonthAmount());
+		}
+		model.addAttribute("sumDay", sumDay);
+		model.addAttribute("sumMonth", sumMonth);
 		model.addAttribute("date", date);
 		model.addAttribute("list", list);
 		return "/report/orderSummaryReport";

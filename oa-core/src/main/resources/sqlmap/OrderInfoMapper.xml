@@ -516,42 +516,60 @@
      <if test="city != null" >
       and o.city = #{city,jdbcType=VARCHAR}
     </if>
+    order by o.city , o.create_time
   </select>
   
   <select id="findOrderSummaryReport" parameterType="java.lang.String" resultMap="OrderSummaryReportMap">
   	SELECT
 		a.city ,
 		a.monthAmount ,
-		a.targetAmount ,
+		c.targetAmount ,
 		b.dayAmount ,
-		(a.targetAmount - a.monthAmount) unsellAmount ,
-		a.monthAmount / a.targetAmount * 100 finishRate
+		(c.targetAmount - a.monthAmount) unsellAmount ,
+		a.monthAmount / c.targetAmount * 100 finishRate
 	FROM
 		(
 			SELECT
-				u.city ,
-				sum(o.order_real_amount) monthAmount ,
-				sum(t.target_amount) targetAmount
+				o.city ,
+				sum(o.order_real_amount) monthAmount
 			FROM
-				order_info o ,
-				user_info u ,
-				target_info t
+				order_info o
 			WHERE
-				u.id = o.user_id
-			AND t.user_id = o.user_id
-			AND t.target_month = date_format(o.order_date , '%Y-%m')
-			AND date_format(o.order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR} , 1 , 7)
+				date_format(o.order_date , '%Y-%m') = SUBSTR(#{date,jdbcType=VARCHAR} , 1 , 7)
 			AND o.order_date &lt;= #{date,jdbcType=VARCHAR}
-			GROUP BY u.city 
+			GROUP BY
+				o.city
 		) a ,
 		(
 			SELECT
-				u1.city ,
+				o1.city ,
 				sum(o1.order_real_amount) dayAmount
 			FROM
-				order_info o1 ,
-				user_info u1 WHERE u1.id = o1.user_id AND o1.order_date = #{date,jdbcType=VARCHAR} GROUP BY u1.city 
-		) b WHERE a.city = b.city order by a.city
+				order_info o1
+			WHERE
+				o1.order_date = #{date,jdbcType=VARCHAR}
+			GROUP BY
+				o1.city
+		) b ,
+		(
+			SELECT
+				sum(t.target_amount) targetAmount ,
+				u.city
+			FROM
+				target_info t ,
+				user_info u
+			WHERE
+				t.user_id = u.id
+			AND t.target_month = SUBSTR(#{date,jdbcType=VARCHAR} , 1 , 7)
+			GROUP BY
+				u.city
+		) c
+	WHERE
+		a.city = b.city
+	AND a.city = c.city
+	ORDER BY
+		a.city
+		
   </select>
   
   
