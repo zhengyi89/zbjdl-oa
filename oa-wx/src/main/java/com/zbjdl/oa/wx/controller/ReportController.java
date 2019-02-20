@@ -1,6 +1,7 @@
 package com.zbjdl.oa.wx.controller;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
 import com.zbjdl.common.amount.Amount;
+import com.zbjdl.common.utils.BeanUtils;
 import com.zbjdl.common.utils.DateUtils;
 import com.zbjdl.common.utils.StringUtils;
 import com.zbjdl.oa.dto.OrderInfoDto;
@@ -54,6 +56,7 @@ public class ReportController extends BaseController {
 		}
 
 		Map<Long, CustomerChannelReportRespDto> map = new LinkedHashMap<Long, CustomerChannelReportRespDto>();
+		
 		// 查询所有订单
 		OrderInfoDto orderInfoDto = new OrderInfoDto();
 		try {
@@ -71,6 +74,7 @@ public class ReportController extends BaseController {
 			orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
 		}
 
+		
 		List<OrderInfoDto> list = orderInfoService.findList(orderInfoDto);
 		for (OrderInfoDto order : list) {
 			if (map.get(order.getUserId()) == null) {
@@ -123,33 +127,82 @@ public class ReportController extends BaseController {
 				cdto.c19 += 1;
 			}
 		}
+		
+		/*
+		 * 汇总
+		 */
+		CustomerChannelReportRespDto total = new CustomerChannelReportRespDto();
+		total.c3 = new Amount();
+		CustomerChannelReportRespDto summary = new CustomerChannelReportRespDto();
+		summary.c3 = new Amount();
+		int i = 0;
+		Map<Long, CustomerChannelReportRespDto> resultMap = new LinkedHashMap<Long, CustomerChannelReportRespDto>();
+		for (Map.Entry<Long, CustomerChannelReportRespDto> entry : map.entrySet()) {
+			CustomerChannelReportRespDto tmp = entry.getValue();
+			/*
+			 *  总汇总
+			 */
+			summary.c3 = summary.c3.add(tmp.c3);
+			summary.c4 += tmp.c4;
+			summary.c5 += tmp.c5;
+			summary.c6 += tmp.c6;
+			summary.c7 += tmp.c7;
+			summary.c8 += tmp.c8;
+			summary.c9 += tmp.c9;
+			summary.c10 += tmp.c10;
+			summary.c11 += tmp.c11;
+			summary.c12 += tmp.c12;
+			summary.c13 += tmp.c13;
+			summary.c14 += tmp.c14;
+			summary.c15 += tmp.c15;
+			summary.c16 += tmp.c16;
+			summary.c17 += tmp.c17;
+			summary.c18 += tmp.c18;
+			summary.c19 += tmp.c19;
+
+			/*
+			 * 地区汇总
+			 */
+			if (StringUtils.isBlank(total.c1)) {
+				resultMap.put(entry.getKey(), tmp);
+				BeanUtils.copyProperties(tmp, total);
+				total.setC2("总计");
+			}else if (!total.c1.equals(tmp.c1)) {
+				resultMap.put((long)i, total);
+				resultMap.put(entry.getKey(), tmp);
+				total = new CustomerChannelReportRespDto();
+				total.c3 = new Amount();
+				BeanUtils.copyProperties(tmp, total);
+				total.setC2("总计");
+			}else {
+				total.c3 = total.c3.add(tmp.c3);
+				total.c4 += tmp.c4;
+				total.c5 += tmp.c5;
+				total.c6 += tmp.c6;
+				total.c7 += tmp.c7;
+				total.c8 += tmp.c8;
+				total.c9 += tmp.c9;
+				total.c10 += tmp.c10;
+				total.c11 += tmp.c11;
+				total.c12 += tmp.c12;
+				total.c13 += tmp.c13;
+				total.c14 += tmp.c14;
+				total.c15 += tmp.c15;
+				total.c16 += tmp.c16;
+				total.c17 += tmp.c17;
+				total.c18 += tmp.c18;
+				total.c19 += tmp.c19;
+				resultMap.put(entry.getKey(), tmp);
+			}
+			
+			if (++i==map.size()) {
+				resultMap.put((long)i, total);
+			}
+		}
 
 		// List<CustomerChannelReportRespDto>
 		model.addAttribute("date", date);
-		model.addAttribute("list", map);
-
-		String city = "";
-		CustomerChannelReportRespDto summary = new CustomerChannelReportRespDto();
-		summary.c3 = new Amount();
-		for (Map.Entry<Long, CustomerChannelReportRespDto> entry : map.entrySet()) {
-			summary.c3 = summary.c3.add(entry.getValue().c3);
-			summary.c4 += entry.getValue().c4;
-			summary.c5 += entry.getValue().c5;
-			summary.c6 += entry.getValue().c6;
-			summary.c7 += entry.getValue().c7;
-			summary.c8 += entry.getValue().c8;
-			summary.c9 += entry.getValue().c9;
-			summary.c10 += entry.getValue().c10;
-			summary.c11 += entry.getValue().c11;
-			summary.c12 += entry.getValue().c12;
-			summary.c13 += entry.getValue().c13;
-			summary.c14 += entry.getValue().c14;
-			summary.c15 += entry.getValue().c15;
-			summary.c16 += entry.getValue().c16;
-			summary.c17 += entry.getValue().c17;
-			summary.c18 += entry.getValue().c18;
-			summary.c19 += entry.getValue().c19;
-		}
+		model.addAttribute("list", resultMap);
 		model.addAttribute("summary", summary);
 
 		return "/report/customerChannelReport";
@@ -211,9 +264,44 @@ public class ReportController extends BaseController {
 
 		// 查询当月
 		List<BussAnalyzeReportRespDto> list = orderInfoService.findBussAnalyzeReport(dto);
-
+		BussAnalyzeReportRespDto total = new BussAnalyzeReportRespDto();
+		
+		List<BussAnalyzeReportRespDto> resultList = new ArrayList<BussAnalyzeReportRespDto>();
+		// 总计
+		for (int i = 0; i < list.size(); i++) {
+			BussAnalyzeReportRespDto bussAnalyzeReportRespDto = list.get(i);
+			
+			if (StringUtils.isBlank(total.getCity())) {
+				total.setCity(bussAnalyzeReportRespDto.getCity());
+				total.setUserName("总计");
+			}
+			if (!total.getCity().equals(bussAnalyzeReportRespDto.getCity())) {
+				resultList.add(i, total);
+				total = new BussAnalyzeReportRespDto();
+				total.setCity(bussAnalyzeReportRespDto.getCity());
+				total.setUserName("总计");
+			}
+			total.setBossDay(total.getBossDay()+bussAnalyzeReportRespDto.getBossDay());
+			total.setBossMonth(total.getBossMonth()+bussAnalyzeReportRespDto.getBossMonth());
+			total.setDayOpp1(total.getDayOpp1()+bussAnalyzeReportRespDto.getDayOpp1());
+			total.setDayOpp2(total.getDayOpp2()+bussAnalyzeReportRespDto.getDayOpp2());
+			total.setDayOpp3(total.getDayOpp3()+bussAnalyzeReportRespDto.getDayOpp3());
+			total.setMonthOpp1(total.getMonthOpp1()+bussAnalyzeReportRespDto.getMonthOpp1());
+			total.setMonthOpp2(total.getMonthOpp2()+bussAnalyzeReportRespDto.getMonthOpp2());
+			total.setMonthOpp3(total.getMonthOpp3()+bussAnalyzeReportRespDto.getMonthOpp3());
+			total.setQdsDay(total.getQdsDay()+bussAnalyzeReportRespDto.getQdsDay());
+			total.setQdsMonth(total.getQdsMonth()+bussAnalyzeReportRespDto.getQdsMonth());
+			total.setQsbDay(total.getQsbDay()+bussAnalyzeReportRespDto.getQsbDay());
+			total.setQsbMonth(total.getQsbMonth()+bussAnalyzeReportRespDto.getQsbMonth());
+			resultList.add(bussAnalyzeReportRespDto);
+			if (i==list.size()-1) {
+				resultList.add(total);
+			}
+		}
+		
+		
 		model.addAttribute("date", date);
-		model.addAttribute("list", list);
+		model.addAttribute("list", resultList);
 		return "/report/bussAnalyzeReport";
 	}
 

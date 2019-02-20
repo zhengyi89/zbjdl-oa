@@ -20,7 +20,7 @@
     <p>
       <div class="col-md-12">
           <table class="table table-striped">
-            <thead>
+            <thead style="background-color: #fe9941;">
               <tr>
                 <th>序号</th>
                 <th>日期</th>

@@ -19,18 +19,18 @@ public class BussAnalyzeReportRespDto implements Serializable {
 	private String city;
 	private String userName;
 	private String userId;
-	private Integer dayOpp1;
-	private Integer dayOpp2;
-	private Integer dayOpp3;
-	private Integer monthOpp1;
-	private Integer monthOpp2;
-	private Integer monthOpp3;
-	private Integer qdsDay;
-	private Integer qsbDay;
-	private Integer bossDay;
-	private Integer qdsMonth;
-	private Integer qsbMonth;
-	private Integer bossMonth;
+	private int dayOpp1;
+	private int dayOpp2;
+	private int dayOpp3;
+	private int monthOpp1;
+	private int monthOpp2;
+	private int monthOpp3;
+	private int qdsDay;
+	private int qsbDay;
+	private int bossDay;
+	private int qdsMonth;
+	private int qsbMonth;
+	private int bossMonth;
 
 	public String getCity() {
 		return city;
@@ -56,99 +56,99 @@ public class BussAnalyzeReportRespDto implements Serializable {
 		this.userId = userId;
 	}
 
-	public Integer getDayOpp1() {
+	public int getDayOpp1() {
 		return dayOpp1;
 	}
 
-	public void setDayOpp1(Integer dayOpp1) {
+	public void setDayOpp1(int dayOpp1) {
 		this.dayOpp1 = dayOpp1;
 	}
 
-	public Integer getDayOpp2() {
+	public int getDayOpp2() {
 		return dayOpp2;
 	}
 
-	public void setDayOpp2(Integer dayOpp2) {
+	public void setDayOpp2(int dayOpp2) {
 		this.dayOpp2 = dayOpp2;
 	}
 
-	public Integer getDayOpp3() {
+	public int getDayOpp3() {
 		return dayOpp3;
 	}
 
-	public void setDayOpp3(Integer dayOpp3) {
+	public void setDayOpp3(int dayOpp3) {
 		this.dayOpp3 = dayOpp3;
 	}
 
-	public Integer getMonthOpp1() {
+	public int getMonthOpp1() {
 		return monthOpp1;
 	}
 
-	public void setMonthOpp1(Integer monthOpp1) {
+	public void setMonthOpp1(int monthOpp1) {
 		this.monthOpp1 = monthOpp1;
 	}
 
-	public Integer getMonthOpp2() {
+	public int getMonthOpp2() {
 		return monthOpp2;
 	}
 
-	public void setMonthOpp2(Integer monthOpp2) {
+	public void setMonthOpp2(int monthOpp2) {
 		this.monthOpp2 = monthOpp2;
 	}
 
-	public Integer getMonthOpp3() {
+	public int getMonthOpp3() {
 		return monthOpp3;
 	}
 
-	public void setMonthOpp3(Integer monthOpp3) {
+	public void setMonthOpp3(int monthOpp3) {
 		this.monthOpp3 = monthOpp3;
 	}
 
-	public Integer getQdsDay() {
+	public int getQdsDay() {
 		return qdsDay;
 	}
 
-	public void setQdsDay(Integer qdsDay) {
+	public void setQdsDay(int qdsDay) {
 		this.qdsDay = qdsDay;
 	}
 
-	public Integer getQsbDay() {
+	public int getQsbDay() {
 		return qsbDay;
 	}
 
-	public void setQsbDay(Integer qsbDay) {
+	public void setQsbDay(int qsbDay) {
 		this.qsbDay = qsbDay;
 	}
 
-	public Integer getBossDay() {
+	public int getBossDay() {
 		return bossDay;
 	}
 
-	public void setBossDay(Integer bossDay) {
+	public void setBossDay(int bossDay) {
 		this.bossDay = bossDay;
 	}
 
-	public Integer getQdsMonth() {
+	public int getQdsMonth() {
 		return qdsMonth;
 	}
 
-	public void setQdsMonth(Integer qdsMonth) {
+	public void setQdsMonth(int qdsMonth) {
 		this.qdsMonth = qdsMonth;
 	}
 
-	public Integer getQsbMonth() {
+	public int getQsbMonth() {
 		return qsbMonth;
 	}
 
-	public void setQsbMonth(Integer qsbMonth) {
+	public void setQsbMonth(int qsbMonth) {
 		this.qsbMonth = qsbMonth;
 	}
 
-	public Integer getBossMonth() {
+	public int getBossMonth() {
 		return bossMonth;
 	}
 
-	public void setBossMonth(Integer bossMonth) {
+	public void setBossMonth(int bossMonth) {
 		this.bossMonth = bossMonth;
 	}
 

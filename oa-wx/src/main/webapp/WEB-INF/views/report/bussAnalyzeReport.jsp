@@ -45,7 +45,7 @@
     <p>
       <div class="col-md-12">
           <table class="table table-bordered">
-            <thead>
+            <thead style="background-color: #fe9941;">
            	  <tr>
                 <th rowspan="2">城市</th>
                 <th rowspan="2">姓名</th>
@@ -73,24 +73,25 @@
             </thead>
             <tbody>
             	<c:forEach items="${list }"  var="dto">
-            		 <tr>
+            		<c:if test="${dto.userName =='总计'}"><tr style="background-color: #ffc800b8;"></c:if>
+            		<c:if test="${dto.userName !='总计' }"><tr></c:if>
 		                <td>${dto.city }</td>
 		                <td>${dto.userName }</td>
 		                <td>${dto.dayOpp1 }</td>
 		                <td>${dto.bossDay }</td>
 		                <td>${dto.monthOpp1 }</td>
 		                <td>${dto.bossMonth }</td>
-		                <td>${dto.bossMonth/dto.monthOpp1*100 }%</td>
+		                <td><fmt:formatNumber value="${dto.bossMonth/dto.monthOpp1 }" pattern="#0.00%"/></td>
 		                <td>${dto.dayOpp2 }</td>
 		                <td>${dto.qdsDay }</td>
 		                <td>${dto.monthOpp2 }</td>
 		                <td>${dto.qdsMonth }</td>
-		                <td>${dto.qdsMonth/dto.monthOpp2*100 }%</td>
+		                <td><fmt:formatNumber value="${dto.qdsMonth/dto.monthOpp2 }" pattern="#0.00%"/></td>
 		                <td>${dto.dayOpp3 }</td>
 		                <td>${dto.qsbDay }</td>
 		                <td>${dto.monthOpp3 }</td>
 		                <td>${dto.qsbMonth }</td>
-		                <td>${dto.qsbMonth/dto.monthOpp3*100 }%</td>
+		                <td><fmt:formatNumber value="${dto.qsbMonth/dto.monthOpp3 }" pattern="#0.00%"/></td>
 		              </tr>
             	</c:forEach>
             </tbody>

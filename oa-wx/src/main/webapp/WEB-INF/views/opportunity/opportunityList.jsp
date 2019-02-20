@@ -19,7 +19,7 @@
     <p><p>
     <p>
       <div class="col-md-12">
-          <table class="table table-striped">
+          <table  style="background-color: #fe9941;">
             <thead>
               <tr>
                 <th>序号</th>

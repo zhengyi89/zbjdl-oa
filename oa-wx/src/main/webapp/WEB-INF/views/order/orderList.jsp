@@ -39,9 +39,12 @@
     <p> -->
       <div class="col-md-12">
           <table class="table table-striped" id="num">
-            <thead>
+            <thead style="background-color: #fe9941;">
               <tr>
                 <th>序号</th>
+                <c:if test="${!_wxSession.isAdmin && !_wxSession.isSuperAdmin }">
+                	<th>操作</th>
+                </c:if>
                 <!-- <th>日期</th> -->
                 <th>工号</th>
                 <th>姓名</th>
@@ -80,7 +83,9 @@
             	<c:forEach items="${list }"  var="order">
             		 <tr>
 		                <td></td>
-		                <%-- <td><fmt:formatDate value="${order.orderDate }" pattern="yyyy-MM-dd" /></td> --%>
+		                <c:if test="${!_wxSession.isAdmin && !_wxSession.isSuperAdmin }">
+		                	<td><a href="${ctx }/order/add/index?id=${order.id}" style="color: red;">修改</a></td>
+		                </c:if>
 		                <td>${order.jobNo }</td>
 		                <td>${order.userName }</td>
 		                <td>${order.city }</td>

@@ -39,7 +39,7 @@
     <p>
       <div class="col-md-12">
           <table class="table table-striped">
-            <thead>
+            <thead style="background-color: #fe9941;">
               <tr>
                 <th>城市</th>
                 <th>日业绩</th>
@@ -64,12 +64,12 @@
           </table>
           
           
-          <table class="table table-striped">
-            <tr>
+          <table class="table table-striped" >
+            <tr style="background-color: #969696;">
                 <td>日业绩总金额</td>
                 <td>${sumDay }</td>
               </tr>
-              <tr>
+              <tr style="background-color: #969696;">
               	 <td>月业绩总金额</td>
                  <td>${sumMonth }</td>
               </tr>

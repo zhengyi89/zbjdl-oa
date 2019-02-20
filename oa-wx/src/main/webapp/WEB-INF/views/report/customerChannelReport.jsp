@@ -46,7 +46,7 @@
       <div class="col-md-12">
       	<table class="table table-bordered">
             <thead>
-              <tr>
+              <tr style="background-color: #fe9941;">
                 <th colspan="2">总计</th>
                 <th>毛利</th>
                 <th>注册+代帐</th>
@@ -95,7 +95,7 @@
       
       
           <table class="table table-bordered">
-            <thead>
+            <thead style="background-color: #fe9941;">
               <tr>
                 <th rowspan="2">城市</th>
                 <th rowspan="2">姓名</th>
@@ -126,7 +126,8 @@
             </thead>
             <tbody>
             	<c:forEach items="${list }"  var="dto">
-            		 <tr>
+            		<c:if test="${dto.value.c2 =='总计'}"><tr style="background-color: #ffc800b8;"></c:if>
+            		<c:if test="${dto.value.c2 !='总计' }"><tr></c:if>
 		                <!-- <td>1</td> -->
 		                <%-- <td><fmt:formatDate value="${dto.dtoDate }" pattern="yyyy-MM-dd" /></td> --%>
 		                <td>${dto.value.c1 }</td>
