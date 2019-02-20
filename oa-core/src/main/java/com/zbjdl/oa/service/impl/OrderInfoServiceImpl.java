@@ -22,29 +22,30 @@ import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
+import com.zbjdl.oa.dto.response.SalePerformanceReportRespDto;
 
 @Service("orderInfoService")
 public class OrderInfoServiceImpl implements OrderInfoService {
-	
+
 	@Autowired
 	private OrderInfoManager orderInfoManager;
-	
+
 	@Autowired
 	private OrderInfoRepository orderInfoRepository;
-	
+
 	@Override
 	public Integer saveOrUpdate(OrderInfoDto orderInfoDto) {
-		if (orderInfoDto.getId()!=null) {
+		if (orderInfoDto.getId() != null) {
 			OrderInfo orderInfo = orderInfoManager.selectById(orderInfoDto.getId());
 			BeanUtils.copyProperties(orderInfoDto, orderInfo);
 			return orderInfoManager.update(orderInfo);
-		}else {
+		} else {
 			OrderInfo orderInfo = new OrderInfo();
 			BeanUtils.copyProperties(orderInfoDto, orderInfo);
 			return orderInfoManager.save(orderInfo);
 		}
 	}
-	
+
 	@Override
 	public OrderInfoDto selectById(Long id) {
 		OrderInfo orderInfo = orderInfoManager.selectById(id);
@@ -52,15 +53,15 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 		BeanUtils.copyProperties(orderInfo, orderInfoDto);
 		return orderInfoDto;
 	}
-	
+
 	@Override
 	public List<OrderInfoDto> findList(OrderInfoDto orderInfoDto) {
 		OrderInfo orderInfo = new OrderInfo();
 		BeanUtils.copyProperties(orderInfoDto, orderInfo);
 		List<OrderInfo> orderInfoList = orderInfoManager.findList(orderInfo);
-		
+
 		List<OrderInfoDto> orderInfoDtoList = new ArrayList<OrderInfoDto>();
-		for(OrderInfo dto : orderInfoList){
+		for (OrderInfo dto : orderInfoList) {
 			OrderInfoDto respDto = new OrderInfoDto();
 			BeanUtils.copyProperties(dto, respDto);
 			orderInfoDtoList.add(respDto);
@@ -84,6 +85,10 @@ public class OrderInfoServiceImpl implements OrderInfoService {
 	public List<BussAnalyzeReportRespDto> findBussAnalyzeReport(ReportBaseReqDto dto) {
 		return orderInfoRepository.findBussAnalyzeReport(dto);
 	}
-	
-}
 
+	@Override
+	public List<SalePerformanceReportRespDto> findSalePerformanceReport(ReportBaseReqDto dto) {
+		return orderInfoRepository.findSalePerformanceReport(dto);
+	}
+
+}

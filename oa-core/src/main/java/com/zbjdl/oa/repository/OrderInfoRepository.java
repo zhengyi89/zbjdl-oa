@@ -13,12 +13,14 @@ import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
+import com.zbjdl.oa.dto.response.SalePerformanceReportRespDto;
 import com.zbjdl.oa.model.OrderInfo;
 
 import org.springframework.stereotype.Repository;
 
 /**
  * OrderInfo
+ * 
  * @author code-generator
  *
  */
@@ -30,5 +32,7 @@ public interface OrderInfoRepository extends GenericRepository {
 	List<OrderSummaryReportRespDto> findOrderSummaryReport(String date);
 
 	List<BussAnalyzeReportRespDto> findBussAnalyzeReport(ReportBaseReqDto dto);
-	
+
+	List<SalePerformanceReportRespDto> findSalePerformanceReport(ReportBaseReqDto dto);
+
 }

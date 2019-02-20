@@ -13,6 +13,7 @@ import com.zbjdl.oa.dto.OrderWithUserInfoDto;
 import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
+import com.zbjdl.oa.dto.response.SalePerformanceReportRespDto;
 
 public interface OrderInfoService {
 	Integer saveOrUpdate(OrderInfoDto orderInfoSaveReqDto);
@@ -26,5 +27,7 @@ public interface OrderInfoService {
 	List<OrderSummaryReportRespDto> findOrderSummaryReport(String date);
 
 	List<BussAnalyzeReportRespDto> findBussAnalyzeReport(ReportBaseReqDto dto);
+
+	List<SalePerformanceReportRespDto> findSalePerformanceReport(ReportBaseReqDto dto);
 
 }

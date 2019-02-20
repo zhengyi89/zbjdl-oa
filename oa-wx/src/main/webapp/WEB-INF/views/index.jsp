@@ -77,6 +77,12 @@
 	          战报表
 	        </div>
         </c:if>
+        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin }">
+        	<div class="message" onclick="window.location.href= '${ctx}/report/salePerformance';">
+	          <p class="icon bg_1"></p>
+	          销售业绩表
+	        </div>
+        </c:if>
         
        <%--  <div class="message" onclick="window.location.href= '${ctx}/opportunity/list';">
           <p class="icon bg_1"></p>

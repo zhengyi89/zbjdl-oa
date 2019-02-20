@@ -120,6 +120,15 @@
 	  <result column="bossMonth" jdbcType="INTEGER" property="bossMonth" />
   </resultMap>
   
+  <resultMap id="SalePerformanceReportMap" type="com.zbjdl.oa.dto.response.SalePerformanceReportRespDto">
+  	  <result column="user_id" jdbcType="BIGINT" property="userId" />
+	  <result column="city" jdbcType="VARCHAR" property="city" />
+	  <result column="user_name" jdbcType="VARCHAR" property="userName" />
+	  <result column="target_amount" jdbcType="DECIMAL" property="targetAmount" />
+	  <result column="profit_amount" jdbcType="DECIMAL" property="profitAmount" />
+	  <result column="order_date" jdbcType="VARCHAR" property="orderDate" />
+  </resultMap>
+  
   <sql id="Example_Where_Clause">
     <where>
       <trim prefix="(" prefixOverrides="and" suffix=")">
@@ -614,5 +623,31 @@
       and t.city = #{city,jdbcType=VARCHAR}
     </if>
     order by t.city
+  </select>
+
+  
+  <select id="findSalePerformanceReport" parameterType="com.zbjdl.oa.dto.request.ReportBaseReqDto" resultMap="SalePerformanceReportMap">
+  	SELECT
+		o.user_id ,
+		u.user_name,
+		t.target_amount,
+		o.city ,
+		o.order_date ,
+		sum(o.profit_amount) profit_amount
+	FROM
+		order_info o JOIN user_info u on o.user_id = u.id and date_format(order_date , '%Y-%m') = #{date,jdbcType=VARCHAR} left JOIN
+		target_info t on t.user_id = u.id and t.target_month = #{date,jdbcType=VARCHAR}
+	where 1=1 
+	<if test="userId != null" >
+      and user_id = #{userId,jdbcType=BIGINT}
+    </if>
+     <if test="city != null" >
+      and t.city = #{city,jdbcType=VARCHAR}
+    </if>
+	GROUP BY
+		city,
+		user_id ,
+		order_date
+    order by city, user_id
   </select>
 </mapper>

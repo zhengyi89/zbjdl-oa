@@ -1,6 +1,8 @@
 package com.zbjdl.oa.wx.controller;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,9 +26,11 @@ import com.zbjdl.oa.dto.UserInfoDto;
 import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 import com.zbjdl.oa.dto.response.BussAnalyzeReportRespDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
+import com.zbjdl.oa.dto.response.SalePerformanceReportRespDto;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.service.UserInfoService;
 import com.zbjdl.oa.wx.dto.response.CustomerChannelReportRespDto;
+import com.zbjdl.oa.wx.util.WxDateUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +52,8 @@ public class ReportController extends BaseController {
 	@Autowired
 	private UserInfoService userInfoService;
 
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+
 	@RequestMapping("/customerChannel")
 	public String customerChannel(Model model, String date) {
 
@@ -56,7 +62,7 @@ public class ReportController extends BaseController {
 		}
 
 		Map<Long, CustomerChannelReportRespDto> map = new LinkedHashMap<Long, CustomerChannelReportRespDto>();
-		
+
 		// 查询所有订单
 		OrderInfoDto orderInfoDto = new OrderInfoDto();
 		try {
@@ -74,7 +80,6 @@ public class ReportController extends BaseController {
 			orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
 		}
 
-		
 		List<OrderInfoDto> list = orderInfoService.findList(orderInfoDto);
 		for (OrderInfoDto order : list) {
 			if (map.get(order.getUserId()) == null) {
@@ -127,7 +132,7 @@ public class ReportController extends BaseController {
 				cdto.c19 += 1;
 			}
 		}
-		
+
 		/*
 		 * 汇总
 		 */
@@ -140,7 +145,7 @@ public class ReportController extends BaseController {
 		for (Map.Entry<Long, CustomerChannelReportRespDto> entry : map.entrySet()) {
 			CustomerChannelReportRespDto tmp = entry.getValue();
 			/*
-			 *  总汇总
+			 * 总汇总
 			 */
 			summary.c3 = summary.c3.add(tmp.c3);
 			summary.c4 += tmp.c4;
@@ -167,14 +172,14 @@ public class ReportController extends BaseController {
 				resultMap.put(entry.getKey(), tmp);
 				BeanUtils.copyProperties(tmp, total);
 				total.setC2("总计");
-			}else if (!total.c1.equals(tmp.c1)) {
-				resultMap.put((long)i, total);
+			} else if (!total.c1.equals(tmp.c1)) {
+				resultMap.put((long) i, total);
 				resultMap.put(entry.getKey(), tmp);
 				total = new CustomerChannelReportRespDto();
 				total.c3 = new Amount();
 				BeanUtils.copyProperties(tmp, total);
 				total.setC2("总计");
-			}else {
+			} else {
 				total.c3 = total.c3.add(tmp.c3);
 				total.c4 += tmp.c4;
 				total.c5 += tmp.c5;
@@ -194,9 +199,9 @@ public class ReportController extends BaseController {
 				total.c19 += tmp.c19;
 				resultMap.put(entry.getKey(), tmp);
 			}
-			
-			if (++i==map.size()) {
-				resultMap.put((long)i, total);
+
+			if (++i == map.size()) {
+				resultMap.put((long) i, total);
 			}
 		}
 
@@ -265,12 +270,12 @@ public class ReportController extends BaseController {
 		// 查询当月
 		List<BussAnalyzeReportRespDto> list = orderInfoService.findBussAnalyzeReport(dto);
 		BussAnalyzeReportRespDto total = new BussAnalyzeReportRespDto();
-		
+
 		List<BussAnalyzeReportRespDto> resultList = new ArrayList<BussAnalyzeReportRespDto>();
 		// 总计
 		for (int i = 0; i < list.size(); i++) {
 			BussAnalyzeReportRespDto bussAnalyzeReportRespDto = list.get(i);
-			
+
 			if (StringUtils.isBlank(total.getCity())) {
 				total.setCity(bussAnalyzeReportRespDto.getCity());
 				total.setUserName("总计");
@@ -281,28 +286,152 @@ public class ReportController extends BaseController {
 				total.setCity(bussAnalyzeReportRespDto.getCity());
 				total.setUserName("总计");
 			}
-			total.setBossDay(total.getBossDay()+bussAnalyzeReportRespDto.getBossDay());
-			total.setBossMonth(total.getBossMonth()+bussAnalyzeReportRespDto.getBossMonth());
-			total.setDayOpp1(total.getDayOpp1()+bussAnalyzeReportRespDto.getDayOpp1());
-			total.setDayOpp2(total.getDayOpp2()+bussAnalyzeReportRespDto.getDayOpp2());
-			total.setDayOpp3(total.getDayOpp3()+bussAnalyzeReportRespDto.getDayOpp3());
-			total.setMonthOpp1(total.getMonthOpp1()+bussAnalyzeReportRespDto.getMonthOpp1());
-			total.setMonthOpp2(total.getMonthOpp2()+bussAnalyzeReportRespDto.getMonthOpp2());
-			total.setMonthOpp3(total.getMonthOpp3()+bussAnalyzeReportRespDto.getMonthOpp3());
-			total.setQdsDay(total.getQdsDay()+bussAnalyzeReportRespDto.getQdsDay());
-			total.setQdsMonth(total.getQdsMonth()+bussAnalyzeReportRespDto.getQdsMonth());
-			total.setQsbDay(total.getQsbDay()+bussAnalyzeReportRespDto.getQsbDay());
-			total.setQsbMonth(total.getQsbMonth()+bussAnalyzeReportRespDto.getQsbMonth());
+			total.setBossDay(total.getBossDay() + bussAnalyzeReportRespDto.getBossDay());
+			total.setBossMonth(total.getBossMonth() + bussAnalyzeReportRespDto.getBossMonth());
+			total.setDayOpp1(total.getDayOpp1() + bussAnalyzeReportRespDto.getDayOpp1());
+			total.setDayOpp2(total.getDayOpp2() + bussAnalyzeReportRespDto.getDayOpp2());
+			total.setDayOpp3(total.getDayOpp3() + bussAnalyzeReportRespDto.getDayOpp3());
+			total.setMonthOpp1(total.getMonthOpp1() + bussAnalyzeReportRespDto.getMonthOpp1());
+			total.setMonthOpp2(total.getMonthOpp2() + bussAnalyzeReportRespDto.getMonthOpp2());
+			total.setMonthOpp3(total.getMonthOpp3() + bussAnalyzeReportRespDto.getMonthOpp3());
+			total.setQdsDay(total.getQdsDay() + bussAnalyzeReportRespDto.getQdsDay());
+			total.setQdsMonth(total.getQdsMonth() + bussAnalyzeReportRespDto.getQdsMonth());
+			total.setQsbDay(total.getQsbDay() + bussAnalyzeReportRespDto.getQsbDay());
+			total.setQsbMonth(total.getQsbMonth() + bussAnalyzeReportRespDto.getQsbMonth());
 			resultList.add(bussAnalyzeReportRespDto);
-			if (i==list.size()-1) {
+			if (i == list.size() - 1) {
 				resultList.add(total);
 			}
 		}
-		
-		
+
 		model.addAttribute("date", date);
 		model.addAttribute("list", resultList);
 		return "/report/bussAnalyzeReport";
+	}
+
+	/**
+	 * 销售业绩
+	 * 
+	 * @param model
+	 * @param date
+	 * @return
+	 * @throws ParseException 
+	 */
+	@RequestMapping("/salePerformance")
+	public String s(Model model, String date) throws ParseException {
+		if (StringUtils.isBlank(date)) {
+			date = sdf.format(new Date());
+		}
+
+		// 获取日期集合
+		List<String> dayList = WxDateUtils.getDayListByMonth(date);
+		
+		ReportBaseReqDto param = new ReportBaseReqDto();
+		param.setDate(date);
+		// 不同权限用户查询不同数据
+		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+
+		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+			param.setCity(getSession().getCity());
+		} else { // 普通员工，显示自己
+			param.setUserId(Long.parseLong(getSession().getUserId()));
+		}
+		logger.info("查询订单列表，参数为：{}", JSON.toJSONString(param));
+
+		// 查询当月
+		// Map<String, Amount> map = new HashMap<String, Amount>();
+		List<SalePerformanceReportRespDto> list = orderInfoService.findSalePerformanceReport(param);
+		Map<String, List<String>> map = new LinkedHashMap<String, List<String>>();
+		// 设置表头
+		List<String> title = new ArrayList<String>();
+		title.add("城市");
+		title.add("姓名");
+		title.add("目标");
+		title.add("毛利");
+		title.add("完成率");
+		for (String string : dayList) {
+			title.add(string.substring(string.indexOf("-")+1));
+		}
+		map.put("title", title);
+		for (SalePerformanceReportRespDto dto1 : list) {
+			if (map.get(String.valueOf(dto1.getUserId())) == null) {
+				List<String> l = new ArrayList<String>();
+				// list初始化
+				for (int i = 0; i < dayList.size()+5; i++) {
+					l.add("");
+				}
+				l.set(0, dto1.getCity());
+				l.set(1, dto1.getUserName());
+				l.set(2, dto1.getTargetAmount()==null?"0":dto1.getTargetAmount().toString());
+				// l.set(3, dto1.getCity());
+				// l.set(4, dto1.getCity());
+				map.put(String.valueOf(dto1.getUserId()), l);
+			}
+
+			List<String> row = map.get(String.valueOf(dto1.getUserId()));
+			// 根据日期，对应到具体单元格
+			String day = dto1.getOrderDate().split("-")[2];
+			row.set(Integer.parseInt(day) + 4, dto1.getProfitAmount().toString());
+
+		}
+		
+		// 汇总
+		for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+			if ("城市".equals(entry.getValue().get(0))) {
+				continue;
+			}
+			List<String> l = entry.getValue();
+			BigDecimal totalAmount = new BigDecimal(0);
+			for (int i = 5; i < l.size(); i++) {
+				if (StringUtils.isNotBlank(l.get(i))) {
+					totalAmount = totalAmount.add(new BigDecimal(l.get(i).toString()));
+				}
+			}
+			l.set(3, totalAmount.toString());
+			l.set(4, totalAmount.divide(new BigDecimal(l.get(2).toString())).multiply(new BigDecimal(100)).toString()+"%");
+		}
+		
+
+		// BussAnalyzeReportRespDto total = new BussAnalyzeReportRespDto();
+		//
+		// List<BussAnalyzeReportRespDto> resultList = new
+		// ArrayList<BussAnalyzeReportRespDto>();
+		// // 总计
+		// for (int i = 0; i < list.size(); i++) {
+		// BussAnalyzeReportRespDto bussAnalyzeReportRespDto = list.get(i);
+		//
+		// if (StringUtils.isBlank(total.getCity())) {
+		// total.setCity(bussAnalyzeReportRespDto.getCity());
+		// total.setUserName("总计");
+		// }
+		// if (!total.getCity().equals(bussAnalyzeReportRespDto.getCity())) {
+		// resultList.add(i, total);
+		// total = new BussAnalyzeReportRespDto();
+		// total.setCity(bussAnalyzeReportRespDto.getCity());
+		// total.setUserName("总计");
+		// }
+		// total.setBossDay(total.getBossDay()+bussAnalyzeReportRespDto.getBossDay());
+		// total.setBossMonth(total.getBossMonth()+bussAnalyzeReportRespDto.getBossMonth());
+		// total.setDayOpp1(total.getDayOpp1()+bussAnalyzeReportRespDto.getDayOpp1());
+		// total.setDayOpp2(total.getDayOpp2()+bussAnalyzeReportRespDto.getDayOpp2());
+		// total.setDayOpp3(total.getDayOpp3()+bussAnalyzeReportRespDto.getDayOpp3());
+		// total.setMonthOpp1(total.getMonthOpp1()+bussAnalyzeReportRespDto.getMonthOpp1());
+		// total.setMonthOpp2(total.getMonthOpp2()+bussAnalyzeReportRespDto.getMonthOpp2());
+		// total.setMonthOpp3(total.getMonthOpp3()+bussAnalyzeReportRespDto.getMonthOpp3());
+		// total.setQdsDay(total.getQdsDay()+bussAnalyzeReportRespDto.getQdsDay());
+		// total.setQdsMonth(total.getQdsMonth()+bussAnalyzeReportRespDto.getQdsMonth());
+		// total.setQsbDay(total.getQsbDay()+bussAnalyzeReportRespDto.getQsbDay());
+		// total.setQsbMonth(total.getQsbMonth()+bussAnalyzeReportRespDto.getQsbMonth());
+		// resultList.add(bussAnalyzeReportRespDto);
+		// if (i==list.size()-1) {
+		// resultList.add(total);
+		// }
+		// }
+		//
+
+		model.addAttribute("date", date);
+		model.addAttribute("list", map);
+		return "/report/salePerformanceReport";
 	}
 
 }
