@@ -51,18 +51,15 @@
             		<c:if test="${index.count == 1 }">
             			<tr style="background-color: #fe9941;">
             		</c:if>
-            		<c:if test="${index.count > 1 }">
+            		<c:if test="${index.count > 1  && dto.value[1]!='总计'}">
             			<tr>
+            		</c:if>
+            		<c:if test="${index.count > 1 && dto.value[1]=='总计'}">
+            			<tr style="background-color: #ffc800b8;">
             		</c:if>
             			<c:forEach items="${dto.value }"  var="item" >
             				<td>${item }</td>
             			</c:forEach>
-		                <!-- <td>1</td> -->
-		                <%-- <td><fmt:formatDate value="${dto.dtoDate }" pattern="yyyy-MM-dd" /></td> --%>
-		                
-		               <%--  <td>${dto.value[1] }</td>
-		                <td>${dto.value[2] }</td> --%>
-		                <%-- <td>${dto.value.c20 }</td> --%>
 		              </tr>
             	</c:forEach>
             </tbody>

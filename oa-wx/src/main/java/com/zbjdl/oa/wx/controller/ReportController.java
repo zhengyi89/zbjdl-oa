@@ -315,7 +315,7 @@ public class ReportController extends BaseController {
 	 * @param model
 	 * @param date
 	 * @return
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
 	@RequestMapping("/salePerformance")
 	public String s(Model model, String date) throws ParseException {
@@ -325,7 +325,7 @@ public class ReportController extends BaseController {
 
 		// 获取日期集合
 		List<String> dayList = WxDateUtils.getDayListByMonth(date);
-		
+
 		ReportBaseReqDto param = new ReportBaseReqDto();
 		param.setDate(date);
 		// 不同权限用户查询不同数据
@@ -350,19 +350,19 @@ public class ReportController extends BaseController {
 		title.add("毛利");
 		title.add("完成率");
 		for (String string : dayList) {
-			title.add(string.substring(string.indexOf("-")+1));
+			title.add(string.substring(string.indexOf("-") + 1));
 		}
 		map.put("title", title);
 		for (SalePerformanceReportRespDto dto1 : list) {
 			if (map.get(String.valueOf(dto1.getUserId())) == null) {
 				List<String> l = new ArrayList<String>();
 				// list初始化
-				for (int i = 0; i < dayList.size()+5; i++) {
+				for (int i = 0; i < dayList.size() + 5; i++) {
 					l.add("");
 				}
 				l.set(0, dto1.getCity());
 				l.set(1, dto1.getUserName());
-				l.set(2, dto1.getTargetAmount()==null?"0":dto1.getTargetAmount().toString());
+				l.set(2, dto1.getTargetAmount() == null ? "0" : dto1.getTargetAmount().toString());
 				// l.set(3, dto1.getCity());
 				// l.set(4, dto1.getCity());
 				map.put(String.valueOf(dto1.getUserId()), l);
@@ -374,64 +374,97 @@ public class ReportController extends BaseController {
 			row.set(Integer.parseInt(day) + 4, dto1.getProfitAmount().toString());
 
 		}
-		
-		// 汇总
+
+		int i = 0;
+
+		List<String> cityList = new ArrayList<String>();
+		List<String> totalList = new ArrayList<String>();
+
+		for (int k = 0; k < dayList.size() + 5; k++) {
+			totalList.add("");
+		}
+		totalList.set(0, "总计");
+		totalList.set(1, "总计");
+		/*
+		 * 汇总
+		 */
+		Map<String, List<String>> resultMap = new LinkedHashMap<String, List<String>>();
 		for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+			/*
+			 * 总汇总
+			 */
+			List<String> tmpList = entry.getValue();
+
+			if (i == 0) {
+				i++;
+				resultMap.put(entry.getKey(), tmpList);
+				resultMap.put("zongji", totalList);
+				continue;
+			}
+
+			/*
+			 * 地区汇总
+			 */
+			if (cityList.size() == 0) {
+				resultMap.put(entry.getKey(), tmpList);
+				cityList.addAll(tmpList);
+				cityList.set(1, "总计");
+			} else if (!cityList.get(0).equals(tmpList.get(0))) {
+				resultMap.put(i + "", cityList);
+				resultMap.put(entry.getKey(), tmpList);
+				cityList = new ArrayList<String>();
+				cityList.addAll(tmpList);
+				cityList.set(1, "总计");
+			} else {
+				for (int j = 2; j < cityList.size(); j++) {
+					if (j == 4) {
+						continue;
+					}
+					String b1 = StringUtils.isBlank(cityList.get(j)) ? "0" : cityList.get(j);
+					String b2 = tmpList.get(j);
+					if (StringUtils.isNotBlank(b2)) {
+						cityList.set(j, new BigDecimal(b1).add(new BigDecimal(b2)).toString());
+					}
+				}
+				resultMap.put(entry.getKey(), tmpList);
+			}
+
+			// 计算汇总
+			for (int j = 2; j < cityList.size(); j++) {
+				if (j == 4) {
+					continue;
+				}
+				String b2 = tmpList.get(j);
+				String b3 = StringUtils.isBlank(totalList.get(j)) ? "0" : totalList.get(j);
+				if (StringUtils.isNotBlank(b2)) {
+					totalList.set(j, new BigDecimal(b3).add(new BigDecimal(b2)).toString());
+				}
+			}
+
+			if (++i == map.size()) {
+				resultMap.put(i + "", cityList);
+			}
+		}
+
+		// 汇总
+		for (Map.Entry<String, List<String>> entry : resultMap.entrySet()) {
 			if ("城市".equals(entry.getValue().get(0))) {
 				continue;
 			}
 			List<String> l = entry.getValue();
 			BigDecimal totalAmount = new BigDecimal(0);
-			for (int i = 5; i < l.size(); i++) {
-				if (StringUtils.isNotBlank(l.get(i))) {
-					totalAmount = totalAmount.add(new BigDecimal(l.get(i).toString()));
+			for (int ii = 5; ii < l.size(); ii++) {
+				if (StringUtils.isNotBlank(l.get(ii))) {
+					totalAmount = totalAmount.add(new BigDecimal(l.get(ii).toString()));
 				}
 			}
 			l.set(3, totalAmount.toString());
-			l.set(4, totalAmount.divide(new BigDecimal(l.get(2).toString())).multiply(new BigDecimal(100)).toString()+"%");
+			l.set(4, totalAmount.multiply(new BigDecimal(100)).divide(new BigDecimal(l.get(2)), 2, BigDecimal.ROUND_HALF_EVEN).toString()
+					+ "%");
 		}
-		
-
-		// BussAnalyzeReportRespDto total = new BussAnalyzeReportRespDto();
-		//
-		// List<BussAnalyzeReportRespDto> resultList = new
-		// ArrayList<BussAnalyzeReportRespDto>();
-		// // 总计
-		// for (int i = 0; i < list.size(); i++) {
-		// BussAnalyzeReportRespDto bussAnalyzeReportRespDto = list.get(i);
-		//
-		// if (StringUtils.isBlank(total.getCity())) {
-		// total.setCity(bussAnalyzeReportRespDto.getCity());
-		// total.setUserName("总计");
-		// }
-		// if (!total.getCity().equals(bussAnalyzeReportRespDto.getCity())) {
-		// resultList.add(i, total);
-		// total = new BussAnalyzeReportRespDto();
-		// total.setCity(bussAnalyzeReportRespDto.getCity());
-		// total.setUserName("总计");
-		// }
-		// total.setBossDay(total.getBossDay()+bussAnalyzeReportRespDto.getBossDay());
-		// total.setBossMonth(total.getBossMonth()+bussAnalyzeReportRespDto.getBossMonth());
-		// total.setDayOpp1(total.getDayOpp1()+bussAnalyzeReportRespDto.getDayOpp1());
-		// total.setDayOpp2(total.getDayOpp2()+bussAnalyzeReportRespDto.getDayOpp2());
-		// total.setDayOpp3(total.getDayOpp3()+bussAnalyzeReportRespDto.getDayOpp3());
-		// total.setMonthOpp1(total.getMonthOpp1()+bussAnalyzeReportRespDto.getMonthOpp1());
-		// total.setMonthOpp2(total.getMonthOpp2()+bussAnalyzeReportRespDto.getMonthOpp2());
-		// total.setMonthOpp3(total.getMonthOpp3()+bussAnalyzeReportRespDto.getMonthOpp3());
-		// total.setQdsDay(total.getQdsDay()+bussAnalyzeReportRespDto.getQdsDay());
-		// total.setQdsMonth(total.getQdsMonth()+bussAnalyzeReportRespDto.getQdsMonth());
-		// total.setQsbDay(total.getQsbDay()+bussAnalyzeReportRespDto.getQsbDay());
-		// total.setQsbMonth(total.getQsbMonth()+bussAnalyzeReportRespDto.getQsbMonth());
-		// resultList.add(bussAnalyzeReportRespDto);
-		// if (i==list.size()-1) {
-		// resultList.add(total);
-		// }
-		// }
-		//
 
 		model.addAttribute("date", date);
-		model.addAttribute("list", map);
+		model.addAttribute("list", resultMap);
 		return "/report/salePerformanceReport";
 	}
-
 }
