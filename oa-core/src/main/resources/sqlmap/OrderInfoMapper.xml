@@ -639,10 +639,10 @@
 		target_info t on t.user_id = u.id and t.target_month = #{date,jdbcType=VARCHAR}
 	where 1=1 
 	<if test="userId != null" >
-      and user_id = #{userId,jdbcType=BIGINT}
+      and o.user_id = #{userId,jdbcType=BIGINT}
     </if>
      <if test="city != null" >
-      and t.city = #{city,jdbcType=VARCHAR}
+      and o.city = #{city,jdbcType=VARCHAR}
     </if>
 	GROUP BY
 		city,
