@@ -38,6 +38,13 @@
   </head>
   <body>
     <div class="top_bar"><a class="return" onclick="window.location.href = '${ctx}/index'"></a>商机列表
+    	<select class="datecss" id="date" name="date">
+			<c:forEach items="${dateSet}" var="item">
+				<option value="${item}" <c:if test="${item == date}">selected</c:if>>
+					${item } 
+				</option>
+			</c:forEach>
+		</select>
     </div>
     <div class="content_auto">
     <p><p>
@@ -57,18 +64,28 @@
             		<c:if test="${index.count > 1 && dto.value[1]=='总计'}">
             			<tr style="background-color: #ffc800b8;">
             		</c:if>
-            			<c:forEach items="${dto.value }"  var="item" >
-            				<td>${item }</td>
-            			</c:forEach>
-		              </tr>
+           			<c:forEach items="${dto.value }"  var="item" >
+           				<c:if test="${index.count == 1 }">
+	            			<th>${item }</th>
+	            		</c:if>
+           				<c:if test="${index.count > 1 }">
+	            			<td>${item }</td>
+	            		</c:if>
+           			</c:forEach>
+		            </tr>
             	</c:forEach>
             </tbody>
           </table>
         </div>
     </div>
-    
-   
-	    
+    <script type="text/javascript">
+	    $('#date').bind('input change', function() {
+	    	var tmp = $('#date').val();
+	    	console.log(tmp);
+	    	if(date != tmp){
+	    		window.location.href= '${ctx}/report/salePerformance?date='+tmp;
+	    	}
+	    });	
     </script>
   </body>
 </html>

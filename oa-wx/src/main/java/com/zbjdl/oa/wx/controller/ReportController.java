@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -446,25 +447,33 @@ public class ReportController extends BaseController {
 			}
 		}
 
-		// 汇总
-		for (Map.Entry<String, List<String>> entry : resultMap.entrySet()) {
-			if ("城市".equals(entry.getValue().get(0))) {
-				continue;
-			}
-			List<String> l = entry.getValue();
-			BigDecimal totalAmount = new BigDecimal(0);
-			for (int ii = 5; ii < l.size(); ii++) {
-				if (StringUtils.isNotBlank(l.get(ii))) {
-					totalAmount = totalAmount.add(new BigDecimal(l.get(ii).toString()));
+		if (list.size() > 1) {
+			// 汇总
+			for (Map.Entry<String, List<String>> entry : resultMap.entrySet()) {
+				if ("城市".equals(entry.getValue().get(0))) {
+					continue;
 				}
+				List<String> l = entry.getValue();
+				BigDecimal totalAmount = new BigDecimal(0);
+				for (int ii = 5; ii < l.size(); ii++) {
+					if (StringUtils.isNotBlank(l.get(ii))) {
+						totalAmount = totalAmount.add(new BigDecimal(l.get(ii).toString()));
+					}
+				}
+				l.set(3, totalAmount.toString());
+				l.set(4, totalAmount.multiply(new BigDecimal(100)).divide(new BigDecimal(l.get(2)), 2, BigDecimal.ROUND_HALF_EVEN)
+						.toString()
+						+ "%");
 			}
-			l.set(3, totalAmount.toString());
-			l.set(4, totalAmount.multiply(new BigDecimal(100)).divide(new BigDecimal(l.get(2)), 2, BigDecimal.ROUND_HALF_EVEN).toString()
-					+ "%");
+
 		}
 
 		model.addAttribute("date", date);
 		model.addAttribute("list", resultMap);
+
+		TreeSet<String> dateSet = WxDateUtils.genDateSet("2019-01", sdf.format(new Date()));
+		model.addAttribute("dateSet", dateSet);
+
 		return "/report/salePerformanceReport";
 	}
 }
