@@ -18,22 +18,30 @@
 <link rel="stylesheet" href="${def}/app/css/warehouse.css" media="screen" title="no title" charset="utf-8" />
 <link rel="stylesheet" href="${def}/app/css/wxui.css" media="screen" title="no title" charset="utf-8">
 <link rel="stylesheet" href="${def}/app/css/mobiscroll.css" media="screen" title="no title" charset="utf-8">
+<style type="text/css">
+	.submit_input p input {
+	    width: 80%;
+	    font-size: 1.25rem;
+	}
+</style>
 </head>
 <body>
 	<div class="topbar">
-		 个人信息 <a class="submit" onclick="javascript:doSubmit();">提交</a>
+		 <a class="return" href="javascript:window.history.go(-1);"></a>个人信息 <a class="submit" onclick="javascript:doSubmit();">提交</a>
 	</div>
 	<form action="${ctx}/user/save" id="form1" method="post">
 		<div class="showbox">
 		<div class="submit_input">
 			<input type="hidden" name="id" id="id" value="${user.id }"/>
 			<p>
-				<input type="text" placeholder="请填写您的工号" name="jobNo" id="jobNo" value="${user.jobNo }"/>
+				工号：<input type="text" placeholder="请填写您的工号" name="jobNo" id="jobNo" value="${user.jobNo }"/>
+			</p>
+			<p>
+				手机号：<input type="text" placeholder="请填写您的手机号" name="mobile" id="mobile" value="${user.mobile }"/>
 			</p>
 			<p>账号：<span>${user.loginName }</span></p>
 			<p>姓名：<span>${user.userName }</span></p>
-			<p>手机号：<span>${user.mobile }</span></p>
-			<p>所属大区：<span>${user.region }</span></p>
+			<%-- <p>所属大区：<span>${user.region }</span></p> --%>
 			<p>城市：<span>${user.city }</span></p>
 			<%-- <p>职位：<span>${user.city }</span></p> --%>
 		</div>
@@ -43,6 +51,11 @@
 			var v_jobno = $("input[name='jobNo']").val().replace(/\s+/g,"");
 			if (v_jobno == null || v_jobno == "") {
 				alert("请输工号");
+				return false;
+			}
+			var v_mobile = $("input[name='mobile']").val().replace(/\s+/g,"");
+			if (v_mobile == null || v_mobile == "") {
+				alert("请输手机号");
 				return false;
 			}
 			$("#form1").submit();

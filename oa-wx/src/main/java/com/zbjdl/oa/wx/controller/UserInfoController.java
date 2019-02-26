@@ -50,15 +50,15 @@ public class UserInfoController extends BaseController {
 
 	@Autowired
 	private UserFacade userFacade;
-	
+
 	/**
 	 * 登录操作，需要使用Jquery相关框架
 	 */
 	@RequestMapping("/login/index")
 	public String loginIndex(Model model) {
-		WxSession wxSession = (WxSession)super.reloadSession();
-		if(wxSession.isBind()){
-			return "redirect:/menu?"+MenuConfig.INDEX;
+		WxSession wxSession = (WxSession) super.reloadSession();
+		if (wxSession.isBind()) {
+			return "redirect:/menu?" + MenuConfig.INDEX;
 		} else {
 			return "/user/login";
 		}
@@ -94,7 +94,7 @@ public class UserInfoController extends BaseController {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
-		
+
 		logger.info("wxsession为：{}", JSON.toJSONString(wxSession));
 		wxSession.setUserId(String.valueOf(userDto.getId()));
 		if (wxSession.isWxBrowser()) {
@@ -200,9 +200,9 @@ public class UserInfoController extends BaseController {
 
 	@RequestMapping("/activate/index")
 	public String login(Model model) {
-		WxSession wxSession = (WxSession)super.reloadSession();
-		if(wxSession.isBind()){
-			return "redirect:/menu?"+MenuConfig.INDEX;
+		WxSession wxSession = (WxSession) super.reloadSession();
+		if (wxSession.isBind()) {
+			return "redirect:/menu?" + MenuConfig.INDEX;
 		} else {
 			return "/user/activateIndex";
 		}
@@ -210,7 +210,11 @@ public class UserInfoController extends BaseController {
 
 	@RequestMapping("/edit/index")
 	public String editIndex(Model model) {
+		if (getSessionSafe() == null || getSessionSafe().getUserId() == null) {
+			return "redirect:/user/login/index";
+		}
 		Long userId = Long.parseLong(getSessionSafe().getUserId());
+		userId = Long.parseLong(null);
 		UserInfoDto userDto = userInfoService.selectById(userId);
 		model.addAttribute("user", userDto);
 		return "/user/userEditIndex";
@@ -218,6 +222,9 @@ public class UserInfoController extends BaseController {
 
 	@RequestMapping("/info")
 	public String info(Model model) {
+		if (getSessionSafe() == null || getSessionSafe().getUserId() == null) {
+			return "redirect:/user/login/index";
+		}
 		Long userId = Long.parseLong(getSessionSafe().getUserId());
 		UserInfoDto userDto = userInfoService.selectById(userId);
 		model.addAttribute("user", userDto);
@@ -228,13 +235,11 @@ public class UserInfoController extends BaseController {
 	public String save(UserInfoDto userDto) {
 		UserInfoDto user = userInfoService.selectById(userDto.getId());
 		user.setJobNo(userDto.getJobNo());
+		user.setMobile(userDto.getMobile());
 		userInfoService.update(user);
 		return "redirect:/index";
 	}
-	
-	
-	
-	
+
 	/**
 	 * 用户解绑
 	 * 
@@ -250,8 +255,7 @@ public class UserInfoController extends BaseController {
 			return "redirect:/login";
 		}
 	}
-	
-	
+
 	/**
 	 * 解绑事件
 	 */
@@ -309,8 +313,7 @@ public class UserInfoController extends BaseController {
 	public Object unbindFailed(HttpServletRequest request, Model model) {
 		return "/user/unbind_failed";
 	}
-	
-	
+
 	/**
 	 * 退出
 	 * 
@@ -322,7 +325,6 @@ public class UserInfoController extends BaseController {
 		session.removeAttribute(WxSession.NAME);
 		return "redirect:/user/login/index";
 	}
-
 
 	private String getCityByDepartment(String department) {
 		if (StringUtils.isBlank(department)) {

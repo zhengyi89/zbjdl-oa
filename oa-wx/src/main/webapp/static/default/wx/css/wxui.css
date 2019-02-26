@@ -166,3 +166,10 @@
 .about .about_list li:after{content:" ";position:absolute;bottom:0.3rem;left:0rem;width:100%;height:1px;border-top:0.1rem dashed #bd7400;}
 .about .about_list li .detail{display:table-cell;height:3rem;vertical-align:middle;line-height:1.5rem;}
 .about .about_list li .detail span{display:inline-block;vertical-align:middle;}
+
+
+/*-----------错误------------*/
+.err_bg{width:100%;min-height:100%;background:url(../images/err_bg.jpg) center center no-repeat;background-size:cover;}
+.err_title{text-align: center;font-size: 2rem;color: red;}
+.err_msg{text-align: center;}
+.err_body{text-align: center;margin-top: 20px;font-size: 1.3rem;}

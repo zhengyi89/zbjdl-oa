@@ -150,6 +150,7 @@
 /*---------- 意见反馈 ----------*/
 .suggestion{height:14rem;padding:1rem;background:#fff;border-bottom:1px solid #e3e3e3;}
 .suggestion textarea{resize:none;width:100%;height:100%;border:0px;font-size:1.25rem;}
+.err_bg{width:100%;min-height:100%;background:url(../images/err_bg.jpg) center center no-repeat;background-size:cover;}
 
 /*---------- 关于赎楼 ----------*/
 .about{height:100%;padding:1rem 1.9rem 0rem 1.9rem;background:#fff;line-height:2.2rem;text-align:justify;font-size:1.25rem;}

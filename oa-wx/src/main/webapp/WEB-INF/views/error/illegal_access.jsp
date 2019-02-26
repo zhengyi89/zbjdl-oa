@@ -12,7 +12,7 @@
 			<p class="wp_s3 pb20 bc mt10 bb_gray_1 color_gray_2 f15 tc">由于连接请求时间过长，请回退一步重试</p>
 			<p class="chongzhi_tel bc mt15 clearfix">
 				<span class="fl color_gray_3">如需人工帮助，请拨打</span>
-				<span class="fr  f15 color_orange">010-6542 2684</span>
+				<span class="fr  f15 color_orange">15210987135</span>
 			</p>
 		</div>
 	</body>

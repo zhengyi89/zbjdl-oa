@@ -11,29 +11,34 @@
 <html>
 	<head>
 		<title>系统异常！</title>
+		<link rel="stylesheet" href="${def}/wx/css/warehouse.css" media="screen" title="no title" charset="utf-8" />
+		<link rel="stylesheet" href="${def}/wx/css/wxui.css" media="screen" title="no title" charset="utf-8">
 	</head>
 	<body>
-		<div class="wp_100 pt20 pb20 mt15 bg_white bt_gray_1 bb_gray_1 clearfix">
+		<div class="err_bg">
+			<div style="padding-top: 70px;">
+				<p></p>
 			<c:choose>
 				<c:when test="${error_title != null}">
-					<p class="cdd_fail bc f18 color_red tc">${error_title}</p>
+					<p class="err_title">${error_title}</p>
 				</c:when>
 				<c:otherwise>
-					<p class="cdd_fail bc f18 color_red tr">温馨提示</p>
+					<p class="err_msg">温馨提示</p>
 				</c:otherwise>
 			</c:choose>
 			<c:choose>
 				<c:when test="${error_tip != null}">
-					<p class="wp_s3 pb20 bc mt10 bb_gray_1 color_gray_2 f15 tc">${error_tip}</p>
+					<p class="err_title">${error_tip}</p>
 				</c:when>
 				<c:otherwise>
-					<p class="wp_s3 pb20 bc mt10 bb_gray_1 color_gray_2 f15 tc">出问题了。。。</p>
+					<p class="err_msg">出问题了。。。</p>
 				</c:otherwise>
 			</c:choose>
-			<p class="chongzhi_tel bc mt15 clearfix">
-				<span class="fl color_gray_3">如需人工帮助，请拨打</span>
-				<span class="fr f15 color_orange">010-6542 2684</span>
+			<p class="err_body">
+				<span class="">如需人工帮助，请拨打</span>
+				<span class="">15210987135</span>
 			</p>
+			</div>
 		</div>
 	</body>
 </html>

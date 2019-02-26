@@ -18,6 +18,12 @@
 <link rel="stylesheet" href="${def}/app/css/warehouse.css" media="screen" title="no title" charset="utf-8" />
 <link rel="stylesheet" href="${def}/app/css/wxui.css" media="screen" title="no title" charset="utf-8">
 <link rel="stylesheet" href="${def}/app/css/mobiscroll.css" media="screen" title="no title" charset="utf-8">
+<style type="text/css">
+	.submit_input p input {
+	    width: 80%;
+	    font-size: 1.25rem;
+	}
+</style>
 </head>
 <body>
 	<div class="topbar">
@@ -27,6 +33,9 @@
 		<div class="showbox">
 		<div class="submit_input">
 			<input type="hidden" name="id" id="id" value="${user.id }"/>
+			<p>
+				工号：<input type="text" placeholder="请填写您的工号" name="jobNo" id="jobNo" value="${user.jobNo }"/>
+			</p>
 			<p>工号：<span>${user.jobNo }</span></p>
 			<p>账号：<span>${user.loginName }</span></p>
 			<p>姓名：<span>${user.userName }</span></p>

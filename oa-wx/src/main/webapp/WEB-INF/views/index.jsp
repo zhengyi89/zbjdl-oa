@@ -95,7 +95,7 @@
 	        </div>
         </c:if>
         
-        <div class="message" onclick="window.location.href= '${ctx}/user/info';">
+        <div class="message" onclick="window.location.href= '${ctx}/user/edit/index';">
           <p class="icon bg_5"></p>
           我的资料
         </div>
