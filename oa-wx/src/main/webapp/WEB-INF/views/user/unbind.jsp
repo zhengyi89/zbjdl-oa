@@ -74,12 +74,11 @@
 				method : "POST",
 				data:{"code":_radio1+_reason},
 				success : function(data) { 
-					var status = data.status;
-					var error  = data.message;
+					var code = data.code;
+					var error  = data.msg;
 					//原有逻辑不变
-					if("ok" == status){
-						var callUrl = "${ctx}/user/unbind/success";
-						window.location.href= callUrl;
+					if("0000" == code){
+						window.location.href= "${ctx}/user/unbind/success";
 						return;
 					}else {
 						var callUrl = "${ctx}/user/unbind/failed?error="+encodeURI(error);
