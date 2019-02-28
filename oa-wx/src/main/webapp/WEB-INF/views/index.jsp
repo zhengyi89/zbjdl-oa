@@ -104,10 +104,10 @@
           解绑
         </div> --%>
         
-        <div class="message last" onclick="window.location.href= '${ctx}/user/logout';">
+       <%--  <div class="message last" onclick="window.location.href= '${ctx}/user/logout';">
           <p class="icon bg_6"></p>
           退出登录
-        </div>
+        </div> --%>
         
        <div id="errBox12" class="vnone">
 			<div class="tipCover"></div>
