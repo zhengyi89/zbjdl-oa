@@ -27,15 +27,8 @@
 		.tipMsg .btnbox input.submit{width:100%;height:3.5rem;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background:#fe7441;color:#fff;font-size:1.3rem;}
     </style>
     
-    <%-- <link rel="stylesheet" href="${def }/css/dxeui.css?version=1.5.0" media="screen" title="no title" charset="utf-8"/> --%>
     <link rel="stylesheet" href="${def}/app/css/warehouse.css" media="screen" title="no title" charset="utf-8"/>
     <link rel="stylesheet" href="${def}/app/css/wxui.css" media="screen" title="no title" charset="utf-8"/>
-    
-   <%--  <link rel="stylesheet" href="${def }/css/dxeui.css?version=1.5.0" media="screen" title="no title" charset="utf-8"/>
-    <link rel="stylesheet" href="${def }/css/iosSelect.css?version=1.5.0" media="screen" title="no title">
-	<link rel="stylesheet" href="${def }/css/animate.min.css?version=1.5.0" media="screen" title="no title">
-	<link rel="stylesheet" href="${def }/css/hashChange.css?version=1.5.0" media="screen" title="no title">
-	<link rel="stylesheet" href="${def}/app/css/mobiscroll.css" media="screen" title="no title" charset="utf-8"> --%>
   </head>
   <body>
     <div class="topbar">
@@ -121,9 +114,7 @@
       </div>
     </div>
     
-    <script type="text/javascript" src="${def}/app/js/WebViewJavascriptBridge.js"></script>
     <script type="text/javascript">
-    
     	$(function(){
     		if(${_wxSession.isAdmin }){
     			$.ajax({
