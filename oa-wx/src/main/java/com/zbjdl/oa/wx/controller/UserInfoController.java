@@ -214,7 +214,6 @@ public class UserInfoController extends BaseController {
 			return "redirect:/user/login/index";
 		}
 		Long userId = Long.parseLong(getSessionSafe().getUserId());
-		userId = Long.parseLong(null);
 		UserInfoDto userDto = userInfoService.selectById(userId);
 		model.addAttribute("user", userDto);
 		return "/user/userEditIndex";
