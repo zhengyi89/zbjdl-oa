@@ -42,7 +42,7 @@
             <thead style="background-color: #fe9941;">
               <tr>
                 <th>序号</th>
-                <c:if test="${!_wxSession.isAdmin && !_wxSession.isSuperAdmin }">
+                <c:if test="${!_wxSession.isSuperAdmin }">
                 	<th>操作</th>
                 </c:if>
                 <!-- <th>日期</th> -->
@@ -83,7 +83,7 @@
             	<c:forEach items="${list }"  var="order">
             		 <tr>
 		                <td></td>
-		                <c:if test="${!_wxSession.isAdmin && !_wxSession.isSuperAdmin }">
+		                <c:if test="${!_wxSession.isSuperAdmin }">
 		                	<td><a href="${ctx }/order/add/index?id=${order.id}" style="color: red;">修改</a></td>
 		                </c:if>
 		                <td>${order.jobNo }</td>

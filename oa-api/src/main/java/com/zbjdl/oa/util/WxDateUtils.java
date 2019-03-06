@@ -1,4 +1,4 @@
-package com.zbjdl.oa.wx.util;
+package com.zbjdl.oa.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

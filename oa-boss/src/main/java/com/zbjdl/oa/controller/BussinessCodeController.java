@@ -101,15 +101,6 @@ public class BussinessCodeController {
 		return userParam;
 	}
 
-	@RequestMapping(value = "/getAmountStateNoSelect", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	public @org.springframework.web.bind.annotation.ResponseBody Object getMemberInfoMap(
-			@RequestParam("amountstate") String amountstate) {
-
-		Map<String, String> param = (Map<String, String>) ConfigurationUtils
-				.getMapConfigParam(ConfigurationUtils.CONFIG_TYPE_SYS, amountstate, String.class).getValue();
-		return param;
-	}
-
 	@RequestMapping(value = "/exportExcel", method = RequestMethod.GET)
 	public void exportExcel(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	}

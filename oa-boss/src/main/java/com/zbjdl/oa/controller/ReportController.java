@@ -1,11 +1,10 @@
-package com.zbjdl.oa.wx.controller;
+package com.zbjdl.oa.controller;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
+import com.zbjdl.boss.admin.frame.BaseController;
 import com.zbjdl.common.amount.Amount;
 import com.zbjdl.common.utils.BeanUtils;
 import com.zbjdl.common.utils.DateUtils;
@@ -54,6 +54,7 @@ public class ReportController extends BaseController {
 	private UserInfoService userInfoService;
 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 	@RequestMapping("/customerChannel")
 	public String customerChannel(Model model, String date) {
@@ -73,12 +74,13 @@ public class ReportController extends BaseController {
 			throw new RuntimeException();
 		}
 
-		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) {
+		if (getCurrentUser().getIsSuperAdmin() != null && getCurrentUser().getIsSuperAdmin()) {
 
-		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
-			orderInfoDto.setCity(getSession().getCity());
-		} else { // 普通员工，显示自己
-			orderInfoDto.setUserId(Long.parseLong(getSession().getUserId()));
+		} else if (getCurrentUser().getIsAdmin() != null && getCurrentUser().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+			UserInfoDto userDto = userInfoService.selectById(getCurrentUser().getUserId());
+			if (userDto != null) {
+				orderInfoDto.setCity(userDto.getCity());
+			}
 		}
 
 		List<OrderInfoDto> list = orderInfoService.findList(orderInfoDto);
@@ -207,7 +209,12 @@ public class ReportController extends BaseController {
 		}
 
 		// List<CustomerChannelReportRespDto>
-		model.addAttribute("date", date);
+		try {
+			model.addAttribute("date", dateFormat.parse(date));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("list", resultMap);
 		model.addAttribute("summary", summary);
 
@@ -238,7 +245,12 @@ public class ReportController extends BaseController {
 		}
 		model.addAttribute("sumDay", sumDay);
 		model.addAttribute("sumMonth", sumMonth);
-		model.addAttribute("date", date);
+		try {
+			model.addAttribute("date", dateFormat.parse(date));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		model.addAttribute("list", list);
 		return "/report/orderSummaryReport";
 	}
@@ -259,12 +271,13 @@ public class ReportController extends BaseController {
 		ReportBaseReqDto dto = new ReportBaseReqDto();
 		dto.setDate(date);
 		// 不同权限用户查询不同数据
-		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+		if (getCurrentUser().getIsSuperAdmin() != null && getCurrentUser().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
 
-		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
-			dto.setCity(getSession().getCity());
-		} else { // 普通员工，显示自己
-			dto.setUserId(Long.parseLong(getSession().getUserId()));
+		} else if (getCurrentUser().getIsAdmin() != null && getCurrentUser().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+			UserInfoDto userDto = userInfoService.selectById(getCurrentUser().getUserId());
+			if (userDto != null) {
+				dto.setCity(userDto.getCity());
+			}
 		}
 		logger.info("查询订单列表，参数为：{}", JSON.toJSONString(dto));
 
@@ -305,7 +318,11 @@ public class ReportController extends BaseController {
 			}
 		}
 
-		model.addAttribute("date", date);
+		try {
+			model.addAttribute("date", dateFormat.parse(date));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("list", resultList);
 		return "/report/bussAnalyzeReport";
 	}
@@ -330,12 +347,13 @@ public class ReportController extends BaseController {
 		ReportBaseReqDto param = new ReportBaseReqDto();
 		param.setDate(date);
 		// 不同权限用户查询不同数据
-		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+		if (getCurrentUser().getIsSuperAdmin() != null && getCurrentUser().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
 
-		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
-			param.setCity(getSession().getCity());
-		} else { // 普通员工，显示自己
-			param.setUserId(Long.parseLong(getSession().getUserId()));
+		} else if (getCurrentUser().getIsAdmin() != null && getCurrentUser().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+			UserInfoDto userDto = userInfoService.selectById(getCurrentUser().getUserId());
+			if (userDto != null) {
+				param.setCity(userDto.getCity());
+			}
 		}
 		logger.info("查询订单列表，参数为：{}", JSON.toJSONString(param));
 
@@ -467,6 +485,7 @@ public class ReportController extends BaseController {
 					l.set(4, totalAmount.multiply(new BigDecimal(100)).divide(new BigDecimal(l.get(2)), 2, BigDecimal.ROUND_HALF_EVEN)
 							.toString() + "%");
 				}
+
 			}
 
 		}
@@ -478,5 +497,42 @@ public class ReportController extends BaseController {
 		model.addAttribute("dateSet", dateSet);
 
 		return "/report/salePerformanceReport";
+	}
+	
+	
+	@RequestMapping("/orderList")
+	public String addIndex(Model model, String date) {
+		if (StringUtils.isBlank(date)) {
+			date = DateUtils.sdfDateOnly.format(new Date());
+		}
+
+		OrderInfoDto orderInfoDto = new OrderInfoDto();
+		try {
+			orderInfoDto.setOrderDate(DateUtils.sdfDateOnly.parse(date));
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		List<OrderWithUserInfoDto> list;
+
+		// 不同权限用户查询不同数据
+		if (getCurrentUser().getIsSuperAdmin() != null && getCurrentUser().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+
+		} else if (getCurrentUser().getIsAdmin() != null && getCurrentUser().getIsAdmin()) { // 如果是管理员，显示当前城市所有
+			UserInfoDto userDto = userInfoService.selectById(getCurrentUser().getUserId());
+			if (userDto != null) {
+				orderInfoDto.setCity(userDto.getCity());
+			}
+		} 
+		logger.info("查询订单列表，参数为：{}", JSON.toJSONString(orderInfoDto));
+		list = orderInfoService.findListWithUser(orderInfoDto);
+		model.addAttribute("list", list);
+		try {
+			model.addAttribute("date", dateFormat.parse(date));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("row", 1);
+		return "/report/orderList";
 	}
 }

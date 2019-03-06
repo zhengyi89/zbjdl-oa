@@ -280,6 +280,7 @@ public class UserInfoController extends BaseController {
 			weixinUserService.unBind(session.getUserId(), session.getOpi(), Constants.SYSTEM_CODE);
 			try {
 				super.reloadSession();
+				System.out.println();
 			} catch (Exception e) {
 				logger.info("reload session");
 			}

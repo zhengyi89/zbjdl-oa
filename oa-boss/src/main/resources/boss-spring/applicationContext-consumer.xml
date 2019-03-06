@@ -12,8 +12,20 @@
     http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
 	default-autowire="byName" default-lazy-init="true">
 
-	<dubbo:reference id="userFacade" interface="com.zbjdl.boss.admin.facade.UserFacade" group="hengbao-service-group"  version="${service-version}" check="false" />
+	<dubbo:reference id="userFacade" interface="com.zbjdl.boss.admin.facade.UserFacade" group="zbjdl-service-group"  version="${service-version}" check="false" />
 	
-	<dubbo:reference id="securityConfigFacade" interface="com.zbjdl.boss.admin.facade.SecurityConfigFacade" group="hengbao-service-group"  version="${service-version}" check="false" />
+	<dubbo:reference id="securityConfigFacade" interface="com.zbjdl.boss.admin.facade.SecurityConfigFacade" group="zbjdl-service-group"  version="${service-version}" check="false" />
 	
+	<dubbo:reference id="userInfoService" interface="com.zbjdl.oa.service.UserInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
+	<dubbo:reference id="orderInfoService" interface="com.zbjdl.oa.service.OrderInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
+	<dubbo:reference id="opportunityInfoService" interface="com.zbjdl.oa.service.OpportunityInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
+	<dubbo:reference id="targetInfoService" interface="com.zbjdl.oa.service.TargetInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
 </beans>
