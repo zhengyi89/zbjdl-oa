@@ -160,6 +160,9 @@ public class UserInfoController extends BaseController {
 				DepartmentDTO department = userFacade.queryDepartmentById(bossUserDto.getPrimaryDepartmentId());
 				if (!bossUserDto.getIsSuperAdmin()) {
 					user.setCity(getCityByDepartment(department.getDepartmentName()));
+					if (!bossUserDto.getIsAdmin()) {
+						user.setDuty(getDepartment(department.getDepartmentName()));
+					}
 				}
 				user.setPassword(Digest.md5Digest(password));
 				user.setId(bossUserDto.getUserId());
@@ -330,20 +333,22 @@ public class UserInfoController extends BaseController {
 		if (StringUtils.isBlank(department)) {
 			return "";
 		}
-		if (department.indexOf("哈尔滨") > -1) {
-			return "哈尔滨";
-		} else if (department.indexOf("大连") > -1) {
-			return "大连";
-		} else if (department.indexOf("长春") > -1) {
-			return "长春";
-		} else if (department.indexOf("大连") > -1) {
-			return "大连";
-		} else if (department.indexOf("沈阳") > -1) {
-			return "沈阳";
-		} else if (department.indexOf("北京") > -1) {
-			return "北京";
+		String[] array = department.split("－");
+		if (array.length < 1) {
+			return "";
 		}
-		return "无";
+		return array[0];
+	}
+	
+	private String getDepartment(String department) {
+		if (StringUtils.isBlank(department)) {
+			return "";
+		}
+		String[] array = department.split("－");
+		if (array.length < 2) {
+			return "";
+		}
+		return array[1].replaceAll("部", "");
 	}
 
 }

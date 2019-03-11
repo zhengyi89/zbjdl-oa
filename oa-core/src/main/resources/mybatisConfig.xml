@@ -21,6 +21,7 @@
 		<mapper resource="sqlmap/OrderInfoMapper.xml" /><!-- 订单 -->
 		<mapper resource="sqlmap/OpportunityInfoMapper.xml" /><!-- 商机 -->
 		<mapper resource="sqlmap/TargetInfoMapper.xml" /><!-- 业绩目标 -->
+		<mapper resource="sqlmap/CommonReportInfoMapper.xml" /><!-- 业绩目标 -->
 	</mappers>
 
 </configuration>

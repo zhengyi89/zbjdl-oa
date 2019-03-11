@@ -28,4 +28,7 @@
 	<dubbo:reference id="targetInfoService" interface="com.zbjdl.oa.service.TargetInfoService" 
 		group="${service-group}" version="${service-version}" check="false">
 	</dubbo:reference>
+	<dubbo:reference id="commonReportInfoService" interface="com.zbjdl.oa.service.CommonReportInfoService" 
+		group="${service-group}" version="${service-version}" check="false">
+	</dubbo:reference>
 </beans>

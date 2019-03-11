@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbjdl.oa.repository.CommonReportInfoRepository">
+	<resultMap id="BaseResultMap" type="CommonReportInfo">
+	  <id column="ID" jdbcType="DECIMAL" property="id" />
+	  <result column="type" jdbcType="VARCHAR" property="type" />
+	  <result column="col1" jdbcType="VARCHAR" property="col1" />
+	  <result column="col2" jdbcType="VARCHAR" property="col2" />
+	  <result column="col3" jdbcType="VARCHAR" property="col3" />
+	  <result column="col4" jdbcType="VARCHAR" property="col4" />
+	  <result column="col5" jdbcType="VARCHAR" property="col5" />
+	  <result column="col6" jdbcType="VARCHAR" property="col6" />
+	  <result column="col7" jdbcType="VARCHAR" property="col7" />
+	  <result column="col8" jdbcType="VARCHAR" property="col8" />
+	  <result column="col9" jdbcType="VARCHAR" property="col9" />
+	  <result column="col10" jdbcType="VARCHAR" property="col10" />
+	  <result column="col11" jdbcType="VARCHAR" property="col11" />
+	  <result column="col12" jdbcType="VARCHAR" property="col12" />
+	  <result column="col13" jdbcType="VARCHAR" property="col13" />
+	  <result column="col14" jdbcType="VARCHAR" property="col14" />
+	  <result column="col15" jdbcType="VARCHAR" property="col15" />
+	  <result column="col16" jdbcType="VARCHAR" property="col16" />
+	  <result column="col17" jdbcType="VARCHAR" property="col17" />
+	  <result column="col18" jdbcType="VARCHAR" property="col18" />
+	  <result column="col19" jdbcType="VARCHAR" property="col19" />
+	  <result column="col20" jdbcType="VARCHAR" property="col20" />
+	  <result column="col21" jdbcType="VARCHAR" property="col21" />
+	  <result column="col22" jdbcType="VARCHAR" property="col22" />
+	  <result column="col23" jdbcType="VARCHAR" property="col23" />
+	  <result column="col24" jdbcType="VARCHAR" property="col24" />
+	  <result column="col25" jdbcType="VARCHAR" property="col25" />
+	  <result column="col26" jdbcType="VARCHAR" property="col26" />
+	  <result column="col27" jdbcType="VARCHAR" property="col27" />
+	  <result column="col28" jdbcType="VARCHAR" property="col28" />
+	  <result column="col29" jdbcType="VARCHAR" property="col29" />
+	  <result column="col30" jdbcType="VARCHAR" property="col30" />
+	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+
+  <sql id="Example_Where_Clause">
+    <where>
+      <trim prefix="(" prefixOverrides="and" suffix=")">
+      	<if test="type != null" >
+	      and type = #{type,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col1 != null" >
+	      and col1 = #{col1,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col2 != null" >
+	      and col2 = #{col2,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col3 != null" >
+	      and col3 = #{col3,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col4 != null" >
+	      and col4 = #{col4,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col5 != null" >
+	      and col5 = #{col5,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col6 != null" >
+	      and col6 = #{col6,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col7 != null" >
+	      and col7 = #{col7,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col8 != null" >
+	      and col8 = #{col8,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col9 != null" >
+	      and col9 = #{col9,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col10 != null" >
+	      and col10 = #{col10,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col11 != null" >
+	      and col11 = #{col11,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col12 != null" >
+	      and col12 = #{col12,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col13 != null" >
+	      and col13 = #{col13,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col14 != null" >
+	      and col14 = #{col14,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col15 != null" >
+	      and col15 = #{col15,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col16 != null" >
+	      and col16 = #{col16,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col17 != null" >
+	      and col17 = #{col17,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col18 != null" >
+	      and col18 = #{col18,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col19 != null" >
+	      and col19 = #{col19,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col20 != null" >
+	      and col20 = #{col20,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col21 != null" >
+	      and col21 = #{col21,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col22 != null" >
+	      and col22 = #{col22,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col23 != null" >
+	      and col23 = #{col23,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col24 != null" >
+	      and col24 = #{col24,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col25 != null" >
+	      and col25 = #{col25,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col26 != null" >
+	      and col26 = #{col26,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col27 != null" >
+	      and col27 = #{col27,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col28 != null" >
+	      and col28 = #{col28,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col29 != null" >
+	      and col29 = #{col29,jdbcType=VARCHAR}
+	    </if>
+      	<if test="col30 != null" >
+	      and col30 = #{col30,jdbcType=VARCHAR}
+	    </if>
+	  </trim>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id,
+    type,
+    col1,
+    col2,
+    col3,
+    col4,
+    col5,
+    col6,
+    col7,
+    col8,
+    col9,
+    col10,
+    col11,
+    col12,
+    col13,
+    col14,
+    col15,
+    col16,
+    col17,
+    col18,
+    col19,
+    col20,
+    col21,
+    col22,
+    col23,
+    col24,
+    col25,
+    col26,
+    col27,
+    col28,
+    col29,
+    col30,
+    create_time,
+    last_update_time,
+  </sql>
+  <sql id="Base_Set_Clause">
+    <set>
+      <trim suffixOverrides=",">
+        type = #{type,jdbcType=VARCHAR},
+        col1 = #{col1,jdbcType=VARCHAR},
+        col2 = #{col2,jdbcType=VARCHAR},
+        col3 = #{col3,jdbcType=VARCHAR},
+        col4 = #{col4,jdbcType=VARCHAR},
+        col5 = #{col5,jdbcType=VARCHAR},
+        col6 = #{col6,jdbcType=VARCHAR},
+        col7 = #{col7,jdbcType=VARCHAR},
+        col8 = #{col8,jdbcType=VARCHAR},
+        col9 = #{col9,jdbcType=VARCHAR},
+        col10 = #{col10,jdbcType=VARCHAR},
+        col11 = #{col11,jdbcType=VARCHAR},
+        col12 = #{col12,jdbcType=VARCHAR},
+        col13 = #{col13,jdbcType=VARCHAR},
+        col14 = #{col14,jdbcType=VARCHAR},
+        col15 = #{col15,jdbcType=VARCHAR},
+        col16 = #{col16,jdbcType=VARCHAR},
+        col17 = #{col17,jdbcType=VARCHAR},
+        col18 = #{col18,jdbcType=VARCHAR},
+        col19 = #{col19,jdbcType=VARCHAR},
+        col20 = #{col20,jdbcType=VARCHAR},
+        col21 = #{col21,jdbcType=VARCHAR},
+        col22 = #{col22,jdbcType=VARCHAR},
+        col23 = #{col23,jdbcType=VARCHAR},
+        col24 = #{col24,jdbcType=VARCHAR},
+        col25 = #{col25,jdbcType=VARCHAR},
+        col26 = #{col26,jdbcType=VARCHAR},
+        col27 = #{col27,jdbcType=VARCHAR},
+        col28 = #{col28,jdbcType=VARCHAR},
+        col29 = #{col29,jdbcType=VARCHAR},
+        col30 = #{col30,jdbcType=VARCHAR},
+  		LAST_UPDATE_TIME = sysdate(),
+      </trim>
+    </set>
+  </sql>
+  <sql id="Selective_Column_List">
+    <if test="type != null">
+      type,
+    </if>
+    <if test="col1 != null">
+      col1,
+    </if>
+    <if test="col2 != null">
+      col2,
+    </if>
+    <if test="col3 != null">
+      col3,
+    </if>
+    <if test="col4 != null">
+      col4,
+    </if>
+    <if test="col5 != null">
+      col5,
+    </if>
+    <if test="col6 != null">
+      col6,
+    </if>
+    <if test="col7 != null">
+      col7,
+    </if>
+    <if test="col8 != null">
+      col8,
+    </if>
+    <if test="col9 != null">
+      col9,
+    </if>
+    <if test="col10 != null">
+      col10,
+    </if>
+    <if test="col11 != null">
+      col11,
+    </if>
+    <if test="col12 != null">
+      col12,
+    </if>
+    <if test="col13 != null">
+      col13,
+    </if>
+    <if test="col14 != null">
+      col14,
+    </if>
+    <if test="col15 != null">
+      col15,
+    </if>
+    <if test="col16 != null">
+      col16,
+    </if>
+    <if test="col17 != null">
+      col17,
+    </if>
+    <if test="col18 != null">
+      col18,
+    </if>
+    <if test="col19 != null">
+      col19,
+    </if>
+    <if test="col20 != null">
+      col20,
+    </if>
+    <if test="col21 != null">
+      col21,
+    </if>
+    <if test="col22 != null">
+      col22,
+    </if>
+    <if test="col23 != null">
+      col23,
+    </if>
+    <if test="col24 != null">
+      col24,
+    </if>
+    <if test="col25 != null">
+      col25,
+    </if>
+    <if test="col26 != null">
+      col26,
+    </if>
+    <if test="col27 != null">
+      col27,
+    </if>
+    <if test="col28 != null">
+      col28,
+    </if>
+    <if test="col29 != null">
+      col29,
+    </if>
+    <if test="col30 != null">
+      col30,
+    </if>
+      CREATE_TIME,
+      LAST_UPDATE_TIME,
+  </sql>
+  <sql id="Selective_Value_List">
+    <if test="type != null">
+      #{type,jdbcType=VARCHAR},
+    </if>
+    <if test="col1 != null">
+      #{col1,jdbcType=VARCHAR},
+    </if>
+    <if test="col2 != null">
+      #{col2,jdbcType=VARCHAR},
+    </if>
+    <if test="col3 != null">
+      #{col3,jdbcType=VARCHAR},
+    </if>
+    <if test="col4 != null">
+      #{col4,jdbcType=VARCHAR},
+    </if>
+    <if test="col5 != null">
+      #{col5,jdbcType=VARCHAR},
+    </if>
+    <if test="col6 != null">
+      #{col6,jdbcType=VARCHAR},
+    </if>
+    <if test="col7 != null">
+      #{col7,jdbcType=VARCHAR},
+    </if>
+    <if test="col8 != null">
+      #{col8,jdbcType=VARCHAR},
+    </if>
+    <if test="col9 != null">
+      #{col9,jdbcType=VARCHAR},
+    </if>
+    <if test="col10 != null">
+      #{col10,jdbcType=VARCHAR},
+    </if>
+    <if test="col11 != null">
+      #{col11,jdbcType=VARCHAR},
+    </if>
+    <if test="col12 != null">
+      #{col12,jdbcType=VARCHAR},
+    </if>
+    <if test="col13 != null">
+      #{col13,jdbcType=VARCHAR},
+    </if>
+    <if test="col14 != null">
+      #{col14,jdbcType=VARCHAR},
+    </if>
+    <if test="col15 != null">
+      #{col15,jdbcType=VARCHAR},
+    </if>
+    <if test="col16 != null">
+      #{col16,jdbcType=VARCHAR},
+    </if>
+    <if test="col17 != null">
+      #{col17,jdbcType=VARCHAR},
+    </if>
+    <if test="col18 != null">
+      #{col18,jdbcType=VARCHAR},
+    </if>
+    <if test="col19 != null">
+      #{col19,jdbcType=VARCHAR},
+    </if>
+    <if test="col20 != null">
+      #{col20,jdbcType=VARCHAR},
+    </if>
+    <if test="col21 != null">
+      #{col21,jdbcType=VARCHAR},
+    </if>
+    <if test="col22 != null">
+      #{col22,jdbcType=VARCHAR},
+    </if>
+    <if test="col23 != null">
+      #{col23,jdbcType=VARCHAR},
+    </if>
+    <if test="col24 != null">
+      #{col24,jdbcType=VARCHAR},
+    </if>
+    <if test="col25 != null">
+      #{col25,jdbcType=VARCHAR},
+    </if>
+    <if test="col26 != null">
+      #{col26,jdbcType=VARCHAR},
+    </if>
+    <if test="col27 != null">
+      #{col27,jdbcType=VARCHAR},
+    </if>
+    <if test="col28 != null">
+      #{col28,jdbcType=VARCHAR},
+    </if>
+    <if test="col29 != null">
+      #{col29,jdbcType=VARCHAR},
+    </if>
+    <if test="col30 != null">
+      #{col30,jdbcType=VARCHAR},
+    </if>
+    sysdate(),
+    sysdate(),
+  </sql>
+  <select id="findList" parameterType="CommonReportInfo" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from common_report_info
+    <include refid="Example_Where_Clause" />
+    <!-- order by CREATE_DATE -->
+  </select>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <trim suffixOverrides=",">
+      <include refid="Base_Column_List" />
+    </trim>
+    from common_report_info
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from common_report_info
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="save" parameterType="CommonReportInfo">
+    insert into common_report_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Column_List"/>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <include refid="Selective_Value_List"/>
+    </trim>
+  </insert>
+  <update id="update" parameterType="CommonReportInfo">
+    update common_report_info
+    <include refid="Base_Set_Clause"/>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

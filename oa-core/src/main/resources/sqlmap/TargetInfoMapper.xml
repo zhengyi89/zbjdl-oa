@@ -165,7 +165,7 @@
 		WHERE
 			city = #{1}
 		AND target_month = #{0}
-	)
+	)  and (duty is null or duty != '销售')
   </insert>
   
   <select id="selectUnInit" parameterType="java.lang.String" resultType="java.lang.Integer">
@@ -183,7 +183,7 @@
 		WHERE
 			city = #{1}
 		AND target_month = #{0}
-	)
+	)  and (duty is null or duty != '销售')
   </select>
   
   
