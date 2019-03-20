@@ -16,5 +16,7 @@ public interface CommonReportInfoService {
 	CommonReportInfoDto selectById(Long id);
 	
 	List<CommonReportInfoDto> findList(CommonReportInfoDto commonReportInfoDto);
+
+	CommonReportInfoDto selectOneByDate(String type, String userId, String date);
 	
 }

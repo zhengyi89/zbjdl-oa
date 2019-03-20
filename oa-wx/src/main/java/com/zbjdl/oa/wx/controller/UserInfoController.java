@@ -112,6 +112,7 @@ public class UserInfoController extends BaseController {
 		wxSession.setIsAdmin(userDto.getIsAdmin());
 		wxSession.setIsSuperAdmin(userDto.getIsSuperAdmin());
 		wxSession.setLoginName(loginName);
+		wxSession.setUserName(userDto.getUserName());
 		sessionService.setSession(wxSession);
 		super.reloadSession();
 		logger.info("登录成功，返回");

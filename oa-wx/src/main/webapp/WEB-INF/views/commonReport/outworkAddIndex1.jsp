@@ -18,17 +18,17 @@
   	<%pageContext.setAttribute("_textResource", new TextResource()); %>
     <div class="top_bar">
     	<a class="return" onclick="go_page('${ctx}/index')"></a>
-    	新建订单
+    	外勤看板
     	<a class="submit" onclick="javascript:doSubmit();">提交</a>
     </div>
     <div class="content_auto">
       <form id="formId">
         <input type="hidden" id="id" name="id" value="${report.id }"/>
-        <input type="hidden" name="type" id="type" value="outwork"/>
+        <input type="hidden" name="type" id="type" value="outwork1"/>
         <div class="insert_team bottom">
         	<div class="insert_message">
-            	<label>订单日期</label>
-            	<input type="text" name="col1" id="date0" value="2018-03-01" placeholder="订单日期"/>
+            	<label>日期</label>
+            	<input type="text" name="col1" id="date0" value="${date }" placeholder="订单日期"/>
           	</div>
           	<div class="insert_message">
             	<label>客户姓名</label>
@@ -44,22 +44,22 @@
           	<div class="insert_option">
             	<label>注册</label>
             	<select name="col4" id="col4" >
-                	<option value="0" <c:if test="${col4 == 0}">selected</c:if>>否</option>
-                	<option value="1" <c:if test="${col4 == 1}">selected</c:if>>是</option>
+                	<option value="0" <c:if test="${report.col4 == 0}">selected</c:if>>否</option>
+                	<option value="1" <c:if test="${report.col4 == 1}">selected</c:if>>是</option>
     	    	</select>
           	</div>
           	<div class="insert_option">
             	<label>代账</label>
             	<select name="col5" id="col5" >
-                	<option value="0" <c:if test="${col5 == 0}">selected</c:if>>否</option>
-                	<option value="1" <c:if test="${col5 == 1}">selected</c:if>>是</option>
+                	<option value="0" <c:if test="${report.col5 == 0}">selected</c:if>>否</option>
+                	<option value="1" <c:if test="${report.col5 == 1}">selected</c:if>>是</option>
     	    	</select>
           	</div>
           	<div class="insert_option last">
             	<label>增值</label>
             	<select name="col6" id="col6" >
-                	<option value="0" <c:if test="${col6 == 0}">selected</c:if>>否</option>
-                	<option value="1" <c:if test="${col6 == 1}">selected</c:if>>是</option>
+                	<option value="0" <c:if test="${report.col6 == 0}">selected</c:if>>否</option>
+                	<option value="1" <c:if test="${report.col6 == 1}">selected</c:if>>是</option>
     	    	</select>
           	</div>
         </div>
@@ -296,6 +296,14 @@
 	      var d=today.getDate();
 	      return h+"-"+m+"-"+d;
 	    }
+	 	
+	    var date = '${date }';
+	    $('#date0').bind('input change', function() {
+	    	var v_date = $('#date0').val();
+	    	if(date != v_date){
+	    		window.location.href= '${ctx}/commonReport/add/index1?date='+v_date;
+	    	}
+	    });	
     </script>
     <div id="errBox12" class="vnone">
 		<div class="tipCover"></div>

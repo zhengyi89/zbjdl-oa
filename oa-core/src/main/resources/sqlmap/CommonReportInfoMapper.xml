@@ -4,6 +4,8 @@
 	<resultMap id="BaseResultMap" type="CommonReportInfo">
 	  <id column="ID" jdbcType="DECIMAL" property="id" />
 	  <result column="type" jdbcType="VARCHAR" property="type" />
+	  <result column="user_id" jdbcType="VARCHAR" property="userId" />
+	  <result column="user_name" jdbcType="VARCHAR" property="userName" />
 	  <result column="col1" jdbcType="VARCHAR" property="col1" />
 	  <result column="col2" jdbcType="VARCHAR" property="col2" />
 	  <result column="col3" jdbcType="VARCHAR" property="col3" />
@@ -43,6 +45,12 @@
       <trim prefix="(" prefixOverrides="and" suffix=")">
       	<if test="type != null" >
 	      and type = #{type,jdbcType=VARCHAR}
+	    </if>
+      	<if test="userId != null" >
+	      and user_id = #{userId,jdbcType=VARCHAR}
+	    </if>
+      	<if test="userName != null" >
+	      and user_name = #{userName,jdbcType=VARCHAR}
 	    </if>
       	<if test="col1 != null" >
 	      and col1 = #{col1,jdbcType=VARCHAR}
@@ -140,6 +148,8 @@
   <sql id="Base_Column_List">
     id,
     type,
+    user_id,
+    user_name,
     col1,
     col2,
     col3,
@@ -177,6 +187,8 @@
     <set>
       <trim suffixOverrides=",">
         type = #{type,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=VARCHAR},
+        user_name = #{userName,jdbcType=VARCHAR},
         col1 = #{col1,jdbcType=VARCHAR},
         col2 = #{col2,jdbcType=VARCHAR},
         col3 = #{col3,jdbcType=VARCHAR},
@@ -214,6 +226,12 @@
   <sql id="Selective_Column_List">
     <if test="type != null">
       type,
+    </if>
+    <if test="userId != null">
+      user_id,
+    </if>
+    <if test="userName != null">
+      user_name,
     </if>
     <if test="col1 != null">
       col1,
@@ -311,6 +329,12 @@
   <sql id="Selective_Value_List">
     <if test="type != null">
       #{type,jdbcType=VARCHAR},
+    </if>
+    <if test="userId != null">
+      #{userId,jdbcType=VARCHAR},
+    </if>
+    <if test="userName != null">
+      #{userName,jdbcType=VARCHAR},
     </if>
     <if test="col1 != null">
       #{col1,jdbcType=VARCHAR},

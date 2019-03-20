@@ -92,6 +92,7 @@ public class SessionService {
 				wxSession.setCity(userDto.getCity());
 				wxSession.setIsAdmin(userDto.getIsAdmin());
 				wxSession.setIsSuperAdmin(userDto.getIsSuperAdmin());
+				wxSession.setUserName(userDto.getUserName());
 			}
 			
 		}

@@ -47,14 +47,14 @@
 	        </div>
       	</c:if>
       	
-      	<div class="message" onclick="window.location.href= '${ctx}/outwork/add/index';">
-	          <p class="icon bg_1"></p>
-	          外勤新建
-	        </div>
-      	<div class="message" onclick="window.location.href= '${ctx}/outwork/add/index1';">
-	          <p class="icon bg_1"></p>
-	          外勤新建2
-	        </div>
+      	<div class="message" onclick="window.location.href= '${ctx}/commonReport/add/index1';">
+          <p class="icon bg_1"></p>
+          外勤看板
+        </div>
+      	<div class="message" onclick="window.location.href= '${ctx}/commonReport/add/index2';">
+          <p class="icon bg_1"></p>
+          外勤展板
+        </div>
         
         
         <div class="message" onclick="window.location.href= '${ctx}/order/list';">

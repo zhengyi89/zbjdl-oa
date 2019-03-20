@@ -1,5 +1,7 @@
 package com.zbjdl.oa.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
-
 import com.zbjdl.oa.dto.CommonReportInfoDto;
 import com.zbjdl.oa.service.CommonReportInfoService;
 
@@ -19,12 +20,12 @@ import com.zbjdl.oa.service.CommonReportInfoService;
  * CommonReportInfoController
  * 
  * @author code-generator
- * @date 2019-3-8 11:51:35 
+ * @date 2019-3-8 11:51:35
  * 
  */
 @Controller
 @RequestMapping("commonReport")
-public class CommonReportInfoController{
+public class CommonReportInfoController {
 	private static final Logger logger = LoggerFactory.getLogger(CommonReportInfoController.class);
 	@Autowired
 	private CommonReportInfoService commonReportInfoService;
@@ -32,34 +33,16 @@ public class CommonReportInfoController{
 	/*
 	 * 列表页面
 	 */
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView commonReportInfoIndex() {
-		ModelAndView mav = new ModelAndView("commonReport/commonReportIndex");
+	@RequestMapping(value = "/index1", method = RequestMethod.GET)
+	public ModelAndView commonReportInfoIndex1(String date) {
+		ModelAndView mav = new ModelAndView("report/commonReportIndex1");
 		return mav;
 	}
 
-	/*
-	 * 进入新增页面
-	 */
-	@RequestMapping(value = "/edit/index", method = RequestMethod.GET)
-	public ModelAndView commonReportInfoEditIndex(Long id) {
-		ModelAndView mav = new ModelAndView("commonReport/commonReportEdit");
-		if (id != null) {
-			CommonReportInfoDto commonReportInfoDto = commonReportInfoService.selectById(id);
-			mav.addObject("dto", commonReportInfoDto);
-		}
+	@RequestMapping(value = "/index2", method = RequestMethod.GET)
+	public ModelAndView commonReportInfoIndex2() {
+		ModelAndView mav = new ModelAndView("report/commonReportIndex2");
 		return mav;
 	}
 
-	/*
-	 * 编辑保存
-	 */
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView commonReportInfoSave(CommonReportInfoDto commonReportInfoDto) {
-		logger.info("save CommonReportInfo, param is : {}", JSON.toJSONString(commonReportInfoDto));
-		commonReportInfoService.saveOrUpdate(commonReportInfoDto);
-		ModelAndView mav = new ModelAndView("redirect:/commonReport/index");
-		return mav;
-	}
-	
 }

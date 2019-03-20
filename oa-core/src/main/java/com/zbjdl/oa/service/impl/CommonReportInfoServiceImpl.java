@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zbjdl.common.utils.BeanUtils;
-
 import com.zbjdl.oa.manager.CommonReportInfoManager;
 import com.zbjdl.oa.service.CommonReportInfoService;
 import com.zbjdl.oa.model.CommonReportInfo;
@@ -21,23 +20,23 @@ import com.zbjdl.oa.dto.CommonReportInfoDto;
 
 @Service("commonReportInfoService")
 public class CommonReportInfoServiceImpl implements CommonReportInfoService {
-	
+
 	@Autowired
 	private CommonReportInfoManager commonReportInfoManager;
-	
+
 	@Override
 	public Integer saveOrUpdate(CommonReportInfoDto commonReportInfoDto) {
-		if (commonReportInfoDto.getId()!=null) {
+		if (commonReportInfoDto.getId() != null) {
 			CommonReportInfo commonReportInfo = commonReportInfoManager.selectById(commonReportInfoDto.getId());
 			BeanUtils.copyProperties(commonReportInfoDto, commonReportInfo);
 			return commonReportInfoManager.update(commonReportInfo);
-		}else {
+		} else {
 			CommonReportInfo commonReportInfo = new CommonReportInfo();
 			BeanUtils.copyProperties(commonReportInfoDto, commonReportInfo);
 			return commonReportInfoManager.save(commonReportInfo);
 		}
 	}
-	
+
 	@Override
 	public CommonReportInfoDto selectById(Long id) {
 		CommonReportInfo commonReportInfo = commonReportInfoManager.selectById(id);
@@ -45,21 +44,30 @@ public class CommonReportInfoServiceImpl implements CommonReportInfoService {
 		BeanUtils.copyProperties(commonReportInfo, commonReportInfoDto);
 		return commonReportInfoDto;
 	}
-	
+
 	@Override
 	public List<CommonReportInfoDto> findList(CommonReportInfoDto commonReportInfoDto) {
 		CommonReportInfo commonReportInfo = new CommonReportInfo();
 		BeanUtils.copyProperties(commonReportInfoDto, commonReportInfo);
 		List<CommonReportInfo> commonReportInfoList = commonReportInfoManager.findList(commonReportInfo);
-		
+
 		List<CommonReportInfoDto> commonReportInfoDtoList = new ArrayList<CommonReportInfoDto>();
-		for(CommonReportInfo dto : commonReportInfoList){
+		for (CommonReportInfo dto : commonReportInfoList) {
 			CommonReportInfoDto respDto = new CommonReportInfoDto();
 			BeanUtils.copyProperties(dto, respDto);
 			commonReportInfoDtoList.add(respDto);
 		}
 		return commonReportInfoDtoList;
 	}
-	
-}
 
+	@Override
+	public CommonReportInfoDto selectOneByDate(String type, String userId, String date) {
+		CommonReportInfoDto commonReportInfoDto = new CommonReportInfoDto();
+		commonReportInfoDto.setType(type);
+		commonReportInfoDto.setUserId(userId);
+		commonReportInfoDto.setCol1(date);
+		List<CommonReportInfoDto> list = findList(commonReportInfoDto);
+		return list == null || list.size() < 1 ? null : list.get(0);
+	}
+
+}

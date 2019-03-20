@@ -18,166 +18,153 @@
   	<%pageContext.setAttribute("_textResource", new TextResource()); %>
     <div class="top_bar">
     	<a class="return" onclick="go_page('${ctx}/index')"></a>
-    	新建订单
+    	外勤展板
     	<a class="submit" onclick="javascript:doSubmit();">提交</a>
     </div>
     <div class="content_auto">
       <form id="formId">
         <input type="hidden" id="id" name="id" value="${report.id }"/>
-        <input type="hidden" name="type" id="type" value="outwork1"/>
+        <input type="hidden" name="type" id="type" value="outwork2"/>
         <div class="insert_team bottom">
         	<div class="insert_message">
             	<label>订单日期</label>
-            	<input type="text" name="col1" id="date0" value="2018-03-01" placeholder="订单日期"/>
-          	</div>
-          	<div class="insert_message">
-            	<label>办理人员</label>
-            	<input type="text" id="col2" name="col2" placeholder="客户姓名" value="${report.col2 }"/>
-          	</div>
-          	<div class="insert_message last">
-            	<label>客户电话</label>
-            	<input type="text" id="col3" name="col3" placeholder="客户电话" value="${report.col3 }"/>
+            	<input type="text" name="col1" id="date0" value="${date }" placeholder="订单日期"/>
           	</div>
         </div>
-        <p class="insert_title" style="background: #f5f5f5;">服务项目</p>
+        <p class="insert_title" style="background: #f5f5f5;">注册类</p>
         <div class="insert_team bottom">
-          	<div class="insert_option">
-            	<label>注册</label>
-            	<select name="col4" id="col4" >
-                	<option value="0" <c:if test="${col4 == 0}">selected</c:if>>否</option>
-                	<option value="1" <c:if test="${col4 == 1}">selected</c:if>>是</option>
-    	    	</select>
+          	<div class="insert_message">
+            	<label>总件数</label>
+            	<input type="text" id="col2" name="col2" placeholder="总件数" value="${report.col2 }"/>
           	</div>
-          	<div class="insert_option">
-            	<label>代账</label>
-            	<select name="col5" id="col5" >
-                	<option value="0" <c:if test="${col5 == 0}">selected</c:if>>否</option>
-                	<option value="1" <c:if test="${col5 == 1}">selected</c:if>>是</option>
-    	    	</select>
+          	<div class="insert_message">
+            	<label>已完成</label>
+            	<input type="text" id="col3" name="col3" placeholder="已完成" value="${report.col3 }"/>
           	</div>
-          	<div class="insert_option last">
-            	<label>增值</label>
-            	<select name="col6" id="col6" >
-                	<option value="0" <c:if test="${col6 == 0}">selected</c:if>>否</option>
-                	<option value="1" <c:if test="${col6 == 1}">selected</c:if>>是</option>
-    	    	</select>
+          	<div class="insert_message">
+            	<label>正常</label>
+            	<input type="text" id="col4" name="col4" placeholder="未完成(正常)" value="${report.col4 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>延期</label>
+            	<input type="text" id="col5" name="col5" placeholder="未完成(延期)" value="${report.col5 }"/>
           	</div>
         </div>
-        <p class="insert_title" style="background: #f5f5f5;">核名预审</p>
+        <p class="insert_title" style="background: #f5f5f5;">变更类</p>
         <div class="insert_team bottom">
           	<div class="insert_message">
-            	<label>核名日期</label>
-            	<input type="text" id="date1" name="col7" value="${report.col7 }"/>
+            	<label>总件数</label>
+            	<input type="text" id="col6" name="col6" placeholder="总件数" value="${report.col6 }"/>
           	</div>
           	<div class="insert_message">
-            	<label>负责人</label>
-            	<input type="text" id="col8" name="col8" placeholder="负责人" value="${report.col8 }"/>
+            	<label>已完成</label>
+            	<input type="text" id="col7" name="col7" placeholder="已完成" value="${report.col7 }"/>
           	</div>
           	<div class="insert_message">
-            	<label>通过日期</label>
-            	<input type="text" id="date2" name="col9" value="${report.col9 }"/>
+            	<label>正常</label>
+            	<input type="text" id="col8" name="col8" placeholder="未完成(正常)" value="${report.col8 }"/>
           	</div>
           	<div class="insert_message">
-            	<label>负责人</label>
-            	<input type="text" id="col10" name="col10" placeholder="负责人" value="${report.col10 }"/>
-          	</div>
-          	<div class="insert_message">
-            	<label>领取日期</label>
-            	<input type="text" id="date3" name="col11" value=""/>
-          	</div>
-          	<div class="insert_message">
-            	<label>负责人</label>
-            	<input type="text" id="col12" name="col12" placeholder="负责人" value="${report.col12 }"/>
-          	</div>
-          	<div class="insert_message last">
-            	<label>注册名称</label>
-            	<input type="text" id="col13" name="col13" placeholder="注册名称（全称）" value="${report.col13 }"/>
-          	</div>
-        </div>
-        <p class="insert_title" style="background: #f5f5f5;">提交材料</p>
-        <div class="insert_team bottom">
-          	<div class="insert_message">
-            	<label>日期</label>
-            	<input type="text" id="date4" name="col14" value=""/>
-          	</div>
-          	<div class="insert_message last">
-            	<label>负责人</label>
-            	<input type="text" id="col15" name="col15" placeholder="负责人" value="${report.col15 }"/>
-          	</div>
-        </div>
-        <p class="insert_title" style="background: #f5f5f5;">执照领取</p>
-        <div class="insert_team bottom">
-          	<div class="insert_message">
-            	<label>日期</label>
-            	<input type="text" id="date5" name="col16" value=""/>
-          	</div>
-          	<div class="insert_message last">
-            	<label>负责人</label>
-            	<input type="text" id="col17" name="col17" placeholder="负责人" value="${report.col17 }"/>
-          	</div>
-        </div>
-        <p class="insert_title" style="background: #f5f5f5;">刻章</p>
-        <div class="insert_team bottom">
-          	<div class="insert_message">
-            	<label>日期</label>
-            	<input type="text" id="date6" name="col18" value=""/>
-          	</div>
-          	<div class="insert_message last">
-            	<label>负责人</label>
-            	<input type="text" id="col19" name="col19" placeholder="负责人" value="${report.col19 }"/>
-          	</div>
-        </div>
-        <p class="insert_title" style="background: #f5f5f5;">取章</p>
-        <div class="insert_team bottom">
-          	<div class="insert_message">
-            	<label>日期</label>
-            	<input type="text" id="date7" name="col20" value=""/>
-          	</div>
-          	<div class="insert_message last">
-            	<label>负责人</label>
-            	<input type="text" id="col21" name="col21" placeholder="负责人" value="${report.col21 }"/>
+            	<label>延期</label>
+            	<input type="text" id="col9" name="col9" placeholder="未完成(延期)" value="${report.col9 }"/>
           	</div>
         </div>
         
-        <p class="insert_title" style="background: #f5f5f5;">税务报到</p>
+        <p class="insert_title" style="background: #f5f5f5;">税务类</p>
         <div class="insert_team bottom">
           	<div class="insert_message">
-            	<label>日期</label>
-            	<input type="text" id="date8" name="col22" value=""/>
+            	<label>总件数</label>
+            	<input type="text" id="col10" name="col10" placeholder="总件数" value="${report.col10 }"/>
           	</div>
-          	<div class="insert_message last">
-            	<label>负责人</label>
-            	<input type="text" id="col23" name="col23" placeholder="负责人" value="${report.col23 }"/>
+          	<div class="insert_message">
+            	<label>已完成</label>
+            	<input type="text" id="col11" name="col11" placeholder="已完成" value="${report.col11 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>正常</label>
+            	<input type="text" id="col12" name="col12" placeholder="未完成(正常)" value="${report.col12 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>延期</label>
+            	<input type="text" id="col13" name="col13" placeholder="未完成(延期)" value="${report.col13 }"/>
           	</div>
         </div>
-        <p class="insert_title" style="background: #f5f5f5;">银行开户</p>
+        <p class="insert_title" style="background: #f5f5f5;">注销类</p>
         <div class="insert_team bottom">
           	<div class="insert_message">
-            	<label>日期</label>
-            	<input type="text" id="date9" name="col24" value=""/>
+            	<label>总件数</label>
+            	<input type="text" id="col14" name="col14" placeholder="总件数" value="${report.col14 }"/>
           	</div>
-          	<div class="insert_message last">
-            	<label>负责人</label>
-            	<input type="text" id="col25" name="col25" placeholder="负责人" value="${report.col25 }"/>
+          	<div class="insert_message">
+            	<label>已完成</label>
+            	<input type="text" id="col15" name="col15" placeholder="已完成" value="${report.col15 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>正常</label>
+            	<input type="text" id="col16" name="col16" placeholder="未完成(正常)" value="${report.col16 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>延期</label>
+            	<input type="text" id="col17" name="col17" placeholder="未完成(延期)" value="${report.col17 }"/>
           	</div>
         </div>
-        <p class="insert_title" style="background: #f5f5f5;">领取开户许可证网银</p>
+        <p class="insert_title" style="background: #f5f5f5;">资质、社保、公积金类</p>
         <div class="insert_team bottom">
           	<div class="insert_message">
-            	<label>日期</label>
-            	<input type="text" id="date10" name="col26" value=""/>
+            	<label>总件数</label>
+            	<input type="text" id="col18" name="col18" placeholder="总件数" value="${report.col18 }"/>
           	</div>
           	<div class="insert_message">
-            	<label>代办事项</label>
-            	<input type="text" id="col27" name="col27" placeholder="代办事项" value="${report.col27 }"/>
+            	<label>已完成</label>
+            	<input type="text" id="col19" name="col19" placeholder="已完成" value="${report.col19 }"/>
           	</div>
           	<div class="insert_message">
-            	<label>负责人</label>
-            	<input type="text" id="col28" name="col28" placeholder="负责人" value="${report.col28 }"/>
+            	<label>正常</label>
+            	<input type="text" id="col20" name="col20" placeholder="未完成(正常)" value="${report.col20 }"/>
           	</div>
-          	<div class="insert_message last">
-            	<label>备注</label>
-            	<input type="text" id="col29" name="col29" placeholder="备注" value="${report.col29 }"/>
+          	<div class="insert_message">
+            	<label>延期</label>
+            	<input type="text" id="col21" name="col21" placeholder="未完成(延期)" value="${report.col21 }"/>
+          	</div>
+        </div>
+        
+        <p class="insert_title" style="background: #f5f5f5;">工商年报</p>
+        <div class="insert_team bottom">
+          	<div class="insert_message">
+            	<label>总件数</label>
+            	<input type="text" id="col22" name="col22" placeholder="总件数" value="${report.col22 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>已完成</label>
+            	<input type="text" id="col23" name="col23" placeholder="已完成" value="${report.col23 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>正常</label>
+            	<input type="text" id="col24" name="col24" placeholder="未完成(正常)" value="${report.col24 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>延期</label>
+            	<input type="text" id="col25" name="col25" placeholder="未完成(延期)" value="${report.col25 }"/>
+          	</div>
+        </div>
+        
+        <p class="insert_title" style="background: #f5f5f5;">核名</p>
+        <div class="insert_team bottom">
+          	<div class="insert_message">
+            	<label>总件数</label>
+            	<input type="text" id="col26" name="col26" placeholder="总件数" value="${report.col26 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>已完成</label>
+            	<input type="text" id="col27" name="col27" placeholder="已完成" value="${report.col27 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>正常</label>
+            	<input type="text" id="col28" name="col28" placeholder="未完成(正常)" value="${report.col28 }"/>
+          	</div>
+          	<div class="insert_message">
+            	<label>延期</label>
+            	<input type="text" id="col29" name="col29" placeholder="未完成(延期)" value="${report.col29 }"/>
           	</div>
         </div>
       </form>
@@ -296,6 +283,14 @@
 	      var d=today.getDate();
 	      return h+"-"+m+"-"+d;
 	    }
+	 	
+	    var date = '${date }';
+	    $('#date0').bind('input change', function() {
+	    	var v_date = $('#date0').val();
+	    	if(date != v_date){
+	    		window.location.href= '${ctx}/commonReport/add/index2?date='+v_date;
+	    	}
+	    });	
     </script>
     <div id="errBox12" class="vnone">
 		<div class="tipCover"></div>
