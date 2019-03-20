@@ -83,7 +83,7 @@ public class MenuController extends BaseController {
 	public String index(Model model) {
 		return "redirect:/index";
 	}
-	
+
 	/**
 	 * 解绑
 	 * 
@@ -93,6 +93,28 @@ public class MenuController extends BaseController {
 	@RequestMapping(value = "menu", params = MenuConfig.UNBIND)
 	public String unbind(Model model) {
 		return "redirect:/user/unbind/index";
+	}
+
+	/**
+	 * 外勤看板
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "menu", params = MenuConfig.OUTWORK1)
+	public String outwork1(Model model) {
+		return "redirect:/commonReport/add/index1";
+	}
+
+	/**
+	 * 外勤展板
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "menu", params = MenuConfig.OUTWORK2)
+	public String outwork2(Model model) {
+		return "redirect:/commonReport/add/index2";
 	}
 
 }

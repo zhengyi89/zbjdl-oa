@@ -38,7 +38,7 @@
 				<div class="panel-body">
 					<div class="panel-table">
 						<q:table queryService="queryService" queryKey="queryCommonReport1" formId="godownForma"
-							class="table table-striped table-bordered" pageSize="20">
+							class="table table-striped table-bordered" pageSize="50">
 							<q:nodata>无符合条件的记录</q:nodata>
 							<%-- <q:param name="systemCode" value="${SESSION_ACCOUNTINFO.systemCode}" /> --%>
 							<q:column title="序号" value="${_rowstatus.globalIndex}" with="10％" />

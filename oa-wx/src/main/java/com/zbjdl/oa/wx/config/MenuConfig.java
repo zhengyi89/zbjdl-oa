@@ -22,14 +22,20 @@ public interface MenuConfig {
 	 * 每日商机
 	 */
 	String ADD_OPP = "type=addOpp";
-	
-	
+
 	/**
 	 * 首页
 	 */
 	String INDEX = "type=index";
-	
-	
-	
+
+	/**
+	 * 外勤看板
+	 */
+	String OUTWORK1 = "type=outwork1";
+
+	/**
+	 * 外勤展板
+	 */
+	String OUTWORK2 = "type=outwork2";
 
 }

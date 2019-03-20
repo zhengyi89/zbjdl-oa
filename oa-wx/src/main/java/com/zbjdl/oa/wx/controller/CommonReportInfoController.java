@@ -84,17 +84,11 @@ public class CommonReportInfoController extends BaseController {
 			date = DateUtils.sdfDateOnly.format(new Date());
 		}
 
-		WxSession wxSession = (WxSession) super.reloadSession();
-		// if (wxSession.isBind()) {
-		// return "redirect:/menu?" + MenuConfig.INDEX;
-		// } else {
-
 		// 查询的当天是否已填写
 		CommonReportInfoDto commonReport = commonReportInfoService.selectOneByDate("outwork1", getSession().getUserId(), date);
 		model.addAttribute("date", date);
 		model.addAttribute("report", commonReport);
 		return "/commonReport/outworkAddIndex1";
-		// }
 	}
 
 	@RequestMapping(value = "/add/index2")
@@ -103,16 +97,11 @@ public class CommonReportInfoController extends BaseController {
 			date = DateUtils.sdfDateOnly.format(new Date());
 		}
 
-		// WxSession wxSession = (WxSession) super.reloadSession();
-		// if (wxSession.isBind()) {
-		// return "redirect:/menu?" + MenuConfig.INDEX;
-		// } else {
 		// 查询的当天是否已填写
 		CommonReportInfoDto commonReport = commonReportInfoService.selectOneByDate("outwork2", getSession().getUserId(), date);
 		model.addAttribute("date", date);
 		model.addAttribute("report", commonReport);
 		return "/commonReport/outworkAddIndex2";
-		// }
 	}
 
 }
