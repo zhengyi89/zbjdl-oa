@@ -36,7 +36,7 @@
     </div>
     <div class="showbox">
       <div class="project_list">
-      	<c:if test="${!_wxSession.isSuperAdmin }">
+      	<c:if test="${!_wxSession.isSuperAdmin && _wxSession.city!='综合部' }">
       		<div class="message" onclick="window.location.href= '${ctx}/order/add/index';">
 	          <p class="icon bg_1"></p>
 	          新建订单
@@ -45,23 +45,22 @@
 	          <p class="icon bg_4"></p>
 	          每日商机
 	        </div>
+	        
+	        <div class="message" onclick="window.location.href= '${ctx}/commonReport/add/index1';">
+	          <p class="icon bg_1"></p>
+	          外勤看板
+	        </div>
+	      	<div class="message" onclick="window.location.href= '${ctx}/commonReport/add/index2';">
+	          <p class="icon bg_1"></p>
+	          外勤展板
+	        </div>
       	</c:if>
       	
-      	<div class="message" onclick="window.location.href= '${ctx}/commonReport/add/index1';">
-          <p class="icon bg_1"></p>
-          外勤看板
-        </div>
-      	<div class="message" onclick="window.location.href= '${ctx}/commonReport/add/index2';">
-          <p class="icon bg_1"></p>
-          外勤展板
-        </div>
-        
-        
         <div class="message" onclick="window.location.href= '${ctx}/order/list';">
           <p class="icon bg_1"></p>
           订单列表
         </div>
-        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin }">
+        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin  || _wxSession.city=='综合部'}">
         	<div class="message" onclick="window.location.href= '${ctx}/report/bussAnalyze';">
 	          <p class="icon bg_4"></p>
 	          商机数表
@@ -73,14 +72,12 @@
           获客渠道表
         </div>
         
-        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin }">
+        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin || _wxSession.city=='综合部'}">
         	<div class="message" onclick="window.location.href= '${ctx}/report/orderSummary';">
 	          <p class="icon bg_1"></p>
 	          战报表
 	        </div>
-        </c:if>
-        <c:if test="${_wxSession.isAdmin || _wxSession.isSuperAdmin }">
-        	<div class="message" onclick="window.location.href= '${ctx}/report/salePerformance';">
+	        <div class="message" onclick="window.location.href= '${ctx}/report/salePerformance';">
 	          <p class="icon bg_1"></p>
 	          销售业绩表
 	        </div>
