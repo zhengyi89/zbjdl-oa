@@ -337,19 +337,23 @@ public class UserInfoController extends BaseController {
 		String[] array = department.split("－");
 		if (array.length < 1) {
 			return "";
+		} else {
+			return array[0];
 		}
-		return array[0];
 	}
-	
+
 	private String getDepartment(String department) {
 		if (StringUtils.isBlank(department)) {
 			return "";
 		}
 		String[] array = department.split("－");
-		if (array.length < 2) {
+		if (array.length < 1) {
 			return "";
+		} else if (array.length < 2) {
+			return array[0];
+		} else {
+			return array[1].replaceAll("部", "");
 		}
-		return array[1].replaceAll("部", "");
 	}
 
 }

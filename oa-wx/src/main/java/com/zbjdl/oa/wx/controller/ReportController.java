@@ -32,6 +32,7 @@ import com.zbjdl.oa.dto.response.SalePerformanceReportRespDto;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.service.UserInfoService;
 import com.zbjdl.oa.util.WxDateUtils;
+import com.zbjdl.oa.wx.config.Constants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,7 +74,7 @@ public class ReportController extends BaseController {
 			throw new RuntimeException();
 		}
 
-		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) {
+		if (Constants.ZHB.equals(getSession().getCity()) || (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin())) { // 显示所有
 
 		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			orderInfoDto.setCity(getSession().getCity());
@@ -259,7 +260,7 @@ public class ReportController extends BaseController {
 		ReportBaseReqDto dto = new ReportBaseReqDto();
 		dto.setDate(date);
 		// 不同权限用户查询不同数据
-		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+		if (Constants.ZHB.equals(getSession().getCity()) || (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin())) { // 显示所有
 
 		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			dto.setCity(getSession().getCity());
@@ -330,7 +331,7 @@ public class ReportController extends BaseController {
 		ReportBaseReqDto param = new ReportBaseReqDto();
 		param.setDate(date);
 		// 不同权限用户查询不同数据
-		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+		if (Constants.ZHB.equals(getSession().getCity()) || (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin())) { // 显示所有
 
 		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			param.setCity(getSession().getCity());
@@ -465,7 +466,8 @@ public class ReportController extends BaseController {
 					l.set(4, "");
 				} else {
 					l.set(4, totalAmount.multiply(new BigDecimal(100)).divide(new BigDecimal(l.get(2)), 2, BigDecimal.ROUND_HALF_EVEN)
-							.toString() + "%");
+							.toString()
+							+ "%");
 				}
 			}
 

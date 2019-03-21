@@ -15,7 +15,7 @@
 								SELECT  *
 								 FROM common_report_info
 								WHERE type = 'outwork1' 
-  									  /~col1: and col1 = {date,string}~/
+  									  /~date: and col1 = {date,string}~/
   									  order by id desc
                                 ]]>
 							</value>
@@ -30,7 +30,7 @@
 								SELECT  *
 								 FROM common_report_info
 								WHERE type = 'outwork2' 
-  									  /~col1: and col1 = {date,string}~/
+  									  /~date: and col1 = {date,string}~/
   									  order by id desc
                                 ]]>
 							</value>

@@ -14,15 +14,22 @@ import org.springframework.stereotype.Service;
 
 import com.zbjdl.common.utils.BeanUtils;
 import com.zbjdl.oa.manager.CommonReportInfoManager;
+import com.zbjdl.oa.repository.CommonReportInfoRepository;
 import com.zbjdl.oa.service.CommonReportInfoService;
 import com.zbjdl.oa.model.CommonReportInfo;
 import com.zbjdl.oa.dto.CommonReportInfoDto;
+import com.zbjdl.oa.dto.CommonReportWithUserDto;
+import com.zbjdl.oa.dto.request.CommonReportQueryReqDto;
+import com.zbjdl.oa.dto.request.ReportBaseReqDto;
 
 @Service("commonReportInfoService")
 public class CommonReportInfoServiceImpl implements CommonReportInfoService {
 
 	@Autowired
 	private CommonReportInfoManager commonReportInfoManager;
+	
+	@Autowired
+	private CommonReportInfoRepository commonReportInfoRepository;
 
 	@Override
 	public Integer saveOrUpdate(CommonReportInfoDto commonReportInfoDto) {
@@ -68,6 +75,11 @@ public class CommonReportInfoServiceImpl implements CommonReportInfoService {
 		commonReportInfoDto.setCol1(date);
 		List<CommonReportInfoDto> list = findList(commonReportInfoDto);
 		return list == null || list.size() < 1 ? null : list.get(0);
+	}
+
+	@Override
+	public List<CommonReportWithUserDto> findReport(CommonReportQueryReqDto reqDto) {
+		return commonReportInfoRepository.findReport(reqDto);
 	}
 
 }

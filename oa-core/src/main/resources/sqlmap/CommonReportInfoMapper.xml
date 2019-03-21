@@ -39,6 +39,10 @@
 	  <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
 	  <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
   </resultMap>
+  
+  <resultMap id="ReportResultMap" type="com.zbjdl.oa.dto.CommonReportWithUserDto" extends="BaseResultMap">
+  	   <result column="city" jdbcType="VARCHAR" property="city" />
+  </resultMap>
 
   <sql id="Example_Where_Clause">
     <where>
@@ -438,6 +442,27 @@
     <include refid="Example_Where_Clause" />
     <!-- order by CREATE_DATE -->
   </select>
+  
+  <select id="findReport" parameterType="com.zbjdl.oa.dto.request.CommonReportQueryReqDto" resultMap="ReportResultMap">
+    SELECT
+		u.user_name ,u.city, c.*
+	FROM
+		common_report_info c ,
+		user_info u
+	WHERE
+		c.user_id = u.id
+		<if test="type != null" >
+	      and type = #{type,jdbcType=VARCHAR}
+	    </if>
+	    <if test="date != null" >
+	      and col1 = #{date,jdbcType=VARCHAR}
+	    </if>
+	    <if test="city != null" >
+	      and u.city = #{city,jdbcType=VARCHAR}
+	    </if>
+	order by c.id DESC
+  </select>
+  
   <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select
     <trim suffixOverrides=",">

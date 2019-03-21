@@ -8,7 +8,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.alibaba.fastjson.JSON;
 import com.zbjdl.oa.OaWebApplication;
+import com.zbjdl.oa.dto.CommonReportWithUserDto;
+import com.zbjdl.oa.dto.request.CommonReportQueryReqDto;
 import com.zbjdl.oa.dto.response.OrderSummaryReportRespDto;
+import com.zbjdl.oa.service.CommonReportInfoService;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.service.TargetInfoService;
 
@@ -25,6 +28,9 @@ public class OaWebApplicationTests {
 	OrderInfoService os;
 	
 	@Autowired
+	CommonReportInfoService commonReportInfoService;
+	
+	@Autowired
 	TargetInfoService targetInfoService;
 	@Test
 	public void contextLoads() {
@@ -36,6 +42,16 @@ public class OaWebApplicationTests {
 	public void uninitTest() {
 		Integer i = targetInfoService.selectUnInit("2019-03", "北京");
 		System.out.println("-----------"+i);
+	}
+	
+	@Test
+	public void commonReportQueryTest(){
+		CommonReportQueryReqDto reqDto = new CommonReportQueryReqDto();
+		reqDto.setCity("北京");
+		reqDto.setDate("2019-03-20");
+		reqDto.setType("outwork1");
+		List<CommonReportWithUserDto> list = commonReportInfoService.findReport(reqDto);
+		System.out.println("-------------"+JSON.toJSONString(list));
 	}
 
 }

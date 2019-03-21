@@ -8,10 +8,6 @@ package com.zbjdl.oa.dto.request;
 
 import java.io.Serializable;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.zbjdl.common.amount.Amount;
-
 /**
  * OrderInfoDto
  * 

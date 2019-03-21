@@ -74,7 +74,7 @@ public class ReportController extends BaseController {
 			throw new RuntimeException();
 		}
 
-		if (getCurrentUser().getIsSuperAdmin() != null && getCurrentUser().getIsSuperAdmin()) {
+		if (getCurrentUser().getPrimaryDepartmentId() == 144L) { // 综合部
 
 		} else if (getCurrentUser().getIsAdmin() != null && getCurrentUser().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			UserInfoDto userDto = userInfoService.selectById(getCurrentUser().getUserId());
@@ -271,7 +271,7 @@ public class ReportController extends BaseController {
 		ReportBaseReqDto dto = new ReportBaseReqDto();
 		dto.setDate(date);
 		// 不同权限用户查询不同数据
-		if (getCurrentUser().getIsSuperAdmin() != null && getCurrentUser().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+		if (getCurrentUser().getPrimaryDepartmentId() == 144L) { // 综合部
 
 		} else if (getCurrentUser().getIsAdmin() != null && getCurrentUser().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			UserInfoDto userDto = userInfoService.selectById(getCurrentUser().getUserId());
@@ -347,7 +347,7 @@ public class ReportController extends BaseController {
 		ReportBaseReqDto param = new ReportBaseReqDto();
 		param.setDate(date);
 		// 不同权限用户查询不同数据
-		if (getCurrentUser().getIsSuperAdmin() != null && getCurrentUser().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+		if (getCurrentUser().getPrimaryDepartmentId() == 144L) { // 综合部
 
 		} else if (getCurrentUser().getIsAdmin() != null && getCurrentUser().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			UserInfoDto userDto = userInfoService.selectById(getCurrentUser().getUserId());
@@ -483,7 +483,8 @@ public class ReportController extends BaseController {
 					l.set(4, "");
 				} else {
 					l.set(4, totalAmount.multiply(new BigDecimal(100)).divide(new BigDecimal(l.get(2)), 2, BigDecimal.ROUND_HALF_EVEN)
-							.toString() + "%");
+							.toString()
+							+ "%");
 				}
 
 			}
@@ -498,8 +499,7 @@ public class ReportController extends BaseController {
 
 		return "/report/salePerformanceReport";
 	}
-	
-	
+
 	@RequestMapping("/orderList")
 	public String addIndex(Model model, String date) {
 		if (StringUtils.isBlank(date)) {
@@ -515,14 +515,14 @@ public class ReportController extends BaseController {
 		List<OrderWithUserInfoDto> list;
 
 		// 不同权限用户查询不同数据
-		if (getCurrentUser().getIsSuperAdmin() != null && getCurrentUser().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+		if (getCurrentUser().getPrimaryDepartmentId() == 144L) { // 综合部
 
 		} else if (getCurrentUser().getIsAdmin() != null && getCurrentUser().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			UserInfoDto userDto = userInfoService.selectById(getCurrentUser().getUserId());
 			if (userDto != null) {
 				orderInfoDto.setCity(userDto.getCity());
 			}
-		} 
+		}
 		logger.info("查询订单列表，参数为：{}", JSON.toJSONString(orderInfoDto));
 		list = orderInfoService.findListWithUser(orderInfoDto);
 		model.addAttribute("list", list);

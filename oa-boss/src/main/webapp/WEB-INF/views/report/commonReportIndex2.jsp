@@ -6,21 +6,43 @@
 <html>
 <head>
 <title>外勤展板</title>
-<script language="javascript" type="text/javascript" src="${resourcePath}/DatePicker/WdatePicker.js"></script>
+<style type="text/css">
+	.table>thead>tr>th {
+		    vertical-align: middle;
+		    text-align: center;
+	        border-top: 0;
+	}
+</style>
+<script type="text/javascript" src="${resourcePath}/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/BusinessCode.js"></script>
 </head>
 <body>
+	<!-- begin -->
+    <%pageContext.setAttribute("_textResource", new TextResource()); %>
 	<div id="content_2" class="content_wrapper">
 		<div class="content_main">
 			<div class="panel panel-default">
 				<div class="panel-heading">内容筛选</div>
 				<div class="panel-body">
-					<form class="cmxform form-horizontal" action="${ctx}/commonReport/index2" method="get"
+				<form id="changeStatusForm" action="" method="post">
+			      <input type="hidden" id="id" name="id" value=""/>
+				</form>
+				<form class="cmxform form-horizontal" action="${ctx}/commonReport/index2" method="get"
 						method="get" id="companyForm" name="companyForm">
 						<!-- 第一组查询条件 -->
 						<div class="form-group">
-							<label class="control-label col-lg-2">外勤日期</label>
+							<label class="control-label col-lg-2">报表日期</label>
 							<div class="col-lg-3">
 								<input type="text" name="date" id="date" class="form-control input_left"  onclick="WdatePicker()" value = "<fmt:formatDate value="${date}" dateStyle="default" />"/>
+							</div>
+							
+							<label class="control-label col-lg-2">城市</label>
+							<div class="col-lg-3">
+								<select class="form-control" id="city" name="city">
+									<script type="text/javascript">
+										BusinessCode.getSysConfigCode("ZBJ_CITY", "city", "${city}");
+									</script>
+								</select>
 							</div>
 						</div>
 						<div class="form-group">
@@ -34,56 +56,111 @@
 				</div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">固定资产列表</div>
+				<div class="panel-heading">查询结果</div>
 				<div class="panel-body">
 					<div class="panel-table">
-						<q:table queryService="queryService" queryKey="queryCommonReport2" formId="godownForma"
-							class="table table-striped table-bordered" pageSize="50">
-							<q:nodata>无符合条件的记录</q:nodata>
-							<%-- <q:param name="systemCode" value="${SESSION_ACCOUNTINFO.systemCode}" /> --%>
-							<q:column title="序号" value="${_rowstatus.globalIndex}" with="10％" />
-				            <q:column title="日期" value="${col1 }" width="10%" />
-				            <q:column title="办理人员" value="${user_name }" width="10%" />
-				            <q:column title="注册类" value="${col2}" width="10%" />
-				            <q:column title="已完成" value="${col3}" width="10%" />
-				            <q:column title="正常" value="${col4}" width="10%" />
-				            <q:column title="延期" value="${col5}" width="10%" />
-				            <q:column title="变更类" value="${col6}" width="10%" />
-				            <q:column title="已完成" value="${col7}" width="10%" />
-				            <q:column title="正常" value="${col8}" width="10%" />
-				            <q:column title="延期" value="${col9}" width="10%" />
-				            <q:column title="税务类" value="${col10}" width="10%" />
-				            <q:column title="已完成" value="${col11}" width="10%" />
-				            <q:column title="正常" value="${col12}" width="10%" />
-				            <q:column title="延期" value="${col13}" width="10%" />
-				            <q:column title="注销类" value="${col14}" width="10%" />
-				            <q:column title="已完成" value="${col15}" width="10%" />
-				            <q:column title="正常" value="${col16}" width="10%" />
-				            <q:column title="延期" value="${col17}" width="10%" />
-				            <q:column title="资质、社保、公积金类" value="${col18}" width="10%" />
-				            <q:column title="已完成" value="${col19}" width="10%" />
-				            <q:column title="正常" value="${col20}" width="10%" />
-				            <q:column title="延期" value="${col21}" width="10%" />
-				            <q:column title="工商年报" value="${col22}" width="10%" />
-				            <q:column title="已完成" value="${col23}" width="10%" />
-				            <q:column title="正常" value="${col24}" width="10%" />
-				            <q:column title="延期" value="${col25}" width="10%" />
-				            <q:column title="核名" value="${col26}" width="10%" />
-				            <q:column title="已完成" value="${col27}" width="10%" />
-				            <q:column title="正常" value="${col28}" width="10%" />
-				            <q:column title="延期" value="${col29}" width="10%" />
-						</q:table>
+					<table class="table table-bordered">
+			            <thead style="background-color: #f5f5f5;">
+			           	  <tr>
+			                <th rowspan="3">序号</th>
+			                <th rowspan="3">办理人员</th>
+			                <th colspan="4">注册类</th>
+			                <th colspan="4">变更类</th>
+			                <th colspan="4">税务类</th>
+			                <th colspan="4">注销类</th>
+			                <th colspan="4">资质、社保、公积金类</th>
+			                <th colspan="4">工商年报</th>
+			                <th colspan="4">核名</th>
+			              </tr>
+			              <tr>
+			                <th rowspan="2">总件数</th>
+			                <th rowspan="2">已完成</th>
+			                <th colspan="2">未完成</th>
+			                <th rowspan="2">总件数</th>
+			                <th rowspan="2">已完成</th>
+			                <th colspan="2">未完成</th>
+			                <th rowspan="2">总件数</th>
+			                <th rowspan="2">已完成</th>
+			                <th colspan="2">未完成</th>
+			                <th rowspan="2">总件数</th>
+			                <th rowspan="2">已完成</th>
+			                <th colspan="2">未完成</th>
+			                <th rowspan="2">总件数</th>
+			                <th rowspan="2">已完成</th>
+			                <th colspan="2">未完成</th>
+			                <th rowspan="2">总件数</th>
+			                <th rowspan="2">已完成</th>
+			                <th colspan="2">未完成</th>
+			                <th rowspan="2">总件数</th>
+			                <th rowspan="2">已完成</th>
+			                <th colspan="2">未完成</th>
+			              </tr>
+			              <tr>
+			              	<th>正常</th>
+			                <th>延期</th>
+			              	<th>正常</th>
+			                <th>延期</th>
+			              	<th>正常</th>
+			                <th>延期</th>
+			              	<th>正常</th>
+			                <th>延期</th>
+			              	<th>正常</th>
+			                <th>延期</th>
+			              	<th>正常</th>
+			                <th>延期</th>
+			              	<th>正常</th>
+			                <th>延期</th>
+			              </tr>
+			            </thead>
+			            <tbody>
+			            	<c:forEach items="${list }"  var="dto">
+			            		<tr>
+			            			<td></td>
+			            			<td>${dto.userName }</td>
+			            			<td>${dto.col2 }</td>
+			            			<td>${dto.col3 }</td>
+			            			<td>${dto.col4 }</td>
+			            			<td>${dto.col5 }</td>
+			            			<td>${dto.col6 }</td>
+			            			<td>${dto.col7 }</td>
+			            			<td>${dto.col8 }</td>
+			            			<td>${dto.col9 }</td>
+			            			<td>${dto.col10 }</td>
+			            			<td>${dto.col11 }</td>
+			            			<td>${dto.col12 }</td>
+			            			<td>${dto.col13 }</td>
+			            			<td>${dto.col14 }</td>
+			            			<td>${dto.col15 }</td>
+			            			<td>${dto.col16 }</td>
+			            			<td>${dto.col17 }</td>
+			            			<td>${dto.col18 }</td>
+			            			<td>${dto.col19 }</td>
+			            			<td>${dto.col20 }</td>
+			            			<td>${dto.col21 }</td>
+			            			<td>${dto.col22 }</td>
+			            			<td>${dto.col23 }</td>
+			            			<td>${dto.col24 }</td>
+			            			<td>${dto.col25 }</td>
+			            			<td>${dto.col26 }</td>
+			            			<td>${dto.col27 }</td>
+			            			<td>${dto.col28 }</td>
+			            			<td>${dto.col29 }</td>
+			            		</tr>
+			            	</c:forEach>
+			            </tbody>
+			          </table>
 					</div>
-					
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--  end -->
-	<script type="text/javascript">
-    $(function(){
-      
-    });
-  </script>
+  	 <script type="text/javascript">
+  	 	$(function(){
+  	 		var len = $('table tr').length;
+	        for(var i = 3;i<len;i++){
+	            $('table tr:eq('+i+') td:first').text(i-2);
+	        }
+  	 	})
+    </script>
 </body>
 </html>

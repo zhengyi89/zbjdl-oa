@@ -26,6 +26,7 @@ import com.zbjdl.oa.dto.response.BaseRespDto;
 import com.zbjdl.oa.enumtype.ReturnEnum;
 import com.zbjdl.oa.service.OrderInfoService;
 import com.zbjdl.oa.service.UserInfoService;
+import com.zbjdl.oa.wx.config.Constants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,7 +79,7 @@ public class OrderInfoController extends BaseController {
 		List<OrderWithUserInfoDto> list;
 
 		// 不同权限用户查询不同数据
-		if (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin()) { // 如果是超级管理员，显示当月所有
+		if (Constants.ZHB.equals(getSession().getCity()) || (getSession().getIsSuperAdmin() != null && getSession().getIsSuperAdmin())) { // 显示所有
 
 		} else if (getSession().getIsAdmin() != null && getSession().getIsAdmin()) { // 如果是管理员，显示当前城市所有
 			orderInfoDto.setCity(getSession().getCity());

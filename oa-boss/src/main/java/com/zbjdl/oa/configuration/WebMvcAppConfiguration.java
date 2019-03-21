@@ -40,7 +40,7 @@ public class WebMvcAppConfiguration extends WebMvcConfigurerAdapter {
 		registry.addInterceptor(new SSOInterceptor());//MEXC
 		registry.addInterceptor(new MenuInterceptor());
 		registry.addInterceptor(new AuditInterceptor());
-		registry.addInterceptor(new AuthorityInterceptor());
+//		registry.addInterceptor(new AuthorityInterceptor());
 		registry.addInterceptor(new DataTablesHandlerInterceptor());
 		registry.addInterceptor(new OperationLogInterceptor());
 		registry.addInterceptor(new AvoidDuplicateSubmissionInterceptor());

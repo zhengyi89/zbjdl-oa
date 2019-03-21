@@ -21,8 +21,9 @@ BusinessCode.getSysConfigCode = function(configKey, domId, selectValue,defaultVa
 	var html = '<option value=""></option>';
 	$.ajax({
 		async : false,
-		url : "/account-boss/bussinessCode/codeIndex",
+		url : "/oa-boss/bussinessCode/codeIndex",
 		type : "POST",
+		method:"POST",
 		data : {
 			"configKey" : configKey
 		},
@@ -63,8 +64,9 @@ BusinessCode.transGirdData = function(configKey, codeKey, eleId) {
 	} else {
 		$.ajax({
 			async : false,
-			url : "/account-boss/bussinessCode/codeIndex",
+			url : "/oa-boss/bussinessCode/codeIndex",
 			type : "POST",
+			method:"POST",
 			data : {
 				"configKey" : configKey
 			},
