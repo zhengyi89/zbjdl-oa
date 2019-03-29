@@ -156,7 +156,7 @@
 	FROM
 		user_info u
 	WHERE
-		u.city = #{1}
+		u.city = #{1} and (duty is not null and  duty = '销售')
 	AND u.id NOT IN(
 		SELECT
 			user_id
@@ -165,7 +165,7 @@
 		WHERE
 			city = #{1}
 		AND target_month = #{0}
-	)  and (duty is null or duty != '销售')
+	) 
   </insert>
   
   <select id="selectUnInit" parameterType="java.lang.String" resultType="java.lang.Integer">
@@ -174,7 +174,7 @@
 	FROM
 		user_info u
 	WHERE
-		u.city = #{1}
+		u.city = #{1} and (duty is not null and  duty = '销售')
 	AND u.id NOT IN(
 		SELECT
 			user_id
@@ -183,7 +183,7 @@
 		WHERE
 			city = #{1}
 		AND target_month = #{0}
-	)  and (duty is null or duty != '销售')
+	)
   </select>
   
   
